@@ -1,0 +1,121 @@
+.contacts {
+    
+    max-width: 100%;
+    text-align:center;
+    margin: 0 auto;
+    padding-top: 40px;
+
+    &__cardlist {
+        display: flex;
+        margin: 0 auto;
+        flex-wrap: wrap;
+        // flex-direction: column;
+        border-radius: 60px;}
+
+    &__card {
+            width: 280px;
+    
+            text-align: center;
+            margin: 0 auto;
+            background-color: #ffffff;
+            box-shadow: 4px 6px 15px rgba(0, 0, 0, 0.1);
+            text-align: left;
+            list-style: none;
+            margin-bottom: 40px;
+            border-radius: 7px;
+        }
+    
+    &__card:hover {
+        transform: translate(2px, 5px);
+        border-radius: 7px;
+    }
+    &__card:last-child {
+        margin-bottom: 0;
+    }
+
+    &__name {
+            font-size: 18px;
+            font-family: inherit;
+            font-style: normal;
+            text-transform: uppercase;
+            color: #000000;
+            margin-bottom: 5px;
+            margin-left: 30px;
+            font-weight: 600;
+        }
+
+    &__title {
+            font-family: inherit;
+            font-style: normal;
+            font-size: 26px;
+            color: #000000;
+            font-weight: 400;
+            margin-bottom: 10px;
+        }
+
+    &__link {
+        color: #858598;
+        text-decoration: none;
+    }
+
+    &__position {
+            padding-bottom: 0px;
+        }
+    
+        &__position,
+        &__mail {
+            font-size: 15px;
+                font-family: inherit;
+                font-style: normal;
+                color: #45454b;
+                margin-bottom: 3px;
+                margin-left: 30px;
+                font-weight: 200;
+        }
+        &__mail {cursor: pointer;}
+
+    &__img {
+            margin-bottom: 10px;
+            height: 287px;
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-position: center;
+            width: 100%;
+            border-radius: 7px;
+            object-fit: cover;
+        }
+
+   
+}
+@media (min-width: 768px) {
+    .contacts__cardlist {
+        text-align: center;
+        width: 600px;
+        flex-wrap: wrap;
+        margin: 0 auto;
+    }
+
+    .contacts__title {
+        font-size: 36px;
+    }
+
+   
+}
+
+@media (min-width: 1280px) {
+    .contacts__cardlist {
+        width: 1180px;
+        flex-wrap: wrap;
+        text-align: center;
+            margin: 0 auto;
+    }
+
+    .contacts__card:last-child {
+        margin-bottom: 40px;
+    }
+
+    .contacts__title {
+        font-size: 36px;
+    }
+
+    }
