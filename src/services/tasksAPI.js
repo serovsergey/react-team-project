@@ -1,7 +1,7 @@
 import { privateAPI } from './http';
 
 const updateTasks = async body => {
-    const { data } = await privateAPI.post('/task/active', body);
+    const { data } = await privateAPI.patch('/task/active', body);
     return data;
 };
 
