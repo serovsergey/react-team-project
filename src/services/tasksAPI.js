@@ -6,7 +6,8 @@ const updateTasks = async body => {
 };
 
 const singleTaskActiveToggle = async (id, body) => {
-    await privateAPI.patch(`​/task/single-active/${id}`, body);
+    const { data } = await privateAPI.patch(`​/task/single-active/${id}`, body);
+    return data;
 };
 
 const taskCompletedToggle = async (id, body) => {
