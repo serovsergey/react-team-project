@@ -1,0 +1,20 @@
+.guestContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.guestItem {
+  padding-left: 15px;
+}
+
+.guestItem:first-child {
+  padding-right: 15px;
+  border-right: 1px solid grey;
+}
+
+.guestLink {
+  color: grey;
+  font-size: 12px;
+}
+/*# sourceMappingURL=guestNav.module.css.map */

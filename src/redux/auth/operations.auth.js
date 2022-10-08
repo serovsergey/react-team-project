@@ -50,6 +50,7 @@ const logout = createAsyncThunk(
   }
 );
 
+
 const getUserInfo = createAsyncThunk(
   'auth/getUserInfo',
   async (_, { rejectWithValue, getState }) => {
@@ -77,5 +78,7 @@ const getUserInfo = createAsyncThunk(
 
 
 const authOperations = { register, login, logout, getUserInfo };
+
+
 
 export default authOperations;

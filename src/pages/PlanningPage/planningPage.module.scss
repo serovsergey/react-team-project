@@ -1,0 +1,47 @@
+.box {
+    margin-bottom: 20px;
+    margin-right: auto;
+    margin-left: auto;
+    max-width: 280px;
+    box-shadow: 4px 6px 15px rgba(0, 0, 0, 0.1)
+    
+}
+
+
+.box1{
+    background-color: #FFBC33;
+    width: 280px;
+    padding: 16px 20px;
+    border-radius: 0 0 6px 6px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.title {
+    font-family: 'Montserrat';
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 1.25;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: #000000;
+   
+    }
+
+
+.reward {
+    display: inline-block;
+font-family: 'Montserrat';
+font-weight: 500;
+font-size: 10px;
+line-height: 1.2;
+text-align: center;
+letter-spacing: 0.04em;
+text-transform: uppercase;
+color: #ffffff;
+padding: 3px 10px;
+background-color: #5679D7;
+margin-top: 4px;
+border-radius: 3px;
+
+}

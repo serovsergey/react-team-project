@@ -1,0 +1,35 @@
+.stats {
+    margin-bottom: 61px;
+    display: flex;
+    justify-content: center;
+
+&__progress {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.25;
+    text-align: right;
+    letter-spacing: 0.04em;
+}
+
+&__totalprogress {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.25;
+    text-align: right;
+    letter-spacing: 0.04em;
+}
+
+&__number {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 1.25;
+    text-align: right;
+    letter-spacing: 0.2em;
+    color: #000000;
+    margin-left: 13px;
+}
+
+}
