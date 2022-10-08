@@ -1,3 +1,16 @@
+.title {
+font-family: 'Montserrat';
+font-style: normal;
+font-weight: 400;
+font-size: 18px;
+line-height: 1/22;
+letter-spacing: 0.04em;
+color: #000000;
+margin-top: 20px;
+text-align: center;
+
+}
+
 .box {
     margin-bottom: 20px;
     margin-right: auto;
@@ -17,7 +30,7 @@
     justify-content: space-between;
 }
 
-.title {
+.s {
     font-family: 'Montserrat';
     font-weight: 700;
     font-size: 12px;
