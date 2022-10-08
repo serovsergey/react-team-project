@@ -6,16 +6,20 @@ import authSelectors from 'redux/auth/selector.auth';
 import s from '../Header/header.module.scss'
 import { IoIosMenu} from 'react-icons/io';
 import { useState } from 'react';
+import { useMediaQuery } from 'react-responsive'
 import MobileMenu from 'components/MobileMenu';
 import GuestNav from 'components/GuestNav';
 import Container from 'components/Container';
 import LoggedNav from 'components/LoggedNav';
+import NavList from 'components/NavList';
 
 
 
 const Header = () => {
     const [modalIsopen, setModalIsOpen] = useState(false)
     const token = useSelector(authSelectors.getToken);
+    const isDesktopScreen = useMediaQuery({ query: '(min-width: 1280px)' })
+    
     
     const handleCloseModal = () => {
         setModalIsOpen(false)
@@ -26,6 +30,7 @@ const Header = () => {
         <Container>
         <div className={s.container}>
         <Logo />
+        {token && isDesktopScreen && <NavList />}
         {token ? <><button type='button' onClick={() => setModalIsOpen(true)}className={s.button}>
             <IoIosMenu color="rgba(133, 133, 152, 1)"size={22} />
         </button> <div className={s.loggedWrapper}><LoggedNav /></div></> : <GuestNav />}
