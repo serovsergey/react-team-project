@@ -1,0 +1,39 @@
+ .statsmobile {
+     font-family: inherit;
+     font-style: normal;
+     font-weight: 500;
+     font-size: 12px;
+     line-height: 1.25;
+     letter-spacing: 0.04em;
+     text-align: left;
+     color: #a6abb9;
+     margin-top: 0;
+     margin-bottom: 2px;
+     padding-top: 12px;
+     margin-left: 20px;
+     
+
+     &__wrapper {
+        display: flex;
+        justify-content: space-between;
+        padding-bottom: 12px;
+        width: 150px;
+        margin-left: 20px;
+
+     }
+
+     &__points {
+        font-weight: bold;
+     }
+ }
+  .react-sweet-progress-symbol {
+      display: none;
+  }
+
+  .react-sweet-progress {
+      width: 100px;
+      margin-left: 19px;
+  }
+   .wrap {
+       background-color: #F1F1F1;
+   }

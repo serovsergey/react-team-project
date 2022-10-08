@@ -2,6 +2,19 @@
     margin-bottom: 61px;
     display: flex;
     justify-content: center;
+ 
+    @media screen and (min-width: 768px) and (max-width: 1279px) {
+            flex-direction: column-reverse;
+            align-items: center;
+            margin-bottom: 0;
+        }
+    
+    @media screen and (min-width: 1280px) {
+            flex-direction: column;
+            justify-content: space-between;
+            margin-bottom: 0;
+        }
+ 
 
 &__progress {
     font-style: normal;
@@ -10,7 +23,21 @@
     line-height: 1.25;
     text-align: right;
     letter-spacing: 0.04em;
+    color: #a6abb9;
+    
+    @media screen and (max-width: 767px) {
+            display: none;
+        }
+    
+    @media screen and (min-width: 768px) {
+            margin-top: 0;
+            margin-bottom: 0;
+            margin-right: 16px;
+            
+        }
 }
+
+
 
 &__totalprogress {
     font-style: normal;
@@ -19,6 +46,17 @@
     line-height: 1.25;
     text-align: right;
     letter-spacing: 0.04em;
+    color:#a6abb9;
+    @media screen and (max-width: 767px) {
+            display: none;
+        }
+    
+    @media screen and (min-width: 768px) {
+            margin-top: 0;
+            margin-bottom: 0;
+            margin-right: 16px;
+            
+        }
 }
 
 &__number {
@@ -32,4 +70,40 @@
     margin-left: 13px;
 }
 
+&__wrapper {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    @media screen and (min-width: 768px) {
+            width: 350px;
+            margin-bottom: 20px;
+            margin: 0 auto;
+            
+        }
+    
+    @media screen and (min-width: 1280px) {
+            margin-bottom: 0;
+            margin-right: 16px;
+        }
+             
 }
+
+&__points {
+    font-weight: bold;
+    
+}
+
+}
+ .react-sweet-progress-symbol {
+     display: none;
+ }
+
+ .react-sweet-progress {
+
+     width: 280px;
+     
+
+ }
+ .wrap {
+    background-color: #F1F1F1;
+ }
