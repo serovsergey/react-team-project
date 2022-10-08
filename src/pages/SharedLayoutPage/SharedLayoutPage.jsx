@@ -9,24 +9,17 @@ import { Outlet } from 'react-router-dom';
 // import s from './sharedLayoutPage.module.scss';
 
 const SharedLayoutPage = () => {
-  // const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
-  // const token = useSelector(authSelectors.getToken);
+ 
+
   return (
     <div>
-      {/* <div className={s.container}> */}
-      {/* <header className={null}>
-        <div className={null}>
-          <Link to="/">Home</Link>
-          <span variant="h4">kidslike</span>
-        </div>
-        {token ? <UserInfo /> : null}
-      </header> */}
+     
       <Header/>
       <Suspense fallback={null}>
         <Outlet />
       </Suspense>
       Footer
-      {/* </div> */}
+      
     </div>
   );
 };

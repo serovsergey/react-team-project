@@ -5,6 +5,7 @@
     top: 0;
     right: 0;
     height: 100vh;
+    z-index: 1;
 
     background-color: #FFBC33;
 
@@ -34,8 +35,8 @@
     display: flex;
     flex-direction: column;
     padding-top: 15px;
-    // padding-left: 20px;
-    // padding-right: 20px;
+    
+    font-weight: 500;
 }
 
 .item{
@@ -61,4 +62,5 @@
     border: none;
     background-color: transparent;
     margin-left: auto;
+    cursor: pointer;
 }
