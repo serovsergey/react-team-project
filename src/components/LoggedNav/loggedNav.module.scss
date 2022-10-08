@@ -1,0 +1,59 @@
+
+
+.userInfo{
+    display: flex;
+    align-items: center;
+}
+
+.userItem{
+    padding-left:15px ;
+
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 15px;
+    color: white;
+    
+    &:first-child{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-left: 0;
+        border-right: 1px solid white;
+        padding-right: 15px;
+        @media screen and (min-width: 768px){
+            border-right: 1px solid rgba(133, 133, 152, 1);
+        }
+    }
+    @media screen and (min-width: 768px){
+        color: rgba(133, 133, 152, 1);
+    }
+}
+
+.logoutBtn{
+    border: none;
+    background-color: transparent;
+}
+
+.icon{
+    fill: white;
+    @media screen and (min-width: 768px){
+        fill: rgba(133, 133, 152, 1);
+    }
+}
+
+.iconName{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 26px;
+    height: 26px;
+    background-color: rgb(113, 113, 228);
+    border-radius: 50%;
+    margin-right: 10px;
+
+    font-size: 20px;
+    color: white;
+    
+}
