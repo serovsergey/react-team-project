@@ -1,11 +1,10 @@
 import { useSelector } from 'react-redux';
-import { NavLink } from 'react-router-dom';
-import menuItems from '../UserInfo/menuItems';
 import s from '../MobileMenu/mobileMenu.module.scss';
 import { CgClose } from 'react-icons/cg';
 import LoggedNav from 'components/LoggedNav';
 import authSelectors from 'redux/auth/selector.auth';
 import { useMediaQuery } from 'react-responsive'
+import NavList from 'components/NavList';
 
 const MobileMenu = ({ closeModal }) => {
     
@@ -25,15 +24,7 @@ const MobileMenu = ({ closeModal }) => {
                     <CgClose color='#ffffff' size={18}/>
                 </button>
             </div>
-            <ul className={s.list}>
-                {menuItems.map(({ name, to }) => (
-                    <li key={name} className={s.item}>
-                        <NavLink to={to} className={s.link}>
-                            {name}
-                        </NavLink>
-                    </li>
-                ))}
-            </ul>
+            <NavList />
         </div>
     );
 };

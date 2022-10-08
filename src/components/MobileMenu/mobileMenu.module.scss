@@ -31,32 +31,7 @@
     }
 }
 
-.list{
-    display: flex;
-    flex-direction: column;
-    padding-top: 15px;
-    
-    font-weight: 500;
-}
 
-.item{
-    padding: 15px 20px ;
-    text-align: start;
-    border-top: 1px solid white;
-
-    &:last-child{
-        border-bottom: 1px solid white;
-    }
-}
-.link{
-    text-decoration: none;
-    color: #fff;
-
-    font-size: 12px;
-    &:hover{
-        color: black;
-    }
-}
 
 .button{
     border: none;
