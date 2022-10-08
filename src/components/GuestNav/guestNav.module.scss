@@ -1,0 +1,19 @@
+
+.guestContainer{
+    display: flex;
+
+}
+
+.guestItem{
+    padding-left:15px ;
+    &:first-child{
+        padding-right: 15px;
+        border-right: 1px solid grey;
+    }
+}
+
+.guestLink{
+    color: grey;
+
+    font-size: 12px;
+}
