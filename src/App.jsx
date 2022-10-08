@@ -4,7 +4,7 @@ import SharedLayoutPage from 'pages/SharedLayoutPage';
 import { lazy, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Navigate, Route, Routes } from 'react-router-dom';
-import authOperations from 'redux/auth/operations.auth';
+import userOperations from 'redux/user/operations.user';
 
 const HomePage = lazy(() => import('./pages/HomePage'));
 const PlanningPage = lazy(() => import('./pages/PlanningPage'));
@@ -15,7 +15,7 @@ const AwardsPage = lazy(() => import('./pages/AwardsPage'));
 export const App = () => {
     const dispatch = useDispatch();
     useEffect(() => {
-        dispatch(authOperations.getUserInfo());
+        dispatch(userOperations.getUserInfo());
     }, [dispatch]);
     return (
         <Routes>

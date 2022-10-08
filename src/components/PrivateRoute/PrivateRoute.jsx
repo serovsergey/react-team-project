@@ -5,8 +5,9 @@ import { useSelector } from 'react-redux';
 import authSelectors from 'redux/auth/selector.auth';
 
 const PrivateRoute = () => {
-  const token = useSelector(authSelectors.getToken);
-  return token ? <Outlet /> : <Navigate to="/auth" />;
+    const token = useSelector(authSelectors.getToken);
+    console.log(token);
+    return token ? <Outlet /> : <Navigate to="/auth" />;
 };
 
 // PrivateRoute.propTypes = {};
