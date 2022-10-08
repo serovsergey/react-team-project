@@ -9,19 +9,14 @@ import { Outlet } from 'react-router-dom';
 // import s from './sharedLayoutPage.module.scss';
 
 const SharedLayoutPage = () => {
- 
-
-  return (
-    <div>
-     
-      <Header/>
-      <Suspense fallback={null}>
-        <Outlet />
-      </Suspense>
-      Footer
-      
-    </div>
-  );
+    return (
+        <div>
+            <Header />
+            <Suspense fallback={null}>
+                <Outlet />
+            </Suspense>
+        </div>
+    );
 };
 
 // SharedLayoutPage.propTypes = {};
