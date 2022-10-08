@@ -1,0 +1,147 @@
+.section_auth_page {
+    padding-top: 40px;
+    padding-bottom: 0;
+}
+
+.title {
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 1.22;
+    text-align: center;
+    color: #000000;
+    margin-bottom: 32px;
+}
+
+.wrapper_images {
+}
+
+.inner_images_bp320px {
+    background-image: url('../../assets/images/mobile/1x/AuthImgBp320-1x.png');
+    width: 320px;
+    min-height: 202px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+
+    @media screen and (min-device-pixel-ratio: 2),
+        (-webkit-min-device-pixel-ratio: 2),
+        (min-resolution: 192dpi),
+        (min-resolution: 2dppx) {
+        background-image: url('../../assets/images/mobile/2x/AuthImgBp320-2x.png');
+    }
+}
+
+// .inner_images_bp768px {
+//     &__family {
+//         background-image: url('../../assets/images/tablet/1x/Family1x.png');
+
+//         width: 320px;
+//         min-height: 202px;
+//         background-repeat: no-repeat;
+//         background-position: center;
+//         background-size: cover;
+
+//         @media screen and (min-device-pixel-ratio: 2),
+//             (-webkit-min-device-pixel-ratio: 2),
+//             (min-resolution: 192dpi),
+//             (min-resolution: 2dppx) {
+//             background-image: url('../../assets/images/tablet/2x/Family1-2x.png');
+//         }
+//     }
+//     &__bulb {
+//         background-image: url('../../assets/images/tablet/1x/Bulb1x.png');
+
+//         width: 320px;
+//         min-height: 202px;
+//         background-repeat: no-repeat;
+//         background-position: center;
+//         background-size: cover;
+
+//         @media screen and (min-device-pixel-ratio: 2),
+//             (-webkit-min-device-pixel-ratio: 2),
+//             (min-resolution: 192dpi),
+//             (min-resolution: 2dppx) {
+//             background-image: url('../../assets/images/tablet/2x/Bulb2x.png');
+//         }
+//     }
+//     &__family2 {
+//         background-image: url('../../assets/images/tablet/1x/Family2-1x.png');
+//         width: 320px;
+//         min-height: 202px;
+//         background-repeat: no-repeat;
+//         background-position: center;
+//         background-size: cover;
+
+//         @media screen and (min-device-pixel-ratio: 2),
+//             (-webkit-min-device-pixel-ratio: 2),
+//             (min-resolution: 192dpi),
+//             (min-resolution: 2dppx) {
+//             background-image: url('../../assets/images/tablet/2x/Family2-2x.png');
+//         }
+//     }
+// }
+
+// .inner_images_bp1280px {
+//     &__family {
+//         background-image: url('../../assets/images/desktop/1x/Family1-1x.png');
+
+//         width: 320px;
+//         min-height: 202px;
+//         background-repeat: no-repeat;
+//         background-position: center;
+//         background-size: cover;
+
+//         @media screen and (min-device-pixel-ratio: 2),
+//             (-webkit-min-device-pixel-ratio: 2),
+//             (min-resolution: 192dpi),
+//             (min-resolution: 2dppx) {
+//             background-image: url('../../assets/images/desktop/2x/Family1-2x.png');
+//         }
+//     }
+//     &__bulb {
+//         background-image: url('../../assets/images/desktop/1x/Bulb1x.png');
+
+//         width: 320px;
+//         min-height: 202px;
+//         background-repeat: no-repeat;
+//         background-position: center;
+//         background-size: cover;
+
+//         @media screen and (min-device-pixel-ratio: 2),
+//             (-webkit-min-device-pixel-ratio: 2),
+//             (min-resolution: 192dpi),
+//             (min-resolution: 2dppx) {
+//             background-image: url('../../assets/images/desktop/2x/Bulb2x.png');
+//         }
+//     }
+//     &__family2 {
+//         background-image: url('../../assets/images/desktop/1x/Family2-1x.png');
+//         width: 320px;
+//         min-height: 202px;
+//         background-repeat: no-repeat;
+//         background-position: center;
+//         background-size: cover;
+
+//         @media screen and (min-device-pixel-ratio: 2),
+//             (-webkit-min-device-pixel-ratio: 2),
+//             (min-resolution: 192dpi),
+//             (min-resolution: 2dppx) {
+//             background-image: url('../../assets/images/desktop/2x/Family2-2x.png');
+//         }
+//     }
+//     &__robot {
+//         background-image: url('../../assets/images/desktop/1x/Robot1x.png');
+//         width: 320px;
+//         min-height: 202px;
+//         background-repeat: no-repeat;
+//         background-position: center;
+//         background-size: cover;
+
+//         @media screen and (min-device-pixel-ratio: 2),
+//             (-webkit-min-device-pixel-ratio: 2),
+//             (min-resolution: 192dpi),
+//             (min-resolution: 2dppx) {
+//             background-image: url('../../assets/images/desktop/2x/Robot2x.png');
+//         }
+//     }
+// }

@@ -1,0 +1,78 @@
+.auth_form {
+    display: block;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-bottom: 60px;
+
+    &_text {
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 1.25;
+        text-align: center;
+        letter-spacing: 0.04em;
+        margin-bottom: 35px;
+        color: #858598;
+    }
+
+    &_google_button {
+        width: 150px;
+        display: flex;
+        align-items: center;
+        padding: 11px 32px;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 1.21;
+        letter-spacing: 0.02em;
+        color: #000;
+        text-decoration: none;
+        cursor: pointer;
+        margin-bottom: 30px;
+        background-color: #f6f7fb;
+        border-radius: 6px;
+        box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.15);
+    }
+
+    &_icon_google {
+        margin-right: 10px;
+        width: 18px;
+        height: 18px;
+    }
+
+    &_label {
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 1.25;
+        letter-spacing: 0.04em;
+        color: #858598;
+    }
+
+    &_span {
+        color: #eb5757;
+    }
+
+    &_input {
+        width: 280px;
+        height: 42px;
+        background-color: #f6f7fb;
+        box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.15);
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 1.21;
+        letter-spacing: 0.04em;
+        color: #a6abb9;
+        border: none;
+        padding: 12px 22px 12px 8px;
+        margin-top: 10px;
+        margin-bottom: 24px;
+        &__black {
+            color: #000;
+            font-size: 44px;
+            line-height: 1.23;
+        }
+    }
+
+    &_inner_btn {
+        display: flex;
+        justify-content: space-around;
+    }
+}

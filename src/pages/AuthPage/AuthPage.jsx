@@ -1,77 +1,37 @@
-import Button from 'components/common/Button';
-import { useFormik } from 'formik';
-import React from 'react';
-import { useDispatch } from 'react-redux';
-// import { toast } from 'react-toastify';
-import authOperations from 'redux/auth/operations.auth';
-import * as yup from 'yup';
+// // import { toast } from 'react-toastify';
+
 // import PropTypes from 'prop-types';
 
-// import s from './authPage.module.scss';
+import AuthForm from 'components/AuthForm';
+import Footer from 'components/Footer/Footer';
 
-const validationSchema = yup.object({
-    email: yup
-        .string('Enter email')
-        .min(5, 'Too Short!')
-        .email('Invalid email')
-        .required('Email is required'),
-    password: yup
-        .string('Enter password')
-        .min(8, 'Too Short!')
-        .required('Number is required'),
-});
+import s from './authPage.module.scss';
 
 const AuthPage = props => {
-    const dispatch = useDispatch();
-    const formik = useFormik({
-        initialValues: {
-            email: '',
-            password: '',
-        },
-        validationSchema,
-        onSubmit: (values, { resetForm }) => {
-            // onSubmit(values);
-            console.log(values);
-            dispatch(authOperations.login(values))
-                .unwrap()
-                .catch(error => console.log(error));
-            // resetForm();
-        },
-    });
-
-    const handleRegister = () => {
-        dispatch(authOperations.register(formik.values))
-            .unwrap()
-            .catch(error => console.log(error));
-    };
-
     return (
-        <>
-            <form onSubmit={formik.handleSubmit} className={null}>
-                <label>
-                    E-Mail
-                    <input
-                        name="email"
-                        type="text"
-                        onChange={formik.handleChange}
-                        value={formik.values.email}
-                    />
-                </label>
-                <label htmlFor="lastName">
-                    Password
-                    <input
-                        name="password"
-                        type="password"
-                        onChange={formik.handleChange}
-                        value={formik.values.password}
-                    />
-                </label>
-                <Button type="submit">Login</Button>
-                <Button type="button" onClick={handleRegister}>
-                    Rigister
-                </Button>
-            </form>
-        </>
+        <section className={s.section_auth_page}>
+            <h1 className={s.title}>
+                Do your homework, get some great prizes!
+            </h1>
+
+            <AuthForm></AuthForm>
+
+            <div className={s.wrapper_images}>
+                <div className={s.inner_images_bp320px}></div>
+                <div className={s.inner_images_bp768px}>
+                    <div className={s.inner_images_bp768px__family}></div>
+                    <div className={s.inner_images_bp768px__bulb}></div>
+                    <div className={s.inner_images_bp768px__family2}></div>
+                </div>
+                <div className={s.inner_images_bp1280px}>
+                    <div className={s.inner_images_bp1280px__family}></div>
+                    <div className={s.inner_images_bp1280px__bulb}></div>
+                    <div className={s.inner_images_bp1280px__family2}></div>
+                    <div className={s.inner_images_bp1280px__robot}></div>
+                </div>
+            </div>
+            <Footer></Footer>
+        </section>
     );
 };
 
