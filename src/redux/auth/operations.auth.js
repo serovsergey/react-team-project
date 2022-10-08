@@ -12,7 +12,7 @@ const register = createAsyncThunk(
         } catch (error) {
             return rejectWithValue({
                 message: error.message,
-                status: error.response.status,
+                status: error.status,
             });
         }
     }
@@ -23,13 +23,12 @@ const login = createAsyncThunk(
     async (credentials, { rejectWithValue }) => {
         try {
             const data = await authAPI.loginUser(credentials);
-            console.log(data);
             token.set(data.token);
             return data;
         } catch (error) {
             return rejectWithValue({
                 message: error.message,
-                status: error.response.status,
+                status: error.status,
             });
         }
     }
@@ -44,7 +43,7 @@ const logout = createAsyncThunk(
         } catch (error) {
             return rejectWithValue({
                 message: error.message,
-                status: error.response.status,
+                status: error.status,
             });
         }
     }

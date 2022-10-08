@@ -4,6 +4,7 @@ import SharedLayoutPage from 'pages/SharedLayoutPage';
 import { lazy, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Navigate, Route, Routes } from 'react-router-dom';
+import giftsOperations from 'redux/gifts/operations.gifts';
 import userOperations from 'redux/user/operations.user';
 
 const HomePage = lazy(() => import('./pages/HomePage'));
@@ -16,6 +17,7 @@ export const App = () => {
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(userOperations.getUserInfo());
+        dispatch(giftsOperations.getGifts());
     }, [dispatch]);
     return (
         <Routes>

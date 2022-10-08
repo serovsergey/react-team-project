@@ -16,7 +16,7 @@ const createTask = createAsyncThunk(
         } catch (error) {
             return rejectWithValue({
                 message: error.message,
-                status: error.response.status,
+                status: error.status,
             });
         }
     }
@@ -31,7 +31,7 @@ const setActive = createAsyncThunk(
         } catch (error) {
             return rejectWithValue({
                 message: error.message,
-                status: error.response.status,
+                status: error.status,
             });
         }
     }
@@ -44,13 +44,15 @@ const setActiveSingle = createAsyncThunk(
             const data = await tasksAPI.setActiveSingleTask(id, taskData);
             const { items } = getState().tasks;
             if (!items.some(({ id }) => id === data.updatedTask.id)) {
-                throw Error(`unknown task id ${data.updatedTask.id}`);
+                throw Error(
+                    `setActiveSingle: unknown task id ${data.updatedTask.id}`
+                );
             }
             return data;
         } catch (error) {
             return rejectWithValue({
                 message: error.message,
-                status: error.response.status,
+                status: error.status,
             });
         }
     }
@@ -58,14 +60,20 @@ const setActiveSingle = createAsyncThunk(
 
 const toggleCompleted = createAsyncThunk(
     'tasks/setActiveSingle',
-    async ({ id, taskData }, { rejectWithValue }) => {
+    async ({ id, taskData }, { rejectWithValue, getState }) => {
         try {
             const data = await tasksAPI.toggleCompletedTask(id, taskData);
+            const { items } = getState().tasks;
+            if (!items.some(({ id }) => id === data.updatedTask.id)) {
+                throw Error(
+                    `toggleCompleted: unknown task id ${data.updatedTask.id}`
+                );
+            }
             return data;
         } catch (error) {
             return rejectWithValue({
                 message: error.message,
-                status: error.response.status,
+                status: error.status,
             });
         }
     }
