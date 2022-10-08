@@ -3,7 +3,7 @@ import Card from 'components/common/Card';
 // import TaskCompletedInd from 'components/common/TaskCompletedInd';
 import TaskScheduleBtn from 'components/common/TaskScheduleBtn';
 import React from 'react';
-import ProgressBarr from 'components/ProgressBarr';
+import ProgressBar from 'components/ProgressBar';
 import ProgressBarMobile from 'components/ProgressBarMobile';
 import { useMediaQuery } from 'react-responsive';
 
@@ -34,10 +34,10 @@ const AwardsPage = props => {
                 <TaskScheduleBtn />
             </Card>
             <Desktop>
-                <ProgressBarr />
+                <ProgressBar />
             </Desktop>
             <Tablet>
-                <ProgressBarr />
+                <ProgressBar />
             </Tablet>
             <Mobile>
                 <ProgressBarMobile />
