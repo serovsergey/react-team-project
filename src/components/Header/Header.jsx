@@ -9,13 +9,13 @@ import { useState } from 'react';
 import MobileMenu from 'components/MobileMenu';
 import GuestNav from 'components/GuestNav';
 import Container from 'components/Container';
+import LoggedNav from 'components/LoggedNav';
 
 
 
 const Header = () => {
     const [modalIsopen, setModalIsOpen] = useState(false)
-    // const token = useSelector(authSelectors.getToken);
-    const token = true
+    const token = useSelector(authSelectors.getToken);
     
     const handleCloseModal = () => {
         setModalIsOpen(false)
@@ -26,9 +26,9 @@ const Header = () => {
         <Container>
         <div className={s.container}>
         <Logo />
-        {token ? <button type='button' onClick={() => setModalIsOpen(true)}className={s.button}>
-            <IoIosMenu size={22} />
-        </button> : <GuestNav />}
+        {token ? <><button type='button' onClick={() => setModalIsOpen(true)}className={s.button}>
+            <IoIosMenu color="rgba(133, 133, 152, 1)"size={22} />
+        </button> <div className={s.loggedWrapper}><LoggedNav /></div></> : <GuestNav />}
         </div>
         {modalIsopen && <MobileMenu closeModal={handleCloseModal}/>}
         </Container>

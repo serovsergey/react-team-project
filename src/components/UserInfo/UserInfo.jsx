@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 import authOperations from 'redux/auth/operations.auth';
 // import PropTypes from 'prop-types';
 import menuItems from './menuItems';
-// import s from './userInfo.module.scss';
+import s from './userInfo.module.scss';
 
 const UserInfo = props => {
   const dispatch = useDispatch();
