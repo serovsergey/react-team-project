@@ -34,10 +34,16 @@
 .logoutBtn{
     border: none;
     background-color: transparent;
+    cursor: pointer;
+    &:hover .icon{
+        fill: black;
+        
+    }
 }
 
 .icon{
     fill: white;
+    transition: fill 250ms ease-in-out;
     @media screen and (min-width: 768px){
         fill: rgba(133, 133, 152, 1);
     }

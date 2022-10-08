@@ -12,6 +12,7 @@ import GuestNav from 'components/GuestNav';
 import Container from 'components/Container';
 import LoggedNav from 'components/LoggedNav';
 import NavList from 'components/NavList';
+import ScoreBox from 'components/ScoreBox';
 
 
 
@@ -19,7 +20,6 @@ const Header = () => {
     const [modalIsopen, setModalIsOpen] = useState(false)
     const token = useSelector(authSelectors.getToken);
     const isDesktopScreen = useMediaQuery({ query: '(min-width: 1280px)' })
-    
     
     const handleCloseModal = () => {
         setModalIsOpen(false)
@@ -30,6 +30,7 @@ const Header = () => {
         <Container>
         <div className={s.container}>
         <Logo />
+        {token && <ScoreBox />}
         {token && isDesktopScreen && <NavList />}
         {token ? <><button type='button' onClick={() => setModalIsOpen(true)}className={s.button}>
             <IoIosMenu color="rgba(133, 133, 152, 1)"size={22} />

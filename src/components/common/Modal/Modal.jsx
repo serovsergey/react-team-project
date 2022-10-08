@@ -1,4 +1,4 @@
-import { Paper } from '@mui/material';
+// import { Paper } from '@mui/material';
 import PropTypes from 'prop-types'
 import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
@@ -33,9 +33,10 @@ export const Modal = ({ onClose, children }) => {
 
   return createPortal((
     <div className={s.Overlay} onMouseDown={handleBackDropClick}>
-      <Paper elevation={4} className={s.Modal}>
+      {/* <div elevation={4} className={s.Modal}> */}
+      <div className={s.Modal}>
         {children}
-      </Paper>
+      </div>
     </div>
   ), modalRoot);
 }

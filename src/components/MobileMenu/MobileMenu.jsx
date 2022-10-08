@@ -21,7 +21,7 @@ const MobileMenu = ({ closeModal }) => {
                     onClick={() => closeModal()}
                     className={s.button}
                 >
-                    <CgClose color='#ffffff' size={18}/>
+                    <CgClose color='#fff' size={18}/>
                 </button>
             </div>
             <NavList />

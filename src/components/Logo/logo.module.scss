@@ -1,7 +1,9 @@
 
 .logo{
     padding: 22px 0px;
-    display: inline-block;
+    display: flex;
+    align-items: center;
+    
 
 
     font-family: 'Montserrat';
@@ -11,4 +13,8 @@
     line-height: 20px;
     text-decoration: none;
     color: black;
+}
+
+.text{
+    margin-right: 5px;
 }
