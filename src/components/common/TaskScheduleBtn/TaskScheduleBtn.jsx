@@ -7,13 +7,13 @@ const TaskScheduleBtn = ({ isModalOpen = false, toggleModal }) => {
     return (
         <>
             {isModalOpen ? (
-                <span className={s.btn} onClick={toggleModal}>
+                <button type="button" className={s.btn} onClick={toggleModal}>
                     ok
-                </span>
+                </button>
             ) : (
-                <span className={s.btn} onClick={toggleModal}>
+                <button type="button" className={s.btn} onClick={toggleModal}>
                     <BsPlusLg color="#8EC63F" />
-                </span>
+                </button>
             )}
         </>
     );
