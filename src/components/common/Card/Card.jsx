@@ -1,11 +1,11 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 import s from './card.module.scss';
-//
-const Card = ({ children, title = 'test', reward = 0, imageUrl = '#' }) => {
+
+const Card = ({ children, title = 'test', reward = 0, imageUrl, id }) => {
     return (
-        <div className={s.card}>
+        <div id={id} className={s.card}>
             <div className={s.imgWrapper}>
                 <img className={s.img} src={imageUrl} alt="#" />
             </div>
@@ -21,3 +21,11 @@ const Card = ({ children, title = 'test', reward = 0, imageUrl = '#' }) => {
 };
 
 export default Card;
+
+Card.propTypes = {
+    title: PropTypes.string,
+    reward: PropTypes.number,
+    imageUrl: PropTypes.string,
+    id: PropTypes.string,
+    children: PropTypes.node,
+};
