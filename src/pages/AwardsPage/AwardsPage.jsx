@@ -1,5 +1,6 @@
 import Button from 'components/common/Button';
-import TaskCompletedInd from 'components/common/TaskCompletedInd';
+import Card from 'components/common/Card';
+// import TaskCompletedInd from 'components/common/TaskCompletedInd';
 import TaskScheduleBtn from 'components/common/TaskScheduleBtn';
 import React from 'react';
 // import PropTypes from 'prop-types';
@@ -10,9 +11,11 @@ const AwardsPage = props => {
     return (
         <div>
             AwardsPage
-            <TaskCompletedInd />
-            <TaskScheduleBtn />
             <Button>TEST</Button>
+            <Card>
+                {/* <TaskCompletedInd /> */}
+                <TaskScheduleBtn />
+            </Card>
         </div>
     );
 };
