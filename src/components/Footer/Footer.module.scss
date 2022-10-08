@@ -3,13 +3,20 @@
     @media screen and (min-width: 768px) {
         display: flex;
         justify-content: center;
+        margin-bottom: 30px;
     }
 
     &_list {
         display: inline-flex;
+        text-align: center;
     }
     &_item {
-        margin-right: 12px;
+        padding: 0px 10px;
+        border-left: 1px solid #e5e5e5;
+        &:first-child {
+            display: flex;
+            border-left: none;
+        }
     }
     &_text {
         font-weight: 400;
@@ -18,11 +25,6 @@
         letter-spacing: 0.08em;
 
         color: #858598;
-    }
-    &__icon {
-        width: 9px;
-        height: 12px;
-        margin-left: 6px;
     }
 }
 

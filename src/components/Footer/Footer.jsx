@@ -1,4 +1,4 @@
-import { ReactComponent as HandFooterIcon } from '../../assets/svg/Hand-header.svg';
+import { ReactComponent as HandFooterIcon } from '../../assets/svg/head_finger.svg';
 import s from './Footer.module.scss';
 
 const Footer = () => {
@@ -9,12 +9,16 @@ const Footer = () => {
                     <ul className={s.footer_list}>
                         <li className={s.footer_item}>
                             <p className={s.footer_text}>KidsLike</p>
-                            <HandFooterIcon className={s.footer_icon} />
+
+                            <HandFooterIcon
+                                style={{
+                                    marginLeft: '6',
+                                }}
+                            />
                         </li>
                         <li className={s.footer_item}>
                             <p className={s.footer_text}>
-                                | Making the life of parents and children isy :)
-                                |
+                                Making the life of parents and children isy :)
                             </p>
                         </li>
                         <li className={s.footer_item}>
