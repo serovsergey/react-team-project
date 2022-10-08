@@ -1,15 +1,31 @@
 .section_auth_page {
     padding-top: 40px;
     padding-bottom: 0;
+
+    @media screen and (min-width: 768px) {
+        padding-top: 60px;
+    }
 }
 
 .title {
+    width: 281px;
     font-weight: 600;
     font-size: 18px;
     line-height: 1.22;
     text-align: center;
     color: #000000;
     margin-bottom: 32px;
+    margin-left: auto;
+    margin-right: auto;
+    @media screen and (min-width: 768px) {
+        width: 403px;
+        font-size: 28px;
+        line-height: 1.21;
+    }
+    @media screen and (min-width: 1280px) {
+        font-size: 30px;
+        line-height: 1.23;
+    }
 }
 
 .wrapper_images {
@@ -17,7 +33,7 @@
 
 .inner_images_bp320px {
     background-image: url('../../assets/images/mobile/1x/AuthImgBp320-1x.png');
-    width: 320px;
+    width: 100%;
     min-height: 202px;
     background-repeat: no-repeat;
     background-position: center;

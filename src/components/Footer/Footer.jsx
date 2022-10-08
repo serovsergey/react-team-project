@@ -9,19 +9,16 @@ const Footer = () => {
                     <ul className={s.footer_list}>
                         <li className={s.footer_item}>
                             <p className={s.footer_text}>KidsLike</p>
-                            <HandFooterIcon
-                                className={s.footer_icon}
-                                width="14"
-                                height="18"
-                            />
+                            <HandFooterIcon className={s.footer_icon} />
                         </li>
                         <li className={s.footer_item}>
                             <p className={s.footer_text}>
                                 | Making the life of parents and children isy :)
+                                |
                             </p>
                         </li>
                         <li className={s.footer_item}>
-                            <p className={s.footer_text}>| 2022</p>
+                            <p className={s.footer_text}> 2022</p>
                         </li>
                     </ul>
                 </div>

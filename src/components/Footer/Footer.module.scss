@@ -1,11 +1,32 @@
 .footer {
     display: none;
+    @media screen and (min-width: 768px) {
+        display: flex;
+        justify-content: center;
+    }
+
+    &_list {
+        display: inline-flex;
+    }
+    &_item {
+        margin-right: 12px;
+    }
+    &_text {
+        font-weight: 400;
+        font-size: 10px;
+        line-height: 1.2;
+        letter-spacing: 0.08em;
+
+        color: #858598;
+    }
+    &__icon {
+        width: 9px;
+        height: 12px;
+        margin-left: 6px;
+    }
 }
+
 .wrapper_info {
-}
-.footer_list {
-}
-.footer_text {
-}
-.footer_icon {
+    // display: flex;
+    // flex-wrap: nowrap;
 }
