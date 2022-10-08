@@ -1,3 +1,4 @@
+import Card from 'components/common/Card';
 import TaskScheduleBtn from 'components/common/TaskScheduleBtn';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -8,29 +9,23 @@ import tasksSelectors from 'redux/tasks/selector.tasks';
 import s from './planningPage.module.scss';
 
 const PlanningPage = () => {
-  const tasks = useSelector(tasksSelectors.getTasks);
-  console.log(tasks);
-  return (
-    <>
-    <h1 className={s. title}>План на неделю:</h1>
-    <div>
-      {tasks?.map(({_id, title, reward, imageUrl}) => (
-        <div key={_id} className={s.box}>
-          <img src={imageUrl} alt={title} style={{ width: 280, height: 194 }} />
-         <div className={s.box1}>
-          <div>
-          <p className={s.s}>{title}</p>
-          <p className={s.reward}>{reward} балла</p>
-          </div>
-         <TaskScheduleBtn/>
-         </div>
-        </div>
-      )
-      
-      )}
-    </div>
-    </>
-  )
+    const tasks = useSelector(tasksSelectors.getTasks);
+    console.log(tasks);
+
+    return (
+        <>
+            <h1 className={s.title}>План на неделю:</h1>
+            <ul>
+                {tasks?.map(({_id, title, reward, imageUrl }) => (
+                    <li key={_id}>
+                        <Card title={title} reward={reward} imageUrl={imageUrl}>
+                            <TaskScheduleBtn />
+                        </Card>
+                    </li>
+                ))}
+            </ul>
+        </>
+    );
 };
 
 // PlanningPage.propTypes = {};
