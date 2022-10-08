@@ -50,27 +50,6 @@ const logout = createAsyncThunk(
     }
 );
 
-const getUserInfo = createAsyncThunk(
-    'auth/getUserInfo',
-    async (_, { rejectWithValue, getState }) => {
-        try {
-            const { token: storedToken } = getState().auth;
-            token.set(storedToken);
-            if (!storedToken) {
-                return rejectWithValue();
-            }
-            const data = await authAPI.getUserInfo();
-            return data;
-        } catch (error) {
-            token.unset();
-            return rejectWithValue({
-                message: error.message,
-                status: error.status,
-            });
-        }
-    }
-);
-
-const authOperations = { register, login, logout, getUserInfo };
+const authOperations = { register, login, logout };
 
 export default authOperations;

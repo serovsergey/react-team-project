@@ -1,28 +1,31 @@
 import { privateAPI } from './http';
 
-const updateTasks = async body => {
+const setActiveTask = async body => {
     const { data } = await privateAPI.patch('/task/active', body);
     return data;
 };
 
-const singleTaskActiveToggle = async (id, body) => {
+const setActiveSingleTask = async (id, body) => {
     const { data } = await privateAPI.patch(`​/task/single-active/${id}`, body);
     return data;
 };
 
-const taskCompletedToggle = async (id, body) => {
+const toggleCompletedTask = async (id, body) => {
     const { data } = await privateAPI.patch(`/task/switch/${id}`, body);
     return data;
 };
 
-// const addTask = async body => {
-//     const { data } = await privateAPI.post(`/task`, body);
-//     return data;
-// };
+const addTask = async taskData => {
+    const { data } = await privateAPI.post(`/task`, {
+        data: taskData,
+        headers: { 'Content-Type': 'multipart/form-data' },
+    });
+    return data;
+};
 
 export const tasksAPI = {
-    updateTasks,
-    singleTaskActiveToggle,
-    taskCompletedToggle,
-    // addTask,
+    setActiveTask,
+    setActiveSingleTask,
+    toggleCompletedTask,
+    addTask,
 };
