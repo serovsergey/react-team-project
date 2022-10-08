@@ -15,6 +15,8 @@ import { configureStore } from '@reduxjs/toolkit';
 import authReducer from './auth';
 import userReducer from './user';
 import tasksReducer from './tasks';
+import weekReducer from './week';
+import giftsReducer from './gifts';
 
 const persistConfig = {
     key: 'auth',
@@ -27,10 +29,8 @@ export const store = configureStore({
         auth: persistReducer(persistConfig, authReducer),
         user: userReducer,
         tasks: tasksReducer,
-        week: null,
-        gifts: null,
-        // contacts: contactsSlice.reducer,
-        // filter: filterReducer,
+        week: weekReducer,
+        gifts: giftsReducer,
     },
     middleware(getDefaultMiddleware) {
         return getDefaultMiddleware({

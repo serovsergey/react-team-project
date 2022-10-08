@@ -18,7 +18,6 @@ const authSlice = createSlice({
     extraReducers: {
         [authOperations.register.pending]: setPending,
         [authOperations.register.fulfilled]: (state, { payload }) => {
-            state.email = payload.user.email;
             state.token = payload.token;
             state.isLoading = false;
         },
@@ -26,7 +25,6 @@ const authSlice = createSlice({
 
         [authOperations.login.pending]: setPending,
         [authOperations.login.fulfilled]: (state, { payload }) => {
-            state.email = payload.user.email;
             state.token = payload.token;
             state.isLoading = false;
         },
@@ -34,7 +32,6 @@ const authSlice = createSlice({
 
         [authOperations.logout.pending]: setPending,
         [authOperations.logout.fulfilled]: state => {
-            state.email = '';
             state.token = null;
             state.isLoading = false;
         },

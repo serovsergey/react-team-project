@@ -1,6 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { initialState } from 'redux/week/initial-state.week';
+import userOperations from 'redux/user/operations.user';
 import authOperations from 'redux/auth/operations.auth';
-import { initialState } from 'redux/tasks/initial-state.tasks';
+import tasksOperations from 'redux/tasks/operations.tasks';
 
 const setPending = state => {
     state.isLoading = true;
@@ -16,8 +18,29 @@ const weekSlice = createSlice({
     name: 'week',
     initialState,
     extraReducers: {
-        [authOperations.getUserInfo.fulfilled]: (state, { payload }) => {
-            // state.items = payload.week.week;
+        [userOperations.getUserInfo.fulfilled]: (state, { payload }) => {
+            state.startWeekDate = payload.week.startWeekDate;
+            state.endWeekDate = payload.week.endWeekDate;
+            state.rewardsGained = payload.week.rewardsGained;
+            state.rewardsPlanned = payload.week.rewardsPlanned;
+        },
+        [authOperations.login.fulfilled]: (state, { payload }) => {
+            state.startWeekDate = payload.week.startWeekDate;
+            state.endWeekDate = payload.week.endWeekDate;
+            state.rewardsGained = payload.week.rewardsGained;
+            state.rewardsPlanned = payload.week.rewardsPlanned;
+        },
+        [authOperations.register.fulfilled]: (state, { payload }) => {
+            state.startWeekDate = payload.week.startWeekDate;
+            state.endWeekDate = payload.week.endWeekDate;
+            state.rewardsGained = payload.week.rewardsGained;
+            state.rewardsPlanned = payload.week.rewardsPlanned;
+        },
+        [tasksOperations.setActiveSingle.fulfilled]: (state, { payload }) => {
+            state.rewardsPlanned = payload.updatedWeekPlannedRewards;
+        },
+        [tasksOperations.toggleCompleted.fulfilled]: (state, { payload }) => {
+            state.rewardsGained = payload.updatedWeekGainedRewards;
         },
     },
 });

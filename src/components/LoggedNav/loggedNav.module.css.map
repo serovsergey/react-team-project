@@ -1,9 +1,0 @@
-{
-    "version": 3,
-    "mappings": "AAEA,AAAA,SAAS,CAAA;EACL,OAAO,EAAE,IAAI;EACb,WAAW,EAAE,MAAM;CACtB;;AAED,AAAA,SAAS,CAAA;EACL,YAAY,EAAC,IAAK;CAMrB;;AAPD,AAEI,SAFK,AAEJ,YAAY,CAAA;EACT,YAAY,EAAE,CAAC;EACf,YAAY,EAAE,eAAe;EAC7B,aAAa,EAAE,IAAI;CACtB;;AAGL,AAAA,UAAU,CAAA;EACN,MAAM,EAAE,IAAI;EACZ,gBAAgB,EAAE,WAAW;CAChC",
-    "sources": [
-        "loggedNav.module.scss"
-    ],
-    "names": [],
-    "file": "loggedNav.module.css"
-}

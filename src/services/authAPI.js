@@ -11,7 +11,6 @@ const loginUser = async loginData => {
 };
 
 const logoutUser = async () => {
-    console.log(privateAPI.defaults.headers.common.Authorization);
     await privateAPI.post(`/auth/logout`);
 };
 

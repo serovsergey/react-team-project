@@ -6,9 +6,13 @@ const getTasks = state => {
         imageUrl,
     }));
 };
+const getIsLoading = state => state.tasks.isLoading;
+const getError = state => state.tasks.error;
 
 const tasksSelectors = {
     getTasks,
+    getIsLoading,
+    getError,
 };
 
 export default tasksSelectors;
