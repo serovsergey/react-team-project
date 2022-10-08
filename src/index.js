@@ -10,12 +10,12 @@ import { store, persistor } from './redux/store';
 import './index.css';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <Provider store={store}>
-    <PersistGate persistor={persistor}>
-      <BrowserRouter basename="/react-team-project">
-        <App />
-        <ToastContainer />
-      </BrowserRouter>
-    </PersistGate>
-  </Provider>
+    <Provider store={store}>
+        <PersistGate persistor={persistor}>
+            <BrowserRouter basename="/react-team-project">
+                <App />
+                <ToastContainer />
+            </BrowserRouter>
+        </PersistGate>
+    </Provider>
 );
