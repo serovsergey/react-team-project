@@ -5,9 +5,7 @@ import React from 'react';
 // import s from './homePage.module.scss';
 
 const HomePage = props => {
-  return <div>HomePage
-    <ToggleSwitch/>
-  </div>;
+  return <div>HomePage</div>;
 };
 
 // HomePage.propTypes = {};
