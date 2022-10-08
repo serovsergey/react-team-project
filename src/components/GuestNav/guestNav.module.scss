@@ -17,4 +17,8 @@
     color: grey;
 
     font-size: 12px;
+
+    &:global(.active){
+        color: black;
+    }
 }

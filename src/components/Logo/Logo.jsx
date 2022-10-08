@@ -7,7 +7,7 @@ import {ReactComponent as HeaderIcon} from '../../assets/svg/Hand-header.svg';
 const Logo = () => {
 
     return(
-        <Link to="/" className={s.logo}>KidsLike <span><HeaderIcon /></span></Link>
+        <Link to="/" className={s.logo}><p className={s.text}>KidsLike</p><HeaderIcon /></Link>
     )
 }
 
