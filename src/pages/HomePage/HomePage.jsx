@@ -1,4 +1,3 @@
-import ToggleSwitch from 'components/toggleSwitch/ToggleSwitch';
 import React from 'react';
 // import PropTypes from 'prop-types';
 
