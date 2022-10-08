@@ -29,6 +29,7 @@
 }
 
 .wrapper_images {
+    background-color: aqua;
 }
 
 .inner_images_bp320px {
@@ -48,30 +49,42 @@
 }
 
 .inner_images_bp768px {
+    display: flex;
+    position: relative;
+
     &__family {
+        // background-image: url('../../assets/images/tablet/1x/Family1x.png');
         background-image: url('../../assets/images/tablet/1x/Family1x.png');
 
-        width: 320px;
-        min-height: 202px;
+        width: 303px;
+        min-height: 235px;
         background-repeat: no-repeat;
         background-position: center;
         background-size: cover;
+        position: absolute;
+        bottom: -215px;
+        left: 0px;
+        // flex-basis: calc(80%);
 
         @media screen and (min-device-pixel-ratio: 2),
             (-webkit-min-device-pixel-ratio: 2),
             (min-resolution: 192dpi),
             (min-resolution: 2dppx) {
-            background-image: url('../../assets/images/tablet/2x/Family1-2x.png');
+            background-image: url('../../assets/images/tablet/2x/Family2-2x.png');
         }
     }
     &__bulb {
         background-image: url('../../assets/images/tablet/1x/Bulb1x.png');
 
-        width: 320px;
-        min-height: 202px;
+        width: 242px;
+        min-height: 192px;
         background-repeat: no-repeat;
         background-position: center;
         background-size: cover;
+
+        position: absolute;
+        // bottom: -202px;
+        // right: -278px;
 
         @media screen and (min-device-pixel-ratio: 2),
             (-webkit-min-device-pixel-ratio: 2),
@@ -81,18 +94,21 @@
         }
     }
     &__family2 {
-        background-image: url('../../assets/images/tablet/1x/Family2-1x.png');
+        background-image: url('../../assets/images/tablet/1x/Family1x.png');
         width: 320px;
-        min-height: 202px;
+        min-height: 156px;
         background-repeat: no-repeat;
         background-position: center;
         background-size: cover;
+        position: absolute;
+        // top: 37px;
+        // left: -23px;
 
         @media screen and (min-device-pixel-ratio: 2),
             (-webkit-min-device-pixel-ratio: 2),
             (min-resolution: 192dpi),
             (min-resolution: 2dppx) {
-            background-image: url('../../assets/images/tablet/2x/Family2-2x.png');
+            background-image: url('../../assets/images/tablet/2x/Family1-2x.png');
         }
     }
 }

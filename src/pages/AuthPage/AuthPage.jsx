@@ -31,27 +31,28 @@ const AuthPage = props => {
             </h1>
 
             <AuthForm></AuthForm>
+
+            {/* <div className={s.wrapper_images}> */}
             <Footer></Footer>
-            <div className={s.wrapper_images}>
-                <Desktop>
-                    <div className={s.inner_images_bp1280px}>
-                        <div className={s.inner_images_bp1280px__family}></div>
-                        <div className={s.inner_images_bp1280px__bulb}></div>
-                        <div className={s.inner_images_bp1280px__family2}></div>
-                        <div className={s.inner_images_bp1280px__robot}></div>
-                    </div>
-                </Desktop>
-                <Tablet>
-                    <div className={s.inner_images_bp768px}>
-                        <div className={s.inner_images_bp768px__family}></div>
-                        <div className={s.inner_images_bp768px__bulb}></div>
-                        <div className={s.inner_images_bp768px__family2}></div>
-                    </div>
-                </Tablet>
-                <Mobile>
-                    <div className={s.inner_images_bp320px}></div>
-                </Mobile>
-            </div>
+            <Desktop>
+                <div className={s.inner_images_bp1280px}>
+                    <div className={s.inner_images_bp1280px__family}></div>
+                    <div className={s.inner_images_bp1280px__bulb}></div>
+                    <div className={s.inner_images_bp1280px__family2}></div>
+                    <div className={s.inner_images_bp1280px__robot}></div>
+                </div>
+            </Desktop>
+            <Tablet>
+                <div className={s.inner_images_bp768px}>
+                    <div className={s.inner_images_bp768px__family}></div>
+                    <div className={s.inner_images_bp768px__bulb}></div>
+                    <div className={s.inner_images_bp768px__family2}></div>
+                </div>
+            </Tablet>
+            <Mobile>
+                <div className={s.inner_images_bp320px}></div>
+            </Mobile>
+            {/* </div> */}
         </section>
         // </Container>
     );
