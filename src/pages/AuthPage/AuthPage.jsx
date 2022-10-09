@@ -3,7 +3,7 @@
 // import PropTypes from 'prop-types';
 
 import AuthForm from 'components/AuthForm';
-// import Container from 'components/Container';
+
 import Footer from 'components/Footer/Footer';
 import { useMediaQuery } from 'react-responsive';
 
@@ -24,7 +24,6 @@ const AuthPage = props => {
     };
 
     return (
-        // <Container>
         <section className={s.section_auth_page}>
             <h1 className={s.title}>
                 Do your homework, get some great prizes!
@@ -32,7 +31,6 @@ const AuthPage = props => {
 
             <AuthForm></AuthForm>
 
-            {/* <div className={s.wrapper_images}> */}
             <Footer></Footer>
             <Desktop>
                 <div className={s.inner_images_bp1280px}>
@@ -52,9 +50,7 @@ const AuthPage = props => {
             <Mobile>
                 <div className={s.inner_images_bp320px}></div>
             </Mobile>
-            {/* </div> */}
         </section>
-        // </Container>
     );
 };
 

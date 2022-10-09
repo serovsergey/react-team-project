@@ -25,6 +25,8 @@
     @media screen and (min-width: 1280px) {
         font-size: 30px;
         line-height: 1.23;
+        margin-left: auto;
+        margin-right: 114px;
     }
 }
 
@@ -65,7 +67,6 @@
         position: absolute;
         top: 71px;
         left: 0px;
-        // flex-basis: calc(80%);
 
         @media screen and (min-device-pixel-ratio: 2),
             (-webkit-min-device-pixel-ratio: 2),
@@ -116,14 +117,22 @@
 }
 
 .inner_images_bp1280px {
+    display: flex;
+    position: relative;
+
     &__family {
         background-image: url('../../assets/images/desktop/1x/Family1-1x.png');
 
-        width: 320px;
-        min-height: 202px;
+        width: 372px;
+        min-height: 306px;
         background-repeat: no-repeat;
         background-position: center;
         background-size: cover;
+        position: absolute;
+        top: -801px;
+        left: -10px;
+        margin-top: 20px;
+        margin-left: 16px;
 
         @media screen and (min-device-pixel-ratio: 2),
             (-webkit-min-device-pixel-ratio: 2),
@@ -135,11 +144,14 @@
     &__bulb {
         background-image: url('../../assets/images/desktop/1x/Bulb1x.png');
 
-        width: 320px;
-        min-height: 202px;
+        width: 279px;
+        min-height: 264px;
         background-repeat: no-repeat;
         background-position: center;
         background-size: cover;
+        position: absolute;
+        top: -630px;
+        left: 205px;
 
         @media screen and (min-device-pixel-ratio: 2),
             (-webkit-min-device-pixel-ratio: 2),
@@ -150,11 +162,16 @@
     }
     &__family2 {
         background-image: url('../../assets/images/desktop/1x/Family2-1x.png');
-        width: 320px;
-        min-height: 202px;
+        width: 359px;
+        min-height: 290px;
         background-repeat: no-repeat;
         background-position: center;
         background-size: cover;
+        position: absolute;
+        top: -390px;
+        left: 204px;
+        z-index: 1;
+        margin-top: 20px;
 
         @media screen and (min-device-pixel-ratio: 2),
             (-webkit-min-device-pixel-ratio: 2),
@@ -165,11 +182,16 @@
     }
     &__robot {
         background-image: url('../../assets/images/desktop/1x/Robot1x.png');
-        width: 320px;
-        min-height: 202px;
+        width: 276px;
+        min-height: 219px;
         background-repeat: no-repeat;
         background-position: center;
         background-size: cover;
+        position: relative;
+        top: -497px;
+        left: -10px;
+        margin-top: 20px;
+        margin-left: 16px;
 
         @media screen and (min-device-pixel-ratio: 2),
             (-webkit-min-device-pixel-ratio: 2),

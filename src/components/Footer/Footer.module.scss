@@ -3,7 +3,12 @@
     @media screen and (min-width: 768px) {
         display: flex;
         justify-content: center;
-        margin-bottom: 30px;
+    }
+    @media screen and (min-width: 1280px) {
+        display: flex;
+        justify-content: flex-end;
+        margin-right: 16px;
+        margin-bottom: 40px;
     }
 
     &_list {
