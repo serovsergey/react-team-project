@@ -59,12 +59,12 @@ const AuthForm = () => {
                     Google
                 </a>
                 <p className={s.auth_form_text}>
-                    You can login with Google Account:
+                    Or log in with e-mail and password after registering:
                 </p>
 
                 <label className={s.auth_form_label}>
                     <span className={s.auth_form_span}>*</span>
-                    E-Mail
+                    E-Mail:
                     <input
                         className={s.auth_form_input}
                         name="email"
@@ -76,7 +76,7 @@ const AuthForm = () => {
                 </label>
                 <label className={s.auth_form_label}>
                     <span className={s.auth_form_span}>*</span>
-                    Password
+                    Password:
                     <input
                         className={`${s.auth_form_input} ${s.auth_form_input__black}`}
                         name="password"
@@ -86,11 +86,12 @@ const AuthForm = () => {
                         placeholder="••••••••"
                     />
                 </label>
-                <div className={s.auth_form_inner_btn}></div>
-                <Button type="submit">Login</Button>
-                <Button type="button" onClick={handleRegister}>
-                    Rigister
-                </Button>
+                <div className={s.auth_form_inner_btn}>
+                    <Button type="submit">Login</Button>
+                    <Button type="button" onClick={handleRegister}>
+                        Rigister
+                    </Button>
+                </div>
             </form>
         </>
     );
