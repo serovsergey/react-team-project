@@ -52,7 +52,6 @@
     margin-top: 30px;
 
     &__family {
-        // background-image: url('../../assets/images/tablet/1x/Family1x.png');
         background-image: url('../../assets/images/tablet/1x/Family1x.png');
 
         width: 303px;
@@ -125,7 +124,7 @@
         background-position: center;
         background-size: cover;
         position: absolute;
-        top: -801px;
+        top: -779px;
         left: -10px;
         margin-top: 20px;
         margin-left: 16px;
@@ -146,7 +145,7 @@
         background-position: center;
         background-size: cover;
         position: absolute;
-        top: -630px;
+        top: -607px;
         left: 205px;
 
         @media screen and (min-device-pixel-ratio: 2),
@@ -159,12 +158,13 @@
     &__family2 {
         background-image: url('../../assets/images/desktop/1x/Family2-1x.png');
         width: 359px;
+        // width: 28%;
         min-height: 290px;
         background-repeat: no-repeat;
         background-position: center;
         background-size: cover;
         position: absolute;
-        top: -390px;
+        top: -367px;
         left: 204px;
         z-index: 1;
         margin-top: 20px;
@@ -179,12 +179,13 @@
     &__robot {
         background-image: url('../../assets/images/desktop/1x/Robot1x.png');
         width: 276px;
+        // width: 21%;
         min-height: 219px;
         background-repeat: no-repeat;
         background-position: center;
         background-size: cover;
         position: relative;
-        top: -497px;
+        top: -474px;
         left: -10px;
         margin-top: 20px;
         margin-left: 16px;
