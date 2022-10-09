@@ -5,7 +5,6 @@ const Footer = () => {
     return (
         <>
             <footer className={s.footer}>
-                {/* <div className={s.wrapper_info}> */}
                 <ul className={s.footer_list}>
                     <li className={s.footer_item}>
                         <p className={s.footer_text}>KidsLike</p>
@@ -25,7 +24,6 @@ const Footer = () => {
                         <p className={s.footer_text}> 2022</p>
                     </li>
                 </ul>
-                {/* </div> */}
             </footer>
         </>
     );

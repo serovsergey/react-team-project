@@ -1,7 +1,3 @@
-// // import { toast } from 'react-toastify';
-
-// import PropTypes from 'prop-types';
-
 import AuthForm from 'components/AuthForm';
 
 import Footer from 'components/Footer/Footer';
@@ -9,7 +5,7 @@ import { useMediaQuery } from 'react-responsive';
 
 import s from './authPage.module.scss';
 
-const AuthPage = props => {
+const AuthPage = () => {
     const Desktop = ({ children }) => {
         const isDesktop = useMediaQuery({ minWidth: 1280 });
         return isDesktop ? children : null;
@@ -53,7 +49,5 @@ const AuthPage = props => {
         </section>
     );
 };
-
-// AuthPage.propTypes = {};
 
 export default AuthPage;

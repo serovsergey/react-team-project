@@ -2,11 +2,11 @@ import Button from 'components/common/Button';
 import { useFormik } from 'formik';
 import React from 'react';
 import { useDispatch } from 'react-redux';
-// import { toast } from 'react-toastify';
 import authOperations from 'redux/auth/operations.auth';
 import * as yup from 'yup';
 import s from '../AuthForm/AuthForm.module.scss';
 import { ReactComponent as GoogleIcon } from '../../assets/svg/Google.svg';
+import { toast } from 'react-toastify';
 
 const validationSchema = yup.object({
     email: yup
@@ -28,20 +28,23 @@ const AuthForm = () => {
             password: '',
         },
         validationSchema,
-        onSubmit: (values, { resetForm }) => {
-            // onSubmit(values);
-            console.log(values);
+        onSubmit: values => {
             dispatch(authOperations.login(values))
                 .unwrap()
-                .catch(error => console.log(error));
-            // resetForm();
+                .catch(error =>
+                    toast.error(`Login is failed with message${error.message}`)
+                );
         },
     });
 
     const handleRegister = () => {
         dispatch(authOperations.register(formik.values))
             .unwrap()
-            .catch(error => console.log(error));
+            .catch(error =>
+                toast.error(
+                    `Register is failed with message: ${error.message}.`
+                )
+            );
     };
 
     return (
@@ -73,6 +76,9 @@ const AuthForm = () => {
                         value={formik.values.email}
                         placeholder="your@email.com"
                     />
+                    <span className={s.auth_form_validation}>
+                        {formik.errors.email}
+                    </span>
                 </label>
                 <label className={s.auth_form_label}>
                     <span className={s.auth_form_span}>*</span>
@@ -85,6 +91,9 @@ const AuthForm = () => {
                         value={formik.values.password}
                         placeholder="••••••••"
                     />
+                    <span className={s.auth_form_validation}>
+                        {formik.errors.password}
+                    </span>
                 </label>
                 <div className={s.auth_form_inner_btn}>
                     <Button type="submit">Login</Button>
@@ -96,7 +105,5 @@ const AuthForm = () => {
         </>
     );
 };
-
-// AuthPage.propTypes = {};
 
 export default AuthForm;
