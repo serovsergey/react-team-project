@@ -17,6 +17,7 @@ import userReducer from './user';
 import tasksReducer from './tasks';
 import weekReducer from './week';
 import giftsReducer from './gifts';
+import commonReducer from './common';
 
 const persistConfig = {
     key: 'auth',
@@ -31,6 +32,7 @@ export const store = configureStore({
         tasks: tasksReducer,
         week: weekReducer,
         gifts: giftsReducer,
+        common: commonReducer,
     },
     middleware(getDefaultMiddleware) {
         return getDefaultMiddleware({
