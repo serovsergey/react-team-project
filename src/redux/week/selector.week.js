@@ -5,21 +5,32 @@ const getRewardsPlanned = state => state.week.rewardsPlanned;
 const getIsLoading = state => state.week.isLoading;
 const getError = state => state.week.error;
 
-function getDates(startDate, stopDate) {
+function addDays(date, days) {
+    const result = new Date(date);
+    result.setDate(result.getDate() + days);
+    return result;
+}
+const getWeekDates = state => {
+    const startDate = new Date(state.week.startWeekDate);
+    const endDate = new Date(state.week.endWeekDate);
     const dateArray = [];
     let currentDate = startDate;
-    while (currentDate <= stopDate) {
-        // console.log(currentDate);
+    while (currentDate <= endDate) {
         dateArray.push(new Date(currentDate));
-        currentDate = currentDate + 1000 * 60 * 60 * 24;
+        currentDate = addDays(currentDate, 1);
     }
     return dateArray;
-}
-const getWeekDates = state =>
-    getDates(
-        new Date(state.week.startWeekDate),
-        new Date(state.week.endWeekDate)
-    );
+};
+
+const getCurrentWeekRange = state => {
+    const startDate = new Date(state.week.startWeekDate);
+    const startMonth = startDate.toLocaleString('en-en', { month: 'long' });
+    const endDate = new Date(state.week.endWeekDate);
+    const endMonth = endDate.toLocaleString('en-en', { month: 'long' });
+    return `${startDate.getDate()}${
+        startMonth === endMonth ? '' : ' ' + startMonth
+    }-${endDate.getDate()} ${endMonth}`;
+};
 
 const weekSelectors = {
     getStartWeekDate,
@@ -27,6 +38,7 @@ const weekSelectors = {
     getRewardsGained,
     getRewardsPlanned,
     getWeekDates,
+    getCurrentWeekRange,
     getIsLoading,
     getError,
 };
