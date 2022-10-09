@@ -1,82 +1,49 @@
+import { useMemo, useState } from 'react';
+import { useSelector } from 'react-redux';
+import { useMediaQuery } from 'react-responsive';
+import weekSelectors from 'redux/week/selector.week';
 import s from './CheckDay.module.scss';
 
 const CheckDay = () => {
-    return (
+    const weekDates = useSelector(weekSelectors.getWeekDates);
+    const isDesktop = useMediaQuery({ minWidth: 1280 });
+    const isMobile = useMediaQuery({ maxWidth: 767 });
+    
+
+
+    const weekDays = useMemo(
+        () =>
+            weekDates.map(dt => {
+                const dayStr = dt.toLocaleDateString('en-en', {
+                    weekday: 'long',
+                });
+                return {
+                    name: dayStr,
+                    title: dayStr.slice(0, 2),
+                };
+            }),
+        [weekDates]
+    );
+
+        return (
         <>
             <div className={s.weekBox}>
                 <form action="">
-                <ul>
-                    <li>
-                        <label>
-                            <input
-                                type="checkbox"
-                                name="day"
-                                value="monday"
-                            />
-                            <span className={s.day}>Mo</span>
-                        </label>
-                    </li>
-                    <li>
-                        <label>
-                            <input
-                                type="checkbox"
-                                name="day"
-                                value="tuesday"
-                            />
-                            <span className={s.day}>Tu</span>
-                        </label>
-                    </li>
-                    <li>
-                        <label>
-                            <input
-                                type="checkbox"
-                                name="day"
-                                value="цednesday"
-                            />
-                            <span className={s.day}>We</span>
-                        </label>
-                    </li>
-                    <li>
-                        <label>
-                            <input
-                                type="checkbox"
-                                name="day"
-                                value="thursday"
-                            />
-                            <span className={s.day}>Th</span>
-                        </label>
-                    </li>
-                    <li>
-                        <label>
-                            <input
-                                type="checkbox"
-                                name="day"
-                                value="friday"
-                            />
-                            <span className={s.day}>Fr</span>
-                        </label>
-                    </li>
-                    <li>
-                        <label>
-                            <input
-                                type="checkbox"
-                                name="day"
-                                value="saturday"
-                            />
-                            <span className={s.day}>Sa</span>
-                        </label>
-                    </li>
-                    <li>
-                        <label>
-                            <input
-                                type="checkbox"
-                                name="day"
-                                value="sunday"
-                            />
-                            <span className={s.day}>Su</span>
-                        </label>
-                    </li>
-                </ul>
+                    <ul>
+                        {weekDays?.map(({ name, title }) => (
+                            <li key={name}>
+                            <label>
+                                <input
+                                    type="checkbox"
+                                    name="day"
+                                    value={name}
+                                />
+                                <span className={s.day}>{title}</span>
+                            </label>
+                            </li>)
+                        )}
+                        
+                    </ul>
                 </form>
             </div>
         </>
