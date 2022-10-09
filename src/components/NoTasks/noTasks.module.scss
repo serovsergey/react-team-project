@@ -5,7 +5,7 @@
   padding-top: 60px;
   min-height: 100%;
   position: relative;
-
+  overflow: hidden;
 
   @media screen and (min-width: 768px) {
     padding-top: 100px;
@@ -38,12 +38,17 @@
 }
 
 .noTasks {
-  min-height: 200px;
+  min-height: 250px;
   width: 100%;
   position: absolute;
-  bottom: 0;
   background-image: url('../../assets/images/desktop/1x/planer\ 1x.png');
   background-position: bottom;
   background-repeat: no-repeat;
   background-size: contain;
+
+  @media screen and (min-width: 768px) {}
+
+  @media screen and (min-width: 1280px) {
+    bottom: -40px;
+  }
 }
