@@ -28,14 +28,14 @@
     }
 }
 
-.wrapper_images {
-    background-color: aqua;
-}
+// .wrapper_images {
+
+// }
 
 .inner_images_bp320px {
     background-image: url('../../assets/images/mobile/1x/AuthImgBp320-1x.png');
     width: 100%;
-    min-height: 202px;
+    min-height: 106px;
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -51,18 +51,19 @@
 .inner_images_bp768px {
     display: flex;
     position: relative;
+    margin-top: 30px;
 
     &__family {
         // background-image: url('../../assets/images/tablet/1x/Family1x.png');
         background-image: url('../../assets/images/tablet/1x/Family1x.png');
 
         width: 303px;
-        min-height: 235px;
+        height: 146px;
         background-repeat: no-repeat;
         background-position: center;
         background-size: cover;
         position: absolute;
-        bottom: -215px;
+        top: 71px;
         left: 0px;
         // flex-basis: calc(80%);
 
@@ -83,8 +84,9 @@
         background-size: cover;
 
         position: absolute;
-        // bottom: -202px;
-        // right: -278px;
+        top: 26px;
+        left: 250px;
+        z-index: 1;
 
         @media screen and (min-device-pixel-ratio: 2),
             (-webkit-min-device-pixel-ratio: 2),
@@ -96,13 +98,13 @@
     &__family2 {
         background-image: url('../../assets/images/tablet/1x/Family1x.png');
         width: 320px;
-        min-height: 156px;
+        min-height: 239px;
         background-repeat: no-repeat;
         background-position: center;
         background-size: cover;
         position: absolute;
-        // top: 37px;
-        // left: -23px;
+        top: -22px;
+        left: 448px;
 
         @media screen and (min-device-pixel-ratio: 2),
             (-webkit-min-device-pixel-ratio: 2),
