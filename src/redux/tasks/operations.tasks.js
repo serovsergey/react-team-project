@@ -15,8 +15,8 @@ const createTask = createAsyncThunk(
             return data;
         } catch (error) {
             return rejectWithValue({
-                message: error.message,
-                status: error.status,
+                message: error.response.data.message,
+                status: error.response.status,
             });
         }
     }
@@ -30,8 +30,8 @@ const setActive = createAsyncThunk(
             return data;
         } catch (error) {
             return rejectWithValue({
-                message: error.message,
-                status: error.status,
+                message: error.response.data.message,
+                status: error.response.status,
             });
         }
     }
@@ -51,8 +51,8 @@ const setActiveSingle = createAsyncThunk(
             return data;
         } catch (error) {
             return rejectWithValue({
-                message: error.message,
-                status: error.status,
+                message: error.response.data.message,
+                status: error.response.status,
             });
         }
     }
@@ -60,20 +60,22 @@ const setActiveSingle = createAsyncThunk(
 
 const toggleCompleted = createAsyncThunk(
     'tasks/setActiveSingle',
-    async ({ id, taskData }, { rejectWithValue, getState }) => {
+    async ({ taskId, taskData }, { rejectWithValue, getState }) => {
         try {
-            const data = await tasksAPI.toggleCompletedTask(id, taskData);
+            const data = await tasksAPI.toggleCompletedTask(taskId, taskData);
             const { items } = getState().tasks;
-            if (!items.some(({ id }) => id === data.updatedTask.id)) {
+            if (
+                !items.some(({ taskId }) => taskId === data.updatedTask.taskId)
+            ) {
                 throw Error(
-                    `toggleCompleted: unknown task id ${data.updatedTask.id}`
+                    `toggleCompleted: unknown taskId ${data.updatedTask.taskId}`
                 );
             }
             return data;
         } catch (error) {
             return rejectWithValue({
-                message: error.message,
-                status: error.status,
+                message: error.response.data.message,
+                status: error.response.status,
             });
         }
     }

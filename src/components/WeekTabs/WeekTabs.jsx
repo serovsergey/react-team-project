@@ -14,15 +14,16 @@ const WeekTabs = ({ weekDays, currentWeekRangeStr = null }) => {
     const [searchParams, setSearchParams] = useSearchParams(storedDay);
 
     useEffect(() => {
-        if (!searchParams.get(DAY_PARAM)) {
+        if (!weekDays.some(day => day.name === searchParams.get(DAY_PARAM))) {
             setSearchParams({ day: storedDay });
         }
-    }, [searchParams, setSearchParams, storedDay]);
+    }, [searchParams, setSearchParams, storedDay, weekDays]);
 
-    const handleSelectDay = day => {
-        dispatch(commonActions.setCurrentDay(day));
+    const handleSelectDay = date => {
+        dispatch(
+            commonActions.setCurrentDate(date.toISOString().split('T')[0])
+        );
     };
-
     const currentDay = searchParams.get(DAY_PARAM);
     return (
         <div className={s.wrapper}>
@@ -30,9 +31,9 @@ const WeekTabs = ({ weekDays, currentWeekRangeStr = null }) => {
                 <CurrentWeekRange currentWeekRangeStr={currentWeekRangeStr} />
             )}
             <menu className={s.tabs}>
-                {weekDays.map(({ name, title }) => (
+                {weekDays.map(({ date, name, title }) => (
                     <li
-                        key={name}
+                        key={date}
                         // onClick={evt => handleSelectDay(evt, day)}
                         className={
                             s.item + ' ' + (currentDay === name ? s.active : '')
@@ -41,7 +42,7 @@ const WeekTabs = ({ weekDays, currentWeekRangeStr = null }) => {
                         <Link
                             to={'?day=' + name}
                             className={s.link}
-                            onClick={() => handleSelectDay(name)}
+                            onClick={() => handleSelectDay(date)}
                         >
                             {title}
                         </Link>
