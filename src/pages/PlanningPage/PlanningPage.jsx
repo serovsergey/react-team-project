@@ -1,8 +1,7 @@
 import Card from 'components/common/Card';
-import CheckDay from 'components/common/CheckDay';
 import TaskScheduleBtn from 'components/common/TaskScheduleBtn';
-import React, { useEffect, useRef, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React from 'react';
+import {  useSelector } from 'react-redux';
 import tasksSelectors from 'redux/tasks/selector.tasks';
 
 // import PropTypes from 'prop-types';
