@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import s from './taskScheduleBtn.module.scss';
 
 const TaskScheduleBtn = ({ isModalOpen = false, toggleModal }) => {
+
     return (
         <>
             {isModalOpen ? (
