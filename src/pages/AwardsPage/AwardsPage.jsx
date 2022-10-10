@@ -47,7 +47,6 @@ const AwardsPage = props => {
                 <ProgressBarMobile />
             </Mobile>
         </Container>
-        // </div>
     );
 };
 
