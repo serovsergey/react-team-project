@@ -1,5 +1,7 @@
+import s from './awardsPage.module.scss';
 import React from 'react';
 import { useMediaQuery } from 'react-responsive';
+import { useDispatch, useSelector } from 'react-redux';
 import Button from 'components/common/Button';
 import Card from 'components/common/Card';
 import Container from 'components/Container';
@@ -7,7 +9,12 @@ import ToggleSwitch from 'components/toggleSwitch/ToggleSwitch';
 import { ReactComponent as PrizesIcon } from '../../assets/svg/Prizes.svg';
 import ProgressBar from 'components/ProgressBar';
 import ProgressBarMobile from 'components/ProgressBarMobile';
-import s from './awardsPage.module.scss';
+import giftsSelectors from 'redux/gifts/selector.gifts';
+import giftsOperations from 'redux/gifts/operations.gifts';
+import { useState } from 'react';
+import Modal from 'components/common/Modal';
+import AwardsModalCard from 'components/AwardsModal/AwardsModalCard';
+import AwardsModalTitle from 'components/AwardsModal/AwardsModalTitle';
 
 // import PropTypes from 'prop-types';
 
@@ -24,29 +31,83 @@ const Mobile = ({ children }) => {
     return isMobile ? children : null;
 };
 
-const AwardsPage = props => {
+const AwardsPage = () => {
+    const gifts = useSelector(giftsSelectors.getGifts);
+    const isLoading = useSelector(giftsSelectors.getIsLoading);
+    const [giftIds, setGiftIds] = useState([]);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const dispatch = useDispatch();
+    console.log(gifts);
+
+    const handleConfirm = () => {
+        dispatch(giftsOperations.buyGifts());
+        setIsModalOpen(true);
+    };
+
     return (
-        <Container>
-            <div className={s.prize__label}>
-                <PrizesIcon />
-                <h2 className={s.title}> my prizes</h2>
-            </div>
+        <>
+            <Container>
+                <div className={s.prize__label}>
+                    <PrizesIcon />
+                    <h2 className={s.title}> my prizes</h2>
+                </div>
 
-            <Desktop>
-                <ProgressBar />
-            </Desktop>
-            <Tablet>
-                <ProgressBar />
-            </Tablet>
-
-            <Card>
-                <ToggleSwitch />
-            </Card>
-            <Button>confirm</Button>
+                <Desktop>
+                    <ProgressBar />
+                </Desktop>
+                <Tablet>
+                    <ProgressBar />
+                </Tablet>
+                <ul className={s.list}>
+                    {gifts?.map(
+                        ({ id, title, price, imageUrl, isSelected }) => (
+                            <li key={id} className={s.item}>
+                                <Card
+                                    id={id}
+                                    title={title}
+                                    reward={price}
+                                    imageUrl={imageUrl}
+                                >
+                                    <ToggleSwitch
+                                        isChecked={isSelected}
+                                        awardId={id}
+                                    />
+                                </Card>
+                            </li>
+                        )
+                    )}
+                </ul>
+                <div className={s.btn}>
+                    <Button type="submit" onClick={handleConfirm}>
+                        confirm
+                    </Button>
+                </div>
+                {isModalOpen && (
+                    <Modal onClose={() => setIsModalOpen(false)}>
+                        <AwardsModalTitle>
+                            Congratulations! You get:
+                        </AwardsModalTitle>
+                        <ul className={s.modal__list}>
+                            <li className={s.modal__item}>
+                                <AwardsModalCard />
+                            </li>
+                            <li className={s.modal__item}>
+                                <AwardsModalCard />
+                            </li>
+                            <li className={s.modal__item}>
+                                <AwardsModalCard />
+                            </li>
+                            <li className={s.modal__item}>
+                                <AwardsModalCard />
+                            </li>
+                        </ul>
+                    </Modal>
+                )}
+            </Container>
             <Mobile>
                 <ProgressBarMobile />
             </Mobile>
-        </Container>
+        </>
     );
 };
 
