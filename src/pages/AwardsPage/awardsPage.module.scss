@@ -1,6 +1,8 @@
 .prize__label {
     display: inline-flex;
     align-items: center;
+    margin-top: 20px;
+    margin-bottom: 32px;
 }
 
 .title {
@@ -33,13 +35,16 @@
 
 .btn {
     margin-top: 20px;
+    margin-bottom: 80px;
     text-align: center;
 
     @media screen and (min-width: 768px) {
         margin-top: 40px;
+        margin-bottom: 40px;
     }
 
     @media screen and (min-width: 1280px) {
         margin-top: 60px;
+        margin-bottom: 15px;
     }
 }
