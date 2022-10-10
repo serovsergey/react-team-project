@@ -21,11 +21,12 @@ const HomePage = props => {
     const weekDays = useMemo(
         () =>
             weekDates.map(dt => {
-                const dayStr = dt.toLocaleDateString('en-en', {
+                const dayStr = dt.toLocaleDateString('en-US', {
                     weekday: 'long',
                 });
                 return {
-                    name: dayStr,
+                    date: dt,
+                    name: dayStr.toLowerCase(),
                     title: isDesktop ? dayStr : dayStr.slice(0, 2),
                 };
             }),
