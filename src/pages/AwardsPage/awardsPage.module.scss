@@ -48,3 +48,16 @@
         margin-bottom: 15px;
     }
 }
+
+///////////modal///
+
+.modal__list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal__item {
+    margin: 10px;
+}

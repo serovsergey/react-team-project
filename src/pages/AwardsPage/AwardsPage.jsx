@@ -12,6 +12,9 @@ import ProgressBarMobile from 'components/ProgressBarMobile';
 import giftsSelectors from 'redux/gifts/selector.gifts';
 import giftsOperations from 'redux/gifts/operations.gifts';
 import { useState } from 'react';
+import Modal from 'components/common/Modal';
+import AwardsModalCard from 'components/AwardsModal/AwardsModalCard';
+import AwardsModalTitle from 'components/AwardsModal/AwardsModalTitle';
 
 // import PropTypes from 'prop-types';
 
@@ -32,11 +35,13 @@ const AwardsPage = () => {
     const gifts = useSelector(giftsSelectors.getGifts);
     const isLoading = useSelector(giftsSelectors.getIsLoading);
     const [giftIds, setGiftIds] = useState([]);
+    const [isModalOpen, setIsModalOpen] = useState(false);
     const dispatch = useDispatch();
     console.log(gifts);
 
     const handleConfirm = () => {
         dispatch(giftsOperations.buyGifts());
+        setIsModalOpen(true);
     };
 
     return (
@@ -77,6 +82,27 @@ const AwardsPage = () => {
                         confirm
                     </Button>
                 </div>
+                {isModalOpen && (
+                    <Modal onClose={() => setIsModalOpen(false)}>
+                        <AwardsModalTitle>
+                            Congratulations! You get:
+                        </AwardsModalTitle>
+                        <ul className={s.modal__list}>
+                            <li className={s.modal__item}>
+                                <AwardsModalCard />
+                            </li>
+                            <li className={s.modal__item}>
+                                <AwardsModalCard />
+                            </li>
+                            <li className={s.modal__item}>
+                                <AwardsModalCard />
+                            </li>
+                            <li className={s.modal__item}>
+                                <AwardsModalCard />
+                            </li>
+                        </ul>
+                    </Modal>
+                )}
             </Container>
             <Mobile>
                 <ProgressBarMobile />
