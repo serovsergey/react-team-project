@@ -15,6 +15,11 @@ const setError = (state, { payload }) => {
 const authSlice = createSlice({
     name: 'auth',
     initialState,
+    reducers: {
+        resetToken(state) {
+            state.token = initialState.token;
+        },
+    },
     extraReducers: {
         [authOperations.register.pending]: setPending,
         [authOperations.register.fulfilled]: (state, { payload }) => {
@@ -40,3 +45,4 @@ const authSlice = createSlice({
 });
 
 export default authSlice.reducer;
+export const authActions = authSlice.actions;

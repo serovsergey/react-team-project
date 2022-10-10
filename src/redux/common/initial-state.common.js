@@ -1,3 +1,5 @@
+// const now=
+
 export const initialState = {
-    currentDay: new Date().toLocaleDateString('en-en', { weekday: 'long' }),
+    currentDate: new Date().toISOString().split('T')[0],
 };

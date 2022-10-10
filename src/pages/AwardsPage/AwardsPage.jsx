@@ -82,7 +82,6 @@ const AwardsPage = () => {
                 <ProgressBarMobile />
             </Mobile>
         </>
-    );
 };
 
 // AwardsPage.propTypes = {};

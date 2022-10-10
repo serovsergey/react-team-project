@@ -33,8 +33,8 @@
     position: absolute;
     right: 0;
     gap: 8px;
-    top: 30%;
-    transform: translateY(-30%);
+    top: 20%;
+    // transform: translateY(-30%);
     flex-wrap: wrap;
   }
 }
@@ -49,6 +49,12 @@
   border: none;
   border-radius: 6px;
   background-color: #FFBC3380;
+  transition: transform .25s cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover,
+  &:focus {
+    transform: scale(1.05);
+  }
 
   @media screen and (min-width: 768px) {
     width: 40px;
@@ -61,6 +67,7 @@
     height: 42px;
     border-radius: 6px 0px 0px 6px;
     margin-left: auto;
+    transform-origin: center right;
   }
 }
 
@@ -69,10 +76,17 @@
 
   @media screen and (min-width: 768px) {
     background-color: #FFFFFF;
+    transform: scale(1.03);
   }
 
-  @media screen and (min-width: 1280px) {}
+
+  @media screen and (min-width: 1280px) {
+    box-shadow: -4px 2px 3px 0px #dfa838;
+    background: linear-gradient(to right, #FFFFFF, #FAFAFA);
+
+  }
 }
+
 
 .link {
   display: flex;

@@ -2,11 +2,11 @@ import Button from 'components/common/Button';
 import { useFormik } from 'formik';
 import React from 'react';
 import { useDispatch } from 'react-redux';
-// import { toast } from 'react-toastify';
 import authOperations from 'redux/auth/operations.auth';
 import * as yup from 'yup';
 import s from '../AuthForm/AuthForm.module.scss';
 import { ReactComponent as GoogleIcon } from '../../assets/svg/Google.svg';
+import { toast } from 'react-toastify';
 
 const validationSchema = yup.object({
     email: yup
@@ -28,20 +28,23 @@ const AuthForm = () => {
             password: '',
         },
         validationSchema,
-        onSubmit: (values, { resetForm }) => {
-            // onSubmit(values);
-            console.log(values);
+        onSubmit: values => {
             dispatch(authOperations.login(values))
                 .unwrap()
-                .catch(error => console.log(error));
-            // resetForm();
+                .catch(error =>
+                    toast.error(`Login is failed with message${error.message}`)
+                );
         },
     });
 
     const handleRegister = () => {
         dispatch(authOperations.register(formik.values))
             .unwrap()
-            .catch(error => console.log(error));
+            .catch(error =>
+                toast.error(
+                    `Register is failed with message: ${error.message}.`
+                )
+            );
     };
 
     return (
@@ -59,12 +62,12 @@ const AuthForm = () => {
                     Google
                 </a>
                 <p className={s.auth_form_text}>
-                    You can login with Google Account:
+                    Or log in with e-mail and password after registering:
                 </p>
 
                 <label className={s.auth_form_label}>
                     <span className={s.auth_form_span}>*</span>
-                    E-Mail
+                    E-Mail:
                     <input
                         className={s.auth_form_input}
                         name="email"
@@ -73,10 +76,13 @@ const AuthForm = () => {
                         value={formik.values.email}
                         placeholder="your@email.com"
                     />
+                    <span className={s.auth_form_validation}>
+                        {formik.errors.email}
+                    </span>
                 </label>
                 <label className={s.auth_form_label}>
                     <span className={s.auth_form_span}>*</span>
-                    Password
+                    Password:
                     <input
                         className={`${s.auth_form_input} ${s.auth_form_input__black}`}
                         name="password"
@@ -85,17 +91,19 @@ const AuthForm = () => {
                         value={formik.values.password}
                         placeholder="••••••••"
                     />
+                    <span className={s.auth_form_validation}>
+                        {formik.errors.password}
+                    </span>
                 </label>
-                <div className={s.auth_form_inner_btn}></div>
-                <Button type="submit">Login</Button>
-                <Button type="button" onClick={handleRegister}>
-                    Rigister
-                </Button>
+                <div className={s.auth_form_inner_btn}>
+                    <Button type="submit">Login</Button>
+                    <Button type="button" onClick={handleRegister}>
+                        Rigister
+                    </Button>
+                </div>
             </form>
         </>
     );
 };
-
-// AuthPage.propTypes = {};
 
 export default AuthForm;

@@ -10,14 +10,13 @@ import {
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage'; // defaults to localStorage for web
 import { configureStore } from '@reduxjs/toolkit';
-// import { contactsSlice } from './contactsSlice/slice.contacts';
-// import { filterReducer } from './filterReducer/reducer.filter';
 import authReducer from './auth';
 import userReducer from './user';
 import tasksReducer from './tasks';
 import weekReducer from './week';
 import giftsReducer from './gifts';
 import commonReducer from './common';
+import authErrorLogger from './auth/middleware.auth';
 
 const persistConfig = {
     key: 'auth',
@@ -46,7 +45,7 @@ export const store = configureStore({
                     REGISTER,
                 ],
             },
-        });
+        }).concat(authErrorLogger);
     },
     devTools: process.env.NODE_ENV === 'development',
 });

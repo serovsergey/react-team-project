@@ -11,8 +11,8 @@ const register = createAsyncThunk(
             return data;
         } catch (error) {
             return rejectWithValue({
-                message: error.message,
-                status: error.status,
+                message: error.response.data.message,
+                status: error.response.status,
             });
         }
     }
@@ -27,8 +27,8 @@ const login = createAsyncThunk(
             return data;
         } catch (error) {
             return rejectWithValue({
-                message: error.message,
-                status: error.status,
+                message: error.response.data.message,
+                status: error.response.status,
             });
         }
     }
@@ -42,8 +42,8 @@ const logout = createAsyncThunk(
             token.unset();
         } catch (error) {
             return rejectWithValue({
-                message: error.message,
-                status: error.status,
+                message: error.response.data.message,
+                status: error.response.status,
             });
         }
     }

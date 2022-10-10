@@ -16,8 +16,8 @@ const getUserInfo = createAsyncThunk(
         } catch (error) {
             token.unset();
             return rejectWithValue({
-                message: error.message,
-                status: error.status,
+                message: error.response.data.message,
+                status: error.response.status,
             });
         }
     }

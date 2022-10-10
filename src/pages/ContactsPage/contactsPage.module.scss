@@ -9,7 +9,7 @@
         display: flex;
         margin: 0 auto;
         flex-wrap: wrap;
-        // flex-direction: column;
+        flex-direction: column;
         border-radius: 60px;}
 
     &__card {
@@ -21,8 +21,9 @@
             box-shadow: 4px 6px 15px rgba(0, 0, 0, 0.1);
             text-align: left;
             list-style: none;
-            margin-bottom: 40px;
+            margin-bottom: 16px;
             border-radius: 7px;
+        
         }
     
     &__card:hover {
@@ -51,6 +52,8 @@
             color: #000000;
             font-weight: 400;
             margin-bottom: 10px;
+            text-align: center;
+            align-items: center;
         }
 
     &__link {
@@ -84,6 +87,15 @@
             border-radius: 7px;
             object-fit: cover;
         }
+    
+    &__secondtitle {
+            font-family: inherit;
+            font-style: normal;
+            font-size: 14px;
+            color: #000000;
+            font-weight: 400;
+            margin-bottom: 30px;
+        }
 
    
 }
@@ -91,25 +103,40 @@
     .contacts__cardlist {
         text-align: center;
         width: 600px;
-        flex-wrap: wrap;
-        margin: 0 auto;
+    flex-direction: row;
+            margin: 0 auto;
     }
 
     .contacts__title {
         font-size: 36px;
     }
 
+        .contacts__card {
+    
+            margin-right: 16px;
+            text-align:justify &:last-child {
+                margin-bottom: 0;
+                margin-right: 0;
+            }
+        &:last-child {
+            margin: 0 auto;
+        }
+        }
+
    
 }
 
 @media (min-width: 1280px) {
     .contacts__cardlist {
+        flex-direction: row;
         width: 1180px;
-        flex-wrap: wrap;
         text-align: center;
-            margin: 0 auto;
     }
+  .contacts__card {
 
+      margin-bottom: 40px;
+
+  }
     .contacts__card:last-child {
         margin-bottom: 40px;
     }
@@ -117,5 +144,16 @@
     .contacts__title {
         font-size: 36px;
     }
+ .contacts__card {
 
+     margin-right: 32px;
+        text-align:justify;
+     &:last-child {
+         margin-bottom: 0;
+         margin-right: 0;
+     }
+&:last-child {
+    margin: 0 auto;
+}
+ }
     }

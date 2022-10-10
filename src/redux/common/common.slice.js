@@ -5,8 +5,8 @@ const commonSlice = createSlice({
     name: 'common',
     initialState,
     reducers: {
-        setCurrentDay(state, { payload }) {
-            state.currentDay = payload;
+        setCurrentDate(state, { payload }) {
+            state.currentDate = payload;
         },
     },
 });
