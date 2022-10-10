@@ -11,35 +11,33 @@
      margin-bottom: 2px;
      padding-top: 12px;
      margin-left: 20px;
-
+        
+     
 
      &__wrapper {
-         display: flex;
-         justify-content: space-between;
-         padding-bottom: 12px;
-         width: 150px;
-         margin-left: 20px;
+        display: flex;
+        justify-content: space-between;
+        padding-bottom: 12px;
+        width: 218px;
+        margin-left: 20px;
+        margin-top: 0;
 
      }
 
      &__points {
-         font-weight: bold;
+        font-weight: bold;
+        margin-right: 20px;
      }
  }
+  .react-sweet-progress-symbol {
+      display: none;
+  }
 
- .react-sweet-progress-symbol {
-     display: none;
- }
-
- .react-sweet-progress {
-     width: 100px;
-     margin-left: 19px;
- }
-
- .wrap {
-     position: fixed;
-     bottom: 0;
-     left: 0;
-     right: 0;
-     background-color: #F1F1F1;
- }
+  .react-sweet-progress {
+      width: 100px;
+      margin-left: 19px;
+  }
+   .wrap {
+       background-color: #F1F1F1;
+     
+   }
