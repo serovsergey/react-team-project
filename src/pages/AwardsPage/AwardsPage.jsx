@@ -15,6 +15,7 @@ import { useState } from 'react';
 import Modal from 'components/common/Modal';
 import AwardsModalCard from 'components/AwardsModal/AwardsModalCard';
 import AwardsModalTitle from 'components/AwardsModal/AwardsModalTitle';
+import Cat from 'components/AwardsModal/Cat';
 
 // import PropTypes from 'prop-types';
 
@@ -84,6 +85,7 @@ const AwardsPage = () => {
                 </div>
                 {isModalOpen && (
                     <Modal onClose={() => setIsModalOpen(false)}>
+                        <Cat />
                         <AwardsModalTitle>
                             Congratulations! You get:
                         </AwardsModalTitle>
