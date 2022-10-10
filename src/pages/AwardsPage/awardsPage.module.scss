@@ -13,3 +13,33 @@
 
     color: #000000;
 }
+
+.list {
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 20px;
+
+    @media screen and (min-width: 768px) {
+        grid-template-columns: 1fr 1fr;
+        column-gap: 32px;
+    }
+
+    @media screen and (min-width: 1280px) {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+}
+
+.item {}
+
+.btn {
+    margin-top: 20px;
+    text-align: center;
+
+    @media screen and (min-width: 768px) {
+        margin-top: 40px;
+    }
+
+    @media screen and (min-width: 1280px) {
+        margin-top: 60px;
+    }
+}

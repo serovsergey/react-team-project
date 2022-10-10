@@ -8,6 +8,12 @@ import { ReactComponent as PrizesIcon } from '../../assets/svg/Prizes.svg';
 import ProgressBar from 'components/ProgressBar';
 import ProgressBarMobile from 'components/ProgressBarMobile';
 import s from './awardsPage.module.scss';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import giftsOperations from 'redux/gifts/operations.gifts';
+import giftsSelectors from 'redux/gifts/selector.gifts';
+import TaskCompletedInd from 'components/common/TaskCompletedInd';
+import TaskScheduleBtn from 'components/common/TaskScheduleBtn';
 
 // import PropTypes from 'prop-types';
 
@@ -25,6 +31,12 @@ const Mobile = ({ children }) => {
 };
 
 const AwardsPage = props => {
+    const gifts = useSelector(giftsSelectors.getGifts);
+    console.log(gifts);
+    // const dispatch = useDispatch();
+    // useEffect(() => {
+    //     dispatch(giftsOperations.getGifts());
+    // }, [dispatch]);
     return (
         <Container>
             <div className={s.prize__label}>
@@ -38,11 +50,23 @@ const AwardsPage = props => {
             <Tablet>
                 <ProgressBar />
             </Tablet>
-
-            <Card>
-                <ToggleSwitch />
-            </Card>
-            <Button>confirm</Button>
+            <ul className={s.list}>
+                {gifts?.map(({ id, title, price, imageUrl, isSelected }) => (
+                    <li key={id} className={s.item}>
+                        <Card
+                            id={id}
+                            title={title}
+                            reward={price}
+                            imageUrl={imageUrl}
+                        >
+                            <ToggleSwitch />
+                        </Card>
+                    </li>
+                ))}
+            </ul>
+            <div className={s.btn}>
+                <Button>confirm</Button>
+            </div>
             <Mobile>
                 <ProgressBarMobile />
             </Mobile>
