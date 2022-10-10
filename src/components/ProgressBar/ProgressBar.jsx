@@ -38,13 +38,16 @@ const ProgressBar = () => {
                         percent={percent > 100 ? 100 : percent}
                         theme={{
                             success: {
+                                symbol: '',
                                 color: 'rgb(223, 105, 180)',
                             },
                             active: {
+                                symbol: '',
                                 color: '#9ECB44',
                                 trailColor: '#E0E0E0',
                             },
                             default: {
+                                symbol: '',
                                 trailColor: '#E0E0E0',
                             },
                         }}
