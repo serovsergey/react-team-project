@@ -1,5 +1,5 @@
 import s from './awardsPage.module.scss';
-import React, { useEffect } from 'react';
+import React, { useEffect, Suspense } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import { useDispatch, useSelector } from 'react-redux';
 import Button from 'components/common/Button';
@@ -69,7 +69,6 @@ const AwardsPage = () => {
                     <PrizesIcon />
                     <h2 className={s.title}> my prizes</h2>
                 </div>
-
                 <Desktop>
                     <ProgressBar />
                 </Desktop>
