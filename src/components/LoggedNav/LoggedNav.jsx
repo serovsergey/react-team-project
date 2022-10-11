@@ -36,10 +36,12 @@ const LoggedNav = () => {
         </ul>
         {logOutModal && 
             <Modal onClose={handleCloseModal}>
+                <div className={s.wrapper}>
                 <p className={s.text}>Are you sure?</p>
                 <div className={s.buttonList}>
                     <button type="button" onClick={() => dispatch(authOperations.logout())}className={s.item}>yes</button>
                     <button type="button" onClick={() => setlogOutModal(false)}className={s.item}>cancel</button>
+                </div>
                 </div>
             </Modal>}
         </>

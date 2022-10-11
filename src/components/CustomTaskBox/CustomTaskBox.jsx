@@ -3,6 +3,8 @@ import s from '../CustomTaskBox/customTaskBox.module.scss';
 import { useState } from 'react';
 // import { CgClose } from 'react-icons/cg';
 import Modal from '../../components/common/Modal';
+import { useDispatch } from 'react-redux';
+import tasksOperations from 'redux/tasks/operations.tasks';
 import { ReactComponent as ImageIcon } from '../../assets/svg/Image.svg';
 
 const CustomTaskBox = () => {
@@ -11,15 +13,19 @@ const CustomTaskBox = () => {
     const [points, setPoints] = useState('');
     const [image, setImage] = useState('');
 
-    // const handleCloseModal = () => {
-    //     setModalOpen(false);
-    // };
-
     const handleSubmit = event => {
-        event.preventDefault();
-        const obj = { taks, points };
-        formReset();
-    };
+        event.preventDefault()
+        console.log(typeof(task))
+        // const obj = {title: task, reward: points}
+        const formData = new FormData
+        formData.set("title", task)
+        formData.set("reward", points)
+        formData.append("file", image)
+        console.log(formData)
+        dispatch(tasksOperations.createTask(formData))
+        formReset()
+    }
+
     const handleChange = event => {
         switch (event.target.name) {
             case 'task':
@@ -50,13 +56,6 @@ const CustomTaskBox = () => {
             {modalOpen && (
                 <Modal onClose={() => setModalOpen(false)} showCloseBtn>
                     <div className={s.topWrapper}>
-                        {/* <button
-                            type="button"
-                            onClick={handleCloseModal}
-                            className={s.closeButton}
-                        >
-                            <CgClose size={18} className={s.cross} />
-                        </button> */}
                         <label className={s.imageLabel}>
                             {' '}
                             <ImageIcon className={s.imageIcon} />
