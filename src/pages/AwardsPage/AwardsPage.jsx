@@ -104,7 +104,7 @@ const AwardsPage = () => {
                     </Button>
                 </div>
                 {isModalOpen && (
-                    <Modal onClose={() => setIsModalOpen(false)}>
+                    <Modal onClose={() => setIsModalOpen(false)} showCloseBtn>
                         <Cat />
                         <AwardsModalTitle>
                             Congratulations! You get:
