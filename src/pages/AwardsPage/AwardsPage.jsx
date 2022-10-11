@@ -1,5 +1,5 @@
 import s from './awardsPage.module.scss';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import { useDispatch, useSelector } from 'react-redux';
 import Button from 'components/common/Button';
@@ -16,6 +16,7 @@ import Modal from 'components/common/Modal';
 import AwardsModalCard from 'components/AwardsModal/AwardsModalCard';
 import AwardsModalTitle from 'components/AwardsModal/AwardsModalTitle';
 import Cat from 'components/AwardsModal/Cat';
+import userSelectors from 'redux/user/selector.user';
 
 // import PropTypes from 'prop-types';
 
@@ -34,11 +35,17 @@ const Mobile = ({ children }) => {
 
 const AwardsPage = () => {
     const gifts = useSelector(giftsSelectors.getGifts);
-    const isLoading = useSelector(giftsSelectors.getIsLoading);
+  const isLoading = useSelector(giftsSelectors.getIsLoading);
+  const purchasedGifts = useSelector(userSelectors.getPurchasedGiftIds);
     const [giftIds, setGiftIds] = useState([]);
     const [isModalOpen, setIsModalOpen] = useState(false);
-    console.log(giftIds);
     const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(giftsOperations.getGifts());
+    }, [dispatch]);
+
+    // console.log(giftIds);
 
     const handleToggle = id => {
         if (giftIds.includes(id)) {
@@ -49,8 +56,10 @@ const AwardsPage = () => {
     };
 
     const handleConfirm = () => {
-        dispatch(giftsOperations.buyGifts({ giftIds }));
-        setIsModalOpen(true);
+        dispatch(giftsOperations.buyGifts({ giftIds }))
+            .unwrap()
+            .then(() => setIsModalOpen(true))
+            .catch(console.log);
     };
 
     return (

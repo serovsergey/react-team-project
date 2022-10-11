@@ -17,7 +17,7 @@ export const App = () => {
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(userOperations.getUserInfo());
-        dispatch(giftsOperations.getGifts());
+        // dispatch(giftsOperations.getGifts());
     }, [dispatch]);
     return (
         <Routes>
