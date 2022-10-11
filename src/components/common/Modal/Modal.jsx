@@ -5,8 +5,7 @@ import s from './Modal.module.scss';
 
 const modalRoot = document.querySelector('#modal');
 
-
-export const Modal = ({ onClose, children }) => {
+export const Modal = ({ onClose, showCloseBtn = false, children }) => {
     useEffect(() => {
         const handleKeyDown = evt => {
             if (evt.key === 'Escape') {
@@ -33,7 +32,19 @@ export const Modal = ({ onClose, children }) => {
     return createPortal(
         <div className={s.Overlay} onMouseDown={handleBackDropClick}>
             {/* <div elevation={4} className={s.Modal}> */}
-            <div className={s.Modal}>{children}</div>
+            <div className={s.Modal}>
+                {showCloseBtn && (
+                    <button
+                        className={s.closeBtn}
+                        type="button"
+                        onClick={onClose}
+                    >
+                        &#x2715;
+                    </button>
+                )}
+
+                {children}
+            </div>
         </div>,
         modalRoot
     );
@@ -45,4 +56,3 @@ export const Modal = ({ onClose, children }) => {
 // }
 
 export default Modal;
-
