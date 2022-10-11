@@ -9,18 +9,21 @@ import { ReactComponent as ImageIcon } from '../../assets/svg/Image.svg';
 
 const CustomTaskBox = () => {
     const [modalOpen, setModalOpen] = useState(false);
-    const [taks, setTask] = useState('');
+    const [task, setTask] = useState('');
     const [points, setPoints] = useState('');
     const [image, setImage] = useState('');
+    const dispatch = useDispatch()
 
     const handleSubmit = event => {
         event.preventDefault()
         console.log(typeof(task))
+        // headers: { 'Content-Type': 'multipart/form-data' }
         // const obj = {title: task, reward: points}
         const formData = new FormData
         formData.set("title", task)
         formData.set("reward", points)
         formData.append("file", image)
+        
         console.log(formData)
         dispatch(tasksOperations.createTask(formData))
         formReset()
@@ -57,7 +60,6 @@ const CustomTaskBox = () => {
                 <Modal onClose={() => setModalOpen(false)} showCloseBtn>
                     <div className={s.topWrapper}>
                         <label className={s.imageLabel}>
-                            {' '}
                             <ImageIcon className={s.imageIcon} />
                             <input
                                 type="file"
@@ -65,7 +67,7 @@ const CustomTaskBox = () => {
                                 onChange={handleImageChange}
                                 className={s.imageInput}
                             />
-                        </label>
+                        </label>   
                     </div>
                     <div className={s.bottomWrapper}>
                         <form
@@ -80,7 +82,7 @@ const CustomTaskBox = () => {
                                 name="task"
                                 placeholder="Add task..."
                                 className={s.item}
-                                value={taks}
+                                value={task}
                             />
                             <input
                                 type="number"
