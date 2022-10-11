@@ -3,13 +3,13 @@ import { NavLink } from 'react-router-dom';
 import s from '../NavList/navList.module.scss'
 
 
-const NavList = () => {
+const NavList = ({onClose}) => {
 
     return(
         <ul className={s.list}>
                 {menuItems.map(({ name, to }) => (
                     <li key={name} className={s.item}>
-                        <NavLink to={to} className={s.link}>
+                        <NavLink to={to} onClick={() => onClose()} className={s.link}>
                             {name}
                         </NavLink>
                     </li>

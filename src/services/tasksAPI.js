@@ -16,10 +16,12 @@ const toggleCompletedTask = async (id, body) => {
 };
 
 const addTask = async taskData => {
-    const { data } = await privateAPI.post(`/task`, {
-        data: taskData,
-        headers: { 'Content-Type': 'multipart/form-data' },
-    });
+    console.log(taskData)
+    const { data } = await privateAPI.post(`/task`, taskData);
+    // const { data } = await privateAPI.post(`/task`, {
+    //     data: taskData,
+    //     headers: { 'Content-Type': 'multipart/form-data' },
+    // });
     return data;
 };
 
