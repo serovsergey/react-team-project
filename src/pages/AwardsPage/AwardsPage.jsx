@@ -37,11 +37,19 @@ const AwardsPage = () => {
     const isLoading = useSelector(giftsSelectors.getIsLoading);
     const [giftIds, setGiftIds] = useState([]);
     const [isModalOpen, setIsModalOpen] = useState(false);
+    console.log(giftIds);
     const dispatch = useDispatch();
-    console.log(gifts);
+
+    const handleToggle = id => {
+        if (giftIds.includes(id)) {
+            setGiftIds(state => state.filter(giftId => id !== giftId));
+        } else {
+            setGiftIds(state => [...state, id]);
+        }
+    };
 
     const handleConfirm = () => {
-        dispatch(giftsOperations.buyGifts());
+        dispatch(giftsOperations.buyGifts({ giftIds }));
         setIsModalOpen(true);
     };
 
@@ -69,10 +77,13 @@ const AwardsPage = () => {
                                     reward={price}
                                     imageUrl={imageUrl}
                                 >
-                                    <ToggleSwitch
-                                        isChecked={isSelected}
-                                        awardId={id}
-                                    />
+                                    {!isSelected && (
+                                        <ToggleSwitch
+                                            isChecked={giftIds.includes(id)}
+                                            awardId={id}
+                                            onToggleSwitchAwards={handleToggle}
+                                        />
+                                    )}
                                 </Card>
                             </li>
                         )
