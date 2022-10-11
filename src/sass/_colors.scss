@@ -1,5 +1,5 @@
-.project-colors {
-    --primary-bcg-color: #E5E5E5;
+:root {
+    --primary-bcg-color: #FAFAFA;
     --secondary-bcg-color: #FFFFFF;
     --input-form-color: #F6F7FB;
     --footer-mobile-color: #F1F1F1;
@@ -8,5 +8,8 @@
     --days-check-color: #3E7ADC;
     --success-color: #8EC63F;
     --fail-color: #FF4965;
-    --primary-fonts-color: red
+    --progressbar-done-color: #9ECB44;
+    --progressbar-undone-color: #E0E0E0;
+    --weekday-color: rgba(255, 255, 255, 1);
+    --plus-btn-color: linear-gradient(180deg, #FFB532 0%, #FFD521 100%);
 }

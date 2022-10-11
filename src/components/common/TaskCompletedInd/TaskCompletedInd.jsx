@@ -2,7 +2,7 @@ import React from 'react';
 import { IoMdCheckmark } from 'react-icons/io';
 import { BsExclamation } from 'react-icons/bs';
 
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 
 import s from './taskCompletedInd.module.scss';
 
@@ -26,6 +26,6 @@ const TaskCompletedInd = ({ isCompleted = false }) => {
 
 export default TaskCompletedInd;
 
-TaskCompletedInd.propTypes = {
-    isCompleted: PropTypes.bool,
-};
+// TaskCompletedInd.propTypes = {
+//     isCompleted: PropTypes.bool,
+// };
