@@ -11,12 +11,15 @@ const MobileMenu = ({ closeModal }) => {
     const token = useSelector(authSelectors.getToken);
     const isTabletScreen = useMediaQuery({ query: '(max-width: 767px)' })
     const isDesktopScreen = useMediaQuery({ query: '(min-width: 1280px)' })
-
+    if(isDesktopScreen){
+        return
+    }
     return (
         <div className={s.menuContainer}>
             <div className={s.menuHeader}>
                {token && isTabletScreen && <LoggedNav />}
-               {(!token || isDesktopScreen) && closeModal()}
+               {!token &&  closeModal()}
+               {isDesktopScreen && closeModal()}
                
                 <button
                     type="button"
