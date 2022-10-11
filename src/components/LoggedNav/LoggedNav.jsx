@@ -1,15 +1,17 @@
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import s from '../LoggedNav/loggedNav.module.scss';
 import { ReactComponent as LogoutIcon } from '../../assets/svg/logOut.svg';
 import userSelectors from 'redux/user/selector.user';
 import { useState } from 'react';
-import LogOutModal from 'components/LogOutModal';
+import authOperations from 'redux/auth/operations.auth'
+import Modal from 'components/common/Modal';
 
 const LoggedNav = () => {
     const [logOutModal, setlogOutModal] = useState(false)
     const email = useSelector(userSelectors.getUserEmail);
     const nameSmall = email.split('@')[0];
     const name = nameSmall.charAt(0).toUpperCase() + nameSmall.slice(1);
+    const dispatch = useDispatch();
 
     const handleCloseModal = () => {
         setlogOutModal(false)
@@ -32,7 +34,14 @@ const LoggedNav = () => {
                 </button>
             </li>
         </ul>
-        {logOutModal && <LogOutModal onClose={handleCloseModal}/>}
+        {logOutModal && 
+            <Modal onClose={handleCloseModal}>
+                <p className={s.text}>Are you sure?</p>
+                <div className={s.buttonList}>
+                    <button type="button" onClick={() => dispatch(authOperations.logout())}className={s.item}>yes</button>
+                    <button type="button" onClick={() => setlogOutModal(false)}className={s.item}>cancel</button>
+                </div>
+            </Modal>}
         </>
 
     );

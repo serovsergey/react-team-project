@@ -1,5 +1,6 @@
 import Card from 'components/common/Card';
 import TaskScheduleBtn from 'components/common/TaskScheduleBtn';
+import CustomTaskBox from 'components/CustomTaskBox';
 import React from 'react';
 import {  useSelector } from 'react-redux';
 import tasksSelectors from 'redux/tasks/selector.tasks';
@@ -14,6 +15,7 @@ const PlanningPage = () => {
     return (
         <>
             <h1 className={s.title}>Plan for the week:</h1>
+            <CustomTaskBox />
             <ul>
                 {tasks?.map(({ _id, title, reward, imageUrl }) => (
                     <li key={_id}>
