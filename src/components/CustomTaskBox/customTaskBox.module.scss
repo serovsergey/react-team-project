@@ -1,5 +1,4 @@
-
-.box{
+.box {
     position: fixed;
     width: 500px;
     bottom: 17px;
@@ -10,32 +9,31 @@
     justify-content: center;
     align-items: center;
     z-index: 1;
-    @media screen and (min-width: 768px){
+    @media screen and (min-width: 768px) {
         position: relative;
         margin-left: auto;
         margin-right: auto;
         margin-top: 20px;
     }
-    @media screen and (min-width: 1280px){
+    @media screen and (min-width: 1280px) {
         margin-left: auto;
         margin-right: 0;
     }
 }
 
-.text{
+.text {
     font-weight: 500;
     font-size: 12px;
-    color: #A6ABB9;
-    @media screen and (max-width: 767px){
+    color: #a6abb9;
+    @media screen and (max-width: 767px) {
         display: none;
     }
-    @media screen and (min-width: 768px){
+    @media screen and (min-width: 768px) {
         display: block;
     }
-    
 }
 
-.button{
+.button {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -45,16 +43,15 @@
     height: 54px;
     margin-left: 20px;
 
-    background: linear-gradient(180deg, #FFB532 0%, #FFD521 100%);
+    background: linear-gradient(180deg, #ffb532 0%, #ffd521 100%);
     transition: box-shadow 250ms ease-in-out;
     &:hover,
-    &:focus{
+    &:focus {
         box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     }
-
 }
 
-.topWrapper{
+.topWrapper {
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -64,58 +61,56 @@
     background-image: url('../../assets/images/desktop/1x/RobotModal1x.png');
     background-size: cover;
     background-position: center;
-            
+
     @media screen and (min-device-pixel-ratio: 2),
-    (min-resolution: 192dpi),
-    (min-resolution: 2dppx){
-        background-image: url('../../assets/images/desktop/2x/RobotModal2x.png');    
-    } 
-        
-
-}
-
-.closeButton{
-    border: none;
-    background-color: transparent;
-    margin-left: auto;
-    cursor: pointer;
-    height: 18px;
-    padding: 0;
-    transition: transform 250ms ease-in-out;
-
-    &:hover,
-    &:focus .cross{
-        transform: scale(1.15);
-        
+        (min-resolution: 192dpi),
+        (min-resolution: 2dppx) {
+        background-image: url('../../assets/images/desktop/2x/RobotModal2x.png');
     }
 }
 
-.imageLabel{
+// .closeButton{
+//     border: none;
+//     background-color: transparent;
+//     margin-left: auto;
+//     cursor: pointer;
+//     height: 18px;
+//     padding: 0;
+//     transition: transform 250ms ease-in-out;
+
+//     &:hover,
+//     &:focus .cross{
+//         transform: scale(1.15);
+
+//     }
+// }
+
+.imageLabel {
     width: 20px;
     height: 20px;
     margin-top: auto;
     margin-left: auto;
     transition: transform 250ms ease-in-out;
-    
+
     &:hover,
-    &:focus .imageIcon{
+    &:focus .imageIcon {
         transform: scale(1.1);
     }
 }
 
-.bottomWrapper{
+.bottomWrapper {
     width: 100%;
     padding: 23px 30px;
-    background-color: #FFB532;
+    background-color: #ffb532;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
 }
 
-.form{
+.form {
     display: flex;
     flex-direction: column;
 }
-.formButton{
+.formButton {
     width: 60px;
     height: 30px;
 
@@ -135,29 +130,29 @@
     font-weight: bold;
     transition: box-shadow 250ms ease-in-out;
     &:hover,
-    &:focus{
+    &:focus {
         box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     }
 }
-.item{
+.item {
     outline: none;
-    background-color: #FFB532;
+    background-color: #ffb532;
     border: none;
     border-bottom: 1px solid white;
     color: white;
     font-style: italic;
     transition: transform 250ms ease-in-out;
-    &:first-child{
+    &:first-child {
         margin-bottom: 10px;
     }
-    &::placeholder{
+    &::placeholder {
         color: white;
     }
     &:hover,
-    &:focus{
+    &:focus {
         transform: scaleX(1.05);
     }
 }
-.imageInput{
+.imageInput {
     display: none;
 }
