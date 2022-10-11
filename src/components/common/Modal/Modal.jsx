@@ -5,6 +5,7 @@ import s from './Modal.module.scss';
 
 const modalRoot = document.querySelector('#modal');
 
+
 export const Modal = ({ onClose, children }) => {
     useEffect(() => {
         const handleKeyDown = evt => {
@@ -44,3 +45,4 @@ export const Modal = ({ onClose, children }) => {
 // }
 
 export default Modal;
+
