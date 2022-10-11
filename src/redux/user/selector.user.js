@@ -2,7 +2,9 @@ const getUserEmail = state => state.user.email;
 const getUserId = state => state.user.id;
 const getUserBalance = state => state.user.balance;
 const getPurchasedGifts = state => {
-    return state.user.purchasedGiftIds;
+    return state.gifts.items?.filter(({ id }) =>
+        state.user.purchasedGiftIds?.includes(id)
+    );
 };
 const getIsLoading = state => state.user.isLoading;
 const getError = state => state.user.error;

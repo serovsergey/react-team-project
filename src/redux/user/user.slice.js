@@ -65,6 +65,7 @@ const userSlice = createSlice({
             state.purchasedGiftIds = initialState.purchasedGiftIds;
         },
         [giftsOperations.buyGifts.fulfilled]: (state, { payload }) => {
+            console.log(payload);
             state.balance = payload.updatedBalance;
             state.purchasedGiftIds = payload.purchasedGiftIds;
             state.isLoading = false;
