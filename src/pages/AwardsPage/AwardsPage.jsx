@@ -17,6 +17,7 @@ import AwardsModalCard from 'components/AwardsModal/AwardsModalCard';
 import AwardsModalTitle from 'components/AwardsModal/AwardsModalTitle';
 import Cat from 'components/AwardsModal/Cat';
 import userSelectors from 'redux/user/selector.user';
+import { toast } from 'react-toastify';
 
 // import PropTypes from 'prop-types';
 
@@ -42,10 +43,8 @@ const AwardsPage = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(giftsOperations.getGifts());
+        dispatch(giftsOperations.getGifts()).unwrap().then();
     }, [dispatch]);
-
-    // console.log(giftIds);
 
     const handleToggle = id => {
         if (giftIds.includes(id)) {
@@ -56,25 +55,37 @@ const AwardsPage = () => {
     };
 
     const handleConfirm = () => {
+        if (giftIds.length === 0) {
+            toast.warning('Please, choose your prize');
+            return;
+        }
         dispatch(giftsOperations.buyGifts({ giftIds }))
             .unwrap()
-            .then(() => setIsModalOpen(true))
-            .catch(console.log);
+            .then(() => {
+                setIsModalOpen(true);
+            })
+            .catch(error => {
+                toast.error(`${error.message}`);
+            });
     };
 
     return (
         <>
             <Container>
-                <div className={s.prize__label}>
-                    <PrizesIcon />
-                    <h2 className={s.title}> my prizes</h2>
+                <div className={s.info}>
+                    <div className={s.prize__label}>
+                        <PrizesIcon />
+                        <h2 className={s.title}> my prizes</h2>
+                    </div>
+                    <div className={s.progressBar}>
+                        <Desktop>
+                            <ProgressBar />
+                        </Desktop>
+                        <Tablet>
+                            <ProgressBar />
+                        </Tablet>
+                    </div>
                 </div>
-                <Desktop>
-                    <ProgressBar />
-                </Desktop>
-                <Tablet>
-                    <ProgressBar />
-                </Tablet>
                 <ul className={s.list}>
                     {gifts?.map(
                         ({ id, title, price, imageUrl, isSelected }) => (
@@ -105,23 +116,27 @@ const AwardsPage = () => {
                 {isModalOpen && (
                     <Modal onClose={() => setIsModalOpen(false)} showCloseBtn>
                         <Cat />
-                        <AwardsModalTitle>
-                            Congratulations! You get:
-                        </AwardsModalTitle>
-                        <ul className={s.modal__list}>
-                            <li className={s.modal__item}>
-                                <AwardsModalCard />
-                            </li>
-                            <li className={s.modal__item}>
-                                <AwardsModalCard />
-                            </li>
-                            <li className={s.modal__item}>
-                                <AwardsModalCard />
-                            </li>
-                            <li className={s.modal__item}>
-                                <AwardsModalCard />
-                            </li>
-                        </ul>
+                        <div className={s.box}>
+                            <AwardsModalTitle>
+                                Congratulations! You get:
+                            </AwardsModalTitle>
+                            <ul className={s.modal__list}>
+                                {purchasedGifts.length > 0 &&
+                                    purchasedGifts.map(
+                                        ({ id, title, imageUrl }) => (
+                                            <li
+                                                className={s.modal__item}
+                                                key={id}
+                                            >
+                                                <AwardsModalCard
+                                                    title={title}
+                                                    imageUrl={imageUrl}
+                                                />
+                                            </li>
+                                        )
+                                    )}
+                            </ul>
+                        </div>
                     </Modal>
                 )}
             </Container>
