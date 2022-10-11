@@ -7,6 +7,7 @@ import * as yup from 'yup';
 import s from '../AuthForm/AuthForm.module.scss';
 import { ReactComponent as GoogleIcon } from '../../assets/svg/Google.svg';
 import { toast } from 'react-toastify';
+import PropTypes from 'prop-types';
 
 const validationSchema = yup.object({
     email: yup
@@ -104,6 +105,11 @@ const AuthForm = () => {
             </form>
         </>
     );
+};
+AuthForm.propTypes = {
+    onSubmit: PropTypes.func.isRequired,
+    onClick: PropTypes.func.isRequired,
+    onChange: PropTypes.func.isRequired,
 };
 
 export default AuthForm;
