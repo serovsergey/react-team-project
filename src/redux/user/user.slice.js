@@ -60,7 +60,8 @@ const userSlice = createSlice({
         [tasksOperations.toggleCompleted.rejected]: setError,
 
         [giftsOperations.buyGifts.pending]: state => {
-            setPending();
+            state.isLoading = true;
+            state.error = null;
             state.purchasedGiftIds = initialState.purchasedGiftIds;
         },
         [giftsOperations.buyGifts.fulfilled]: (state, { payload }) => {

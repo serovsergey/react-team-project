@@ -1,9 +1,15 @@
 .section_auth_page {
+    display: flex;
+    flex-direction: column;
     padding-top: 40px;
     padding-bottom: 0;
+    min-height: calc(100vh - 65px);
 
     @media screen and (min-width: 768px) {
         padding-top: 60px;
+    }
+    @media screen and (min-width: 1280px) {
+        padding-top: 20px;
     }
 }
 
@@ -33,7 +39,7 @@
 .inner_images_bp320px {
     background-image: url('../../assets/images/mobile/1x/AuthImgBp320-1x.png');
     width: 100%;
-    min-height: 106px;
+    height: 106px;
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -50,18 +56,24 @@
     display: flex;
     position: relative;
     margin-top: 30px;
+    width: 100%;
+    align-items: flex-end;
+    // position: absolute;
+    // top: 60px;
+    // left: 0;
 
     &__family {
         background-image: url('../../assets/images/tablet/1x/Family1x.png');
 
-        width: 303px;
+        // width: 303px;
+        width: 45%;
         height: 146px;
         background-repeat: no-repeat;
         background-position: center;
         background-size: cover;
-        position: absolute;
-        top: 71px;
-        left: 0px;
+        // position: absolute;
+        // top: 71px;
+        // left: 0px;
 
         @media screen and (min-device-pixel-ratio: 2),
             (-webkit-min-device-pixel-ratio: 2),
@@ -73,16 +85,18 @@
     &__bulb {
         background-image: url('../../assets/images/tablet/1x/Bulb1x.png');
 
-        width: 242px;
-        min-height: 192px;
+        // width: 242px;
+        width: 28%;
+        height: 192px;
         background-repeat: no-repeat;
         background-position: center;
         background-size: cover;
 
-        position: absolute;
-        top: 26px;
-        left: 250px;
+        position: relative;
+        // top: 26px;
+        // left: 250px;
         z-index: 1;
+        margin: 0 -45px;
 
         @media screen and (min-device-pixel-ratio: 2),
             (-webkit-min-device-pixel-ratio: 2),
@@ -93,14 +107,15 @@
     }
     &__family2 {
         background-image: url('../../assets/images/tablet/1x/Family1x.png');
-        width: 320px;
-        min-height: 239px;
+        // width: 320px;
+        width: 39%;
+        height: 239px;
         background-repeat: no-repeat;
         background-position: center;
         background-size: cover;
-        position: absolute;
-        top: -22px;
-        left: 448px;
+        // position: absolute;
+        // top: -22px;
+        // left: 448px;
 
         @media screen and (min-device-pixel-ratio: 2),
             (-webkit-min-device-pixel-ratio: 2),
@@ -112,22 +127,21 @@
 }
 
 .inner_images_bp1280px {
-    display: flex;
-    position: relative;
+    position: absolute;
+    top: 60px;
+    left: 0;
 
     &__family {
         background-image: url('../../assets/images/desktop/1x/Family1-1x.png');
 
         width: 372px;
-        min-height: 306px;
+        height: 306px;
         background-repeat: no-repeat;
         background-position: center;
         background-size: cover;
         position: absolute;
-        top: -779px;
-        left: -10px;
-        margin-top: 20px;
-        margin-left: 16px;
+        top: 20px;
+        left: 6px;
 
         @media screen and (min-device-pixel-ratio: 2),
             (-webkit-min-device-pixel-ratio: 2),
@@ -140,12 +154,12 @@
         background-image: url('../../assets/images/desktop/1x/Bulb1x.png');
 
         width: 279px;
-        min-height: 264px;
+        height: 264px;
         background-repeat: no-repeat;
         background-position: center;
         background-size: cover;
         position: absolute;
-        top: -607px;
+        top: 172px;
         left: 205px;
 
         @media screen and (min-device-pixel-ratio: 2),
@@ -159,15 +173,14 @@
         background-image: url('../../assets/images/desktop/1x/Family2-1x.png');
         width: 359px;
         // width: 28%;
-        min-height: 290px;
+        height: 290px;
         background-repeat: no-repeat;
         background-position: center;
         background-size: cover;
         position: absolute;
-        top: -367px;
+        top: 432px;
         left: 204px;
         z-index: 1;
-        margin-top: 20px;
 
         @media screen and (min-device-pixel-ratio: 2),
             (-webkit-min-device-pixel-ratio: 2),
@@ -180,15 +193,13 @@
         background-image: url('../../assets/images/desktop/1x/Robot1x.png');
         width: 276px;
         // width: 21%;
-        min-height: 219px;
+        height: 219px;
         background-repeat: no-repeat;
         background-position: center;
         background-size: cover;
         position: relative;
-        top: -474px;
-        left: -10px;
-        margin-top: 20px;
-        margin-left: 16px;
+        top: 320px;
+        left: 6px;
 
         @media screen and (min-device-pixel-ratio: 2),
             (-webkit-min-device-pixel-ratio: 2),

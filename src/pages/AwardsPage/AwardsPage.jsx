@@ -1,5 +1,5 @@
 import s from './awardsPage.module.scss';
-import React from 'react';
+import React, { useEffect, Suspense } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import { useDispatch, useSelector } from 'react-redux';
 import Button from 'components/common/Button';
@@ -16,6 +16,7 @@ import Modal from 'components/common/Modal';
 import AwardsModalCard from 'components/AwardsModal/AwardsModalCard';
 import AwardsModalTitle from 'components/AwardsModal/AwardsModalTitle';
 import Cat from 'components/AwardsModal/Cat';
+import userSelectors from 'redux/user/selector.user';
 
 // import PropTypes from 'prop-types';
 
@@ -35,13 +36,30 @@ const Mobile = ({ children }) => {
 const AwardsPage = () => {
     const gifts = useSelector(giftsSelectors.getGifts);
     const isLoading = useSelector(giftsSelectors.getIsLoading);
+    const purchasedGifts = useSelector(userSelectors.getPurchasedGifts);
     const [giftIds, setGiftIds] = useState([]);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const dispatch = useDispatch();
-    console.log(gifts);
+
+    useEffect(() => {
+        dispatch(giftsOperations.getGifts());
+    }, [dispatch]);
+
+    // console.log(giftIds);
+
+    const handleToggle = id => {
+        if (giftIds.includes(id)) {
+            setGiftIds(state => state.filter(giftId => id !== giftId));
+        } else {
+            setGiftIds(state => [...state, id]);
+        }
+    };
 
     const handleConfirm = () => {
-        dispatch(giftsOperations.buyGifts());
+        dispatch(giftsOperations.buyGifts({ giftIds }))
+            .unwrap()
+            .then(() => setIsModalOpen(true))
+            .catch(console.log);
         setIsModalOpen(true);
     };
 
@@ -52,7 +70,6 @@ const AwardsPage = () => {
                     <PrizesIcon />
                     <h2 className={s.title}> my prizes</h2>
                 </div>
-
                 <Desktop>
                     <ProgressBar />
                 </Desktop>
@@ -69,10 +86,13 @@ const AwardsPage = () => {
                                     reward={price}
                                     imageUrl={imageUrl}
                                 >
-                                    <ToggleSwitch
-                                        isChecked={isSelected}
-                                        awardId={id}
-                                    />
+                                    {!isSelected && (
+                                        <ToggleSwitch
+                                            isChecked={giftIds.includes(id)}
+                                            awardId={id}
+                                            onToggleSwitchAwards={handleToggle}
+                                        />
+                                    )}
                                 </Card>
                             </li>
                         )
@@ -84,7 +104,7 @@ const AwardsPage = () => {
                     </Button>
                 </div>
                 {isModalOpen && (
-                    <Modal onClose={() => setIsModalOpen(false)}>
+                    <Modal onClose={() => setIsModalOpen(false)} showCloseBtn>
                         <Cat />
                         <AwardsModalTitle>
                             Congratulations! You get:
