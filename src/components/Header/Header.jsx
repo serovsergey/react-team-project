@@ -22,8 +22,12 @@ const Header = () => {
     const isDesktopScreen = useMediaQuery({ query: '(min-width: 1280px)' })
     
     const handleCloseModal = () => {
+        if(isDesktopScreen){
+            return
+        }
         setModalIsOpen(false)
     }
+    
 
  return(
     <header className={s.header}>

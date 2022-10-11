@@ -4,25 +4,35 @@ import {useState} from 'react';
 import { CgClose } from 'react-icons/cg';
 import Modal from '../../components/common/Modal';
 import  { ReactComponent as ImageIcon }  from '../../assets/svg/Image.svg';
+import { useDispatch } from 'react-redux';
+import tasksOperations from 'redux/tasks/operations.tasks';
 
 
 
 
 const CustomTaskBox = () => {
     const [modalOpen, setModalOpen] = useState(false)
-    const [taks, setTask] = useState('')
+    const [task, setTask] = useState('')
     const [points, setPoints] = useState('')
     const [image, setImage] = useState('')
-
+    const dispatch = useDispatch()
     const handleCloseModal = () => {
         setModalOpen(false)
     }
 
     const handleSubmit = event => {
         event.preventDefault()
-        const obj = {taks, points}
+        console.log(typeof(task))
+        // const obj = {title: task, reward: points}
+        const formData = new FormData
+        formData.set("title", task)
+        formData.set("reward", points)
+        formData.append("file", image)
+        console.log(formData)
+        dispatch(tasksOperations.createTask(formData))
         formReset()
     }
+
     const handleChange = event => {
         switch (event.target.name){
             case "task":
@@ -58,7 +68,7 @@ const CustomTaskBox = () => {
                     <div className={s.bottomWrapper}>
                         <form action="" onSubmit={handleSubmit} className={s.form}>
                             {/* <PencilIcon className={s.pensilIcon}/> */}
-                        <input type="text" onChange={handleChange} name='task' placeholder='Add task...' className={s.item} value={taks} />
+                        <input type="text" onChange={handleChange} name='task' placeholder='Add task...' className={s.item} value={task} />
                         <input type="number" onChange={handleChange} name='points' placeholder='Add points...' className={s.item}value={points}/>
                         <button type='submit' className={s.formButton}>Ok</button>
                         </form>
