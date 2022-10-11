@@ -60,6 +60,7 @@ const AwardsPage = () => {
             .unwrap()
             .then(() => setIsModalOpen(true))
             .catch(console.log);
+        setIsModalOpen(true);
     };
 
     return (
