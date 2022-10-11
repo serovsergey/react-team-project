@@ -35,8 +35,8 @@ const Mobile = ({ children }) => {
 
 const AwardsPage = () => {
     const gifts = useSelector(giftsSelectors.getGifts);
-  const isLoading = useSelector(giftsSelectors.getIsLoading);
-  const purchasedGifts = useSelector(userSelectors.getPurchasedGiftIds);
+    const isLoading = useSelector(giftsSelectors.getIsLoading);
+    const purchasedGifts = useSelector(userSelectors.getPurchasedGifts);
     const [giftIds, setGiftIds] = useState([]);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const dispatch = useDispatch();
