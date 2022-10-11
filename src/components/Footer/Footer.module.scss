@@ -36,10 +36,7 @@
             display: flex;
             border-left: none;
         }
-                  &:not(:last-child) {
-                      margin-bottom: 8px;
-                  }
-      
+         
     }
     
     &_item1 {
@@ -51,10 +48,7 @@
             display: inline-flex;
             border-left: none;
             }
-            &:not(:last-child) {
-                margin-bottom: 8px;
-                }
-
+         
      
           }
 

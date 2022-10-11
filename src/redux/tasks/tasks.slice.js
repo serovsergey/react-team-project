@@ -33,7 +33,7 @@ const tasksSlice = createSlice({
         [tasksOperations.setActiveSingle.pending]: setPending,
         [tasksOperations.setActiveSingle.fulfilled]: (state, { payload }) => {
             const updatedTaskIndex = state.items.findIndex(
-                task => task.id === payload.updatedTask.id
+                task => task._id === payload.updatedTask.id
             );
             state.items[updatedTaskIndex].days = payload.updatedTask.days;
         },
@@ -42,7 +42,7 @@ const tasksSlice = createSlice({
         [tasksOperations.toggleCompleted.pending]: setPending,
         [tasksOperations.toggleCompleted.fulfilled]: (state, { payload }) => {
             const updatedTaskIndex = state.items.findIndex(
-                task => task.id === payload.updatedTask.id
+                task => task._id === payload.updatedTask.id
             );
             state.items[updatedTaskIndex].days = payload.updatedTask.days;
         },
