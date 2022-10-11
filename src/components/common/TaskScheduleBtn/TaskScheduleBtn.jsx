@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { BsPlusLg } from 'react-icons/bs';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import s from './taskScheduleBtn.module.scss';
 import CheckDay from '../CheckDay';
 
@@ -47,7 +47,7 @@ const TaskScheduleBtn = ({ buttonId }) => {
 
 export default TaskScheduleBtn;
 
-TaskScheduleBtn.propTypes = {
-    isModalOpen: PropTypes.bool,
-    toggleModal: PropTypes.func.isRequired,
-};
+// TaskScheduleBtn.propTypes = {
+//     isModalOpen: PropTypes.bool,
+//     toggleModal: PropTypes.func.isRequired,
+// };
