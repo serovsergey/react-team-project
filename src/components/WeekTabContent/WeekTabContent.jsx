@@ -27,30 +27,33 @@ const WeekTabContent = ({ currentWeekRangeStr }) => {
     );
     const today = new Date().setHours(0, 0, 0, 0);
     const readOnly = currentDate.getTime() > today;
+    const noTasks = !dayTasks || !dayTasks.length;
     return (
         <div className={s.wrapper}>
-            <div className={s.contentHeader}>
-                <div className={s.info}>
-                    {currentWeekRangeStr && (
-                        <CurrentWeekRange
-                            currentWeekRangeStr={currentWeekRangeStr}
-                        />
-                    )}
-                    <CurrentDay currentDate={currentDate} />
+            <div className={s.main} style={{ flexGrow: noTasks ? 0 : 1 }}>
+                <div className={s.contentHeader}>
+                    <div className={s.info}>
+                        {currentWeekRangeStr && (
+                            <CurrentWeekRange
+                                currentWeekRangeStr={currentWeekRangeStr}
+                            />
+                        )}
+                        <CurrentDay currentDate={currentDate} />
+                    </div>
+                    <div className={s.progress}>
+                        {isMobile ? <ProgressBarMobile /> : <ProgressBar />}
+                    </div>
                 </div>
-                <div className={s.progress}>
-                    {isMobile ? <ProgressBarMobile /> : <ProgressBar />}
-                </div>
+                {!noTasks && (
+                    <CardList
+                        tasks={dayTasks}
+                        readOnly={readOnly}
+                        currentDate={currentDate}
+                    />
+                )}
             </div>
-            {dayTasks && dayTasks.length > 0 ? (
-                <CardList
-                    tasks={dayTasks}
-                    readOnly={readOnly}
-                    currentDate={currentDate}
-                />
-            ) : (
-                <NoTasks />
-            )}
+            {noTasks && <NoTasks />}
+
             <Footer />
         </div>
     );

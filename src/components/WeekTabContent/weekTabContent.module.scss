@@ -1,4 +1,6 @@
 .wrapper {
+  display: flex;
+  flex-direction: column;
   flex: 1;
   width: 320px;
   padding: 0px 20px;
@@ -13,10 +15,15 @@
 
   @media screen and (min-width: 1280px) {
     padding: 0;
-    padding: 0px 16px 0 107px;
+    // padding: 0px 16px 0 107px;
     // width: 100%;
     // display: flex;
   }
+}
+
+.main {
+  padding: 0px 16px 0 107px;
+  // flex-grow: 1;
 }
 
 .contentHeader {
