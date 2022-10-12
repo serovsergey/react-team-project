@@ -96,6 +96,8 @@
 .modal__list {
     // padding: 20px;
     // margin-bottom: 20px;
+    margin: 0 auto;
+    max-width: 500px;
     display: flex;
     flex-wrap: wrap;
     // align-items: center;
@@ -112,8 +114,8 @@
     @media screen and (min-width: 768px) {
         margin-bottom: 55px;
 
-        &:not(:last-child) {
-            margin-right: 25px;
+        &:not(:first-child) {
+            margin-left: 25px;
         }
     }
 }
