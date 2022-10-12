@@ -12,11 +12,16 @@ const MobileMenu = ({ closeModal }) => {
     const token = useSelector(authSelectors.getToken);
     const isTabletScreen = useMediaQuery({ query: '(max-width: 767px)' })
     const isDesktopScreen = useMediaQuery({ query: '(min-width: 1280px)' })
+    // document.body.style.overflow = 'hidden';
+       
 
     if(isDesktopScreen){
         return
     }
     return (
+        <>
+        <div className={s.overlay} onClick={closeModal}>
+        </div>
         <div className={s.menuContainer}>
             <div className={s.menuHeader}>
                {token && isTabletScreen && <LoggedNav />}
@@ -33,6 +38,8 @@ const MobileMenu = ({ closeModal }) => {
             </div>
             <NavList onClose={closeModal} />
         </div>
+        </>
+        
     );
 };
 

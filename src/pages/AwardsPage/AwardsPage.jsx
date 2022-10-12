@@ -1,6 +1,5 @@
 import s from './awardsPage.module.scss';
-import React, { useEffect, Suspense } from 'react';
-import { useMediaQuery } from 'react-responsive';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Button from 'components/common/Button';
 import Card from 'components/common/Card';
@@ -18,29 +17,36 @@ import AwardsModalTitle from 'components/AwardsModal/AwardsModalTitle';
 import Cat from 'components/AwardsModal/Cat';
 import userSelectors from 'redux/user/selector.user';
 import { toast } from 'react-toastify';
+import { MediaQuery } from 'hooks/useMediaQuery';
+import Footer from 'components/Footer';
+import { useMemo } from 'react';
 
 // import PropTypes from 'prop-types';
 
-const Desktop = ({ children }) => {
-    const isDesktop = useMediaQuery({ minWidth: 1280 });
-    return isDesktop ? children : null;
-};
-const Tablet = ({ children }) => {
-    const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1279 });
-    return isTablet ? children : null;
-};
-const Mobile = ({ children }) => {
-    const isMobile = useMediaQuery({ minWidth: 320, maxWidth: 767 });
-    return isMobile ? children : null;
-};
-
 const AwardsPage = () => {
+    const dispatch = useDispatch();
     const gifts = useSelector(giftsSelectors.getGifts);
-    const isLoading = useSelector(giftsSelectors.getIsLoading);
+    const userBalance = useSelector(userSelectors.getUserBalance);
+    // const isLoading = useSelector(giftsSelectors.getIsLoading);
     const purchasedGifts = useSelector(userSelectors.getPurchasedGifts);
     const [giftIds, setGiftIds] = useState([]);
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const dispatch = useDispatch();
+
+    const purchasedGiftsPrice = useMemo(
+        () =>
+            gifts?.reduce((acc, { id, price }) => {
+                return giftIds?.includes(id) ? (acc += price) : acc;
+            }, 0),
+        [giftIds, gifts]
+    );
+
+    const cheapestGift = useMemo(
+        () =>
+            gifts ? Math.min(...gifts?.map(({ price }) => price)) : Infinity,
+        [gifts]
+    );
+
+    const isPurchaseAvailable = userBalance >= cheapestGift && giftIds.length;
 
     useEffect(() => {
         dispatch(giftsOperations.getGifts()).unwrap().then();
@@ -55,10 +61,10 @@ const AwardsPage = () => {
     };
 
     const handleConfirm = () => {
-        if (giftIds.length === 0) {
-            toast.warning('Please, choose your prize');
-            return;
-        }
+        // if (giftIds.length === 0) {
+        //     toast.warning('Please, choose your prize');
+        //     return;
+        // }
         dispatch(giftsOperations.buyGifts({ giftIds }))
             .unwrap()
             .then(() => {
@@ -78,12 +84,12 @@ const AwardsPage = () => {
                         <h2 className={s.title}> my prizes</h2>
                     </div>
                     <div className={s.progressBar}>
-                        <Desktop>
+                        <MediaQuery.Desktop>
                             <ProgressBar position="right" />
-                        </Desktop>
-                        <Tablet>
+                        </MediaQuery.Desktop>
+                        <MediaQuery.Tablet>
                             <ProgressBar position="right" />
-                        </Tablet>
+                        </MediaQuery.Tablet>
                     </div>
                 </div>
                 <ul className={s.list}>
@@ -96,7 +102,9 @@ const AwardsPage = () => {
                                     reward={price}
                                     imageUrl={imageUrl}
                                 >
-                                    {!isSelected && (
+                                    {(userBalance - purchasedGiftsPrice >=
+                                        price ||
+                                        giftIds.includes(id)) && (
                                         <ToggleSwitch
                                             isChecked={giftIds.includes(id)}
                                             awardId={id}
@@ -109,10 +117,20 @@ const AwardsPage = () => {
                     )}
                 </ul>
                 <div className={s.btn}>
-                    <Button type="submit" onClick={handleConfirm}>
+                    <Button
+                        type="submit"
+                        onClick={handleConfirm}
+                        disabled={!isPurchaseAvailable}
+                    >
                         confirm
                     </Button>
                 </div>
+                <MediaQuery.Desktop>
+                    <Footer />
+                </MediaQuery.Desktop>
+                <MediaQuery.Tablet>
+                    <Footer />
+                </MediaQuery.Tablet>
                 {isModalOpen && (
                     <Modal onClose={() => setIsModalOpen(false)} showCloseBtn>
                         <Cat />
@@ -140,9 +158,9 @@ const AwardsPage = () => {
                     </Modal>
                 )}
             </Container>
-            <Mobile>
+            <MediaQuery.Mobile>
                 <ProgressBarMobile />
-            </Mobile>
+            </MediaQuery.Mobile>
         </>
     );
 };

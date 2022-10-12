@@ -2,12 +2,15 @@
     margin-top: 60px;
 
     @media screen and (min-width: 768px) {
+        margin-top: 40px;
         display: flex;
         justify-content: center;
     }
+
     @media screen and (min-width: 1280px) {
         display: flex;
         justify-content: flex-end;
+        margin-top: 45px;
         margin-right: 16px;
         margin-bottom: 40px;
     }
@@ -17,16 +20,20 @@
         margin: 0 auto;
         align-items: center;
         text-align: center;
+
         @media screen and (min-width: 768px) {
             margin-bottom: 8px;
             display: inline-flex;
         }
+
         @media screen and (min-width: 1280px) {
             margin-right: 0;
         }
     }
+
     &_item {
         margin-bottom: 8px;
+
         &:first-child {
             display: inline-flex;
             border-left: none;

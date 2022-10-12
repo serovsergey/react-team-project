@@ -1,0 +1,58 @@
+:root {
+  --primary-bcg-color: #FAFAFA;
+  --secondary-bcg-color: #FFFFFF;
+  --input-form-color: #F6F7FB;
+  --footer-mobile-color: #F1F1F1;
+  --orange-color: #FFBC33;
+  --points-color: #5679D7;
+  --days-check-color: #3E7ADC;
+  --success-color: #8EC63F;
+  --fail-color: #FF4965;
+  --progressbar-done-color: #9ECB44;
+  --progressbar-undone-color: #E0E0E0;
+  --weekday-color: rgba(255, 255, 255, 1);
+  --plus-btn-color: linear-gradient(180deg, #FFB532 0%, #FFD521 100%);
+}
+
+.card {
+  width: 95px;
+  display: flex;
+  flex-direction: column;
+}
+@media screen and (min-width: 768px) {
+  .card {
+    width: 100px;
+  }
+}
+
+.imageWrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 95px;
+  height: 95px;
+  border: 5px solid var(--orange-color);
+  border-radius: 50%;
+  overflow: hidden;
+}
+@media screen and (min-width: 768px) {
+  .imageWrap {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+.img {
+  height: 100%;
+}
+
+.title {
+  margin-top: 10px;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 1.25;
+  text-align: center;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #000000;
+}/*# sourceMappingURL=awardsModalCard.module.css.map */

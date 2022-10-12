@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useMediaQuery } from 'react-responsive';
 import userOperations from 'redux/user/operations.user';
 import weekSelectors from 'redux/week/selector.week';
+
 // import PropTypes from 'prop-types';
 
 import s from './homePage.module.scss';
