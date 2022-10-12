@@ -35,7 +35,6 @@ const Header = () => {
         <div className={s.container}>
         <Logo />
         {token && <ScoreBox />}
-        {/* {isDesktopScreen && handleCloseModal()} */}
         {token && isDesktopScreen && <NavList />}
         {token ? <><button type='button' onClick={() => setModalIsOpen(true)}className={s.button}>
             <IoIosMenu color="rgba(133, 133, 152, 1)"size={22} />
