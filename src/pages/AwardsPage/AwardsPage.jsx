@@ -79,10 +79,10 @@ const AwardsPage = () => {
                     </div>
                     <div className={s.progressBar}>
                         <Desktop>
-                            <ProgressBar />
+                            <ProgressBar position="right" />
                         </Desktop>
                         <Tablet>
-                            <ProgressBar />
+                            <ProgressBar position="right" />
                         </Tablet>
                     </div>
                 </div>

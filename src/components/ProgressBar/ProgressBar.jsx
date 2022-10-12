@@ -7,7 +7,10 @@ import 'react-sweet-progress/lib/style.css';
 import s from './ProgressBar.module.scss';
 import weekSelectors from '../../redux/week/selector.week';
 
-const ProgressBar = () => {
+const ProgressBar = ({ position = 'center' }) => {
+    const getStyle = () => {
+        return position === 'center' ? `${s.stats}` : `${s.stats} ${s.right}`;
+    };
     const userPoints = useSelector(weekSelectors.getRewardsGained);
     const countPoints = useSelector(weekSelectors.getRewardsPlanned);
     let percent = 100;
@@ -19,7 +22,7 @@ const ProgressBar = () => {
     }
     return (
         <div className={s.wrap}>
-            <div className={s.stats}>
+            <div className={getStyle()}>
                 <p className={s.stats__progress}>
                     {'Points earned this week:'}
                     <span className={s.stats__number}>{userPoints}</span>
