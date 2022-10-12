@@ -8,7 +8,7 @@ import tasksOperations from 'redux/tasks/operations.tasks';
 
 import s from './cardList.module.scss';
 
-const CardList = ({ tasks, readOnly, currentDate }) => {
+const CardList = ({ tasks, readOnly, notAvailable, currentDate }) => {
     const dispatch = useDispatch();
     const handleToggle = async taskId => {
         try {
@@ -34,11 +34,13 @@ const CardList = ({ tasks, readOnly, currentDate }) => {
                     {!readOnly ? (
                         <TaskCompletedInd isCompleted={completed} />
                     ) : (
-                        <ToggleSwitch
-                            isChecked={completed}
-                            taskId={_id}
-                            onToggle={handleToggle}
-                        />
+                        !notAvailable && (
+                            <ToggleSwitch
+                                isChecked={completed}
+                                taskId={_id}
+                                onToggle={handleToggle}
+                            />
+                        )
                     )}
                 </Card>
             ))}

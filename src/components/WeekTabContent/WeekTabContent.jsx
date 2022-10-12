@@ -15,47 +15,46 @@ import tasksSelectors from 'redux/tasks/selector.tasks';
 
 import s from './weekTabContent.module.scss';
 
-const WeekTabContent = ({ currentWeekRangeStr }) => {
-    // const [searchParams, setSearchParams] = useSearchParams();
-    // const isDesktop = useMediaQuery({ minWidth: 1280 });
+const WeekTabContent = ({ currentWeekRangeStr, weekDays }) => {
     const currentDate = useSelector(commonSelectors.getCurrentDate);
-
     const isMobile = useMediaQuery({ maxWidth: 767.97 });
-    // const tasks = useSelector(tasksSelectors.getTasks);
     const dayTasks = useSelector(state =>
         tasksSelectors.selectDayTasks(state, currentDate)
     );
     const today = new Date().setHours(0, 0, 0, 0);
     const readOnly = currentDate.getTime() > today;
+    const notAvailable = currentDate.getDate() < today;
     const noTasks = !dayTasks || !dayTasks.length;
     return (
-        <div className={s.wrapper}>
-            <div className={s.main} style={{ flexGrow: noTasks ? 0 : 1 }}>
-                <div className={s.contentHeader}>
-                    <div className={s.info}>
-                        {currentWeekRangeStr && (
-                            <CurrentWeekRange
-                                currentWeekRangeStr={currentWeekRangeStr}
-                            />
-                        )}
-                        <CurrentDay currentDate={currentDate} />
+        <>
+            <div className={s.wrapper}>
+                <div className={s.main} style={{ flexGrow: noTasks ? 0 : 1 }}>
+                    <div className={s.contentHeader}>
+                        <div className={s.info}>
+                            {currentWeekRangeStr && (
+                                <CurrentWeekRange
+                                    currentWeekRangeStr={currentWeekRangeStr}
+                                />
+                            )}
+                            <CurrentDay currentDate={currentDate} />
+                        </div>
+                        <div className={s.progress}>
+                            {isMobile ? <ProgressBarMobile /> : <ProgressBar />}
+                        </div>
                     </div>
-                    <div className={s.progress}>
-                        {isMobile ? <ProgressBarMobile /> : <ProgressBar />}
-                    </div>
+                    {!noTasks && (
+                        <CardList
+                            tasks={dayTasks}
+                            readOnly={readOnly}
+                            notAvailable={notAvailable}
+                            currentDate={currentDate}
+                        />
+                    )}
                 </div>
-                {!noTasks && (
-                    <CardList
-                        tasks={dayTasks}
-                        readOnly={readOnly}
-                        currentDate={currentDate}
-                    />
-                )}
+                {noTasks && <NoTasks />}
+                {!isMobile && <Footer />}
             </div>
-            {noTasks && <NoTasks />}
-
-            <Footer />
-        </div>
+        </>
     );
 };
 
