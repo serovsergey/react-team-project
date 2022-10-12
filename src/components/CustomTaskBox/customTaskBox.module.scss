@@ -1,3 +1,4 @@
+@import "../../sass/colors";
 .box {
     position: fixed;
     width: 500px;
@@ -6,9 +7,9 @@
     height: 50px;
 
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
     align-items: center;
-    z-index: 1;
+   
     @media screen and (min-width: 768px) {
         position: relative;
         justify-content: center;
@@ -45,8 +46,7 @@
     width: 54px;
     height: 54px;
     margin-left: 20px;
-
-    background: linear-gradient(180deg, #ffb532 0%, #ffd521 100%);
+    background: var(--plus-btn-color);
     transition: box-shadow 250ms ease-in-out;
     &:hover,
     &:focus {
@@ -72,22 +72,6 @@
     }
 }
 
-// .closeButton{
-//     border: none;
-//     background-color: transparent;
-//     margin-left: auto;
-//     cursor: pointer;
-//     height: 18px;
-//     padding: 0;
-//     transition: transform 250ms ease-in-out;
-
-//     &:hover,
-//     &:focus .cross{
-//         transform: scale(1.15);
-
-//     }
-// }
-
 .imageLabel {
     width: 20px;
     height: 20px;
@@ -104,7 +88,7 @@
 .bottomWrapper {
     width: 100%;
     padding: 23px 30px;
-    background-color: #ffb532;
+    background-color: var(--orange-color);
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
 }
@@ -128,7 +112,7 @@
     border-radius: 5px;
     border: none;
 
-    background-color: white;
+    background-color: var(--secondary-bcg-color);
 
     font-weight: bold;
     transition: box-shadow 250ms ease-in-out;
@@ -139,17 +123,17 @@
 }
 .item {
     outline: none;
-    background-color: #ffb532;
+    background-color: var(--orange-color);
     border: none;
-    border-bottom: 1px solid white;
-    color: white;
+    border-bottom: 1px solid var(--secondary-bcg-color);
+    color: var(--secondary-bcg-color);
     font-style: italic;
     transition: transform 250ms ease-in-out;
     &:first-child {
         margin-bottom: 10px;
     }
     &::placeholder {
-        color: white;
+        color: var(--secondary-bcg-color);
     }
     &:hover,
     &:focus {
