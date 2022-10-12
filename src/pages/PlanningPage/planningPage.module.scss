@@ -1,13 +1,97 @@
+.wrapper {
+  margin: 40 auto;
+
+  @media screen and (min-width: 768px) and (max-width: 1279px) {
+    display: flex;
+    flex-direction: column;
+    margin-top: 40px;
+        margin-bottom: 40px;
+    
+}
+    @media screen and (min-width: 1280px) {
+        margin-top: 40px;
+        margin-bottom: 40px;
+        display: flex;
+       flex-direction: row;
+        justify-content: space-between;
+        align-items: baseline;
+    }
+    
+}
+
+.date {
+    display: flex;
+    flex-direction: column;
+    @media screen and (min-width: 768px) and (max-width: 1279px) {
+        flex-direction: row;
+        align-items: baseline;
+        justify-content: center;
+    }
+    @media screen and (min-width: 1280px) {
+        flex-direction: row;
+        align-items: baseline;
+    }
+}
+
 .title {
-font-family: 'Montserrat';
-font-style: normal;
-font-weight: 400;
-font-size: 18px;
-line-height: 1/22;
-letter-spacing: 0.04em;
-color: #000000;
-margin-top: 20px;
-text-align: center;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1/22;
+    letter-spacing: 0.04em;
+    color: #000000;
+    margin-top: 20px;
+    text-align: center;
 
+    @media screen and (min-width: 768px) and (max-width: 1279px) {
+     margin-top: 0;
+  }
+    @media screen and (min-width: 1280px) {
+      margin-top: 0;
+  }
+}
 
+.week {
+    display: inline-block;
+
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 8px;
+    margin-bottom: 32px;
+    padding: 7px 15px;
+    border: 1px solid #ffbc33;
+    border-radius: 6px;
+
+    font-family: 'Montserrat';
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 1.25;
+    text-align: center;
+    letter-spacing: 0.2em;
+
+    color: #000000;
+
+    @media screen and (min-width: 768px) and (max-width: 1279px) {
+        margin: 0 0 0 10px;
+    }
+
+    @media screen and (min-width: 1280px) {
+        margin: 0 0 0 10px;
+    }
+}
+
+.list {
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 20px;
+
+    @media screen and (min-width: 768px) {
+        grid-template-columns: 1fr 1fr;
+        column-gap: 32px;
+    }
+
+    @media screen and (min-width: 1280px) {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
 }

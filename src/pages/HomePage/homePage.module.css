@@ -1,0 +1,12 @@
+.wrapper {
+  background-color: #FAFAFA;
+  margin-left: auto;
+  margin-right: auto;
+}
+@media screen and (min-width: 1280px) {
+  .wrapper {
+    height: calc(100vh - 65px);
+    overflow: hidden;
+    display: flex;
+  }
+}/*# sourceMappingURL=homePage.module.css.map */

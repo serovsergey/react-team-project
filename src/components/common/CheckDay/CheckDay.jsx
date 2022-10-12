@@ -1,15 +1,14 @@
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { useMediaQuery } from 'react-responsive';
+import tasksSelectors from 'redux/tasks/selector.tasks';
 import weekSelectors from 'redux/week/selector.week';
+import CheckBox from '../CheckBox';
 import s from './CheckDay.module.scss';
 
 const CheckDay = () => {
     const weekDates = useSelector(weekSelectors.getWeekDates);
-    const isDesktop = useMediaQuery({ minWidth: 1280 });
-    const isMobile = useMediaQuery({ maxWidth: 767 });
-    
-
+//    const selectDayTasks = useSelector(tasksSelectors.selectDayTasks)
+   
 
     const weekDays = useMemo(
         () =>
@@ -24,25 +23,23 @@ const CheckDay = () => {
             }),
         [weekDates]
     );
-
-        return (
+ 
+    return (
         <>
             <div className={s.weekBox}>
                 <form action="">
                     <ul>
                         {weekDays?.map(({ name, title }) => (
                             <li key={name}>
-                            <label>
-                                <input
-                                    type="checkbox"
-                                    name="day"
-                                    value={name}
-                                />
-                                <span className={s.day}>{title}</span>
-                            </label>
-                            </li>)
-                        )}
-                        
+                                <label className={s.label}>
+                                    <CheckBox
+                                        className={s.checkBox}
+                                        id={name}
+                                    />
+                                    <span className={s.day}>{title}</span>
+                                </label>
+                            </li>
+                        ))}
                     </ul>
                 </form>
             </div>
