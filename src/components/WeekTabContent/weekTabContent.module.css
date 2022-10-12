@@ -1,0 +1,63 @@
+.wrapper {
+  flex: 1;
+  width: 320px;
+  padding: 0px 20px;
+  margin-left: auto;
+  margin-right: auto;
+  overflow-y: auto;
+}
+@media screen and (min-width: 768px) {
+  .wrapper {
+    padding: 0px 32px;
+    width: 768px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .wrapper {
+    padding: 0;
+    padding: 0px 16px 0 107px;
+  }
+}
+
+.contentHeader {
+  display: flex;
+  flex-direction: column-reverse;
+  padding: 40px 0 32px;
+}
+@media screen and (min-width: 768px) {
+  .contentHeader {
+    padding: 40px 0;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .contentHeader {
+    flex-direction: row;
+  }
+}
+
+.info {
+  background-color: #FAFAFA;
+  display: flex;
+  flex-basis: 100%;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+@media screen and (min-width: 1280px) {
+  .info {
+    align-items: flex-start;
+  }
+}
+
+.progress {
+  width: 100%;
+}
+@media screen and (max-width: 767.98px) {
+  .progress {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1;
+  }
+}/*# sourceMappingURL=weekTabContent.module.css.map */

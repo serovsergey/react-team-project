@@ -1,0 +1,40 @@
+.wrapper {
+  text-align: center;
+  margin-top: 20px;
+}
+@media screen and (min-width: 768px) {
+  .wrapper {
+    margin-top: 24px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .wrapper {
+    margin-top: 0;
+  }
+}
+
+.date {
+  font-size: 12px;
+  line-height: 1.25;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  display: block;
+  margin-top: 4px;
+}
+@media screen and (min-width: 768px) {
+  .date {
+    margin-top: 0;
+    display: inline;
+  }
+}
+.label {
+  color: #A6ABB9;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.25;
+}
+@media screen and (min-width: 768px) {
+  .label {
+    margin-right: 20px;
+  }
+}/*# sourceMappingURL=currentDay.module.css.map */
