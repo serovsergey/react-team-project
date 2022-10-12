@@ -1,15 +1,18 @@
 import Card from 'components/common/Card';
 import TaskCompletedInd from 'components/common/TaskCompletedInd';
+import LoaderBig from 'components/LoaderBig';
 import ToggleSwitch from 'components/toggleSwitch/ToggleSwitch';
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import tasksOperations from 'redux/tasks/operations.tasks';
+import tasksSelectors from 'redux/tasks/selector.tasks';
 // import PropTypes from 'prop-types';
 
 import s from './cardList.module.scss';
 
 const CardList = ({ tasks, readOnly, notAvailable, currentDate }) => {
     const dispatch = useDispatch();
+    const isLoading = useSelector(tasksSelectors.getIsLoading);
     const handleToggle = async taskId => {
         try {
             await dispatch(
@@ -44,6 +47,7 @@ const CardList = ({ tasks, readOnly, notAvailable, currentDate }) => {
                     )}
                 </Card>
             ))}
+            {isLoading && <LoaderBig />}
         </ul>
     );
 };
