@@ -1,55 +1,63 @@
-
-
-.userInfo{
+.userInfo {
     display: flex;
     align-items: center;
 }
 
-.userItem{
-    padding-left:15px ;
+.text {
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 1.25;
+}
+
+.userItem {
+    padding-left: 15px;
 
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 700;
     font-size: 12px;
-    line-height: 15px;
+    line-height: 1.25;
     color: white;
-    
-    &:first-child{
+
+    &:first-child {
         display: flex;
         justify-content: center;
         align-items: center;
         padding-left: 0;
         border-right: 1px solid white;
         padding-right: 15px;
-        @media screen and (min-width: 768px){
+
+        @media screen and (min-width: 768px) {
             border-right: 1px solid rgba(133, 133, 152, 1);
         }
     }
-    @media screen and (min-width: 768px){
+
+    @media screen and (min-width: 768px) {
         color: rgba(133, 133, 152, 1);
     }
 }
 
-.logoutBtn{
+.logoutBtn {
     border: none;
     background-color: transparent;
     cursor: pointer;
-    &:hover .icon{
+
+    &:hover .icon {
         fill: black;
-        
+
     }
 }
 
-.icon{
+.icon {
     fill: white;
     transition: fill 250ms ease-in-out;
-    @media screen and (min-width: 768px){
+
+    @media screen and (min-width: 768px) {
         fill: rgba(133, 133, 152, 1);
     }
 }
 
-.iconName{
+.iconName {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -61,27 +69,39 @@
 
     font-size: 20px;
     color: white;
-    
+
 }
 
-.buttonList{
+.buttonList {
     display: flex;
     margin-top: 10px;
 }
 
-.item{
-    border: none;
-    background-color: #FFBC33;  
-    border-radius: 5px;
-    padding: 8px 15px;
-    transition: box-shadow 250ms ease-in-out;
-    &:first-child{
+.item {
+    width: 100px;
+    height: 48px;
+
+    &:not(:last-child) {
         margin-right: 10px;
     }
 
-    &:hover,
-    &:focus {
-        background-color: #ffb522;
-        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    }
+    // border: none;
+    // background-color: #FFBC33;  
+    // border-radius: 5px;
+    // padding: 8px 15px;
+    // transition: box-shadow 250ms ease-in-out;
+    // &:first-child{
+    //     margin-right: 10px;
+    // }
+
+    // &:hover,
+    // &:focus {
+    //     background-color: #ffb522;
+    //     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    // }
+}
+
+.wrapper {
+    padding: 20px;
+    text-align: center;
 }

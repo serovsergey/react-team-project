@@ -1,6 +1,5 @@
 import s from './awardsPage.module.scss';
-import React, { useEffect, Suspense } from 'react';
-import { useMediaQuery } from 'react-responsive';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Button from 'components/common/Button';
 import Card from 'components/common/Card';
@@ -17,35 +16,23 @@ import AwardsModalCard from 'components/AwardsModal/AwardsModalCard';
 import AwardsModalTitle from 'components/AwardsModal/AwardsModalTitle';
 import Cat from 'components/AwardsModal/Cat';
 import userSelectors from 'redux/user/selector.user';
+import { toast } from 'react-toastify';
+import { MediaQuery } from 'hooks/useMediaQuery';
+import Footer from 'components/Footer';
 
 // import PropTypes from 'prop-types';
 
-const Desktop = ({ children }) => {
-    const isDesktop = useMediaQuery({ minWidth: 1280 });
-    return isDesktop ? children : null;
-};
-const Tablet = ({ children }) => {
-    const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1279 });
-    return isTablet ? children : null;
-};
-const Mobile = ({ children }) => {
-    const isMobile = useMediaQuery({ minWidth: 320, maxWidth: 767 });
-    return isMobile ? children : null;
-};
-
 const AwardsPage = () => {
     const gifts = useSelector(giftsSelectors.getGifts);
-    const isLoading = useSelector(giftsSelectors.getIsLoading);
+    // const isLoading = useSelector(giftsSelectors.getIsLoading);
     const purchasedGifts = useSelector(userSelectors.getPurchasedGifts);
     const [giftIds, setGiftIds] = useState([]);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(giftsOperations.getGifts());
+        dispatch(giftsOperations.getGifts()).unwrap().then();
     }, [dispatch]);
-
-    // console.log(giftIds);
 
     const handleToggle = id => {
         if (giftIds.includes(id)) {
@@ -56,26 +43,37 @@ const AwardsPage = () => {
     };
 
     const handleConfirm = () => {
+        if (giftIds.length === 0) {
+            toast.warning('Please, choose your prize');
+            return;
+        }
         dispatch(giftsOperations.buyGifts({ giftIds }))
             .unwrap()
-            .then(() => setIsModalOpen(true))
-            .catch(console.log);
-        setIsModalOpen(true);
+            .then(() => {
+                setIsModalOpen(true);
+            })
+            .catch(error => {
+                toast.error(`${error.message}`);
+            });
     };
 
     return (
         <>
             <Container>
-                <div className={s.prize__label}>
-                    <PrizesIcon />
-                    <h2 className={s.title}> my prizes</h2>
+                <div className={s.info}>
+                    <div className={s.prize__label}>
+                        <PrizesIcon />
+                        <h2 className={s.title}> my prizes</h2>
+                    </div>
+                    <div className={s.progressBar}>
+                        <MediaQuery.Desktop>
+                            <ProgressBar position="right" />
+                        </MediaQuery.Desktop>
+                        <MediaQuery.Tablet>
+                            <ProgressBar position="right" />
+                        </MediaQuery.Tablet>
+                    </div>
                 </div>
-                <Desktop>
-                    <ProgressBar />
-                </Desktop>
-                <Tablet>
-                    <ProgressBar />
-                </Tablet>
                 <ul className={s.list}>
                     {gifts?.map(
                         ({ id, title, price, imageUrl, isSelected }) => (
@@ -103,32 +101,42 @@ const AwardsPage = () => {
                         confirm
                     </Button>
                 </div>
+                <MediaQuery.Desktop>
+                    <Footer />
+                </MediaQuery.Desktop>
+                <MediaQuery.Tablet>
+                    <Footer />
+                </MediaQuery.Tablet>
                 {isModalOpen && (
                     <Modal onClose={() => setIsModalOpen(false)} showCloseBtn>
                         <Cat />
-                        <AwardsModalTitle>
-                            Congratulations! You get:
-                        </AwardsModalTitle>
-                        <ul className={s.modal__list}>
-                            <li className={s.modal__item}>
-                                <AwardsModalCard />
-                            </li>
-                            <li className={s.modal__item}>
-                                <AwardsModalCard />
-                            </li>
-                            <li className={s.modal__item}>
-                                <AwardsModalCard />
-                            </li>
-                            <li className={s.modal__item}>
-                                <AwardsModalCard />
-                            </li>
-                        </ul>
+                        <div className={s.box}>
+                            <AwardsModalTitle>
+                                Congratulations! You get:
+                            </AwardsModalTitle>
+                            <ul className={s.modal__list}>
+                                {purchasedGifts.length > 0 &&
+                                    purchasedGifts.map(
+                                        ({ id, title, imageUrl }) => (
+                                            <li
+                                                className={s.modal__item}
+                                                key={id}
+                                            >
+                                                <AwardsModalCard
+                                                    title={title}
+                                                    imageUrl={imageUrl}
+                                                />
+                                            </li>
+                                        )
+                                    )}
+                            </ul>
+                        </div>
                     </Modal>
                 )}
             </Container>
-            <Mobile>
+            <MediaQuery.Mobile>
                 <ProgressBarMobile />
-            </Mobile>
+            </MediaQuery.Mobile>
         </>
     );
 };

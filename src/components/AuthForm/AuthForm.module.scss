@@ -89,6 +89,7 @@
         border: none;
         padding: 12px 22px 12px 8px;
         margin-top: 10px;
+
         &__black {
             color: #000;
             font-size: 44px;
@@ -108,5 +109,25 @@
         letter-spacing: 0.04em;
 
         color: #eb5757;
+    }
+}
+
+.item {
+    min-width: 135px;
+
+    @media screen and (min-width: 768px) {
+        width: 160px;
+    }
+
+    &:not(:last-child) {
+        margin-right: 10px;
+
+        @media screen and (min-width: 768px) {
+            margin-right: 16px;
+        }
+
+        @media screen and (min-width: 1280px) {
+            margin-right: 8px;
+        }
     }
 }

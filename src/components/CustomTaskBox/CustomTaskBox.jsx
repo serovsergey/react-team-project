@@ -3,23 +3,37 @@ import s from '../CustomTaskBox/customTaskBox.module.scss';
 import { useState } from 'react';
 // import { CgClose } from 'react-icons/cg';
 import Modal from '../../components/common/Modal';
+import { useDispatch } from 'react-redux';
+import tasksOperations from 'redux/tasks/operations.tasks';
 import { ReactComponent as ImageIcon } from '../../assets/svg/Image.svg';
+import { toast } from 'react-toastify';
 
 const CustomTaskBox = () => {
     const [modalOpen, setModalOpen] = useState(false);
-    const [taks, setTask] = useState('');
+    const [task, setTask] = useState('');
     const [points, setPoints] = useState('');
-    const [image, setImage] = useState('');
-
-    // const handleCloseModal = () => {
-    //     setModalOpen(false);
-    // };
+    const [file, setFile] = useState(null);
+    const dispatch = useDispatch()
 
     const handleSubmit = event => {
-        event.preventDefault();
-        const obj = { taks, points };
-        formReset();
-    };
+        event.preventDefault()
+        if(!task || !points){
+            return toast(`fields "Add Task" and "Add Points" are required`)
+        }
+        const formData = new FormData()
+        formData.append("title", task)
+        formData.append("reward", points)
+        if(file){
+            formData.append("file", file)
+        }
+        
+        
+        dispatch(tasksOperations.createTask(formData))
+        formReset()
+        toast(`Task added successfully`)
+        setModalOpen(false)
+    }
+
     const handleChange = event => {
         switch (event.target.name) {
             case 'task':
@@ -31,8 +45,12 @@ const CustomTaskBox = () => {
         }
     };
     const handleImageChange = event => {
-        setImage(event.target.value);
-        console.log(event.target.value);
+        const sizeOfMegabites = event.target?.files[0]?.size / 102400
+        console.log(sizeOfMegabites)
+        if(sizeOfMegabites > 10){
+            return toast("The file must be no more than 10 mb")
+        }
+        setFile(event.target?.files[0]);
     };
     const formReset = () => {
         setTask('');
@@ -50,15 +68,7 @@ const CustomTaskBox = () => {
             {modalOpen && (
                 <Modal onClose={() => setModalOpen(false)} showCloseBtn>
                     <div className={s.topWrapper}>
-                        {/* <button
-                            type="button"
-                            onClick={handleCloseModal}
-                            className={s.closeButton}
-                        >
-                            <CgClose size={18} className={s.cross} />
-                        </button> */}
                         <label className={s.imageLabel}>
-                            {' '}
                             <ImageIcon className={s.imageIcon} />
                             <input
                                 type="file"
@@ -66,7 +76,7 @@ const CustomTaskBox = () => {
                                 onChange={handleImageChange}
                                 className={s.imageInput}
                             />
-                        </label>
+                        </label>   
                     </div>
                     <div className={s.bottomWrapper}>
                         <form
@@ -81,7 +91,7 @@ const CustomTaskBox = () => {
                                 name="task"
                                 placeholder="Add task..."
                                 className={s.item}
-                                value={taks}
+                                value={task}
                             />
                             <input
                                 type="number"

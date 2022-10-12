@@ -6,6 +6,7 @@ import { useDispatch } from 'react-redux';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import giftsOperations from 'redux/gifts/operations.gifts';
 import userOperations from 'redux/user/operations.user';
+// import { useGoogleAuth } from 'hooks/useGoogleAuth';
 
 const HomePage = lazy(() => import('./pages/HomePage'));
 const PlanningPage = lazy(() => import('./pages/PlanningPage'));
@@ -19,6 +20,9 @@ export const App = () => {
         dispatch(userOperations.getUserInfo());
         // dispatch(giftsOperations.getGifts());
     }, [dispatch]);
+
+    // const isLoading = useGoogleAuth();
+
     return (
         <Routes>
             <Route path="/" element={<SharedLayoutPage />}>

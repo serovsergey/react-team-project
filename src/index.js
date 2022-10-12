@@ -12,7 +12,7 @@ import './index.css';
 ReactDOM.createRoot(document.getElementById('root')).render(
     <Provider store={store}>
         <PersistGate persistor={persistor}>
-            <BrowserRouter basename="/react-team-project">
+            <BrowserRouter>
                 <App />
                 <ToastContainer />
             </BrowserRouter>
