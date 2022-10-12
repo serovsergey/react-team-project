@@ -6,27 +6,32 @@ import Modal from '../../components/common/Modal';
 import { useDispatch } from 'react-redux';
 import tasksOperations from 'redux/tasks/operations.tasks';
 import { ReactComponent as ImageIcon } from '../../assets/svg/Image.svg';
+import { toast } from 'react-toastify';
 
 const CustomTaskBox = () => {
     const [modalOpen, setModalOpen] = useState(false);
     const [task, setTask] = useState('');
     const [points, setPoints] = useState('');
-    const [image, setImage] = useState('');
+    const [file, setFile] = useState(null);
     const dispatch = useDispatch()
 
     const handleSubmit = event => {
         event.preventDefault()
-        console.log(typeof(task))
-        // headers: { 'Content-Type': 'multipart/form-data' }
-        // const obj = {title: task, reward: points}
-        const formData = new FormData
-        formData.set("title", task)
-        formData.set("reward", points)
-        formData.append("file", image)
+        if(!task || !points){
+            return toast(`fields "Add Task" and "Add Points" are required`)
+        }
+        const formData = new FormData()
+        formData.append("title", task)
+        formData.append("reward", points)
+        if(file){
+            formData.append("file", file)
+        }
         
-        console.log(formData)
+        
         dispatch(tasksOperations.createTask(formData))
         formReset()
+        toast(`Task added successfully`)
+        setModalOpen(false)
     }
 
     const handleChange = event => {
@@ -40,8 +45,12 @@ const CustomTaskBox = () => {
         }
     };
     const handleImageChange = event => {
-        setImage(event.target.value);
-        console.log(event.target.value);
+        const sizeOfMegabites = event.target?.files[0]?.size / 102400
+        console.log(sizeOfMegabites)
+        if(sizeOfMegabites > 10){
+            return toast("The file must be no more than 10 mb")
+        }
+        setFile(event.target?.files[0]);
     };
     const formReset = () => {
         setTask('');

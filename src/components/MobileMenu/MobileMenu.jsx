@@ -17,6 +17,9 @@ const MobileMenu = ({ closeModal }) => {
         return
     }
     return (
+        <>
+        <div className={s.overlay} onClick={closeModal}>
+        </div>
         <div className={s.menuContainer}>
             <div className={s.menuHeader}>
                {token && isTabletScreen && <LoggedNav />}
@@ -33,6 +36,8 @@ const MobileMenu = ({ closeModal }) => {
             </div>
             <NavList onClose={closeModal} />
         </div>
+        </>
+        
     );
 };
 
