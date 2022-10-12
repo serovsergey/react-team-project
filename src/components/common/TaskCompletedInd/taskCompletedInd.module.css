@@ -1,0 +1,19 @@
+.completed {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #8EC63F;
+}
+
+.uncompleted {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #FE4B64;
+}/*# sourceMappingURL=taskCompletedInd.module.css.map */
