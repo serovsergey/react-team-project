@@ -1,11 +1,14 @@
 import { FaPlus } from 'react-icons/fa';
 import s from '../CustomTaskBox/customTaskBox.module.scss';
 import { useState } from 'react';
-// import { CgClose } from 'react-icons/cg';
 import Modal from '../../components/common/Modal';
 import { useDispatch } from 'react-redux';
 import tasksOperations from 'redux/tasks/operations.tasks';
 import { ReactComponent as ImageIcon } from '../../assets/svg/Image.svg';
+import { ReactComponent as PencilIcon } from '../../assets/svg/Pencil.svg';
+import { ImPencil } from 'react-icons/im';
+// ImPencil
+// import { ReactComponent as PencilIcon } from '../../assets/svg/Penсil.svg';
 import { toast } from 'react-toastify';
 
 const CustomTaskBox = () => {
@@ -18,7 +21,7 @@ const CustomTaskBox = () => {
     const handleSubmit = event => {
         event.preventDefault()
         if(!task || !points){
-            return toast(`fields "Add Task" and "Add Points" are required`)
+            return toast.warning(`fields "Add Task" and "Add Points" are required`)
         }
         const formData = new FormData()
         formData.append("title", task)
@@ -27,10 +30,9 @@ const CustomTaskBox = () => {
             formData.append("file", file)
         }
         
-        
         dispatch(tasksOperations.createTask(formData))
         formReset()
-        toast(`Task added successfully`)
+        toast.success(`Task added successfully`)
         setModalOpen(false)
     }
 
@@ -48,7 +50,7 @@ const CustomTaskBox = () => {
         const sizeOfMegabites = event.target?.files[0]?.size / 102400
         console.log(sizeOfMegabites)
         if(sizeOfMegabites > 10){
-            return toast("The file must be no more than 10 mb")
+            return toast.warning("The file must be no more than 10 mb")
         }
         setFile(event.target?.files[0]);
     };
@@ -84,7 +86,8 @@ const CustomTaskBox = () => {
                             onSubmit={handleSubmit}
                             className={s.form}
                         >
-                            {/* <PencilIcon className={s.pensilIcon}/> */}
+                        <label className={s.formLabel}>
+                            <ImPencil className={s.pencilIcon}/>
                             <input
                                 type="text"
                                 onChange={handleChange}
@@ -93,6 +96,9 @@ const CustomTaskBox = () => {
                                 className={s.item}
                                 value={task}
                             />
+                            </label>
+                            <label className={s.formLabel}>
+                            <ImPencil className={s.pencilIcon}/>
                             <input
                                 type="number"
                                 onChange={handleChange}
@@ -101,6 +107,7 @@ const CustomTaskBox = () => {
                                 className={s.item}
                                 value={points}
                             />
+                            </label>
                             <button type="submit" className={s.formButton}>
                                 Ok
                             </button>
