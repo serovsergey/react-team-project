@@ -6,10 +6,9 @@ import { useDispatch } from 'react-redux';
 import tasksOperations from 'redux/tasks/operations.tasks';
 import { ReactComponent as ImageIcon } from '../../assets/svg/Image.svg';
 import { ReactComponent as PencilIcon } from '../../assets/svg/Pencil.svg';
-import { ImPencil } from 'react-icons/im';
-// ImPencil
-// import { ReactComponent as PencilIcon } from '../../assets/svg/Penсil.svg';
 import { toast } from 'react-toastify';
+import { BsFillCheckCircleFill } from 'react-icons/bs';
+
 
 const CustomTaskBox = () => {
     const [modalOpen, setModalOpen] = useState(false);
@@ -29,9 +28,13 @@ const CustomTaskBox = () => {
         if(file){
             formData.append("file", file)
         }
+        try{
+            dispatch(tasksOperations.createTask(formData)).unwrap()
+            
+        }catch(error){return toast.warning(error.message)}
         
-        dispatch(tasksOperations.createTask(formData))
         formReset()
+        setFile(null)
         toast.success(`Task added successfully`)
         setModalOpen(false)
     }
@@ -50,6 +53,7 @@ const CustomTaskBox = () => {
         const sizeOfMegabites = event.target?.files[0]?.size / 102400
         console.log(sizeOfMegabites)
         if(sizeOfMegabites > 10){
+            setFile(null)
             return toast.warning("The file must be no more than 10 mb")
         }
         setFile(event.target?.files[0]);
@@ -71,6 +75,7 @@ const CustomTaskBox = () => {
                 <Modal onClose={() => setModalOpen(false)} showCloseBtn>
                     <div className={s.topWrapper}>
                         <label className={s.imageLabel}>
+                            {file && <BsFillCheckCircleFill className={s.check}/>}
                             <ImageIcon className={s.imageIcon} />
                             <input
                                 type="file"
@@ -87,7 +92,7 @@ const CustomTaskBox = () => {
                             className={s.form}
                         >
                         <label className={s.formLabel}>
-                            <ImPencil className={s.pencilIcon}/>
+                            <PencilIcon className={s.pencilIcon}/>
                             <input
                                 type="text"
                                 onChange={handleChange}
@@ -98,7 +103,7 @@ const CustomTaskBox = () => {
                             />
                             </label>
                             <label className={s.formLabel}>
-                            <ImPencil className={s.pencilIcon}/>
+                            <PencilIcon className={s.pencilIcon}/>
                             <input
                                 type="number"
                                 onChange={handleChange}
