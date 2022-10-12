@@ -1,5 +1,6 @@
 .button {
-    width: 135px;
+    height: 48px;
+    width: 100%;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -24,17 +25,5 @@
     &:focus {
         background-color: #ffb522;
         box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    }
-    @media screen and (min-width: 768px) {
-        width: 160px;
-    }
-}
-.button:not(:last-child) {
-    margin-right: 10px;
-    @media screen and (min-width: 768px) {
-        margin-right: 16px;
-    }
-    @media screen and (min-width: 1280px) {
-        margin-right: 8px;
     }
 }
