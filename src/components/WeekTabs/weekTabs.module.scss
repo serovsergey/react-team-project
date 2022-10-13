@@ -49,11 +49,11 @@
   cursor: pointer;
   border: none;
   border-radius: 6px;
-  background-color: #FFBC3380;
+  background-color: var(--weekday-color);
   transition: transform .25s cubic-bezier(0.4, 0, 0.2, 1);
 
   &:hover,
-  &:focus {
+  &:focus-within {
     transform: scale(1.05);
   }
 
