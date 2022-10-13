@@ -22,8 +22,12 @@ const Header = () => {
     const isDesktopScreen = useMediaQuery({ query: '(min-width: 1280px)' })
     
     const handleCloseModal = () => {
+        if(isDesktopScreen){
+            return
+        }
         setModalIsOpen(false)
     }
+    
 
  return(
     <header className={s.header}>
@@ -31,7 +35,6 @@ const Header = () => {
         <div className={s.container}>
         <Logo />
         {token && <ScoreBox />}
-        {/* {isDesktopScreen && handleCloseModal()} */}
         {token && isDesktopScreen && <NavList />}
         {token ? <><button type='button' onClick={() => setModalIsOpen(true)}className={s.button}>
             <IoIosMenu color="rgba(133, 133, 152, 1)"size={22} />

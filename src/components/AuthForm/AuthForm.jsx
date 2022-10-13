@@ -7,6 +7,7 @@ import * as yup from 'yup';
 import s from '../AuthForm/AuthForm.module.scss';
 import { ReactComponent as GoogleIcon } from '../../assets/svg/Google.svg';
 import { toast } from 'react-toastify';
+import PropTypes from 'prop-types';
 
 const validationSchema = yup.object({
     email: yup
@@ -95,15 +96,30 @@ const AuthForm = () => {
                         {formik.errors.password}
                     </span>
                 </label>
-                <div className={s.auth_form_inner_btn}>
+                <ul className={s.auth_form_inner_btn}>
+                    <li className={s.item}>
+                        <Button type="submit">Login</Button>
+                    </li>
+                    <li className={s.item}>
+                        <Button type="button" onClick={handleRegister}>
+                            Rigister
+                        </Button>
+                    </li>
+                </ul>
+                {/* <div className={s.auth_form_inner_btn}>
                     <Button type="submit">Login</Button>
                     <Button type="button" onClick={handleRegister}>
                         Rigister
                     </Button>
-                </div>
+                </div> */}
             </form>
         </>
     );
+};
+AuthForm.propTypes = {
+    onSubmit: PropTypes.func.isRequired,
+    onClick: PropTypes.func.isRequired,
+    onChange: PropTypes.func.isRequired,
 };
 
 export default AuthForm;

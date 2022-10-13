@@ -1,3 +1,4 @@
+@import '../../sass/colors.scss';
 .section_auth_page {
     display: flex;
     flex-direction: column;
@@ -19,7 +20,7 @@
     font-size: 18px;
     line-height: 1.22;
     text-align: center;
-    color: #000000;
+    color: var(--color-black);
     margin-bottom: 32px;
     margin-left: auto;
     margin-right: auto;
@@ -58,22 +59,15 @@
     margin-top: 30px;
     width: 100%;
     align-items: flex-end;
-    // position: absolute;
-    // top: 60px;
-    // left: 0;
 
     &__family {
         background-image: url('../../assets/images/tablet/1x/Family1x.png');
 
-        // width: 303px;
         width: 45%;
         height: 146px;
         background-repeat: no-repeat;
         background-position: center;
         background-size: cover;
-        // position: absolute;
-        // top: 71px;
-        // left: 0px;
 
         @media screen and (min-device-pixel-ratio: 2),
             (-webkit-min-device-pixel-ratio: 2),
@@ -85,7 +79,6 @@
     &__bulb {
         background-image: url('../../assets/images/tablet/1x/Bulb1x.png');
 
-        // width: 242px;
         width: 28%;
         height: 192px;
         background-repeat: no-repeat;
@@ -93,8 +86,7 @@
         background-size: cover;
 
         position: relative;
-        // top: 26px;
-        // left: 250px;
+
         z-index: 1;
         margin: 0 -45px;
 
@@ -107,15 +99,12 @@
     }
     &__family2 {
         background-image: url('../../assets/images/tablet/1x/Family1x.png');
-        // width: 320px;
+
         width: 39%;
         height: 239px;
         background-repeat: no-repeat;
         background-position: center;
         background-size: cover;
-        // position: absolute;
-        // top: -22px;
-        // left: 448px;
 
         @media screen and (min-device-pixel-ratio: 2),
             (-webkit-min-device-pixel-ratio: 2),
@@ -172,7 +161,7 @@
     &__family2 {
         background-image: url('../../assets/images/desktop/1x/Family2-1x.png');
         width: 359px;
-        // width: 28%;
+
         height: 290px;
         background-repeat: no-repeat;
         background-position: center;
@@ -192,7 +181,7 @@
     &__robot {
         background-image: url('../../assets/images/desktop/1x/Robot1x.png');
         width: 276px;
-        // width: 21%;
+
         height: 219px;
         background-repeat: no-repeat;
         background-position: center;

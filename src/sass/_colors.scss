@@ -1,15 +1,24 @@
 :root {
-    --primary-bcg-color: #FAFAFA;
-    --secondary-bcg-color: #FFFFFF;
-    --input-form-color: #F6F7FB;
-    --footer-mobile-color: #F1F1F1;
-    --orange-color: #FFBC33;
-    --points-color: #5679D7;
-    --days-check-color: #3E7ADC;
-    --success-color: #8EC63F;
-    --fail-color: #FF4965;
-    --progressbar-done-color: #9ECB44;
-    --progressbar-undone-color: #E0E0E0;
+    --primary-bcg-color: #fafafa;
+    --secondary-bcg-color: #ffffff;
+    --input-form-color: #f6f7fb;
+    --footer-mobile-color: #f1f1f1;
+    --orange-color: #ffbc33;
+    --orange-active: #ffb522;
+    --points-color: #5679d7;
+    --days-check-color: #3e7adc;
+    --success-color: #8ec63f;
+    --fail-color: #ff4965;
+    --progressbar-done-color: #9ecb44;
+    --progressbar-undone-color: #e0e0e0;
     --weekday-color: rgba(255, 255, 255, 1);
-    --plus-btn-color: linear-gradient(180deg, #FFB532 0%, #FFD521 100%);
+    --plus-btn-color: linear-gradient(180deg, #ffb532 0%, #ffd521 100%);
+    --color-bar-bckg: #a6abb9;
+    --box-shadow: 4px 6px 15px rgba(0, 0, 0, 0.1);
+    --color-black: #000000;
+    --color-link: #858598;
+    --color-mail: #45454b;
+    --box-shadow-authForm: 0px 2px 4px 0px rgba(0, 0, 0, 0.15);
+    --box-shadow-authForm-input: inset 0px 1px 1px rgba(0, 0, 0, 0.15);
+    --border-color: 1px solid #e5e5e5;
 }

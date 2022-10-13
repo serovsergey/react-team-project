@@ -21,12 +21,14 @@ const tasksSlice = createSlice({
         [tasksOperations.createTask.pending]: setPending,
         [tasksOperations.createTask.fulfilled]: (state, { payload }) => {
             state.items.push(payload);
+            state.isLoading = false;
         },
         [tasksOperations.createTask.rejected]: setError,
 
         [tasksOperations.setActive.pending]: setPending,
         [tasksOperations.setActive.fulfilled]: (state, { payload }) => {
             console.warn('Not implemented yet');
+            state.isLoading = false;
         },
         [tasksOperations.setActive.rejected]: setError,
 
@@ -36,6 +38,7 @@ const tasksSlice = createSlice({
                 task => task._id === payload.updatedTask.id
             );
             state.items[updatedTaskIndex].days = payload.updatedTask.days;
+            state.isLoading = false;
         },
         [tasksOperations.setActiveSingle.rejected]: setError,
 
@@ -45,18 +48,21 @@ const tasksSlice = createSlice({
                 task => task._id === payload.updatedTask.id
             );
             state.items[updatedTaskIndex].days = payload.updatedTask.days;
+            state.isLoading = false;
         },
         [tasksOperations.toggleCompleted.rejected]: setError,
 
         [userOperations.getUserInfo.pending]: setPending,
         [userOperations.getUserInfo.fulfilled]: (state, { payload }) => {
             state.items = payload.week.tasks;
+            state.isLoading = false;
         },
         [userOperations.getUserInfo.rejected]: setError,
 
         [authOperations.login.pending]: setPending,
         [authOperations.login.fulfilled]: (state, { payload }) => {
             state.items = payload.week.tasks;
+            state.isLoading = false;
         },
         [authOperations.login.rejected]: setError,
     },

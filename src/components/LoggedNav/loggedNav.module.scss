@@ -1,87 +1,95 @@
+@import "../../sass/colors";
+@import "../../sass/vars";
 
-
-.userInfo{
+.userInfo {
     display: flex;
     align-items: center;
 }
 
-.userItem{
-    padding-left:15px ;
+.text {
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 1.25;
+}
+
+.userItem {
+    padding-left: 15px;
 
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 700;
     font-size: 12px;
-    line-height: 15px;
+    line-height: 1.25;
     color: white;
-    
-    &:first-child{
+
+    &:first-child {
         display: flex;
         justify-content: center;
         align-items: center;
         padding-left: 0;
-        border-right: 1px solid white;
+        border-right: 1px solid var(--secondary-bcg-color);
         padding-right: 15px;
-        @media screen and (min-width: 768px){
-            border-right: 1px solid rgba(133, 133, 152, 1);
+
+        @media screen and (min-width: 768px) {
+            border-right: 1px solid var(--color-link);
         }
     }
-    @media screen and (min-width: 768px){
-        color: rgba(133, 133, 152, 1);
+
+    @media screen and (min-width: 768px) {
+        color: var(--color-link);
     }
 }
 
-.logoutBtn{
+.logoutBtn {
     border: none;
     background-color: transparent;
     cursor: pointer;
-    &:hover .icon{
-        fill: black;
-        
+
+    &:hover .icon {
+        fill: var(--color-black);
+
     }
 }
 
-.icon{
-    fill: white;
-    transition: fill 250ms ease-in-out;
-    @media screen and (min-width: 768px){
-        fill: rgba(133, 133, 152, 1);
+.icon {
+    fill: var(--secondary-bcg-color);
+    transition: fill $transition-style;
+
+    @media screen and (min-width: 768px) {
+        fill: var(--color-link);
     }
 }
 
-.iconName{
+.iconName {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 26px;
     height: 26px;
-    background-color: rgb(113, 113, 228);
+    background-color: #2196F3;
     border-radius: 50%;
     margin-right: 10px;
 
     font-size: 20px;
-    color: white;
-    
+    color: var(--secondary-bcg-color);
+
 }
 
-.buttonList{
+.buttonList {
     display: flex;
     margin-top: 10px;
 }
 
-.item{
-    border: none;
-    background-color: #FFBC33;  
-    border-radius: 5px;
-    padding: 8px 15px;
-    transition: box-shadow 250ms ease-in-out;
-    &:first-child{
+.item {
+    width: 100px;
+    height: 48px;
+
+    &:not(:last-child) {
         margin-right: 10px;
     }
+}
 
-    &:hover,
-    &:focus {
-        background-color: #ffb522;
-        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    }
+.wrapper {
+    padding: 20px;
+    text-align: center;
 }
