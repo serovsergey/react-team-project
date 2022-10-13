@@ -1,26 +1,25 @@
 import s from './awardsPage.module.scss';
-import React, { useEffect } from 'react';
+import { toast } from 'react-toastify';
+import React, { useState, useEffect, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import Button from 'components/common/Button';
-import Card from 'components/common/Card';
-import Container from 'components/Container';
-import ToggleSwitch from 'components/toggleSwitch/ToggleSwitch';
+
 import { ReactComponent as PrizesIcon } from '../../assets/svg/Prizes.svg';
-import ProgressBar from 'components/ProgressBar';
-import ProgressBarMobile from 'components/ProgressBarMobile';
 import giftsSelectors from 'redux/gifts/selector.gifts';
 import giftsOperations from 'redux/gifts/operations.gifts';
-import { useState } from 'react';
-import Modal from 'components/common/Modal';
+import userSelectors from 'redux/user/selector.user';
+import { MediaQuery } from 'hooks/useMediaQuery';
+import { useTranslation } from 'react-i18next';
 import AwardsModalCard from 'components/AwardsModal/AwardsModalCard';
 import AwardsModalTitle from 'components/AwardsModal/AwardsModalTitle';
+import Button from 'components/common/Button';
 import Cat from 'components/AwardsModal/Cat';
-import userSelectors from 'redux/user/selector.user';
-import { toast } from 'react-toastify';
-import { MediaQuery } from 'hooks/useMediaQuery';
+import Card from 'components/common/Card';
+import Container from 'components/Container';
 import Footer from 'components/Footer';
-import { useMemo } from 'react';
-import { useTranslation } from 'react-i18next';
+import Modal from 'components/common/Modal';
+import ProgressBar from 'components/ProgressBar';
+import ProgressBarMobile from 'components/ProgressBarMobile';
+import ToggleSwitch from 'components/toggleSwitch/ToggleSwitch';
 
 // import PropTypes from 'prop-types';
 
@@ -165,6 +164,12 @@ const AwardsPage = () => {
     );
 };
 
-// AwardsPage.propTypes = {};
+// AwardsPage.propTypes = {
+//     imageUrl: PropTypes.string.isRequired,
+//     title: PropTypes.string.isRequired,
+//     id: PropTypes.number.isRequired,
+//     price: PropTypes.number.isRequired,
+//     handleToggle: PropTypes.func.isRequired,
+// };
 
 export default AwardsPage;
