@@ -1,12 +1,19 @@
 /* @import-normalize; bring in normalize.css styles */
 /* @import '~node_modules/modern-normalize/modern-normalize.css'; */
 @import 'modern-normalize/modern-normalize.css';
+@import './sass/_colors.scss';
 
 body {
     margin: 0;
     font-family: 'Montserrat', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+}
+
+@media screen and (min-width: 768px) {
+    body {
+        background-color: var(--footer-mobile-color);
+    }
 }
 
 code {

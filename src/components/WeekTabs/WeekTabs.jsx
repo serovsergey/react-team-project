@@ -11,20 +11,34 @@ const DAY_PARAM = 'day';
 const WeekTabs = ({ weekDays, currentWeekRangeStr = null }) => {
     const storedDay = useSelector(commonSelectors.getCurrentDay);
     const dispatch = useDispatch();
-    const [searchParams, setSearchParams] = useSearchParams(storedDay);
+    const [searchParams, setSearchParams] = useSearchParams({ day: storedDay });
+    const currentDay = searchParams.get(DAY_PARAM);
 
     useEffect(() => {
-        if (!weekDays.some(day => day.name === searchParams.get(DAY_PARAM))) {
+        if (!weekDays.some(({ name }) => name === currentDay)) {
+            // console.log('first');
             setSearchParams({ day: storedDay });
         }
-    }, [searchParams, setSearchParams, storedDay, weekDays]);
+    }, [currentDay, setSearchParams, storedDay, weekDays]);
+
+    useEffect(() => {
+        const currentDate = weekDays.find(
+            ({ name }) => name === currentDay
+        )?.date;
+        if (currentDate) {
+            dispatch(
+                commonActions.setCurrentDate(
+                    currentDate.toISOString().split('T')[0]
+                )
+            );
+        }
+    }, [currentDay, dispatch, weekDays]);
 
     const handleSelectDay = date => {
-        dispatch(
-            commonActions.setCurrentDate(date.toISOString().split('T')[0])
-        );
+        // dispatch(
+        //     commonActions.setCurrentDate(date.toISOString().split('T')[0])
+        // );
     };
-    const currentDay = searchParams.get(DAY_PARAM);
     return (
         <div className={s.wrapper}>
             {currentWeekRangeStr && (

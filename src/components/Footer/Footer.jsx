@@ -22,7 +22,9 @@ const Footer = () => {
                         </p>
                     </li>
                     <li className={s.footer_item}>
-                        <p className={s.footer_text}>2022</p>
+                        <p className={s.footer_text}>
+                            {new Date().getFullYear()}
+                        </p>
                     </li>
                 </ul>
             </footer>

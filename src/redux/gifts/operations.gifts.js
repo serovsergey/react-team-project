@@ -23,7 +23,6 @@ const getGifts = createAsyncThunk(
 const buyGifts = createAsyncThunk(
     'gifts/buy',
     async (giftIds, { rejectWithValue }) => {
-        console.log('giftIds');
         try {
             const data = await giftsAPI.buyGifts(giftIds);
             return data;
