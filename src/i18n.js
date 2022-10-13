@@ -14,7 +14,7 @@ i18n.use(Backend)
         },
 
         fallbackLng: 'en',
-        supportedLngs: ['en', 'ua'],
+        supportedLngs: ['en', 'ua', 'pl'],
         debug: true,
         nsSeparator: "::",
 

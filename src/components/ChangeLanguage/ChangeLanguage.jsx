@@ -7,6 +7,7 @@ const ChangeLanguage = () => {
     const languages = [
         "en",
         "ua",
+        "pl"
     ];
     console.log(i18n.language)
     return (
