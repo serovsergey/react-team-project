@@ -24,8 +24,19 @@
     border: 2px solid var(--footer-mobile-color);
     border-radius: 50%;
     cursor: pointer;
+
+    &:hover {
+        background-color: var(--primary-bcg-color);
+        box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+    }
 }
 
 .active {
     background-color: var(--weekday-color);
+
+    &:hover {
+        background-color: var(--weekday-color);
+        box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+    }
+
 }
