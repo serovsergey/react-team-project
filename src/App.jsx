@@ -2,12 +2,12 @@ import PrivateRoute from 'components/PrivateRoute';
 import PublicRoute from 'components/PublicRoute';
 import SharedLayoutPage from 'pages/SharedLayoutPage';
 import { lazy, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Navigate, Route, Routes, useSearchParams } from 'react-router-dom';
+import { authActions } from 'redux/auth/auth.slice';
+import authSelectors from 'redux/auth/selector.auth';
 // import giftsOperations from 'redux/gifts/operations.gifts';
 import userOperations from 'redux/user/operations.user';
-// import { useGoogleAuth } from 'hooks/useGoogleAuth';
-import { userActions } from './redux/user/user.slice';
 
 const HomePage = lazy(() => import('./pages/HomePage'));
 const PlanningPage = lazy(() => import('./pages/PlanningPage'));
@@ -16,20 +16,23 @@ const ContactsPage = lazy(() => import('./pages/ContactsPage'));
 const AwardsPage = lazy(() => import('./pages/AwardsPage'));
 
 export const App = () => {
-    const [searchParams] = useSearchParams();
-    const token = searchParams.get('token');
     const dispatch = useDispatch();
-    useEffect(() => {
-        dispatch(userOperations.getUserInfo());
-        // dispatch(giftsOperations.getGifts());
-    }, [dispatch]);
-
+    const token = useSelector(authSelectors.getToken);
+    const [searchParams] = useSearchParams();
+    const tokenGoogle = searchParams.get('token');
     useEffect(() => {
         if (token) {
-            dispatch(userActions.setToken(token));
             dispatch(userOperations.getUserInfo());
         }
-    }, [token, dispatch]);
+
+        // dispatch(giftsOperations.getGifts());
+    }, [dispatch, token]);
+
+    useEffect(() => {
+        if (tokenGoogle) {
+            dispatch(authActions.setToken(tokenGoogle));
+        }
+    }, [tokenGoogle, dispatch]);
 
     return (
         <Routes>

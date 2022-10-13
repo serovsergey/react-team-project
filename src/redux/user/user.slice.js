@@ -18,11 +18,7 @@ const setError = (state, { payload }) => {
 const userSlice = createSlice({
     name: 'user',
     initialState,
-    reducers: {
-        setToken(state, { payload }) {
-            state.token = payload;
-        },
-    },
+
     extraReducers: {
         [userOperations.getUserInfo.pending]: setPending,
         [userOperations.getUserInfo.fulfilled]: (state, { payload }) => {
