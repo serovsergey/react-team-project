@@ -2,13 +2,13 @@ import React from 'react';
 import { FidgetSpinner } from 'react-loader-spinner';
 import s from './LoaderSmall.module.scss';
 
-const LoaderSmallComponent = () => {
+const LoaderSmall = () => {
     return (
         <div className={s.loadersmall}>
             <FidgetSpinner
                 visible={true}
-                height="80"
-                width="80"
+                height="32"
+                width="32"
                 ariaLabel="dna-loading"
                 wrapperStyle={{}}
                 wrapperClass="dna-wrapper"
@@ -19,4 +19,4 @@ const LoaderSmallComponent = () => {
     );
 };
 
-export default LoaderSmallComponent;
+export default LoaderSmall;
