@@ -1,8 +1,11 @@
 import menuItems from './menuItems';
 import { NavLink } from 'react-router-dom';
 import s from '../NavList/navList.module.scss';
+import {useTranslation} from 'react-i18next';
 
 const NavList = ({ onClose }) => {
+
+    const {t} = useTranslation()
     return (
         <ul className={s.list}>
             {menuItems.map(({ name, to, end }) => (
@@ -13,7 +16,7 @@ const NavList = ({ onClose }) => {
                         className={s.link}
                         end={end}
                     >
-                        {name}
+                        {t(name)}
                     </NavLink>
                 </li>
             ))}

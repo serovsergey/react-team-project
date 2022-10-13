@@ -34,6 +34,7 @@ const userSlice = createSlice({
             state.id = payload.user.id;
             state.email = payload.user.email;
             state.balance = payload.user.balance;
+            state.isLoading = false;
         },
         [authOperations.login.rejected]: setError,
 
@@ -42,6 +43,7 @@ const userSlice = createSlice({
             state.id = payload.user.id;
             state.email = payload.user.email;
             state.balance = payload.user.balance;
+            state.isLoading = false;
         },
         [authOperations.register.rejected]: setError,
 
@@ -51,6 +53,7 @@ const userSlice = createSlice({
             state.email = initialState.email;
             state.balance = initialState.balance;
             state.purchasedGiftIds = initialState.purchasedGiftIds;
+            state.isLoading = false;
         },
         [authOperations.logout.rejected]: setError,
 

@@ -5,7 +5,7 @@ import { ReactComponent as Checkbox } from '../../../assets/svg/Checkbox.svg';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
-const inetialState = {
+export const inetialStateCheckDays = {
     days: [false, false, false, false, false, false, false],
 };
 
@@ -13,8 +13,8 @@ const CheckBox = ({ id }) => {
     const [isShow, setIsShow] = useState(false);
     const [boolean, setBoolean] = useState(false);
     const btnRef = useRef();
-    const dispatch = useDispatch()
-    const { days } =  inetialState;
+    const dispatch = useDispatch();
+    const { days } = inetialStateCheckDays;
 
     useEffect(() => {
         const name = btnRef.current.id;
@@ -53,10 +53,6 @@ const CheckBox = ({ id }) => {
 
     const handleChange = e => {
         setIsShow(prev => !prev);
-
-        // if (e.target.value === 'on') {
-        //     setIsShow(prev => !prev);
-        // }
     };
 
     return (

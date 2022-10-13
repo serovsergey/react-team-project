@@ -22,11 +22,13 @@ const getWeekDates = state => {
     return dateArray;
 };
 
-const getCurrentWeekRange = state => {
+const getCurrentWeekRange = locale => state => {
     const startDate = new Date(state.week.startWeekDate);
-    const startMonth = startDate.toLocaleString('en-en', { month: 'long' });
+    let startMonth = startDate.toLocaleDateString(locale, { month: 'long' });
+    startMonth = startMonth.charAt(0).toUpperCase() + startMonth.slice(1);
     const endDate = new Date(state.week.endWeekDate);
-    const endMonth = endDate.toLocaleString('en-en', { month: 'long' });
+    let endMonth = endDate.toLocaleDateString(locale, { month: 'long' });
+    endMonth = endMonth.charAt(0).toUpperCase() + endMonth.slice(1);
     return `${startDate.getDate()}${
         startMonth === endMonth ? '' : ' ' + startMonth
     }-${endDate.getDate()} ${endMonth}`;

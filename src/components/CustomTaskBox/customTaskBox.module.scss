@@ -66,6 +66,8 @@
 }
 
 .topWrapper {
+    // position: relative;
+
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -89,18 +91,24 @@
     margin-top: auto;
     margin-left: auto;
     transition: transform $transition-style;
-    position: relative;
+    // position: relative;
     
 
-    &:hover,
+    &:hover .imageIcon,
     &:focus .imageIcon {
         transform: scale(1.1);
     }
     & .check{
         position: absolute;
-        right: 27px;
-        bottom: 1px;
-        color: #adff2f;
+        width: auto;
+        height: 110px;
+        // right: 60px;
+        // top: -78px;
+        right: 50%;
+        top: 20%;
+        transform: translate(51%, -45%);
+        border: 2px solid var(--orange-color);
+        border-radius: 5px;
     }
 }
 

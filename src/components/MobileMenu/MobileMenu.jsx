@@ -5,6 +5,7 @@ import LoggedNav from 'components/LoggedNav';
 import authSelectors from 'redux/auth/selector.auth';
 import { useMediaQuery } from 'react-responsive'
 import NavList from 'components/NavList';
+import ChangeLanguage from 'components/ChangeLanguage';
 
 
 const MobileMenu = ({ closeModal }) => {
@@ -34,6 +35,7 @@ const MobileMenu = ({ closeModal }) => {
                     <CgClose  size={18} className={s.crossIcon}/>
                 </button>
             </div>
+            {!isDesktopScreen && <ChangeLanguage />}
             <NavList onClose={closeModal} />
         </div>
         </>

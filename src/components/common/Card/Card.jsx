@@ -1,9 +1,10 @@
-import React from 'react';
-// import PropTypes from 'prop-types';
-
 import s from './card.module.scss';
+import React from 'react';
+import { useTranslation } from 'react-i18next';
+import PropTypes from 'prop-types';
 
 const Card = ({ children, title = 'test', reward = 0, imageUrl, id }) => {
+    const { t, i18n } = useTranslation();
     return (
         <div id={id} className={s.card}>
             <div className={s.imgWrapper}>
@@ -12,7 +13,9 @@ const Card = ({ children, title = 'test', reward = 0, imageUrl, id }) => {
             <div className={s.footer}>
                 <div>
                     <p className={s.title}>{title}</p>
-                    <span className={s.reward}>{`${reward} points`}</span>
+                    <span className={s.reward}>{`${reward} ${t(
+                        'points'
+                    )}`}</span>
                 </div>
                 <div className={s.btn}>{children}</div>
             </div>
@@ -22,10 +25,10 @@ const Card = ({ children, title = 'test', reward = 0, imageUrl, id }) => {
 
 export default Card;
 
-// Card.propTypes = {
-//     title: PropTypes.string,
-//     reward: PropTypes.number,
-//     imageUrl: PropTypes.string,
-//     id: PropTypes.string,
-//     children: PropTypes.node,
-// };
+Card.propTypes = {
+    title: PropTypes.string.isRequired,
+    reward: PropTypes.number.isRequired,
+    imageUrl: PropTypes.string.isRequired,
+    // id: PropTypes.string.isRequired,
+    children: PropTypes.node,
+};

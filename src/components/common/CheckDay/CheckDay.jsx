@@ -1,4 +1,8 @@
+
 import { useEffect, useMemo, useRef, useState } from 'react';
+
+import { useTranslation } from 'react-i18next';
+
 import { useSelector } from 'react-redux';
 import weekSelectors from 'redux/week/selector.week';
 import CheckBox from '../CheckBox';
@@ -8,10 +12,14 @@ const CheckDay = () => {
     const [isOpen, setIsOpen] = useState(true);
     const ref = useRef(null);
     const weekDates = useSelector(weekSelectors.getWeekDates);
+
+    const { t, i18n } = useTranslation();
+
+
     const weekDays = useMemo(
         () =>
             weekDates.map(dt => {
-                const dayStr = dt.toLocaleDateString('en-en', {
+                const dayStr = dt.toLocaleDateString(i18n.language, {
                     weekday: 'long',
                 });
                 return {
@@ -19,8 +27,9 @@ const CheckDay = () => {
                     title: dayStr.slice(0, 2),
                 };
             }),
-        [weekDates]
+        [i18n.language, weekDates]
     );
+
     useEffect(() => {
         const handleClick = event => {
             // console.log(ref);
@@ -39,6 +48,7 @@ const CheckDay = () => {
         }
         return () => window.removeEventListener('click', handleClick);
     }, [isOpen]);
+
 
     return (
         <>

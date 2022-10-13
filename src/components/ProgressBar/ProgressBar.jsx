@@ -3,6 +3,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { Progress } from 'react-sweet-progress';
 import 'react-sweet-progress/lib/style.css';
+import { useTranslation } from 'react-i18next';
 
 import s from './ProgressBar.module.scss';
 import weekSelectors from '../../redux/week/selector.week';
@@ -20,15 +21,17 @@ const ProgressBar = ({ position = 'center' }) => {
     if (userPoints === 0) {
         percent = 0;
     }
+    const { t, i18n } = useTranslation();
+
     return (
         <div className={s.wrap}>
             <div className={getStyle()}>
                 <p className={s.stats__progress}>
-                    {'Points earned this week:'}
+                    {t(`Points earned this week:`)}
                     <span className={s.stats__number}>{userPoints}</span>
                 </p>
                 <p className={s.stats__totalprogress}>
-                    {'Planned points for this week:'}
+                    {t(`Planned points for this week:`)}
                     <span className={s.stats__number}>{countPoints}</span>
                 </p>
             </div>

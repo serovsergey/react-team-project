@@ -1,13 +1,15 @@
 import Button from 'components/common/Button';
 import { useFormik } from 'formik';
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import authOperations from 'redux/auth/operations.auth';
 import * as yup from 'yup';
 import s from '../AuthForm/AuthForm.module.scss';
 import { ReactComponent as GoogleIcon } from '../../assets/svg/Google.svg';
 import { toast } from 'react-toastify';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
+import authSelectors from '../../redux/auth/selector.auth';
+import { useTranslation } from 'react-i18next';
 
 const validationSchema = yup.object({
     email: yup
@@ -22,7 +24,9 @@ const validationSchema = yup.object({
 });
 
 const AuthForm = () => {
+    const { t, i18n } = useTranslation();
     const dispatch = useDispatch();
+    const isLoading = useSelector(authSelectors.getIsLoading);
     const formik = useFormik({
         initialValues: {
             email: '',
@@ -52,7 +56,7 @@ const AuthForm = () => {
         <>
             <form onSubmit={formik.handleSubmit} className={s.auth_form}>
                 <p className={s.auth_form_text}>
-                    You can login with Google Account:
+                    {t(`You can login with Google Account:`)}
                 </p>
                 <a
                     href="https://kidslike-v1-backend.goit.global/auth/google"
@@ -63,12 +67,14 @@ const AuthForm = () => {
                     Google
                 </a>
                 <p className={s.auth_form_text}>
-                    Or log in with e-mail and password after registering:
+                    {t(
+                        ` Or log in with e-mail and password after registering:`
+                    )}
                 </p>
 
                 <label className={s.auth_form_label}>
                     <span className={s.auth_form_span}>*</span>
-                    E-Mail:
+                    {t(`  E-Mail:`)}
                     <input
                         className={s.auth_form_input}
                         name="email"
@@ -83,7 +89,7 @@ const AuthForm = () => {
                 </label>
                 <label className={s.auth_form_label}>
                     <span className={s.auth_form_span}>*</span>
-                    Password:
+                    {t(` Password:`)}
                     <input
                         className={`${s.auth_form_input} ${s.auth_form_input__black}`}
                         name="password"
@@ -98,28 +104,26 @@ const AuthForm = () => {
                 </label>
                 <ul className={s.auth_form_inner_btn}>
                     <li className={s.item}>
-                        <Button type="submit">Login</Button>
+                        <Button isLoading={isLoading} type="submit">
+                            {t(` Login`)}
+                        </Button>
                     </li>
                     <li className={s.item}>
-                        <Button type="button" onClick={handleRegister}>
-                            Rigister
+                        <Button
+                            isLoading={isLoading}
+                            type="button"
+                            onClick={handleRegister}
+                        >
+                            {t(` Rigister`)}
                         </Button>
                     </li>
                 </ul>
-                {/* <div className={s.auth_form_inner_btn}>
-                    <Button type="submit">Login</Button>
-                    <Button type="button" onClick={handleRegister}>
-                        Rigister
-                    </Button>
-                </div> */}
             </form>
         </>
     );
 };
-AuthForm.propTypes = {
-    onSubmit: PropTypes.func.isRequired,
-    onClick: PropTypes.func.isRequired,
-    onChange: PropTypes.func.isRequired,
-};
+// AuthForm.propTypes = {
+//
+// };
 
 export default AuthForm;

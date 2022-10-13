@@ -6,6 +6,7 @@ import { useState } from 'react';
 import authOperations from 'redux/auth/operations.auth';
 import Modal from 'components/common/Modal';
 import Button from 'components/common/Button';
+import {useTranslation} from 'react-i18next'
 
 const LoggedNav = () => {
     const [logOutModal, setlogOutModal] = useState(false);
@@ -13,6 +14,7 @@ const LoggedNav = () => {
     const nameSmall = email.split('@')[0];
     const name = nameSmall.charAt(0).toUpperCase() + nameSmall.slice(1);
     const dispatch = useDispatch();
+    const {t} = useTranslation()
 
     const handleCloseModal = () => {
         setlogOutModal(false);
@@ -38,7 +40,7 @@ const LoggedNav = () => {
             {logOutModal && (
                 <Modal onClose={handleCloseModal}>
                     <div className={s.wrapper}>
-                        <p className={s.text}>Are you sure?</p>
+                        <p className={s.text}>{t(`Are you sure?`)}</p>
                         <ul className={s.buttonList}>
                             <li className={s.item}>
                                 <Button
@@ -47,7 +49,7 @@ const LoggedNav = () => {
                                         dispatch(authOperations.logout())
                                     }
                                 >
-                                    yes
+                                    {t(`yes`)}
                                 </Button>
                             </li>
                             <li className={s.item}>
@@ -55,7 +57,7 @@ const LoggedNav = () => {
                                     type="button"
                                     onClick={() => setlogOutModal(false)}
                                 >
-                                    cancel
+                                    {t(`cancel`)}
                                 </Button>
                             </li>
                         </ul>

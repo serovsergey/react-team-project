@@ -3,18 +3,15 @@ import { BsPlusLg } from 'react-icons/bs';
 // import PropTypes from 'prop-types';
 import s from './taskScheduleBtn.module.scss';
 import CheckDay from '../CheckDay';
-
+import { inetialStateCheckDays } from '../CheckBox/CheckBox';
+import { useDispatch } from 'react-redux';
+import tasksOperations from 'redux/tasks/operations.tasks';
 
 const TaskScheduleBtn = ({ buttonId }) => {
     const btnRef = useRef();
-    const ref = useRef(null)
+    const ref = useRef(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
-
-       
-    
-    const handleclick = () => {    
-        setIsModalOpen(prev => !prev);
-    };
+    const dispatch = useDispatch();
 
     useEffect(() => {
         const handleClick = event => {
@@ -24,7 +21,6 @@ const TaskScheduleBtn = ({ buttonId }) => {
             if (!ref.current?.contains(event.target)) {
                 setIsModalOpen(false);
             }
-            
         };
 
         if (isModalOpen) {
@@ -34,10 +30,20 @@ const TaskScheduleBtn = ({ buttonId }) => {
         }
         return () => window.removeEventListener('click', handleClick);
     }, [isModalOpen]);
-   
-    
 
-    return (
+    const handleclick = () => {
+        setIsModalOpen(prev => !prev);
+
+        if (isModalOpen) {
+            const id = btnRef.current.name;
+            console.log(id);
+            const taskData = inetialStateCheckDays;
+            console.log(taskData);
+            dispatch(tasksOperations.setActiveSingle({id, taskData}));
+        }
+    };
+
+        return (
         <div ref={ref}>
             {isModalOpen ? (
                 <button
@@ -60,7 +66,7 @@ const TaskScheduleBtn = ({ buttonId }) => {
                     <BsPlusLg color="#8EC63F" />
                 </button>
             )}
-            {isModalOpen && <CheckDay/>}
+            {isModalOpen && <CheckDay />}
         </div>
     );
 };

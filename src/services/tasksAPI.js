@@ -6,7 +6,8 @@ const setActiveTask = async body => {
 };
 
 const setActiveSingleTask = async (id, body) => {
-    const { data } = await privateAPI.patch(`​/task/single-active/${id}`, body);
+    console.log(id, body);
+    const { data } = await privateAPI.patch(`/task/single-active/${id}`, body);
     return data;
 };
 
