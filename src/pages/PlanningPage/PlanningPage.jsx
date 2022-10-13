@@ -2,7 +2,7 @@ import Card from 'components/common/Card';
 import TaskScheduleBtn from 'components/common/TaskScheduleBtn';
 import Container from 'components/Container';
 import CustomTaskBox from 'components/CustomTaskBox';
-import React, { useMemo } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useMediaQuery } from 'react-responsive';
 import tasksSelectors from 'redux/tasks/selector.tasks';
@@ -12,25 +12,19 @@ import weekSelectors from 'redux/week/selector.week';
 
 import s from './planningPage.module.scss';
 
-const Desktop = ({ children }) => {
-    const isDesktop = useMediaQuery({ minWidth: 1280 });
-    return isDesktop ? children : null;
-};
-const Tablet = ({ children }) => {
-    const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1279 });
-    return isTablet ? children : null;
-};
-const Mobile = ({ children }) => {
-    const isMobile = useMediaQuery({ minWidth: 320, maxWidth: 767 });
-    return isMobile ? children : null;
-};
-
 const PlanningPage = () => {
     const tasks = useSelector(tasksSelectors.getTasks);
     const correntWeek = useSelector(weekSelectors.getCurrentWeekRange);
     const year = new Date().getFullYear();
+    // const [open, setOpen] = useState(false);
 
-    return (
+    // useEffect(() => {
+    //    setOpen(false)
+    //     },[open]);
+    
+    
+
+      return (
         <>
             <Container>
                 <div>
@@ -46,13 +40,34 @@ const PlanningPage = () => {
 
                     <ul className={s.list}>
                         {tasks?.map(({ _id, title, reward, imageUrl }) => (
-                            <li key={_id} className={s.item}>
+                            <li
+                                key={_id}
+                                className={s.item}
+                                // onBlur={e => {
+                                //     console.log(e.relatedTarget);
+                                //     if (
+                                //         !e.currentTarget.contains(
+                                //             e.relatedTarget
+                                //         )
+                                //     ) {
+                                //         setOpen(true);
+                                //     } 
+                                //     else {
+                                //         setOpen(false);
+                                //     }
+
+                                    
+                                // }}
+                            >
                                 <Card
                                     title={title}
                                     reward={reward}
                                     imageUrl={imageUrl}
                                 >
-                                    <TaskScheduleBtn buttonId={_id} />
+                                    <TaskScheduleBtn
+                                        buttonId={_id}
+                                        // open={open}
+                                    />
                                 </Card>
                             </li>
                         ))}

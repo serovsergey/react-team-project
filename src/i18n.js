@@ -15,7 +15,7 @@ i18n.use(Backend)
 
         fallbackLng: 'en',
         supportedLngs: ['en', 'ua', 'pl'],
-        debug: true,
+        debug: false,
         nsSeparator: "::",
 
         interpolation: {

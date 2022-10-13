@@ -11,15 +11,15 @@ import weekSelectors from 'redux/week/selector.week';
 
 import s from './homePage.module.scss';
 
-const HomePage = props => {
+const HomePage = () => {
     const weekDates = useSelector(weekSelectors.getWeekDates);
-    const { t, i18n } = useTranslation();
+    const { i18n } = useTranslation();
     const currentWeekRange = useSelector(
         weekSelectors.getCurrentWeekRange(i18n.language)
     );
 
     const isDesktop = useMediaQuery({ minWidth: 1280 });
-    const isMobile = useMediaQuery({ maxWidth: 767 });
+    const isMobile = useMediaQuery({ maxWidth: 767.98 });
 
     const weekDays = useMemo(
         () =>
@@ -39,7 +39,6 @@ const HomePage = props => {
             }),
         [i18n.language, isDesktop, weekDates]
     );
-    // console.log();
     return (
         <div className={s.wrapper}>
             <WeekTabs

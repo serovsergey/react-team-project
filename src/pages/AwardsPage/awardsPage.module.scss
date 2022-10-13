@@ -1,7 +1,13 @@
+.wrap {
+    @media screen and (min-width: 1280px) {
+        height: calc(100vh - 65px);
+        overflow-y: auto;
+    }
+}
+
 .info {
     display: flex;
     align-items: center;
-    // justify-content: space-around;
     margin-top: 20px;
     margin-bottom: 32px;
 
@@ -19,8 +25,6 @@
     display: inline-flex;
     align-items: center;
     margin-right: auto;
-    // margin-top: 20px;
-    // margin-bottom: 32px;
 }
 
 .title {
@@ -49,12 +53,10 @@
     }
 }
 
-// .item {}
 
 .btn {
     margin-left: auto;
     margin-right: auto;
-    // height: 48px;
     width: 135px;
     margin-top: 20px;
     margin-bottom: 80px;
@@ -76,7 +78,6 @@
 ///////////modal///
 
 .box {
-    // outline: 1px solid red;
     padding-top: 60px;
     // padding-bottom: 60px;
     padding-right: 28px;
@@ -100,13 +101,10 @@
 }
 
 .modal__list {
-    // padding: 20px;
-    // margin-bottom: 20px;
     margin: 0 auto;
     max-width: 500px;
     display: flex;
     flex-wrap: wrap;
-    // align-items: center;
     justify-content: center;
 }
 

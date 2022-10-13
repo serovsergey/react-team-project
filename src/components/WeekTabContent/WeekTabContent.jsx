@@ -1,3 +1,7 @@
+import React from 'react';
+import { useSelector } from 'react-redux';
+import { useMediaQuery } from 'react-responsive';
+import PropTypes from 'prop-types';
 import CardList from 'components/CardList';
 import CurrentDay from 'components/CurrentDay';
 import CurrentWeekRange from 'components/CurrentWeekRange';
@@ -5,17 +9,12 @@ import Footer from 'components/Footer';
 import NoTasks from 'components/NoTasks';
 import ProgressBar from 'components/ProgressBar';
 import ProgressBarMobile from 'components/ProgressBarMobile';
-import React from 'react';
-import { useSelector } from 'react-redux';
-import { useMediaQuery } from 'react-responsive';
 import commonSelectors from 'redux/common/selector.common';
-// import { useSearchParams } from 'react-router-dom';
 import tasksSelectors from 'redux/tasks/selector.tasks';
-// import PropTypes from 'prop-types';
 
 import s from './weekTabContent.module.scss';
 
-const WeekTabContent = ({ currentWeekRangeStr, weekDays }) => {
+const WeekTabContent = ({ currentWeekRangeStr }) => {
     const currentDate = useSelector(commonSelectors.getCurrentDate);
     const isMobile = useMediaQuery({ maxWidth: 767.97 });
     const dayTasks = useSelector(state =>
@@ -59,6 +58,8 @@ const WeekTabContent = ({ currentWeekRangeStr, weekDays }) => {
     );
 };
 
-// WeekTabContent.propTypes = {};
+WeekTabContent.propTypes = {
+    currentWeekRangeStr: PropTypes.string,
+};
 
 export default WeekTabContent;

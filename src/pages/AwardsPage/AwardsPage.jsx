@@ -24,14 +24,15 @@ import ToggleSwitch from 'components/toggleSwitch/ToggleSwitch';
 // import PropTypes from 'prop-types';
 
 const AwardsPage = () => {
-    const { t, i18n } = useTranslation();
+    const { t } = useTranslation();
     const dispatch = useDispatch();
+    const [giftIds, setGiftIds] = useState([]);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
     const gifts = useSelector(giftsSelectors.getGifts);
     const userBalance = useSelector(userSelectors.getUserBalance);
     const isLoading = useSelector(giftsSelectors.getIsLoading);
     const purchasedGifts = useSelector(userSelectors.getPurchasedGifts);
-    const [giftIds, setGiftIds] = useState([]);
-    const [isModalOpen, setIsModalOpen] = useState(false);
 
     const purchasedGiftsPrice = useMemo(
         () =>
@@ -73,7 +74,7 @@ const AwardsPage = () => {
     };
 
     return (
-        <>
+        <div className={s.wrap}>
             <Container>
                 <div className={s.info}>
                     <div className={s.prize__label}>
@@ -160,16 +161,12 @@ const AwardsPage = () => {
             <MediaQuery.Mobile>
                 <ProgressBarMobile />
             </MediaQuery.Mobile>
-        </>
+        </div>
     );
 };
 
 // AwardsPage.propTypes = {
-//     imageUrl: PropTypes.string.isRequired,
-//     title: PropTypes.string.isRequired,
-//     id: PropTypes.number.isRequired,
-//     price: PropTypes.number.isRequired,
-//     handleToggle: PropTypes.func.isRequired,
+
 // };
 
 export default AwardsPage;

@@ -9,7 +9,7 @@ const ChangeLanguage = () => {
         "ua",
         "pl"
     ];
-    console.log(i18n.language)
+    // console.log(i18n.language)
     return (
         <div className={s.buttonWrapper}>
             {languages.map(lang => (
