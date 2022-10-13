@@ -13,10 +13,14 @@ import Container from 'components/Container';
 import LoggedNav from 'components/LoggedNav';
 import NavList from 'components/NavList';
 import ScoreBox from 'components/ScoreBox';
+import { useTranslation } from 'react-i18next';
+import ChangeLanguage from 'components/ChangeLanguage';
 
 
 
 const Header = () => {
+    const { t } = useTranslation();
+    
     const [modalIsopen, setModalIsOpen] = useState(false)
     const token = useSelector(authSelectors.getToken);
     const isDesktopScreen = useMediaQuery({ query: '(min-width: 1280px)' })
@@ -34,7 +38,8 @@ const Header = () => {
         <Container>
         <div className={s.container}>
         <Logo />
-        {token && <ScoreBox />}
+                 {token && <ScoreBox />}
+                  <ChangeLanguage/>
         {token && isDesktopScreen && <NavList />}
         {token ? <><button type='button' onClick={() => setModalIsOpen(true)}className={s.button}>
             <IoIosMenu color="rgba(133, 133, 152, 1)"size={22} />
