@@ -7,6 +7,7 @@ import tasksOperations from 'redux/tasks/operations.tasks';
 import { ReactComponent as ImageIcon } from '../../assets/svg/Image.svg';
 import { ReactComponent as PencilIcon } from '../../assets/svg/Pencil.svg';
 import { toast } from 'react-toastify';
+import {useTranslation} from 'react-i18next'
 
 
 
@@ -16,9 +17,12 @@ const CustomTaskBox = () => {
     const [points, setPoints] = useState('');
     const [file, setFile] = useState(null);
     const dispatch = useDispatch()
+    const {t} = useTranslation()
 
     const src = file && window.URL.createObjectURL(file)
     console.log(src)
+    const addTask = `${t(`Add task...`)}`
+    const addPoints = `${t(`Add points...`)}`
 
     const handleSubmit = event => {
         event.preventDefault()
@@ -67,9 +71,10 @@ const CustomTaskBox = () => {
     };
 
     return (
+    
         <div className={s.box}>
             <p className={s.text}>
-                If you want to get more prizes - add tasks :{')'}
+                {t(`If you want to get more prizes - add tasks`)} :{')'}
             </p>
             <button className={s.button} onClick={() => setModalOpen(true)}>
                 <FaPlus color="#fff" size={27} />
@@ -100,7 +105,7 @@ const CustomTaskBox = () => {
                                 type="text"
                                 onChange={handleChange}
                                 name="task"
-                                placeholder="Add task..."
+                                placeholder={addTask}
                                 className={s.item}
                                 value={task}
                             />
@@ -111,7 +116,7 @@ const CustomTaskBox = () => {
                                 type="number"
                                 onChange={handleChange}
                                 name="points"
-                                placeholder="Add points..."
+                                placeholder={addPoints}
                                 className={s.item}
                                 value={points}
                             />
