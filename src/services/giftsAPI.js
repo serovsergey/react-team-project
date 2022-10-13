@@ -6,10 +6,10 @@ const getGifts = async () => {
 };
 
 const buyGifts = async body => {
-    // return {
-    //     purchasedGiftIds: body.giftIds,
-    //     updatedBalance: 0,
-    // };
+    return {
+        purchasedGiftIds: body.giftIds,
+        updatedBalance: 0,
+    };
     const { data } = await privateAPI.patch('/gift', body);
     return data;
 };

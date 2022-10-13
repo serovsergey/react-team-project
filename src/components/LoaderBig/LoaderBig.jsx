@@ -2,7 +2,7 @@ import React from 'react';
 import { RotatingLines } from 'react-loader-spinner';
 import s from './LoaderBig.module.scss';
 
-const LoaderBigComponent = () => {
+const LoaderBig = () => {
     return (
         <div className={s.loaderbig}>
             <RotatingLines
@@ -16,4 +16,4 @@ const LoaderBigComponent = () => {
     );
 };
 
-export default LoaderBigComponent;
+export default LoaderBig;

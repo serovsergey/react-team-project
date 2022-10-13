@@ -1,33 +1,34 @@
 import s from './awardsPage.module.scss';
-import React, { useEffect } from 'react';
+import { toast } from 'react-toastify';
+import React, { useState, useEffect, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import Button from 'components/common/Button';
-import Card from 'components/common/Card';
-import Container from 'components/Container';
-import ToggleSwitch from 'components/toggleSwitch/ToggleSwitch';
+
 import { ReactComponent as PrizesIcon } from '../../assets/svg/Prizes.svg';
-import ProgressBar from 'components/ProgressBar';
-import ProgressBarMobile from 'components/ProgressBarMobile';
 import giftsSelectors from 'redux/gifts/selector.gifts';
 import giftsOperations from 'redux/gifts/operations.gifts';
-import { useState } from 'react';
-import Modal from 'components/common/Modal';
+import userSelectors from 'redux/user/selector.user';
+import { MediaQuery } from 'hooks/useMediaQuery';
+import { useTranslation } from 'react-i18next';
 import AwardsModalCard from 'components/AwardsModal/AwardsModalCard';
 import AwardsModalTitle from 'components/AwardsModal/AwardsModalTitle';
+import Button from 'components/common/Button';
 import Cat from 'components/AwardsModal/Cat';
-import userSelectors from 'redux/user/selector.user';
-import { toast } from 'react-toastify';
-import { MediaQuery } from 'hooks/useMediaQuery';
+import Card from 'components/common/Card';
+import Container from 'components/Container';
 import Footer from 'components/Footer';
-import { useMemo } from 'react';
+import Modal from 'components/common/Modal';
+import ProgressBar from 'components/ProgressBar';
+import ProgressBarMobile from 'components/ProgressBarMobile';
+import ToggleSwitch from 'components/toggleSwitch/ToggleSwitch';
 
 // import PropTypes from 'prop-types';
 
 const AwardsPage = () => {
+    const { t, i18n } = useTranslation();
     const dispatch = useDispatch();
     const gifts = useSelector(giftsSelectors.getGifts);
     const userBalance = useSelector(userSelectors.getUserBalance);
-    // const isLoading = useSelector(giftsSelectors.getIsLoading);
+    const isLoading = useSelector(giftsSelectors.getIsLoading);
     const purchasedGifts = useSelector(userSelectors.getPurchasedGifts);
     const [giftIds, setGiftIds] = useState([]);
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -61,10 +62,6 @@ const AwardsPage = () => {
     };
 
     const handleConfirm = () => {
-        // if (giftIds.length === 0) {
-        //     toast.warning('Please, choose your prize');
-        //     return;
-        // }
         dispatch(giftsOperations.buyGifts({ giftIds }))
             .unwrap()
             .then(() => {
@@ -81,7 +78,7 @@ const AwardsPage = () => {
                 <div className={s.info}>
                     <div className={s.prize__label}>
                         <PrizesIcon />
-                        <h2 className={s.title}> my prizes</h2>
+                        <h2 className={s.title}>{t(`my prizes`)}</h2>
                     </div>
                     <div className={s.progressBar}>
                         <MediaQuery.Desktop>
@@ -93,36 +90,36 @@ const AwardsPage = () => {
                     </div>
                 </div>
                 <ul className={s.list}>
-                    {gifts?.map(
-                        ({ id, title, price, imageUrl, isSelected }) => (
-                            <li key={id} className={s.item}>
-                                <Card
-                                    id={id}
-                                    title={title}
-                                    reward={price}
-                                    imageUrl={imageUrl}
-                                >
-                                    {(userBalance - purchasedGiftsPrice >=
-                                        price ||
-                                        giftIds.includes(id)) && (
-                                        <ToggleSwitch
-                                            isChecked={giftIds.includes(id)}
-                                            awardId={id}
-                                            onToggleSwitchAwards={handleToggle}
-                                        />
-                                    )}
-                                </Card>
-                            </li>
-                        )
-                    )}
+                    {gifts?.map(({ id, title, price, imageUrl }) => (
+                        <li key={id} className={s.item}>
+                            <Card
+                                id={id}
+                                title={title}
+                                reward={price}
+                                imageUrl={imageUrl}
+                            >
+                                {(userBalance - purchasedGiftsPrice >= price ||
+                                    giftIds.includes(id)) && (
+                                    <ToggleSwitch
+                                        isChecked={giftIds.includes(id)}
+                                        awardId={id}
+                                        onToggleSwitchAwards={handleToggle}
+                                    />
+                                )}
+                            </Card>
+                        </li>
+                    ))}
                 </ul>
                 <div className={s.btn}>
                     <Button
                         type="submit"
                         onClick={handleConfirm}
                         disabled={!isPurchaseAvailable}
+                        isLoading={isLoading}
                     >
-                        confirm
+                        {!isPurchaseAvailable
+                            ? `${t(`unavailable`)}`
+                            : `${t(`confirm`)}`}
                     </Button>
                 </div>
                 <MediaQuery.Desktop>
@@ -136,7 +133,9 @@ const AwardsPage = () => {
                         <Cat />
                         <div className={s.box}>
                             <AwardsModalTitle>
+                                {t(`
                                 Congratulations! You get:
+                            `)}
                             </AwardsModalTitle>
                             <ul className={s.modal__list}>
                                 {purchasedGifts.length > 0 &&
@@ -165,6 +164,12 @@ const AwardsPage = () => {
     );
 };
 
-// AwardsPage.propTypes = {};
+// AwardsPage.propTypes = {
+//     imageUrl: PropTypes.string.isRequired,
+//     title: PropTypes.string.isRequired,
+//     id: PropTypes.number.isRequired,
+//     price: PropTypes.number.isRequired,
+//     handleToggle: PropTypes.func.isRequired,
+// };
 
 export default AwardsPage;
