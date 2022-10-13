@@ -1,3 +1,4 @@
+@import '../../sass/colors.scss';
 .footer {
     margin-top: 60px;
 
@@ -40,7 +41,7 @@
         }
 
         @media screen and (min-width: 768px) {
-            border-left: 1px solid #e5e5e5;
+            border-left: var(--border-color);
             margin-bottom: 0;
         }
     }
@@ -50,7 +51,7 @@
         font-size: 10px;
         line-height: 1.2;
         letter-spacing: 0.08em;
-        color: #858598;
+        color: var(--color-link);
 
         margin-right: 10px;
         margin-left: 10px;
