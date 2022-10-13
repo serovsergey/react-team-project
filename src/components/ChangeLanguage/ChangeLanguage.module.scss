@@ -1,0 +1,23 @@
+// .buttonWrapper {
+//     width: 50px;
+//     height: 50px;
+//     background-color: purple;
+// }
+
+.buttonOnLangClick {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 5px;
+    padding: 8px;
+    font-size: 13px;
+    font-weight: bold;
+    line-height: 17px;
+    text-align: center;
+    color: white;
+    background-color: tomato;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+}

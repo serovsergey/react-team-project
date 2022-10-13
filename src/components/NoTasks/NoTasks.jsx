@@ -11,7 +11,11 @@ import plannerMobile1x from '../../assets/images/mobile/1x/planer1x.png';
 import plannerMobile2x from '../../assets/images/mobile/2x/planer2x.png';
 import Button from 'components/common/Button';
 
+
+
 const NoTasks = () => {
+    
+   
     return (
         <div className={s.wrapper}>
             <div className={s.messageBlock}>
