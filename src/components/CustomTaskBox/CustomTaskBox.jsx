@@ -1,32 +1,42 @@
 import { FaPlus } from 'react-icons/fa';
 import s from '../CustomTaskBox/customTaskBox.module.scss';
 import { useState } from 'react';
-// import { CgClose } from 'react-icons/cg';
 import Modal from '../../components/common/Modal';
 import { useDispatch } from 'react-redux';
 import tasksOperations from 'redux/tasks/operations.tasks';
 import { ReactComponent as ImageIcon } from '../../assets/svg/Image.svg';
+import { ReactComponent as PencilIcon } from '../../assets/svg/Pencil.svg';
+import { toast } from 'react-toastify';
+import { BsFillCheckCircleFill } from 'react-icons/bs';
+
 
 const CustomTaskBox = () => {
     const [modalOpen, setModalOpen] = useState(false);
     const [task, setTask] = useState('');
     const [points, setPoints] = useState('');
-    const [image, setImage] = useState('');
+    const [file, setFile] = useState(null);
     const dispatch = useDispatch()
 
     const handleSubmit = event => {
         event.preventDefault()
-        console.log(typeof(task))
-        // headers: { 'Content-Type': 'multipart/form-data' }
-        // const obj = {title: task, reward: points}
-        const formData = new FormData
-        formData.set("title", task)
-        formData.set("reward", points)
-        formData.append("file", image)
+        if(!task || !points){
+            return toast.warning(`fields "Add Task" and "Add Points" are required`)
+        }
+        const formData = new FormData()
+        formData.append("title", task)
+        formData.append("reward", points)
+        if(file){
+            formData.append("file", file)
+        }
+        try{
+            dispatch(tasksOperations.createTask(formData)).unwrap()
+            
+        }catch(error){return toast.warning(error.message)}
         
-        console.log(formData)
-        dispatch(tasksOperations.createTask(formData))
         formReset()
+        setFile(null)
+        toast.success(`Task added successfully`)
+        setModalOpen(false)
     }
 
     const handleChange = event => {
@@ -40,8 +50,13 @@ const CustomTaskBox = () => {
         }
     };
     const handleImageChange = event => {
-        setImage(event.target.value);
-        console.log(event.target.value);
+        const sizeOfMegabites = event.target?.files[0]?.size / 102400
+        console.log(sizeOfMegabites)
+        if(sizeOfMegabites > 10){
+            setFile(null)
+            return toast.warning("The file must be no more than 10 mb")
+        }
+        setFile(event.target?.files[0]);
     };
     const formReset = () => {
         setTask('');
@@ -60,6 +75,7 @@ const CustomTaskBox = () => {
                 <Modal onClose={() => setModalOpen(false)} showCloseBtn>
                     <div className={s.topWrapper}>
                         <label className={s.imageLabel}>
+                            {file && <BsFillCheckCircleFill className={s.check}/>}
                             <ImageIcon className={s.imageIcon} />
                             <input
                                 type="file"
@@ -75,7 +91,8 @@ const CustomTaskBox = () => {
                             onSubmit={handleSubmit}
                             className={s.form}
                         >
-                            {/* <PencilIcon className={s.pensilIcon}/> */}
+                        <label className={s.formLabel}>
+                            <PencilIcon className={s.pencilIcon}/>
                             <input
                                 type="text"
                                 onChange={handleChange}
@@ -84,6 +101,9 @@ const CustomTaskBox = () => {
                                 className={s.item}
                                 value={task}
                             />
+                            </label>
+                            <label className={s.formLabel}>
+                            <PencilIcon className={s.pencilIcon}/>
                             <input
                                 type="number"
                                 onChange={handleChange}
@@ -92,6 +112,7 @@ const CustomTaskBox = () => {
                                 className={s.item}
                                 value={points}
                             />
+                            </label>
                             <button type="submit" className={s.formButton}>
                                 Ok
                             </button>
