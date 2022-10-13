@@ -56,6 +56,9 @@
         @media screen and (min-width: 768px) {
             margin-bottom: 20px;
         }
+        &:hover {
+            transform: scale(1.05);
+        }
     }
 
     &_icon_google {
@@ -94,14 +97,11 @@
 
         &__black {
             color: var(--color-black);
-            // color: var(--color-bar-bckg);
+
             font-size: 44px;
             line-height: 1.23;
         }
     }
-    // &_input:hover {
-    //     border: 2px solid #ffbc33;
-    // }
 
     &_inner_btn {
         display: flex;

@@ -1,13 +1,14 @@
 import Button from 'components/common/Button';
 import { useFormik } from 'formik';
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import authOperations from 'redux/auth/operations.auth';
 import * as yup from 'yup';
 import s from '../AuthForm/AuthForm.module.scss';
 import { ReactComponent as GoogleIcon } from '../../assets/svg/Google.svg';
 import { toast } from 'react-toastify';
 import PropTypes from 'prop-types';
+import authSelectors from '../../redux/auth/selector.auth';
 
 const validationSchema = yup.object({
     email: yup
@@ -23,6 +24,7 @@ const validationSchema = yup.object({
 
 const AuthForm = () => {
     const dispatch = useDispatch();
+    const isLoading = useSelector(authSelectors.getIsLoading);
     const formik = useFormik({
         initialValues: {
             email: '',
@@ -98,28 +100,26 @@ const AuthForm = () => {
                 </label>
                 <ul className={s.auth_form_inner_btn}>
                     <li className={s.item}>
-                        <Button type="submit">Login</Button>
+                        <Button isLoading={isLoading} type="submit">
+                            Login
+                        </Button>
                     </li>
                     <li className={s.item}>
-                        <Button type="button" onClick={handleRegister}>
+                        <Button
+                            isLoading={isLoading}
+                            type="button"
+                            onClick={handleRegister}
+                        >
                             Rigister
                         </Button>
                     </li>
                 </ul>
-                {/* <div className={s.auth_form_inner_btn}>
-                    <Button type="submit">Login</Button>
-                    <Button type="button" onClick={handleRegister}>
-                        Rigister
-                    </Button>
-                </div> */}
             </form>
         </>
     );
 };
-AuthForm.propTypes = {
-    onSubmit: PropTypes.func.isRequired,
-    onClick: PropTypes.func.isRequired,
-    onChange: PropTypes.func.isRequired,
-};
+// AuthForm.propTypes = {
+//
+// };
 
 export default AuthForm;
