@@ -1,5 +1,5 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 import s from './awardsModalTitle.module.scss';
 
@@ -8,6 +8,7 @@ const AwardsModalTitle = ({ children }) => {
 };
 
 export default AwardsModalTitle;
-// AwardsModalTitle.propTypes = {
-//     children: PropTypes.string,
-// };
+
+AwardsModalTitle.propTypes = {
+    children: PropTypes.string.isRequired,
+};

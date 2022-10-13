@@ -1,7 +1,7 @@
+import s from './card.module.scss';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-// import PropTypes from 'prop-types';
-import s from './card.module.scss';
+import PropTypes from 'prop-types';
 
 const Card = ({ children, title = 'test', reward = 0, imageUrl, id }) => {
     const { t, i18n } = useTranslation();
@@ -25,10 +25,10 @@ const Card = ({ children, title = 'test', reward = 0, imageUrl, id }) => {
 
 export default Card;
 
-// Card.propTypes = {
-//     title: PropTypes.string,
-//     reward: PropTypes.number,
-//     imageUrl: PropTypes.string,
-//     id: PropTypes.string,
-//     children: PropTypes.node,
-// };
+Card.propTypes = {
+    title: PropTypes.string.isRequired,
+    reward: PropTypes.number.isRequired,
+    imageUrl: PropTypes.string.isRequired,
+    // id: PropTypes.string.isRequired,
+    children: PropTypes.node,
+};
