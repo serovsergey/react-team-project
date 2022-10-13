@@ -2,15 +2,19 @@ import React from 'react';
 import TeamInfoArray from './TeamInfoArray';
 // import PropTypes from 'prop-types';
 
+import { useTranslation } from 'react-i18next';
+
 import s from './contactsPage.module.scss';
 import Footer from 'components/Footer';
 
 const ContactsPage = () => {
+    const { t, i18n } = useTranslation();
+
     return (
         <div className={s.contacts}>
-            <p className={s.contacts__title}>SHCHEKAVYTSIA TEAM</p>
+            <p className={s.contacts__title}>{t(`SHCHEKAVYTSIA TEAM`)}</p>
             <p className={s.contacts__secondtitle}>
-                {'Always ready for new challenges'}
+                {t(`Always ready for new challenges`)}
             </p>
             <ul className={s.contacts__cardlist}>
                 {TeamInfoArray.map(el => (

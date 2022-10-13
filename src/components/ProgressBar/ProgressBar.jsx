@@ -20,6 +20,7 @@ const ProgressBar = ({ position = 'center' }) => {
     if (userPoints === 0) {
         percent = 0;
     }
+
     return (
         <div className={s.wrap}>
             <div className={getStyle()}>
