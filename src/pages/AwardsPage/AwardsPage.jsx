@@ -20,14 +20,16 @@ import { toast } from 'react-toastify';
 import { MediaQuery } from 'hooks/useMediaQuery';
 import Footer from 'components/Footer';
 import { useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
 
 // import PropTypes from 'prop-types';
 
 const AwardsPage = () => {
+    const { t, i18n } = useTranslation();
     const dispatch = useDispatch();
     const gifts = useSelector(giftsSelectors.getGifts);
-    const userBalance = useSelector(userSelectors.getUserBalance) + 100;
-    // const isLoading = useSelector(giftsSelectors.getIsLoading);
+    const userBalance = useSelector(userSelectors.getUserBalance) + 1150;
+    const isLoading = useSelector(giftsSelectors.getIsLoading);
     const purchasedGifts = useSelector(userSelectors.getPurchasedGifts);
     const [giftIds, setGiftIds] = useState([]);
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -61,10 +63,6 @@ const AwardsPage = () => {
     };
 
     const handleConfirm = () => {
-        // if (giftIds.length === 0) {
-        //     toast.warning('Please, choose your prize');
-        //     return;
-        // }
         dispatch(giftsOperations.buyGifts({ giftIds }))
             .unwrap()
             .then(() => {
@@ -81,7 +79,7 @@ const AwardsPage = () => {
                 <div className={s.info}>
                     <div className={s.prize__label}>
                         <PrizesIcon />
-                        <h2 className={s.title}> my prizes</h2>
+                        <h2 className={s.title}>{t(`my prizes`)}</h2>
                     </div>
                     <div className={s.progressBar}>
                         <MediaQuery.Desktop>
@@ -93,36 +91,34 @@ const AwardsPage = () => {
                     </div>
                 </div>
                 <ul className={s.list}>
-                    {gifts?.map(
-                        ({ id, title, price, imageUrl, isSelected }) => (
-                            <li key={id} className={s.item}>
-                                <Card
-                                    id={id}
-                                    title={title}
-                                    reward={price}
-                                    imageUrl={imageUrl}
-                                >
-                                    {(userBalance - purchasedGiftsPrice >=
-                                        price ||
-                                        giftIds.includes(id)) && (
-                                        <ToggleSwitch
-                                            isChecked={giftIds.includes(id)}
-                                            awardId={id}
-                                            onToggleSwitchAwards={handleToggle}
-                                        />
-                                    )}
-                                </Card>
-                            </li>
-                        )
-                    )}
+                    {gifts?.map(({ id, title, price, imageUrl }) => (
+                        <li key={id} className={s.item}>
+                            <Card
+                                id={id}
+                                title={title}
+                                reward={price}
+                                imageUrl={imageUrl}
+                            >
+                                {(userBalance - purchasedGiftsPrice >= price ||
+                                    giftIds.includes(id)) && (
+                                    <ToggleSwitch
+                                        isChecked={giftIds.includes(id)}
+                                        awardId={id}
+                                        onToggleSwitchAwards={handleToggle}
+                                    />
+                                )}
+                            </Card>
+                        </li>
+                    ))}
                 </ul>
                 <div className={s.btn}>
                     <Button
                         type="submit"
                         onClick={handleConfirm}
                         disabled={!isPurchaseAvailable}
+                        isLoading={isLoading}
                     >
-                        confirm
+                        {t(`confirm`)}
                     </Button>
                 </div>
                 <MediaQuery.Desktop>
@@ -136,7 +132,9 @@ const AwardsPage = () => {
                         <Cat />
                         <div className={s.box}>
                             <AwardsModalTitle>
+                                {t(`
                                 Congratulations! You get:
+                            `)}
                             </AwardsModalTitle>
                             <ul className={s.modal__list}>
                                 {purchasedGifts.length > 0 &&
