@@ -7,7 +7,7 @@ import tasksOperations from 'redux/tasks/operations.tasks';
 import { ReactComponent as ImageIcon } from '../../assets/svg/Image.svg';
 import { ReactComponent as PencilIcon } from '../../assets/svg/Pencil.svg';
 import { toast } from 'react-toastify';
-import { BsFillCheckCircleFill } from 'react-icons/bs';
+
 
 
 const CustomTaskBox = () => {
@@ -16,6 +16,9 @@ const CustomTaskBox = () => {
     const [points, setPoints] = useState('');
     const [file, setFile] = useState(null);
     const dispatch = useDispatch()
+
+    const src = file && window.URL.createObjectURL(file)
+    console.log(src)
 
     const handleSubmit = event => {
         event.preventDefault()
@@ -75,7 +78,7 @@ const CustomTaskBox = () => {
                 <Modal onClose={() => setModalOpen(false)} showCloseBtn>
                     <div className={s.topWrapper}>
                         <label className={s.imageLabel}>
-                            {file && <BsFillCheckCircleFill className={s.check}/>}
+                            {file && <img src={src} alt='' className={s.check}/>}
                             <ImageIcon className={s.imageIcon} />
                             <input
                                 type="file"
