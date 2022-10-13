@@ -7,6 +7,7 @@ const getUserInfo = createAsyncThunk(
     async (_, { rejectWithValue, getState }) => {
         try {
             const { token: storedToken } = getState().auth;
+
             if (!storedToken) {
                 return rejectWithValue();
             }

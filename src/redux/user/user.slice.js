@@ -18,6 +18,7 @@ const setError = (state, { payload }) => {
 const userSlice = createSlice({
     name: 'user',
     initialState,
+
     extraReducers: {
         [userOperations.getUserInfo.pending]: setPending,
         [userOperations.getUserInfo.fulfilled]: (state, { payload }) => {
@@ -65,7 +66,6 @@ const userSlice = createSlice({
             state.purchasedGiftIds = initialState.purchasedGiftIds;
         },
         [giftsOperations.buyGifts.fulfilled]: (state, { payload }) => {
-            console.log(payload);
             state.balance = payload.updatedBalance;
             state.purchasedGiftIds = payload.purchasedGiftIds;
             state.isLoading = false;
@@ -75,3 +75,4 @@ const userSlice = createSlice({
 });
 
 export default userSlice.reducer;
+export const userActions = userSlice.actions;

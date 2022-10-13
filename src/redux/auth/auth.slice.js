@@ -19,7 +19,11 @@ const authSlice = createSlice({
         resetToken(state) {
             state.token = initialState.token;
         },
+        setToken(state, { payload }) {
+            state.token = payload;
+        },
     },
+
     extraReducers: {
         [authOperations.register.pending]: setPending,
         [authOperations.register.fulfilled]: (state, { payload }) => {
