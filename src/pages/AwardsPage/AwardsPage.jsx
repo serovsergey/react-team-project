@@ -118,7 +118,9 @@ const AwardsPage = () => {
                         disabled={!isPurchaseAvailable}
                         isLoading={isLoading}
                     >
-                        {t(`confirm`)}
+                        {!isPurchaseAvailable
+                            ? `${t(`unavailable`)}`
+                            : `${t(`confirm`)}`}
                     </Button>
                 </div>
                 <MediaQuery.Desktop>
