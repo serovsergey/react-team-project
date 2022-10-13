@@ -11,8 +11,8 @@ import { Outlet } from 'react-router-dom';
 const SharedLayoutPage = () => {
     return (
         <div>
-            <Header />
             <Suspense fallback={null}>
+            <Header />
                 <Outlet />
             </Suspense>
         </div>

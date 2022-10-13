@@ -31,7 +31,7 @@ export const App = () => {
                     <Route path="auth" element={<AuthPage />} />
                 </Route>
                 <Route path="/contacts" element={<ContactsPage />} />
-                <Route path="*" element={<Navigate to="/" />} />
+                {/* <Route path="*" element={<Navigate to="/" />} /> */}
             </Route>
         </Routes>
     );
