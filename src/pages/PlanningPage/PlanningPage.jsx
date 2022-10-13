@@ -16,16 +16,15 @@ const PlanningPage = () => {
     const tasks = useSelector(tasksSelectors.getTasks);
     const correntWeek = useSelector(weekSelectors.getCurrentWeekRange);
     const year = new Date().getFullYear();
-    const [open, setOpen] = useState(false);
+    // const [open, setOpen] = useState(false);
 
-    useEffect(() => {
-       setOpen(false)
-        },[open]);
+    // useEffect(() => {
+    //    setOpen(false)
+    //     },[open]);
     
     
 
-    console.log(open);
-    return (
+      return (
         <>
             <Container>
                 <div>
@@ -44,20 +43,21 @@ const PlanningPage = () => {
                             <li
                                 key={_id}
                                 className={s.item}
-                                onBlur={e => {
-                                    if (
-                                        !e.currentTarget.contains(
-                                            e.relatedTarget
-                                        )
-                                    ) {
-                                        setOpen(true);
-                                    } 
-                                    else {
-                                        setOpen(false);
-                                    }
+                                // onBlur={e => {
+                                //     console.log(e.relatedTarget);
+                                //     if (
+                                //         !e.currentTarget.contains(
+                                //             e.relatedTarget
+                                //         )
+                                //     ) {
+                                //         setOpen(true);
+                                //     } 
+                                //     else {
+                                //         setOpen(false);
+                                //     }
 
                                     
-                                }}
+                                // }}
                             >
                                 <Card
                                     title={title}
@@ -66,7 +66,7 @@ const PlanningPage = () => {
                                 >
                                     <TaskScheduleBtn
                                         buttonId={_id}
-                                        open={open}
+                                        // open={open}
                                     />
                                 </Card>
                             </li>
