@@ -72,8 +72,6 @@ const CustomTaskBox = () => {
     };
 
     return (
-        <>
-        <SumOfPointsBox />
         <div className={s.box}>
             <p className={s.text}>
                 {t(`If you want to get more prizes - add tasks`)} :{')'}
@@ -131,7 +129,6 @@ const CustomTaskBox = () => {
                 </Modal>
             )}
         </div>
-        </>
     );
 };
 
