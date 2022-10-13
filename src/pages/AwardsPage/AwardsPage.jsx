@@ -73,7 +73,7 @@ const AwardsPage = () => {
     };
 
     return (
-        <>
+        <div className={s.wrap}>
             <Container>
                 <div className={s.info}>
                     <div className={s.prize__label}>
@@ -160,7 +160,7 @@ const AwardsPage = () => {
             <MediaQuery.Mobile>
                 <ProgressBarMobile />
             </MediaQuery.Mobile>
-        </>
+        </div>
     );
 };
 
