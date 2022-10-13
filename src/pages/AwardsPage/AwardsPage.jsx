@@ -26,7 +26,7 @@ import { useMemo } from 'react';
 const AwardsPage = () => {
     const dispatch = useDispatch();
     const gifts = useSelector(giftsSelectors.getGifts);
-    const userBalance = useSelector(userSelectors.getUserBalance);
+    const userBalance = useSelector(userSelectors.getUserBalance) + 100;
     // const isLoading = useSelector(giftsSelectors.getIsLoading);
     const purchasedGifts = useSelector(userSelectors.getPurchasedGifts);
     const [giftIds, setGiftIds] = useState([]);
