@@ -2,14 +2,16 @@ import AuthForm from 'components/AuthForm';
 
 import Footer from 'components/Footer/Footer';
 import { MediaQuery } from '../../hooks/useMediaQuery';
+import { useTranslation } from 'react-i18next';
 
 import s from './authPage.module.scss';
 
 const AuthPage = () => {
+    const { t, i18n } = useTranslation();
     return (
         <section className={s.section_auth_page}>
             <h1 className={s.title}>
-                Do your homework, get some great prizes!
+                {t(` Do your homework, get some great prizes!`)}
             </h1>
 
             <AuthForm></AuthForm>
