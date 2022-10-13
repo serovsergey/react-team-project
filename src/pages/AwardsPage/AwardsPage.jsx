@@ -27,7 +27,7 @@ const AwardsPage = () => {
     const { t, i18n } = useTranslation();
     const dispatch = useDispatch();
     const gifts = useSelector(giftsSelectors.getGifts);
-    const userBalance = useSelector(userSelectors.getUserBalance) + 1150;
+    const userBalance = useSelector(userSelectors.getUserBalance);
     const isLoading = useSelector(giftsSelectors.getIsLoading);
     const purchasedGifts = useSelector(userSelectors.getPurchasedGifts);
     const [giftIds, setGiftIds] = useState([]);
