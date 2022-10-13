@@ -1,0 +1,57 @@
+@import '../../sass/colors';
+@import '../../sass/vars';
+
+.pointsBox{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 14px 0;
+    background-color: var(--footer-mobile-color);
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 27px;
+    @media screen and (min-width: 768px) {
+        position: static;
+    }
+    @media screen and (min-width: 1280px) {
+        width: auto;
+    }
+}
+
+.circle{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #8EC63F;
+
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--secondary-bcg-color);
+}
+.pointsTextFirst{
+    display: none;
+    font-weight: 500;
+    font-size: 12px;
+    color: #a6abb9;
+    @media screen and (min-width: 768px) {
+        display: block;
+    }
+}
+.pointsText{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 500;
+    font-size: 12px;
+    color: #a6abb9;
+}
