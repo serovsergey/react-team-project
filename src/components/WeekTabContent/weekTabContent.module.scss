@@ -6,7 +6,6 @@
   // padding: 0px 20px;
   margin-left: auto;
   margin-right: auto;
-  overflow-y: auto;
   height: calc(100vh - 166px);
 
   @media screen and (min-width: 768px) {
@@ -17,9 +16,7 @@
 
   @media screen and (min-width: 1280px) {
     padding: 0;
-    // padding: 0px 16px 0 107px;
-    // width: 100%;
-    // display: flex;
+    overflow-y: auto;
   }
 }
 
@@ -27,8 +24,10 @@
   width: 320px;
   padding: 0px 20px 0 20px;
   margin: 0 auto;
+  padding-bottom: 64px;
 
   @media screen and (min-width: 768px) {
+    padding-bottom: 0;
     width: 768px;
   }
 
@@ -51,7 +50,6 @@
 
   @media screen and (min-width: 1280px) {
     flex-direction: row;
-    // flex: 1;
   }
 }
 
@@ -66,13 +64,10 @@
 
   @media screen and (min-width: 768px) {
     // padding-left: 0;
-    // margin-top: 24px;
   }
 
   @media screen and (min-width: 1280px) {
-    // margin-top: 0;
     align-items: flex-start;
-    // padding-left: 10%;
   }
 }
 

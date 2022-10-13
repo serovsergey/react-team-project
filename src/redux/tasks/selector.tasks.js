@@ -38,12 +38,14 @@ const selectDayTasks = createSelector(
 );
 
 const getIsLoading = state => state.tasks.isLoading;
+const getIsPatching = state => state.tasks.isPatching;
 const getError = state => state.tasks.error;
 
 const tasksSelectors = {
     selectAllTasks,
     getTasks,
     selectDayTasks,
+    getIsPatching,
     getIsLoading,
     getError,
 };

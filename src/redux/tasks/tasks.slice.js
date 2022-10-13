@@ -12,6 +12,7 @@ const setPending = state => {
 const setError = (state, { payload }) => {
     state.isLoading = false;
     state.error = payload;
+    state.isPatching = false;
 };
 
 const tasksSlice = createSlice({
@@ -42,13 +43,17 @@ const tasksSlice = createSlice({
         },
         [tasksOperations.setActiveSingle.rejected]: setError,
 
-        [tasksOperations.toggleCompleted.pending]: setPending,
+        [tasksOperations.toggleCompleted.pending]: (state, { payload }) => {
+            state.isPatching = true;
+            state.error = '';
+        },
         [tasksOperations.toggleCompleted.fulfilled]: (state, { payload }) => {
             const updatedTaskIndex = state.items.findIndex(
                 task => task._id === payload.updatedTask.id
             );
             state.items[updatedTaskIndex].days = payload.updatedTask.days;
-            state.isLoading = false;
+            // state.isLoading = false;
+            state.isPatching = false;
         },
         [tasksOperations.toggleCompleted.rejected]: setError,
 

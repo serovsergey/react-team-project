@@ -1,4 +1,5 @@
 import { useMemo, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import tasksSelectors from 'redux/tasks/selector.tasks';
 import weekSelectors from 'redux/week/selector.week';
@@ -7,13 +8,13 @@ import s from './CheckDay.module.scss';
 
 const CheckDay = () => {
     const weekDates = useSelector(weekSelectors.getWeekDates);
-//    const selectDayTasks = useSelector(tasksSelectors.selectDayTasks)
-   
+    //    const selectDayTasks = useSelector(tasksSelectors.selectDayTasks)
+    const { t, i18n } = useTranslation();
 
     const weekDays = useMemo(
         () =>
             weekDates.map(dt => {
-                const dayStr = dt.toLocaleDateString('en-en', {
+                const dayStr = dt.toLocaleDateString(i18n.language, {
                     weekday: 'long',
                 });
                 return {
@@ -21,9 +22,9 @@ const CheckDay = () => {
                     title: dayStr.slice(0, 2),
                 };
             }),
-        [weekDates]
+        [i18n.language, weekDates]
     );
- 
+
     return (
         <>
             <div className={s.weekBox}>

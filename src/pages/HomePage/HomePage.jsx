@@ -1,6 +1,7 @@
 import WeekTabContent from 'components/WeekTabContent';
 import WeekTabs from 'components/WeekTabs';
 import React, { useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { useMediaQuery } from 'react-responsive';
 
@@ -12,7 +13,10 @@ import s from './homePage.module.scss';
 
 const HomePage = props => {
     const weekDates = useSelector(weekSelectors.getWeekDates);
-    const currentWeekRange = useSelector(weekSelectors.getCurrentWeekRange);
+    const { t, i18n } = useTranslation();
+    const currentWeekRange = useSelector(
+        weekSelectors.getCurrentWeekRange(i18n.language)
+    );
 
     const isDesktop = useMediaQuery({ minWidth: 1280 });
     const isMobile = useMediaQuery({ maxWidth: 767 });
@@ -20,18 +24,22 @@ const HomePage = props => {
     const weekDays = useMemo(
         () =>
             weekDates.map(dt => {
-                const dayStr = dt.toLocaleDateString('en-US', {
+                const dayEng = dt.toLocaleDateString('en', {
                     weekday: 'long',
                 });
+                let dayStr = dt.toLocaleDateString(i18n.language, {
+                    weekday: isDesktop ? 'long' : 'short',
+                });
+                dayStr = dayStr.charAt(0).toUpperCase() + dayStr.slice(1);
                 return {
                     date: dt,
-                    name: dayStr.toLowerCase(),
+                    name: dayEng.toLowerCase(),
                     title: isDesktop ? dayStr : dayStr.slice(0, 2),
                 };
             }),
-        [isDesktop, weekDates]
+        [i18n.language, isDesktop, weekDates]
     );
-    // console.log(isDesktop);
+    // console.log();
     return (
         <div className={s.wrapper}>
             <WeekTabs

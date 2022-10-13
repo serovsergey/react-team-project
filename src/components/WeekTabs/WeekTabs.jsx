@@ -1,5 +1,5 @@
 import CurrentWeekRange from 'components/CurrentWeekRange';
-import React, { useEffect } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useSearchParams } from 'react-router-dom';
 import { commonActions } from 'redux/common/common.slice';
@@ -16,29 +16,25 @@ const WeekTabs = ({ weekDays, currentWeekRangeStr = null }) => {
 
     useEffect(() => {
         if (!weekDays.some(({ name }) => name === currentDay)) {
-            // console.log('first');
             setSearchParams({ day: storedDay });
         }
     }, [currentDay, setSearchParams, storedDay, weekDays]);
 
+    const currentDate = useMemo(() => {
+        return weekDays
+            .find(({ name }) => name === currentDay)
+            ?.date?.getTime();
+    }, [currentDay, weekDays]);
     useEffect(() => {
-        const currentDate = weekDays.find(
-            ({ name }) => name === currentDay
-        )?.date;
         if (currentDate) {
             dispatch(
                 commonActions.setCurrentDate(
-                    currentDate.toISOString().split('T')[0]
+                    new Date(currentDate).toISOString().split('T')[0]
                 )
             );
         }
-    }, [currentDay, dispatch, weekDays]);
+    }, [currentDate, dispatch]);
 
-    const handleSelectDay = date => {
-        // dispatch(
-        //     commonActions.setCurrentDate(date.toISOString().split('T')[0])
-        // );
-    };
     return (
         <div className={s.wrapper}>
             {currentWeekRangeStr && (
@@ -48,16 +44,11 @@ const WeekTabs = ({ weekDays, currentWeekRangeStr = null }) => {
                 {weekDays.map(({ date, name, title }) => (
                     <li
                         key={date}
-                        // onClick={evt => handleSelectDay(evt, day)}
                         className={
                             s.item + ' ' + (currentDay === name ? s.active : '')
                         }
                     >
-                        <Link
-                            to={'?day=' + name}
-                            className={s.link}
-                            onClick={() => handleSelectDay(date)}
-                        >
+                        <Link to={'?day=' + name} className={s.link}>
                             {title}
                         </Link>
                     </li>

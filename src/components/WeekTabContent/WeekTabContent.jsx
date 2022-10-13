@@ -23,8 +23,8 @@ const WeekTabContent = ({ currentWeekRangeStr, weekDays }) => {
     );
     const today = new Date().setHours(0, 0, 0, 0);
     const readOnly = currentDate.getTime() > today;
-    // console.log(currentDate.getTime(), today);
-    const notAvailable = false; //currentDate.getTime() > today;
+    // console.log(currentDate.setHours(0, 0, 0, 0), today);
+    const notAvailable = new Date(currentDate).setHours(0, 0, 0, 0) > today;
     const noTasks = !dayTasks || !dayTasks.length;
     return (
         <>
