@@ -10,21 +10,18 @@ import plannerTablet2x from '../../assets/images/tablet/2x/planer2x.png';
 import plannerMobile1x from '../../assets/images/mobile/1x/planer1x.png';
 import plannerMobile2x from '../../assets/images/mobile/2x/planer2x.png';
 import Button from 'components/common/Button';
-
-
+import { useTranslation } from 'react-i18next';
 
 const NoTasks = () => {
-    
-   
+    const { t } = useTranslation();
     return (
         <div className={s.wrapper}>
             <div className={s.messageBlock}>
-                <span className={s.message}>No tasks on this day</span>
+                <span className={s.message}>{t(`No tasks on this day`)}</span>
                 <Link to="/planning" className={s.link}>
-                    <Button>Schedule tasks</Button>
+                    <Button>{t(`Schedule tasks`)}</Button>
                 </Link>
             </div>
-            {/* <div className={s.noTasks}></div> */}
             <picture className={s.picture}>
                 <source
                     srcSet={`${plannerDesktop1x} 1x, ${plannerDesktop2x} 2x`}
