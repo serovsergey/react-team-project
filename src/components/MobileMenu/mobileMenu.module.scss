@@ -34,7 +34,10 @@
 .menuHeader{
     display: flex;
     justify-content: space-between;
-    padding: 15px 20px 40px 20px;
+    padding: 15px 20px 20px 20px;
+    @media screen and (min-width: 768px) {
+        padding: 15px 20px 0px 20px;
+    }
 }
 
 .button{
