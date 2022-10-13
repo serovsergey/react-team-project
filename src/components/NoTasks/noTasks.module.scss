@@ -1,3 +1,5 @@
+@import '../../sass/mixins';
+
 .wrapper {
   display: flex;
   flex-direction: column;
@@ -8,14 +10,11 @@
   flex-grow: 1;
   justify-content: space-between;
 
-  @media screen and (min-width: 768px) {
-    // padding-top: 100px;
+  @include breakpointFrom(tablet) {
     justify-content: unset;
   }
 
-  @media screen and (min-width: 1280px) {
-    // min-height: 60%;
-  }
+  @include breakpointFrom(desktop) {}
 }
 
 .messageBlock {
@@ -35,11 +34,11 @@
   min-width: 220px;
   min-height: 48px;
   display: flex;
-  background-color: #FFBC33;
+  background-color: var(--orange-color);
   border-radius: 6px;
   justify-content: center;
   align-items: center;
-  color: #ffffff;
+  color: var(--secondary-bcg-color);
   line-height: 1.2;
   font-weight: 500;
   font-size: 12px;
@@ -49,18 +48,3 @@
   padding-top: 40px;
   width: 100%;
 }
-
-// .noTasks {
-//   width: 100%;
-//   // background-image: url('../../assets/images/desktop/1x/planer\ 1x.png');
-//   background-position: top;
-//   background-repeat: no-repeat;
-//   background-size: cover;
-//   flex-grow: 1;
-
-//   @media screen and (min-width: 768px) {}
-
-//   @media screen and (min-width: 1280px) {
-//     bottom: -40px;
-//   }
-// }

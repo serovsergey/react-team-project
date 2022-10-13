@@ -24,7 +24,7 @@ const CurrentDay = ({ currentDate }) => {
 
     return (
         <div className={s.wrapper}>
-            <span className={s.label}>My tasks: </span>
+            <span className={s.label}>{t(`My tasks:`)}&nbsp;</span>
             <span className={s.date}>{formattedDate}</span>
         </div>
     );

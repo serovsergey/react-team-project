@@ -1,12 +1,20 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
+import { useTranslation } from 'react-i18next';
+import PropTypes from 'prop-types';
 
 import s from './currentWeekRange.module.scss';
 
 const CurrentWeekRange = ({ currentWeekRangeStr }) => {
-    return <div className={s.wrapper}>A week: {currentWeekRangeStr}</div>;
+    const { t } = useTranslation();
+    return (
+        <div className={s.wrapper}>
+            {t(`A week:`)}&nbsp;{currentWeekRangeStr}
+        </div>
+    );
 };
 
-// CurrentWeekRange.propTypes = {};
+CurrentWeekRange.propTypes = {
+    currentWeekRangeStr: PropTypes.string.isRequired,
+};
 
 export default CurrentWeekRange;

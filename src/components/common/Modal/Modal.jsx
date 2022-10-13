@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
-// import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
 import s from './Modal.module.scss';
 
 const modalRoot = document.querySelector('#modal');
@@ -50,9 +50,13 @@ export const Modal = ({ onClose, showCloseBtn = false, children }) => {
     );
 };
 
-// Modal.propTypes = {
-//   onClose: PropTypes.func.isRequired,
-//   children: PropTypes.oneOfType([PropTypes.node, PropTypes.arrayOf(PropTypes.node)]).isRequired,
-// }
+Modal.propTypes = {
+    onClose: PropTypes.func.isRequired,
+    showCloseBtn: PropTypes.bool,
+    children: PropTypes.oneOfType([
+        PropTypes.node,
+        PropTypes.arrayOf(PropTypes.node),
+    ]).isRequired,
+};
 
 export default Modal;
