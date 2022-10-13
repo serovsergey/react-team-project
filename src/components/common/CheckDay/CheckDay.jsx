@@ -1,15 +1,12 @@
-import { useMemo, useState } from 'react';
+import { useMemo } from 'react';
 import { useSelector } from 'react-redux';
-import tasksSelectors from 'redux/tasks/selector.tasks';
 import weekSelectors from 'redux/week/selector.week';
 import CheckBox from '../CheckBox';
 import s from './CheckDay.module.scss';
 
 const CheckDay = () => {
     const weekDates = useSelector(weekSelectors.getWeekDates);
-//    const selectDayTasks = useSelector(tasksSelectors.selectDayTasks)
-   
-
+    //  const selectDayTasks = useSelector(tasksSelectors.selectDayTasks)
     const weekDays = useMemo(
         () =>
             weekDates.map(dt => {
@@ -23,14 +20,13 @@ const CheckDay = () => {
             }),
         [weekDates]
     );
- 
     return (
         <>
             <div className={s.weekBox}>
                 <form action="">
                     <ul>
                         {weekDays?.map(({ name, title }) => (
-                            <li key={name}>
+                            <li key={name} >
                                 <label className={s.label}>
                                     <CheckBox
                                         className={s.checkBox}
