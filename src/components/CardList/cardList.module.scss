@@ -1,3 +1,5 @@
+@import '../../sass/mixins';
+
 .wrapper {
   display: grid;
   grid-template-columns: 1fr;
@@ -6,11 +8,11 @@
   flex-grow: 1;
 
 
-  @media screen and (min-width: 768px) {
+  @include breakpointFrom(tablet) {
     grid-template-columns: 1fr 1fr;
   }
 
-  @media screen and (min-width: 1280px) {
+  @include breakpointFrom(desktop) {
     grid-template-columns: 1fr 1fr 1fr;
   }
 }
