@@ -4,9 +4,10 @@ import Container from 'components/Container';
 import CustomTaskBox from 'components/CustomTaskBox';
 import SumOfPointsBox from 'components/SumOfPointsBox';
 import React, { useEffect, useMemo, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useMediaQuery } from 'react-responsive';
 import tasksSelectors from 'redux/tasks/selector.tasks';
+import userOperations from 'redux/user/operations.user';
 import weekSelectors from 'redux/week/selector.week';
 
 // import PropTypes from 'prop-types';
@@ -17,11 +18,17 @@ const PlanningPage = () => {
     const tasks = useSelector(tasksSelectors.getTasks);
     const correntWeek = useSelector(weekSelectors.getCurrentWeekRange);
     const year = new Date().getFullYear();
+    const rewardsPlanned = useSelector(state => state.week.rewardsPlanned)
+    const dispatch = useDispatch()
     // const [open, setOpen] = useState(false);
-
+    // useEffect(()=>{
+    //     dispatch(userOperations.getUserInfo());
+    // }, [])
     // useEffect(() => {
-    //    setOpen(false)
-    //     },[open]);
+    //     dispatch(userOperations.getUserInfo());
+    //     // setUserReward()
+    //     console.log(user)
+    //     },[userReward, dispatch]);
     
     
 
@@ -36,7 +43,7 @@ const PlanningPage = () => {
                                 {correntWeek} {year}
                             </p>
                         </div>
-                        <SumOfPointsBox />
+                        <SumOfPointsBox userRewards={rewardsPlanned}/>
                         <CustomTaskBox />
                     </div>
 
@@ -68,7 +75,6 @@ const PlanningPage = () => {
                                 >
                                     <TaskScheduleBtn
                                         buttonId={_id}
-                                        // open={open}
                                     />
                                 </Card>
                             </li>
