@@ -7,7 +7,7 @@ import { useTranslation } from 'react-i18next';
 import s from './authPage.module.scss';
 
 const AuthPage = () => {
-    const { t, i18n } = useTranslation();
+    const { t } = useTranslation();
     return (
         <section className={s.section_auth_page}>
             <h1 className={s.title}>

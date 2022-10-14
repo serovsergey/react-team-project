@@ -3,9 +3,8 @@ import TaskScheduleBtn from 'components/common/TaskScheduleBtn';
 import Container from 'components/Container';
 import CustomTaskBox from 'components/CustomTaskBox';
 import SumOfPointsBox from 'components/SumOfPointsBox';
-import React, { useEffect, useMemo, useState } from 'react';
+import React from 'react';
 import { useSelector } from 'react-redux';
-import { useMediaQuery } from 'react-responsive';
 import tasksSelectors from 'redux/tasks/selector.tasks';
 import weekSelectors from 'redux/week/selector.week';
 
@@ -22,10 +21,8 @@ const PlanningPage = () => {
     // useEffect(() => {
     //    setOpen(false)
     //     },[open]);
-    
-    
 
-      return (
+    return (
         <>
             <Container>
                 <div>
@@ -53,12 +50,11 @@ const PlanningPage = () => {
                                 //         )
                                 //     ) {
                                 //         setOpen(true);
-                                //     } 
+                                //     }
                                 //     else {
                                 //         setOpen(false);
                                 //     }
 
-                                    
                                 // }}
                             >
                                 <Card

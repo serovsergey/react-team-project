@@ -1,4 +1,3 @@
-
 import { useEffect, useMemo, useRef, useState } from 'react';
 
 import { useTranslation } from 'react-i18next';
@@ -13,8 +12,7 @@ const CheckDay = () => {
     const ref = useRef(null);
     const weekDates = useSelector(weekSelectors.getWeekDates);
 
-    const { t, i18n } = useTranslation();
-
+    const { i18n } = useTranslation();
 
     const weekDays = useMemo(
         () =>
@@ -38,7 +36,6 @@ const CheckDay = () => {
             if (!ref.current?.contains(event.target)) {
                 setIsOpen(false);
             }
-            
         };
 
         if (isOpen) {
@@ -48,7 +45,6 @@ const CheckDay = () => {
         }
         return () => window.removeEventListener('click', handleClick);
     }, [isOpen]);
-
 
     return (
         <>
