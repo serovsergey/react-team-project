@@ -1,4 +1,5 @@
 @import '../../sass/colors.scss';
+@import '../../sass/mixins';
 
 .contacts {
     
@@ -101,7 +102,7 @@
 
    
 }
-@media (min-width: 768px) {
+@include breakpointFrom(tablet) {
     .contacts__cardlist {
         text-align: center;
         width: 600px;
@@ -128,7 +129,7 @@
    
 }
 
-@media (min-width: 1280px) {
+@include breakpointFrom(desktop) {
     .contacts__cardlist {
         flex-direction: row;
         width: 1280px;
