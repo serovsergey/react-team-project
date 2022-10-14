@@ -12,8 +12,10 @@ const SharedLayoutPage = () => {
     return (
         <div>
             <Suspense fallback={null}>
-            <Header />
-                <Outlet />
+                <Header />
+                <Suspense fallback={null}>
+                    <Outlet />
+                </Suspense>
             </Suspense>
         </div>
     );
