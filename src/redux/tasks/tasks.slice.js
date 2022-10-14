@@ -38,6 +38,7 @@ const tasksSlice = createSlice({
             const updatedTaskIndex = state.items.findIndex(
                 task => task._id === payload.updatedTask.id
             );
+            console.log(updatedTaskIndex);
             state.items[updatedTaskIndex].days = payload.updatedTask.days;
             state.isLoading = false;
         },
