@@ -10,7 +10,7 @@ const Footer = () => {
             <footer className={s.footer}>
                 <ul className={s.footer_list}>
                     <li className={s.footer_item}>
-                        <p className={s.footer_text}>{t(`KidsLike`)}</p>
+                        <p className={s.footer_text}>KidsLike</p>
 
                         <HandFooterIcon
                             style={{
