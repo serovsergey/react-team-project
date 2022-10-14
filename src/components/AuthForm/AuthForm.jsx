@@ -1,6 +1,6 @@
 import Button from 'components/common/Button';
 import { useFormik } from 'formik';
-import React from 'react';
+import React, { useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import authOperations from 'redux/auth/operations.auth';
 import * as yup from 'yup';
@@ -24,6 +24,7 @@ const validationSchema = yup.object({
 });
 
 const AuthForm = () => {
+    const buttonRef = useRef();
     const { t, i18n } = useTranslation();
     const dispatch = useDispatch();
     const isLoading = useSelector(authSelectors.getIsLoading);
@@ -34,6 +35,7 @@ const AuthForm = () => {
         },
         validationSchema,
         onSubmit: values => {
+            buttonRef.current = 'login';
             dispatch(authOperations.login(values))
                 .unwrap()
                 .catch(error =>
@@ -43,6 +45,7 @@ const AuthForm = () => {
     });
 
     const handleRegister = () => {
+        buttonRef.current = 'register';
         dispatch(authOperations.register(formik.values))
             .unwrap()
             .catch(error =>
@@ -104,13 +107,20 @@ const AuthForm = () => {
                 </label>
                 <ul className={s.auth_form_inner_btn}>
                     <li className={s.item}>
-                        <Button isLoading={isLoading} type="submit">
+                        <Button
+                            isLoading={
+                                isLoading && buttonRef.current === 'login'
+                            }
+                            type="submit"
+                        >
                             {t(` Login`)}
                         </Button>
                     </li>
                     <li className={s.item}>
                         <Button
-                            isLoading={isLoading}
+                            isLoading={
+                                isLoading && buttonRef.current === 'register'
+                            }
                             type="button"
                             onClick={handleRegister}
                         >
