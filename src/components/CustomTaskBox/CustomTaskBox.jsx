@@ -84,7 +84,10 @@ const CustomTaskBox = () => {
                     <div className={s.topWrapper}>
                         <label className={s.imageLabel}>
                             {file && (
+                            <div className={s.imageWrapper}>
                                 <img src={src} alt="" className={s.check} />
+                            </div>
+                                
                             )}
                             <ImageIcon className={s.imageIcon} />
                             <input
