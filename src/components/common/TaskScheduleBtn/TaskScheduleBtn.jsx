@@ -3,23 +3,21 @@ import { BsPlusLg } from 'react-icons/bs';
 // import PropTypes from 'prop-types';
 import s from './taskScheduleBtn.module.scss';
 import CheckDay from '../CheckDay';
-import { inetialStateCheckDays } from '../CheckBox/CheckBox';
+// import { inetialStateCheckDays } from '../CheckBox/CheckBox';
 import { useDispatch, useSelector } from 'react-redux';
 import tasksOperations from 'redux/tasks/operations.tasks';
-import userOperations from 'redux/user/operations.user';
 
-const TaskScheduleBtn = ({ buttonId }) => {
+
+const TaskScheduleBtn = ({ taskId }) => {
     const btnRef = useRef();
     const ref = useRef(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const dispatch = useDispatch();
     
+    
 
     useEffect(() => {
         const handleClick = event => {
-            // console.log(ref);
-            // console.log(event.target);
-            // console.log(ref.current?.contains(event.target));
             if (!ref.current?.contains(event.target)) {
                 setIsModalOpen(false);
             }
@@ -33,15 +31,19 @@ const TaskScheduleBtn = ({ buttonId }) => {
         return () => window.removeEventListener('click', handleClick);
     }, [isModalOpen]);
 
+
+
+    
+
+
+
+
     const handleclick = () => {
         setIsModalOpen(prev => !prev);
         
         if (isModalOpen) {
             const id = btnRef.current.name;
-            // console.log(id);
-            const taskData = inetialStateCheckDays;
-            // console.log(taskData);
-            dispatch(tasksOperations.setActiveSingle({id, taskData}));
+            // dispatch(tasksOperations.setActiveSingle({id, daysBoolean}));
             
         }
     };
@@ -51,7 +53,7 @@ const TaskScheduleBtn = ({ buttonId }) => {
             {isModalOpen ? (
                 <button
                     ref={btnRef}
-                    name={buttonId}
+                    name={taskId}
                     type="button"
                     className={s.btn}
                     onClick={handleclick}
@@ -61,7 +63,7 @@ const TaskScheduleBtn = ({ buttonId }) => {
             ) : (
                 <button
                     ref={btnRef}
-                    name={buttonId}
+                    name={taskId}
                     type="button"
                     className={s.btn}
                     onClick={handleclick}
@@ -69,7 +71,9 @@ const TaskScheduleBtn = ({ buttonId }) => {
                     <BsPlusLg color="#8EC63F" />
                 </button>
             )}
-            {isModalOpen && <CheckDay />}
+            {isModalOpen && <CheckDay  id={taskId} 
+            // handleChange={handleChange}
+            />}
         </div>
     );
 };
