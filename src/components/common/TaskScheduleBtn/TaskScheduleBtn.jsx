@@ -4,14 +4,16 @@ import { BsPlusLg } from 'react-icons/bs';
 import s from './taskScheduleBtn.module.scss';
 import CheckDay from '../CheckDay';
 import { inetialStateCheckDays } from '../CheckBox/CheckBox';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import tasksOperations from 'redux/tasks/operations.tasks';
+import userOperations from 'redux/user/operations.user';
 
 const TaskScheduleBtn = ({ buttonId }) => {
     const btnRef = useRef();
     const ref = useRef(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const dispatch = useDispatch();
+    
 
     useEffect(() => {
         const handleClick = event => {
@@ -33,13 +35,14 @@ const TaskScheduleBtn = ({ buttonId }) => {
 
     const handleclick = () => {
         setIsModalOpen(prev => !prev);
-
+        
         if (isModalOpen) {
             const id = btnRef.current.name;
-            console.log(id);
+            // console.log(id);
             const taskData = inetialStateCheckDays;
-            console.log(taskData);
+            // console.log(taskData);
             dispatch(tasksOperations.setActiveSingle({id, taskData}));
+            
         }
     };
 
