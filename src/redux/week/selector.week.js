@@ -1,3 +1,5 @@
+import { createSelector } from '@reduxjs/toolkit';
+
 const getStartWeekDate = state => state.week.startWeekDate;
 const getEndWeekDate = state => state.week.endWeekDate;
 const getRewardsGained = state => state.week.rewardsGained;
@@ -22,6 +24,25 @@ const getWeekDates = state => {
     return dateArray;
 };
 
+const selectWeekDays = createSelector(
+    [getWeekDates, (_, options) => options],
+    (weekDates, { locale, short }) =>
+        weekDates.map(dt => {
+            const dayEng = dt.toLocaleDateString('en', {
+                weekday: 'long',
+            });
+            let dayStr = dt.toLocaleDateString(locale, {
+                weekday: short ? 'short' : 'long',
+            });
+            dayStr = dayStr.charAt(0).toUpperCase() + dayStr.slice(1);
+            return {
+                date: dt,
+                name: dayEng.toLowerCase(),
+                title: short ? dayStr.slice(0, 2) : dayStr,
+            };
+        })
+);
+
 const getCurrentWeekRange = locale => state => {
     const startDate = new Date(state.week.startWeekDate);
     let startMonth = startDate.toLocaleDateString(locale, { month: 'long' });
@@ -40,6 +61,7 @@ const weekSelectors = {
     getRewardsGained,
     getRewardsPlanned,
     getWeekDates,
+    selectWeekDays,
     getCurrentWeekRange,
     getIsLoading,
     getError,

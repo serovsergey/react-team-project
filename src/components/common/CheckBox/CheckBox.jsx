@@ -46,7 +46,7 @@ const CheckBox = ({ id }) => {
         }
 
         console.log(days);
-    }, [isShow, days, boolean]);
+    }, [isShow, days]);
 
     const handleChange = e => {
         setIsShow(prev => !prev);
