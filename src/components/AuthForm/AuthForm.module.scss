@@ -1,4 +1,5 @@
-@import '../../sass/colors.scss';
+@import '../../sass/mixins';
+
 .auth_form {
     display: flex;
     flex-direction: column;
@@ -10,7 +11,7 @@
     margin-left: auto;
     margin-right: auto;
 
-    @media screen and (min-width: 768px) {
+    @include breakpointFrom(tablet) {
         max-width: 400px;
         padding: 40px 32px;
         background-color: var(--secondary-bcg-color);
@@ -19,7 +20,7 @@
         border-radius: 6px;
     }
 
-    @media screen and (min-width: 1280px) {
+    @include breakpointFrom(desktop) {
         max-width: 394px;
         padding: 40px;
         margin-left: auto;
@@ -52,8 +53,9 @@
         background-color: var(--input-form-color);
         border-radius: 6px;
         box-shadow: var(--box-shadow-authForm);
+        transition: makeTransition((transform));
 
-        @media screen and (min-width: 768px) {
+        @include breakpointFrom(tablet) {
             margin-bottom: 20px;
         }
         &:hover {
@@ -121,18 +123,18 @@
 .item {
     min-width: 135px;
 
-    @media screen and (min-width: 768px) {
+    @include breakpointFrom(tablet) {
         width: 160px;
     }
 
     &:not(:last-child) {
         margin-right: 10px;
 
-        @media screen and (min-width: 768px) {
+        @include breakpointFrom(tablet) {
             margin-right: 16px;
         }
 
-        @media screen and (min-width: 1280px) {
+        @include breakpointFrom(desktop) {
             margin-right: 8px;
         }
     }

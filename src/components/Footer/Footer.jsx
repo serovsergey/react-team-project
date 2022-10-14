@@ -21,7 +21,7 @@ const Footer = () => {
                     <li className={s.footer_item}>
                         <p className={s.footer_text}>
                             {t(
-                                `  Making the life of parents and children isy :)`
+                                `Making the life of parents and children isy :)`
                             )}
                         </p>
                     </li>

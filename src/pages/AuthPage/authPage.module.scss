@@ -1,4 +1,4 @@
-@import '../../sass/colors.scss';
+@import '../../sass/mixins';
 .section_auth_page {
     display: flex;
     flex-direction: column;
@@ -6,10 +6,10 @@
     padding-bottom: 0;
     min-height: calc(100vh - 65px);
 
-    @media screen and (min-width: 768px) {
+    @include breakpointFrom(tablet) {
         padding-top: 60px;
     }
-    @media screen and (min-width: 1280px) {
+    @include breakpointFrom(desktop) {
         padding-top: 20px;
     }
 }
@@ -24,12 +24,12 @@
     margin-bottom: 32px;
     margin-left: auto;
     margin-right: auto;
-    @media screen and (min-width: 768px) {
+    @include breakpointFrom(tablet) {
         width: 403px;
         font-size: 28px;
         line-height: 1.21;
     }
-    @media screen and (min-width: 1280px) {
+    @include breakpointFrom(desktop) {
         font-size: 30px;
         line-height: 1.23;
         margin-left: auto;

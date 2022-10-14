@@ -1,14 +1,14 @@
-@import '../../sass/colors.scss';
+@import '../../sass/mixins';
 .footer {
     margin-top: 60px;
 
-    @media screen and (min-width: 768px) {
+    @include breakpointFrom(tablet) {
         margin-top: 40px;
         display: flex;
         justify-content: center;
     }
 
-    @media screen and (min-width: 1280px) {
+    @include breakpointFrom(desktop) {
         display: flex;
         justify-content: flex-end;
         margin-top: 45px;
@@ -22,12 +22,12 @@
         align-items: center;
         text-align: center;
 
-        @media screen and (min-width: 768px) {
+        @include breakpointFrom(tablet) {
             margin-bottom: 8px;
             display: inline-flex;
         }
 
-        @media screen and (min-width: 1280px) {
+        @include breakpointFrom(desktop) {
             margin-right: 0;
         }
     }
@@ -40,7 +40,7 @@
             border-left: none;
         }
 
-        @media screen and (min-width: 768px) {
+        @include breakpointFrom(tablet) {
             border-left: var(--border-color);
             margin-bottom: 0;
         }
