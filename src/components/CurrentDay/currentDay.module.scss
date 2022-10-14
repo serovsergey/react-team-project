@@ -1,0 +1,52 @@
+@import '../../sass/mixins';
+
+.wrapper {
+  text-align: center;
+  margin-top: 20px;
+
+  @include breakpointFrom(tablet) {
+    // @media screen and (min-width: 768px) {
+    margin-top: 24px;
+  }
+
+  @include breakpointFrom(desktop) {
+    // @media screen and (min-width: 1280px) {
+    margin-top: 0;
+  }
+}
+
+.date {
+  font-size: 12px;
+  line-height: 1.25;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  display: block;
+  margin-top: 4px;
+
+  @include breakpointFrom(tablet) {
+    // @media screen and (min-width: 768px) {
+    margin-top: 0;
+    display: inline;
+  }
+
+  @include breakpointFrom(desktop) {}
+
+  // @media screen and (min-width: 1280px) {}
+}
+
+.label {
+  color: var(--color-bar-bckg);
+
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.25;
+
+  @include breakpointFrom(tablet) {
+    // @media screen and (min-width: 768px) {
+    margin-right: 20px;
+  }
+
+  @include breakpointFrom(desktop) {}
+
+  // @media screen and (min-width: 1280px) {}
+}

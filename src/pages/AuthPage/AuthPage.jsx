@@ -1,70 +1,47 @@
-import { useFormik } from 'formik';
-import React from 'react';
-import { useDispatch } from 'react-redux';
-// import { toast } from 'react-toastify';
-import authOperations from 'redux/auth/operations.auth';
-import * as yup from 'yup';
-// import PropTypes from 'prop-types';
+import AuthForm from 'components/AuthForm';
 
-// import s from './authPage.module.scss';
+import Footer from 'components/Footer/Footer';
+import { MediaQuery } from '../../hooks/useMediaQuery';
+import { useTranslation } from 'react-i18next';
 
-const validationSchema = yup.object({
-  email: yup
-    .string('Enter email')
-    .min(5, 'Too Short!')
-    .email('Invalid email')
-    .required('Email is required'),
-  password: yup
-    .string('Enter password')
-    .min(8, 'Too Short!')
-    .required('Number is required'),
-});
+import s from './authPage.module.scss';
 
-const AuthPage = props => {
-  const dispatch = useDispatch();
-  const formik = useFormik({
-    initialValues: {
-      email: '',
-      password: '',
-    },
-    validationSchema,
-    onSubmit: (values, { resetForm }) => {
-      // onSubmit(values);
-      console.log(values);
-      dispatch(authOperations.login(values))
-        .unwrap()
-        .catch(error => console.log(error));
-      // resetForm();
-    },
-  });
+const AuthPage = () => {
+    const { t, i18n } = useTranslation();
+    return (
+        <section className={s.section_auth_page}>
+            <h1 className={s.title}>
+                {t(`Do your homework, get some great prizes!`)}
+            </h1>
 
-  return (
-    <>
-      <form onSubmit={formik.handleSubmit} className={null}>
-        <label>
-          E-Mail
-          <input
-            name="email"
-            type="text"
-            onChange={formik.handleChange}
-            value={formik.values.email}
-          />
-        </label>
-        <label htmlFor="lastName">
-          Password
-          <input
-            name="password"
-            type="password"
-            onChange={formik.handleChange}
-            value={formik.values.password}
-          />
-        </label>
-        <button type="submit">Login</button>
-      </form>
-    </>
-  );
+            <AuthForm></AuthForm>
+            <MediaQuery.Desktop>
+                <Footer></Footer>
+            </MediaQuery.Desktop>
+            <MediaQuery.Tablet>
+                <Footer></Footer>
+            </MediaQuery.Tablet>
+
+            <MediaQuery.Desktop>
+                <div className={s.inner_images_bp1280px}>
+                    <div className={s.inner_images_bp1280px__family}></div>
+                    <div className={s.inner_images_bp1280px__bulb}></div>
+                    <div className={s.inner_images_bp1280px__family2}></div>
+                    <div className={s.inner_images_bp1280px__robot}></div>
+                </div>
+            </MediaQuery.Desktop>
+            <MediaQuery.Tablet>
+                <div className={s.inner_images_bp768px}>
+                    <div className={s.inner_images_bp768px__family}></div>
+                    <div className={s.inner_images_bp768px__bulb}></div>
+                    <div className={s.inner_images_bp768px__family2}></div>
+                </div>
+            </MediaQuery.Tablet>
+            <MediaQuery.Mobile>
+                <div className={s.inner_images_bp320px}></div>
+            </MediaQuery.Mobile>
+        </section>
+    );
 };
-
-// AuthPage.propTypes = {};
 
 export default AuthPage;

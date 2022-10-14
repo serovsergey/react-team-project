@@ -1,0 +1,127 @@
+@import '../../sass/mixins';
+
+.wrap {
+    @include breakpointFrom(desktop) {
+        height: calc(100vh - 65px);
+        overflow-y: auto;
+    }
+}
+
+.info {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 32px;
+
+    @include breakpointFrom(tablet) {
+        margin-top: 40px;
+        margin-bottom: 40px;
+    }
+
+    @include breakpointFrom(desktop) {
+        margin-top: 32px;
+    }
+}
+
+.prize__label {
+    display: inline-flex;
+    align-items: center;
+    margin-right: auto;
+}
+
+.title {
+    margin-left: 14px;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 1.22;
+    letter-spacing: 0.2em;
+
+    color: var(--color-black);
+}
+
+.list {
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 20px;
+
+    @include breakpointFrom(tablet) {
+        grid-template-columns: 1fr 1fr;
+        column-gap: 32px;
+    }
+
+    @include breakpointFrom(desktop) {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+}
+
+
+.btn {
+    margin-left: auto;
+    margin-right: auto;
+    width: 135px;
+    margin-top: 20px;
+    margin-bottom: 80px;
+    text-align: center;
+
+    @include breakpointFrom(tablet) {
+        width: 220px;
+        margin-top: 67px;
+        margin-bottom: 0px;
+        // margin-bottom: 40px;
+    }
+
+    @include breakpointFrom(desktop) {
+        margin-top: 60px;
+        // margin-bottom: 13px;
+    }
+}
+
+///////////modal///
+
+.box {
+    padding-top: 60px;
+    // padding-bottom: 60px;
+    padding-right: 28px;
+    padding-left: 28px;
+    padding-top: 60px;
+    padding-right: 28px;
+    padding-left: 28px;
+
+    @include breakpointFrom(tablet) {
+        padding-top: 129px;
+        // padding-bottom: 40px;
+        padding-right: 65px;
+        padding-left: 65px;
+
+    }
+
+    @include breakpointFrom(desktop) {
+        // margin-top: 60px;
+        // margin-bottom: 15px;
+    }
+}
+
+.modal__list {
+    margin: 0 auto;
+    max-width: 500px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.modal__item {
+    margin-bottom: 50px;
+
+    &:nth-child(even) {
+        margin-left: 25px;
+    }
+
+    @include breakpointFrom(tablet) {
+        margin-bottom: 55px;
+
+        &:not(:first-child) {
+            margin-left: 25px;
+        }
+    }
+}

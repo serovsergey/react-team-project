@@ -1,0 +1,50 @@
+@import '../../sass/mixins';
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 40px;
+  position: relative;
+  // overflow: hidden;
+  flex-grow: 1;
+  justify-content: space-between;
+
+  @include breakpointFrom(tablet) {
+    justify-content: unset;
+  }
+
+  @include breakpointFrom(desktop) {}
+}
+
+.messageBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.message {
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 1.25;
+  margin-bottom: 20px;
+}
+
+.link {
+  min-width: 220px;
+  min-height: 48px;
+  display: flex;
+  background-color: var(--orange-color);
+  border-radius: 6px;
+  justify-content: center;
+  align-items: center;
+  color: var(--secondary-bcg-color);
+  line-height: 1.2;
+  font-weight: 500;
+  font-size: 12px;
+}
+
+.picture {
+  padding-top: 40px;
+  width: 100%;
+}

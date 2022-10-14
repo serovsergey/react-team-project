@@ -1,0 +1,204 @@
+@import "../../sass/colors";
+@import "../../sass/vars";
+
+
+// CUSTOM TASK BOX
+.box {
+    position: fixed;
+    max-width: 500px;
+    bottom: 17px;
+    right: 20px;
+    height: 50px;
+    
+
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+   
+    @media screen and (min-width: 768px) {
+        position: static;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 20px;
+    }
+    @media screen and (min-width: 1280px) {
+        // width: 425px;
+        margin-left: auto;
+        margin-right: 0;
+
+        position: static ;
+        z-index: 0;
+        margin: 0;
+        padding: 0;
+
+
+
+
+    }
+}
+
+.text {
+    font-weight: 500;
+    font-size: 12px;
+    color: #a6abb9;
+
+    @media screen and (max-width: 767px) {
+        display: none;
+    }
+    @media screen and (min-width: 768px) {
+        display: block;
+    }
+}
+
+.button {
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    border: none;
+    width: 54px;
+    height: 54px;
+    margin-left: 20px;
+    background: var(--plus-btn-color);
+    transition: box-shadow $transition-style;
+    &:hover,
+    &:focus {
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    }
+}
+
+.topWrapper {
+    // position: relative;
+
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 130px;
+    padding: 16px;
+
+    background-image: url('../../assets/images/desktop/1x/RobotModal1x.png');
+    background-size: cover;
+    background-position: center;
+
+    @media screen and (min-device-pixel-ratio: 2),
+        (min-resolution: 192dpi),
+        (min-resolution: 2dppx) {
+        background-image: url('../../assets/images/desktop/2x/RobotModal2x.png');
+    }
+}
+
+.imageLabel {
+    width: 20px;
+    height: 20px;
+    margin-top: auto;
+    margin-left: auto;
+    transition: transform $transition-style;
+    // position: relative;
+    
+
+    &:hover .imageIcon,
+    &:focus .imageIcon {
+        transform: scale(1.1);
+    }
+    & .check{
+        position: absolute;
+        width: auto;
+        height: 110px;
+        // right: 60px;
+        // top: -78px;
+        right: 50%;
+        top: 20%;
+        transform: translate(51%, -45%);
+        border: 2px solid var(--orange-color);
+        border-radius: 5px;
+    }
+}
+
+.bottomWrapper {
+    width: 100%;
+    padding: 23px 30px;
+    background-color: var(--orange-color);
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+}
+
+.formLabel{
+    position: relative;
+    &:first-child {
+        margin-bottom: 15px;
+    }
+    &:hover .pencilIcon,
+    &:focus .pencilIcon{
+        fill: var(--color-link);
+    }
+}
+
+.item {
+
+    padding: 7px 20px;
+    outline: none;
+    background-color: var(--orange-color);
+    border: none;
+    border-bottom: 1px solid var(--secondary-bcg-color);
+    color: var(--secondary-bcg-color);
+    font-style: italic;
+    transition: border-color $transition-style;
+    
+    &::placeholder {
+        color: var(--secondary-bcg-color);
+        transition: color $transition-style;
+    }
+    &:hover,
+    &:focus {
+        border-color: var(--color-link);
+        &::placeholder{
+            color: var(--color-link);
+        }
+    }
+    
+    
+}
+.pencilIcon{
+   
+    position: absolute;
+    top: 4px;
+    left: 0;
+    fill: var(--secondary-bcg-color);
+    transition: fill $transition-style;
+    
+}
+
+.formButton {
+    width: 60px;
+    height: 30px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+
+    border-radius: 5px;
+    border: none;
+
+    background-color: var(--secondary-bcg-color);
+
+    font-weight: bold;
+    transition: box-shadow $transition-style;
+    &:hover,
+    &:focus {
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    }
+}
+
+.imageInput {
+    display: none;
+}

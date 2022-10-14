@@ -1,0 +1,171 @@
+@import '../../sass/colors.scss';
+@import '../../sass/mixins';
+
+.react-sweet-progress-symbol {
+    display: none;
+}
+
+.stats {
+    margin-bottom: 61px;
+    display: flex;
+    justify-content: center;
+
+    @media screen and (min-width: 768px) and (max-width: 1279px) {
+        flex-direction: column-reverse;
+        align-items: center;
+        margin-bottom: 0;
+    }
+
+        @include breakpointFrom(desktop) {
+        flex-direction: column;
+        justify-content: space-between;
+        margin-bottom: 0;
+    }
+
+
+    &__progress {
+        font-style: normal;
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 1.25;
+        text-align: right;
+        letter-spacing: 0.04em;
+        color: var(--color-bar-bckg);
+
+        @include breakpointTo(tablet) {
+            display: none;
+        }
+
+                @include breakpointFrom(tablet) {
+            margin-top: 0;
+            margin-bottom: 8px;
+            margin-right: 16px;
+            font-weight: 500;
+            font-size: 12px;
+            line-height: 1.25;
+            letter-spacing: 0.04em;
+
+        }
+
+           @include breakpointFrom(desktop) {
+
+            margin-bottom: 12px;
+        }
+    }
+
+
+
+    &__totalprogress {
+        font-style: normal;
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 1.25;
+        text-align: right;
+        letter-spacing: 0.04em;
+        color: var(--color-bar-bckg);
+
+        @include breakpointTo(desktop) {
+            display: none;
+        }
+
+                @include breakpointFrom(tablet) {
+            margin-top: 0;
+            margin-bottom: 8px;
+            margin-right: 16px;
+            font-weight: 500;
+            font-size: 12px;
+            line-height: 1.25;
+            letter-spacing: 0.04em;
+        }
+
+                @include breakpointFrom(desktop) {
+
+            margin-bottom: 12px;
+        }
+    }
+
+    &__number {
+        font-style: normal;
+        font-weight: bold;
+        font-size: 12px;
+        line-height: 1.25;
+        text-align: right;
+        letter-spacing: 0.2em;
+        color: #000000;
+        margin-left: 13px;
+    }
+
+    &__wrapper {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 10px;
+        font-size: 5px;
+
+    @include breakpointFrom(tablet) {
+            width: 350px;
+            margin-bottom: 20px;
+            margin: 0 auto;
+            font-weight: 400;
+            font-size: 14px;
+            height: 1.22;
+            width: 336px;
+
+
+        }
+
+                @include breakpointFrom(desktop) {
+            margin-bottom: 0;
+            margin-right: 16px;
+            font-weight: 400;
+            font-size: 14px;
+            height: 1.22;
+            width: 280px;
+
+        }
+
+    }
+
+    &__points {
+        font-weight: bold;
+
+    @include breakpointFrom(tablet) {
+            margin-right: 13px;
+            display: inline-flex;
+
+        }
+
+                @include breakpointFrom(desktop) {
+            margin-right: 20px;
+        }
+    }
+
+    &.right {
+        @media screen and (min-width: 768px) and (max-width: 1279px) {
+            flex-direction: column-reverse;
+            align-items: flex-end;
+            margin-bottom: 0;
+        }
+    }
+}
+
+.react-sweet-progress {
+    width: 280px;
+
+@include breakpointFrom(desktop) {
+        display: none;
+    }
+
+}
+
+.react-sweet-progress-line {
+    height: 6px;
+
+}
+
+.wrap {
+
+    @include breakpointTo(tablet) {
+        background-color: var(--footer-mobile-color);
+    }
+
+}

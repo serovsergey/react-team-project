@@ -1,0 +1,19 @@
+@import '../../sass/mixins';
+
+.wrapper {
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: 20px;
+  column-gap: 32px;
+  flex-grow: 1;
+
+  @include breakpointFrom(tablet) {
+    // @media screen and (min-width: 768px) {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @include breakpointFrom(desktop) {
+    // @media screen and (min-width: 1280px) {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}

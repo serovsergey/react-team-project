@@ -1,0 +1,42 @@
+@import '../../sass/colors';
+
+.buttonWrapper {
+    display: flex;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.btn {
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-right: 5px;
+    padding: 8px;
+    font-size: 13px;
+    font-weight: bold;
+    line-height: 17px;
+    text-align: center;
+    color: var(--color-black);
+    background-color: var(--footer-mobile-color);
+    border: 2px solid var(--footer-mobile-color);
+    border-radius: 50%;
+    cursor: pointer;
+
+    &:hover {
+        background-color: var(--primary-bcg-color);
+        box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+    }
+}
+
+.active {
+    background-color: var(--weekday-color);
+
+    &:hover {
+        background-color: var(--weekday-color);
+        box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+    }
+
+}

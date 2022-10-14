@@ -1,0 +1,51 @@
+@import "../../sass/colors";
+@import "../../sass/vars";
+
+.list{
+    display: flex;
+    flex-direction: column;
+    padding-top: 15px;
+    
+    font-weight: 500;
+    @media screen and (min-width: 1280px){
+        flex-direction: row;
+        margin-left: auto;
+        padding-top: 0;
+        padding-right: 40px;
+    }
+}
+
+.item{
+    padding: 15px 20px ;
+    text-align: start;
+    border-top: 1px solid var(--secondary-bcg-color);
+
+    &:last-child{
+        border-bottom: 1px solid var(--secondary-bcg-color);
+        @media screen and (min-width: 1280px){
+            border-bottom: none;
+            border-right: none;
+        }
+    }
+    @media screen and (min-width: 1280px){
+        padding: 0px 16px;
+        border-top: none;
+        border-right: 1px solid var(--color-link);
+    }
+}
+.link{
+    text-decoration: none;
+    color: var(--secondary-bcg-color);
+    transition: color $transition-style;
+    font-size: 12px;
+    &:hover{
+        color: var(--color-black);
+    }
+    @media screen and (min-width: 1280px){
+        color: var(--color-link);
+    }
+
+    &:global(.active){
+        color: var(--color-black);
+    }
+}
