@@ -25,7 +25,7 @@ const validationSchema = yup.object({
 
 const AuthForm = () => {
     const buttonRef = useRef();
-    const { t, i18n } = useTranslation();
+    const { t } = useTranslation();
     const dispatch = useDispatch();
     const isLoading = useSelector(authSelectors.getIsLoading);
     const formik = useFormik({

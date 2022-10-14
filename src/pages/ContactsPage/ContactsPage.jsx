@@ -8,7 +8,7 @@ import s from './contactsPage.module.scss';
 import Footer from 'components/Footer';
 
 const ContactsPage = () => {
-    const { t, i18n } = useTranslation();
+    const { t } = useTranslation();
 
     return (
         <div className={s.contacts}>
