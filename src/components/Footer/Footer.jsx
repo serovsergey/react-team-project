@@ -4,13 +4,13 @@ import { useTranslation } from 'react-i18next';
 import s from './Footer.module.scss';
 
 const Footer = () => {
-    const { t, i18n } = useTranslation();
+    const { t } = useTranslation();
     return (
         <>
             <footer className={s.footer}>
                 <ul className={s.footer_list}>
                     <li className={s.footer_item}>
-                        <p className={s.footer_text}>{t(`KidsLike`)}</p>
+                        <p className={s.footer_text}>KidsLike</p>
 
                         <HandFooterIcon
                             style={{
@@ -21,7 +21,7 @@ const Footer = () => {
                     <li className={s.footer_item}>
                         <p className={s.footer_text}>
                             {t(
-                                `  Making the life of parents and children isy :)`
+                                `Making the life of parents and children isy :)`
                             )}
                         </p>
                     </li>

@@ -1,3 +1,5 @@
+@import '../../../sass/mixins';
+
 .imgWrap {
     position: absolute;
     top: -100px;
@@ -15,7 +17,7 @@
         background-image: url('../../../assets/images/mobile/2x/Cat2x.png');
     }
 
-    @media screen and (min-width: 768px) {
+    @include breakpointFrom(tablet) {
         width: 200px;
         height: 230px;
         top: -115px;
@@ -29,7 +31,7 @@
         }
     }
 
-    @media screen and (min-width: 1280px) {
+    @include breakpointFrom(desktop) {
         background-image: url('../../../assets/images/desktop/1x/Cat1x.png');
 
         @media (min-device-pixel-ratio: 2),

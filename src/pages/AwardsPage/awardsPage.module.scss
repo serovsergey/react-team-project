@@ -1,5 +1,7 @@
+@import '../../sass/mixins';
+
 .wrap {
-    @media screen and (min-width: 1280px) {
+    @include breakpointFrom(desktop) {
         height: calc(100vh - 65px);
         overflow-y: auto;
     }
@@ -11,12 +13,12 @@
     margin-top: 20px;
     margin-bottom: 32px;
 
-    @media screen and (min-width: 768px) {
+    @include breakpointFrom(tablet) {
         margin-top: 40px;
         margin-bottom: 40px;
     }
 
-    @media screen and (min-width: 1280px) {
+    @include breakpointFrom(desktop) {
         margin-top: 32px;
     }
 }
@@ -35,7 +37,7 @@
     line-height: 1.22;
     letter-spacing: 0.2em;
 
-    color: #000000;
+    color: var(--color-black);
 }
 
 .list {
@@ -43,12 +45,12 @@
     grid-template-columns: 1fr;
     row-gap: 20px;
 
-    @media screen and (min-width: 768px) {
+    @include breakpointFrom(tablet) {
         grid-template-columns: 1fr 1fr;
         column-gap: 32px;
     }
 
-    @media screen and (min-width: 1280px) {
+    @include breakpointFrom(desktop) {
         grid-template-columns: 1fr 1fr 1fr 1fr;
     }
 }
@@ -62,14 +64,14 @@
     margin-bottom: 80px;
     text-align: center;
 
-    @media screen and (min-width: 768px) {
+    @include breakpointFrom(tablet) {
         width: 220px;
         margin-top: 67px;
         margin-bottom: 0px;
         // margin-bottom: 40px;
     }
 
-    @media screen and (min-width: 1280px) {
+    @include breakpointFrom(desktop) {
         margin-top: 60px;
         // margin-bottom: 13px;
     }
@@ -86,7 +88,7 @@
     padding-right: 28px;
     padding-left: 28px;
 
-    @media screen and (min-width: 768px) {
+    @include breakpointFrom(tablet) {
         padding-top: 129px;
         // padding-bottom: 40px;
         padding-right: 65px;
@@ -94,7 +96,7 @@
 
     }
 
-    @media screen and (min-width: 1280px) {
+    @include breakpointFrom(desktop) {
         // margin-top: 60px;
         // margin-bottom: 15px;
     }
@@ -115,7 +117,7 @@
         margin-left: 25px;
     }
 
-    @media screen and (min-width: 768px) {
+    @include breakpointFrom(tablet) {
         margin-bottom: 55px;
 
         &:not(:first-child) {

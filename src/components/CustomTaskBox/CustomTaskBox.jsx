@@ -7,45 +7,45 @@ import tasksOperations from 'redux/tasks/operations.tasks';
 import { ReactComponent as ImageIcon } from '../../assets/svg/Image.svg';
 import { ReactComponent as PencilIcon } from '../../assets/svg/Pencil.svg';
 import { toast } from 'react-toastify';
-import {useTranslation} from 'react-i18next'
-import SumOfPointsBox from 'components/SumOfPointsBox';
-
-
+import { useTranslation } from 'react-i18next';
 
 const CustomTaskBox = () => {
     const [modalOpen, setModalOpen] = useState(false);
     const [task, setTask] = useState('');
     const [points, setPoints] = useState('');
     const [file, setFile] = useState(null);
-    const dispatch = useDispatch()
-    const {t} = useTranslation()
+    const dispatch = useDispatch();
+    const { t } = useTranslation();
 
-    const src = file && window.URL.createObjectURL(file)
-    console.log(src)
-    const addTask = `${t(`Add task...`)}`
-    const addPoints = `${t(`Add points...`)}`
+    const src = file && window.URL.createObjectURL(file);
+    console.log(src);
+    const addTask = `${t(`Add task...`)}`;
+    const addPoints = `${t(`Add points...`)}`;
 
     const handleSubmit = event => {
-        event.preventDefault()
-        if(!task || !points){
-            return toast.warning(`fields "Add Task" and "Add Points" are required`)
+        event.preventDefault();
+        if (!task || !points) {
+            return toast.warning(
+                `fields "Add Task" and "Add Points" are required`
+            );
         }
-        const formData = new FormData()
-        formData.append("title", task)
-        formData.append("reward", points)
-        if(file){
-            formData.append("file", file)
+        const formData = new FormData();
+        formData.append('title', task);
+        formData.append('reward', points);
+        if (file) {
+            formData.append('file', file);
         }
-        try{
-            dispatch(tasksOperations.createTask(formData)).unwrap()
-            
-        }catch(error){return toast.warning(error.message)}
-        
-        formReset()
-        setFile(null)
-        toast.success(`Task added successfully`)
-        setModalOpen(false)
-    }
+        try {
+            dispatch(tasksOperations.createTask(formData)).unwrap();
+        } catch (error) {
+            return toast.warning(error.message);
+        }
+
+        formReset();
+        setFile(null);
+        toast.success(`Task added successfully`);
+        setModalOpen(false);
+    };
 
     const handleChange = event => {
         switch (event.target.name) {
@@ -58,11 +58,11 @@ const CustomTaskBox = () => {
         }
     };
     const handleImageChange = event => {
-        const sizeOfMegabites = event.target?.files[0]?.size / 102400
-        console.log(sizeOfMegabites)
-        if(sizeOfMegabites > 10){
-            setFile(null)
-            return toast.warning("The file must be no more than 10 mb")
+        const sizeOfMegabites = event.target?.files[0]?.size / 102400;
+        console.log(sizeOfMegabites);
+        if (sizeOfMegabites > 10) {
+            setFile(null);
+            return toast.warning('The file must be no more than 10 mb');
         }
         setFile(event.target?.files[0]);
     };
@@ -83,7 +83,9 @@ const CustomTaskBox = () => {
                 <Modal onClose={() => setModalOpen(false)} showCloseBtn>
                     <div className={s.topWrapper}>
                         <label className={s.imageLabel}>
-                            {file && <img src={src} alt='' className={s.check}/>}
+                            {file && (
+                                <img src={src} alt="" className={s.check} />
+                            )}
                             <ImageIcon className={s.imageIcon} />
                             <input
                                 type="file"
@@ -91,7 +93,7 @@ const CustomTaskBox = () => {
                                 onChange={handleImageChange}
                                 className={s.imageInput}
                             />
-                        </label>   
+                        </label>
                     </div>
                     <div className={s.bottomWrapper}>
                         <form
@@ -99,27 +101,27 @@ const CustomTaskBox = () => {
                             onSubmit={handleSubmit}
                             className={s.form}
                         >
-                        <label className={s.formLabel}>
-                            <PencilIcon className={s.pencilIcon}/>
-                            <input
-                                type="text"
-                                onChange={handleChange}
-                                name="task"
-                                placeholder={addTask}
-                                className={s.item}
-                                value={task}
-                            />
+                            <label className={s.formLabel}>
+                                <PencilIcon className={s.pencilIcon} />
+                                <input
+                                    type="text"
+                                    onChange={handleChange}
+                                    name="task"
+                                    placeholder={addTask}
+                                    className={s.item}
+                                    value={task}
+                                />
                             </label>
                             <label className={s.formLabel}>
-                            <PencilIcon className={s.pencilIcon}/>
-                            <input
-                                type="number"
-                                onChange={handleChange}
-                                name="points"
-                                placeholder={addPoints}
-                                className={s.item}
-                                value={points}
-                            />
+                                <PencilIcon className={s.pencilIcon} />
+                                <input
+                                    type="number"
+                                    onChange={handleChange}
+                                    name="points"
+                                    placeholder={addPoints}
+                                    className={s.item}
+                                    value={points}
+                                />
                             </label>
                             <button type="submit" className={s.formButton}>
                                 Ok

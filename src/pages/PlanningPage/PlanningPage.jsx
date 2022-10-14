@@ -25,14 +25,9 @@ const PlanningPage = () => {
     //     dispatch(userOperations.getUserInfo());
     // }, [])
     // useEffect(() => {
-    //     dispatch(userOperations.getUserInfo());
-    //     // setUserReward()
-    //     console.log(user)
-    //     },[userReward, dispatch]);
-    
-    
 
-      return (
+
+    return (
         <>
             <Container>
                 <div>
@@ -60,12 +55,11 @@ const PlanningPage = () => {
                                 //         )
                                 //     ) {
                                 //         setOpen(true);
-                                //     } 
+                                //     }
                                 //     else {
                                 //         setOpen(false);
                                 //     }
 
-                                    
                                 // }}
                             >
                                 <Card

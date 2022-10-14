@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
 
 const Card = ({ children, title = 'test', reward = 0, imageUrl, id }) => {
-    const { t, i18n } = useTranslation();
+    const { t } = useTranslation();
     return (
         <div id={id} className={s.card}>
             <div className={s.imgWrapper}>
