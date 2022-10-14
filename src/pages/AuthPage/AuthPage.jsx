@@ -11,7 +11,7 @@ const AuthPage = () => {
     return (
         <section className={s.section_auth_page}>
             <h1 className={s.title}>
-                {t(` Do your homework, get some great prizes!`)}
+                {t(`Do your homework, get some great prizes!`)}
             </h1>
 
             <AuthForm></AuthForm>
