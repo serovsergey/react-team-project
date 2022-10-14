@@ -1,6 +1,6 @@
 import { FaPlus } from 'react-icons/fa';
 import s from '../CustomTaskBox/customTaskBox.module.scss';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import Modal from '../../components/common/Modal';
 import { useDispatch } from 'react-redux';
 import tasksOperations from 'redux/tasks/operations.tasks';
@@ -18,7 +18,6 @@ const CustomTaskBox = () => {
     const { t } = useTranslation();
 
     const src = file && window.URL.createObjectURL(file);
-    console.log(src);
     const addTask = `${t(`Add task...`)}`;
     const addPoints = `${t(`Add points...`)}`;
 
@@ -71,10 +70,10 @@ const CustomTaskBox = () => {
         setPoints('');
     };
 
-    const handleModalClose= () => {
-        setFile(null)
-        setModalOpen(false)
-    }
+    const handleModalClose = () => {
+        setFile(null);
+        setModalOpen(false);
+    };
 
     return (
         <div className={s.box}>
@@ -89,10 +88,9 @@ const CustomTaskBox = () => {
                     <div className={s.topWrapper}>
                         <label className={s.imageLabel}>
                             {file && (
-                            <div className={s.imageWrapper}>
-                                <img src={src} alt="" className={s.check} />
-                            </div>
-                                
+                                <div className={s.imageWrapper}>
+                                    <img src={src} alt="" className={s.check} />
+                                </div>
                             )}
                             <ImageIcon className={s.imageIcon} />
                             <input

@@ -4,7 +4,8 @@ import Container from 'components/Container';
 import CustomTaskBox from 'components/CustomTaskBox';
 import SumOfPointsBox from 'components/SumOfPointsBox';
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
+import { useSelector } from 'react-redux';
 
 import tasksSelectors from 'redux/tasks/selector.tasks';
 
@@ -15,22 +16,20 @@ import weekSelectors from 'redux/week/selector.week';
 import s from './planningPage.module.scss';
 
 const PlanningPage = () => {
+    const { t } = useTranslation();
     const tasks = useSelector(tasksSelectors.getTasks);
-    const correntWeek = useSelector(weekSelectors.getCurrentWeekRange);
-    const year = new Date().getFullYear();
-    const rewardsPlanned = useSelector(state => state.week.rewardsPlanned);
-    const dispatch = useDispatch();
-
+    const currentWeek = useSelector(weekSelectors.getCurrentWeekRangeEx);
+    const rewardsPlanned = useSelector(weekSelectors.getRewardsPlanned);
     return (
         <>
             <Container>
                 <div>
                     <div className={s.wrapper}>
                         <div className={s.date}>
-                            <h1 className={s.title}>Plan for the week:</h1>
-                            <p className={s.week}>
-                                {correntWeek} {year}
-                            </p>
+                            <h1 className={s.title}>
+                                {t('Plan for the week:')}
+                            </h1>
+                            <p className={s.week}>{currentWeek}</p>
                         </div>
                         <SumOfPointsBox userRewards={rewardsPlanned} />
                         <CustomTaskBox />
