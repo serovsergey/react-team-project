@@ -1,5 +1,6 @@
 @import "../../sass/colors";
 @import "../../sass/vars";
+@import "../../sass/mixins";
 
 .userInfo {
     display: flex;
@@ -20,7 +21,7 @@
     font-weight: 700;
     font-size: 12px;
     line-height: 1.25;
-    color: white;
+    color: var(--secondary-bcg-color);
 
     &:first-child {
         display: flex;
@@ -30,12 +31,12 @@
         border-right: 1px solid var(--secondary-bcg-color);
         padding-right: 15px;
 
-        @media screen and (min-width: 768px) {
+        @include breakpointFrom(tablet){
             border-right: 1px solid var(--color-link);
         }
     }
 
-    @media screen and (min-width: 768px) {
+    @include breakpointFrom(tablet){
         color: var(--color-link);
     }
 }
@@ -47,15 +48,14 @@
 
     &:hover .icon {
         fill: var(--color-black);
-
     }
 }
 
 .icon {
     fill: var(--secondary-bcg-color);
-    transition: fill $transition-style;
+    transition: makeTransition(fill);
 
-    @media screen and (min-width: 768px) {
+    @include breakpointFrom(tablet){
         fill: var(--color-link);
     }
 }
