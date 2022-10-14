@@ -33,14 +33,17 @@ const tasksSlice = createSlice({
         },
         [tasksOperations.setActive.rejected]: setError,
 
-        [tasksOperations.setActiveSingle.pending]: setPending,
+        [tasksOperations.setActiveSingle.pending]: (state, { payload }) => {
+            state.isPatching = true;
+            state.error = '';
+        },
         [tasksOperations.setActiveSingle.fulfilled]: (state, { payload }) => {
             const updatedTaskIndex = state.items.findIndex(
                 task => task._id === payload.updatedTask.id
             );
-            console.log(updatedTaskIndex);
             state.items[updatedTaskIndex].days = payload.updatedTask.days;
-            state.isLoading = false;
+            // state.isLoading = false;
+            state.isPatching = false;
         },
         [tasksOperations.setActiveSingle.rejected]: setError,
 

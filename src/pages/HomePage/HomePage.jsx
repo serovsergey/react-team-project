@@ -21,22 +21,18 @@ const HomePage = () => {
     const isMobile = useMediaQuery({ maxWidth: 767.98 });
 
     const weekDays = useSelector(state =>
-        weekSelectors.selectWeekDays(state, {
-            locale: i18n.language,
-            short: !isDesktop,
-        })
+        weekSelectors.selectWeekDays(state, i18n.language)
     );
 
     return (
         <div className={s.wrapper}>
-            {true && (
-                <WeekTabs
-                    weekDays={weekDays}
-                    currentWeekRangeStr={
-                        !isMobile && !isDesktop ? currentWeekRange : null
-                    }
-                />
-            )}
+            <WeekTabs
+                weekDays={weekDays}
+                currentWeekRangeStr={
+                    !isMobile && !isDesktop ? currentWeekRange : null
+                }
+            />
+
             <WeekTabContent
                 currentWeekRangeStr={
                     isMobile || isDesktop ? currentWeekRange : null

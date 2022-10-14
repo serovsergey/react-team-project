@@ -18,15 +18,14 @@ const CustomTaskBox = () => {
     const { t } = useTranslation();
 
     const src = file && window.URL.createObjectURL(file);
-    console.log(src);
-    const addTask = `${t("Add task...")}`;
-    const addPoints = `${t("Add points...")}`;
+    const addTask = `${t(`Add task...`)}`;
+    const addPoints = `${t(`Add points...`)}`;
 
     const handleSubmit = event => {
         event.preventDefault();
         if (!task || !points) {
             return toast.warning(
-            `${t(`fields "Add Task" and "Add Points" are required`)}`
+                `${t(`fields "Add Task" and "Add Points" are required`)}`
             );
         }
         const formData = new FormData();
@@ -43,7 +42,7 @@ const CustomTaskBox = () => {
 
         formReset();
         setFile(null);
-        toast.success(`${t("Task added successfully")}`);
+        toast.success(`${t('Task added successfully')}`);
         setModalOpen(false);
     };
 
@@ -71,10 +70,10 @@ const CustomTaskBox = () => {
         setPoints('');
     };
 
-    const handleModalClose= () => {
-        setFile(null)
-        setModalOpen(false)
-    }
+    const handleModalClose = () => {
+        setFile(null);
+        setModalOpen(false);
+    };
 
     return (
         <div className={s.box}>
@@ -89,10 +88,9 @@ const CustomTaskBox = () => {
                     <div className={s.topWrapper}>
                         <label className={s.imageLabel}>
                             {file && (
-                            <div className={s.imageWrapper}>
-                                <img src={src} alt="" className={s.check} />
-                            </div>
-                                
+                                <div className={s.imageWrapper}>
+                                    <img src={src} alt="" className={s.check} />
+                                </div>
                             )}
                             <ImageIcon className={s.imageIcon} />
                             <input
