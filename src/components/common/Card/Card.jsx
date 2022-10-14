@@ -12,7 +12,7 @@ const Card = ({ children, title = 'test', reward = 0, imageUrl, id }) => {
             </div>
             <div className={s.footer}>
                 <div>
-                    <p className={s.title}>{title}</p>
+                    <p className={s.title}>{t(title)}</p>
                     <span className={s.reward}>{`${reward} ${t(
                         'points'
                     )}`}</span>
