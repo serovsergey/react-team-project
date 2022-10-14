@@ -1,9 +1,9 @@
-import { FaPlus } from 'react-icons/fa';
 import s from '../CustomTaskBox/customTaskBox.module.scss';
-import { useState } from 'react';
 import Modal from '../../components/common/Modal';
-import { useDispatch } from 'react-redux';
 import tasksOperations from 'redux/tasks/operations.tasks';
+import { useDispatch } from 'react-redux';
+import { useState } from 'react';
+import { FaPlus } from 'react-icons/fa';
 import { ReactComponent as ImageIcon } from '../../assets/svg/Image.svg';
 import { ReactComponent as PencilIcon } from '../../assets/svg/Pencil.svg';
 import { toast } from 'react-toastify';
@@ -25,7 +25,7 @@ const CustomTaskBox = () => {
         event.preventDefault();
         if (!task || !points) {
             return toast.warning(
-                `fields "Add Task" and "Add Points" are required`
+                `${t(`fields "Add Task" and "Add Points" are required`)}`
             );
         }
         const formData = new FormData();
@@ -42,7 +42,7 @@ const CustomTaskBox = () => {
 
         formReset();
         setFile(null);
-        toast.success(`Task added successfully`);
+        toast.success(`${t('Task added successfully')}`);
         setModalOpen(false);
     };
 
@@ -61,7 +61,7 @@ const CustomTaskBox = () => {
         console.log(sizeOfMegabites);
         if (sizeOfMegabites > 10) {
             setFile(null);
-            return toast.warning('The file must be no more than 10 mb');
+            return toast.warning(`${t('The file must be no more than 10 mb')}`);
         }
         setFile(event.target?.files[0]);
     };

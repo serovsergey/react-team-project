@@ -1,4 +1,5 @@
 @import '../../sass/colors';
+@import '../../sass/mixins';
 .header {
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.15);
   position: relative;
@@ -20,20 +21,29 @@
   border: none;
   background-color: transparent;
   margin-left: auto;
-
-  @media screen and (min-width: 768px) {
+  cursor: pointer;
+  
+  @include breakpointFrom(tablet){
     margin-right: 32px;
   }
 
-  @media screen and (min-width: 1280px) {
+  @include breakpointFrom(desktop){
     display: none;
+  }
+  & .iconMenu{
+    color: var(--color-link);
+    transition: makeTransition(color transform);
+  }
+  &:hover .iconMenu,
+  &:focus .iconMenu{
+    color: var(--black-color);
+    transform: scale(1.02);
   }
 
 }
 
-
 .loggedWrapper {
-  @media screen and (max-width: 767px) {
+  @include breakpointTo(tablet){
     display: none;
     color: var(--color-link);
   }

@@ -1,7 +1,7 @@
+import s from '../NavList/navList.module.scss';
 import menuItems from './menuItems';
 import { NavLink } from 'react-router-dom';
-import s from '../NavList/navList.module.scss';
-import {useTranslation} from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 
 const NavList = ({ onClose }) => {
 
