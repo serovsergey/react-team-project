@@ -12,7 +12,6 @@ import weekSelectors from 'redux/week/selector.week';
 import s from './homePage.module.scss';
 
 const HomePage = () => {
-    // const weekDates = useSelector(weekSelectors.getWeekDates);
     const { i18n } = useTranslation();
     const currentWeekRange = useSelector(
         weekSelectors.getCurrentWeekRange(i18n.language)
@@ -27,26 +26,7 @@ const HomePage = () => {
             short: !isDesktop,
         })
     );
-    // const weekDays = useMemo(
-    //     () =>
-    //         weekDates.map(dt => {
-    //             const dayEng = dt.toLocaleDateString('en', {
-    //                 weekday: 'long',
-    //             });
-    //             let dayStr = dt.toLocaleDateString(i18n.language, {
-    //                 weekday: isDesktop ? 'long' : 'short',
-    //             });
-    //             dayStr = dayStr.charAt(0).toUpperCase() + dayStr.slice(1);
-    //             return {
-    //                 date: dt,
-    //                 name: dayEng.toLowerCase(),
-    //                 title: isDesktop ? dayStr : dayStr.slice(0, 2),
-    //             };
-    //         }),
-    //     [i18n.language, isDesktop, weekDates]
-    // );
-    // console.log(weekDates);
-    // console.log(weekDays);
+
     return (
         <div className={s.wrapper}>
             {true && (
