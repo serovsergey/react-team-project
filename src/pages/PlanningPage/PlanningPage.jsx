@@ -2,6 +2,7 @@ import Card from 'components/common/Card';
 import TaskScheduleBtn from 'components/common/TaskScheduleBtn';
 import Container from 'components/Container';
 import CustomTaskBox from 'components/CustomTaskBox';
+import SumOfPointsBox from 'components/SumOfPointsBox';
 import React, { useEffect, useMemo, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useMediaQuery } from 'react-responsive';
@@ -35,6 +36,7 @@ const PlanningPage = () => {
                                 {correntWeek} {year}
                             </p>
                         </div>
+                        <SumOfPointsBox />
                         <CustomTaskBox />
                     </div>
 

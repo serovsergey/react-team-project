@@ -1,5 +1,8 @@
 @import "../../sass/colors";
 @import "../../sass/vars";
+
+
+// CUSTOM TASK BOX
 .box {
     position: fixed;
     max-width: 500px;
@@ -19,7 +22,7 @@
         margin-top: 20px;
     }
     @media screen and (min-width: 1280px) {
-
+        // width: 425px;
         margin-left: auto;
         margin-right: 0;
 
