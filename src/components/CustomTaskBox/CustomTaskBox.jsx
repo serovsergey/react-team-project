@@ -1,6 +1,6 @@
 import { FaPlus } from 'react-icons/fa';
 import s from '../CustomTaskBox/customTaskBox.module.scss';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Modal from '../../components/common/Modal';
 import { useDispatch } from 'react-redux';
 import tasksOperations from 'redux/tasks/operations.tasks';
@@ -71,6 +71,11 @@ const CustomTaskBox = () => {
         setPoints('');
     };
 
+    const handleModalClose= () => {
+        setFile(null)
+        setModalOpen(false)
+    }
+
     return (
         <div className={s.box}>
             <p className={s.text}>
@@ -80,7 +85,7 @@ const CustomTaskBox = () => {
                 <FaPlus color="#fff" size={27} />
             </button>
             {modalOpen && (
-                <Modal onClose={() => setModalOpen(false)} showCloseBtn>
+                <Modal onClose={() => handleModalClose()} showCloseBtn>
                     <div className={s.topWrapper}>
                         <label className={s.imageLabel}>
                             {file && (
