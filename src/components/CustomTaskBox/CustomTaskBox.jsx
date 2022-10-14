@@ -8,6 +8,7 @@ import { ReactComponent as ImageIcon } from '../../assets/svg/Image.svg';
 import { ReactComponent as PencilIcon } from '../../assets/svg/Pencil.svg';
 import { toast } from 'react-toastify';
 import {useTranslation} from 'react-i18next'
+import SumOfPointsBox from 'components/SumOfPointsBox';
 
 
 
@@ -71,7 +72,6 @@ const CustomTaskBox = () => {
     };
 
     return (
-    
         <div className={s.box}>
             <p className={s.text}>
                 {t(`If you want to get more prizes - add tasks`)} :{')'}

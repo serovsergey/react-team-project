@@ -1,0 +1,179 @@
+.section_auth_page {
+  display: flex;
+  flex-direction: column;
+  padding-top: 40px;
+  padding-bottom: 0;
+  min-height: calc(100vh - 65px);
+}
+@media screen and (min-width: 768px) {
+  .section_auth_page {
+    padding-top: 60px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .section_auth_page {
+    padding-top: 20px;
+  }
+}
+
+.title {
+  width: 281px;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 1.22;
+  text-align: center;
+  color: #000000;
+  margin-bottom: 32px;
+  margin-left: auto;
+  margin-right: auto;
+}
+@media screen and (min-width: 768px) {
+  .title {
+    width: 403px;
+    font-size: 28px;
+    line-height: 1.21;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .title {
+    font-size: 30px;
+    line-height: 1.23;
+    margin-left: auto;
+    margin-right: 114px;
+  }
+}
+
+.inner_images_bp320px {
+  background-image: url("../../assets/images/mobile/1x/AuthImgBp320-1x.png");
+  width: 100%;
+  height: 106px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+@media screen and (min-device-pixel-ratio: 2), (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2dppx) {
+  .inner_images_bp320px {
+    background-image: url("../../assets/images/mobile/2x/AuthImgBp320-2x.png");
+  }
+}
+
+.inner_images_bp768px {
+  display: flex;
+  position: relative;
+  margin-top: 30px;
+  width: 100%;
+  align-items: flex-end;
+}
+.inner_images_bp768px__family {
+  background-image: url("../../assets/images/tablet/1x/Family1x.png");
+  width: 45%;
+  height: 146px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+@media screen and (min-device-pixel-ratio: 2), (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2dppx) {
+  .inner_images_bp768px__family {
+    background-image: url("../../assets/images/tablet/2x/Family2-2x.png");
+  }
+}
+.inner_images_bp768px__bulb {
+  background-image: url("../../assets/images/tablet/1x/Bulb1x.png");
+  width: 28%;
+  height: 192px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  position: relative;
+  z-index: 1;
+  margin: 0 -45px;
+}
+@media screen and (min-device-pixel-ratio: 2), (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2dppx) {
+  .inner_images_bp768px__bulb {
+    background-image: url("../../assets/images/tablet/2x/Bulb2x.png");
+  }
+}
+.inner_images_bp768px__family2 {
+  background-image: url("../../assets/images/tablet/1x/Family1x.png");
+  width: 39%;
+  height: 239px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+@media screen and (min-device-pixel-ratio: 2), (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2dppx) {
+  .inner_images_bp768px__family2 {
+    background-image: url("../../assets/images/tablet/2x/Family1-2x.png");
+  }
+}
+
+.inner_images_bp1280px {
+  position: absolute;
+  top: 60px;
+  left: 0;
+}
+.inner_images_bp1280px__family {
+  background-image: url("../../assets/images/desktop/1x/Family1-1x.png");
+  width: 372px;
+  height: 306px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  position: absolute;
+  top: 20px;
+  left: 6px;
+}
+@media screen and (min-device-pixel-ratio: 2), (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2dppx) {
+  .inner_images_bp1280px__family {
+    background-image: url("../../assets/images/desktop/2x/Family1-2x.png");
+  }
+}
+.inner_images_bp1280px__bulb {
+  background-image: url("../../assets/images/desktop/1x/Bulb1x.png");
+  width: 279px;
+  height: 264px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  position: absolute;
+  top: 172px;
+  left: 205px;
+}
+@media screen and (min-device-pixel-ratio: 2), (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2dppx) {
+  .inner_images_bp1280px__bulb {
+    background-image: url("../../assets/images/desktop/2x/Bulb2x.png");
+  }
+}
+.inner_images_bp1280px__family2 {
+  background-image: url("../../assets/images/desktop/1x/Family2-1x.png");
+  width: 359px;
+  height: 290px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  position: absolute;
+  top: 432px;
+  left: 204px;
+  z-index: 1;
+}
+@media screen and (min-device-pixel-ratio: 2), (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2dppx) {
+  .inner_images_bp1280px__family2 {
+    background-image: url("../../assets/images/desktop/2x/Family2-2x.png");
+  }
+}
+.inner_images_bp1280px__robot {
+  background-image: url("../../assets/images/desktop/1x/Robot1x.png");
+  width: 276px;
+  height: 219px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  position: relative;
+  top: 320px;
+  left: 6px;
+}
+@media screen and (min-device-pixel-ratio: 2), (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2dppx) {
+  .inner_images_bp1280px__robot {
+    background-image: url("../../assets/images/desktop/2x/Robot2x.png");
+  }
+}/*# sourceMappingURL=authPage.module.css.map */

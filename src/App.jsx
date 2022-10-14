@@ -3,10 +3,9 @@ import PublicRoute from 'components/PublicRoute';
 import SharedLayoutPage from 'pages/SharedLayoutPage';
 import { lazy, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Navigate, Route, Routes, useSearchParams } from 'react-router-dom';
+import { Route, Routes, useSearchParams } from 'react-router-dom';
 import { authActions } from 'redux/auth/auth.slice';
 import authSelectors from 'redux/auth/selector.auth';
-// import giftsOperations from 'redux/gifts/operations.gifts';
 import userOperations from 'redux/user/operations.user';
 
 const HomePage = lazy(() => import('./pages/HomePage'));
@@ -24,8 +23,6 @@ export const App = () => {
         if (token) {
             dispatch(userOperations.getUserInfo());
         }
-
-        // dispatch(giftsOperations.getGifts());
     }, [dispatch, token]);
 
     useEffect(() => {

@@ -1,3 +1,5 @@
+@import '../../sass/mixins';
+
 .wrapper {
   display: flex;
   flex-direction: column;
@@ -8,13 +10,15 @@
   margin-right: auto;
   height: calc(100vh - 166px);
 
-  @media screen and (min-width: 768px) {
+  @include breakpointFrom(tablet) {
+    // @media screen and (min-width: 768px) {
     padding: 0;
     width: 100%;
     height: auto;
   }
 
-  @media screen and (min-width: 1280px) {
+  @include breakpointFrom(desktop) {
+    // @media screen and (min-width: 1280px) {
     padding: 0;
     overflow-y: auto;
   }
@@ -26,12 +30,14 @@
   margin: 0 auto;
   padding-bottom: 64px;
 
-  @media screen and (min-width: 768px) {
+  @include breakpointFrom(tablet) {
+    // @media screen and (min-width: 768px) {
     padding-bottom: 0;
     width: 768px;
   }
 
-  @media screen and (min-width: 1280px) {
+  @include breakpointFrom(desktop) {
+    // @media screen and (min-width: 1280px) {
     width: 100%;
     padding: 0px 16px 0 107px;
   }
@@ -43,18 +49,20 @@
   flex-direction: column-reverse;
   padding: 20px 0 32px;
 
-  @media screen and (min-width: 768px) {
+  @include breakpointFrom(tablet) {
+    // @media screen and (min-width: 768px) {
     padding: 32px 0;
     padding: 40px 0 32px;
   }
 
-  @media screen and (min-width: 1280px) {
+  @include breakpointFrom(desktop) {
+    // @media screen and (min-width: 1280px) {
     flex-direction: row;
   }
 }
 
 .info {
-  background-color: #FAFAFA;
+  background-color: var(--primary-bcg-color);
   display: flex;
   flex-basis: 100%;
   flex-direction: column;
@@ -62,11 +70,13 @@
   align-items: center;
   // margin-top: 20px;
 
-  @media screen and (min-width: 768px) {
+  @include breakpointFrom(tablet) {
+    // @media screen and (min-width:768px) {
     // padding-left: 0;
   }
 
-  @media screen and (min-width: 1280px) {
+  @include breakpointFrom(desktop) {
+    // @media screen and (min-width: 1280px) {
     align-items: flex-start;
   }
 }
@@ -74,7 +84,8 @@
 .progress {
   width: 100%;
 
-  @media screen and (max-width: 767.98px) {
+  @include breakpointTo(tablet) {
+    // @media screen and (max-width: 767.98px) {
     position: fixed;
     bottom: 0;
     left: 0;
@@ -82,5 +93,7 @@
     z-index: 1;
   }
 
-  @media screen and (min-width: 1280px) {}
+  @include breakpointFrom(desktop) {}
+
+  // @media screen and (min-width: 1280px) {}
 }

@@ -27,11 +27,11 @@ const ProgressBar = ({ position = 'center' }) => {
         <div className={s.wrap}>
             <div className={getStyle()}>
                 <p className={s.stats__progress}>
-                    {t(`Points earned this week:`)}
+                    {t('Points earned this week:')}
                     <span className={s.stats__number}>{userPoints}</span>
                 </p>
                 <p className={s.stats__totalprogress}>
-                    {t(`Planned points for this week:`)}
+                    {t('Planned points for this week:')}
                     <span className={s.stats__number}>{countPoints}</span>
                 </p>
             </div>

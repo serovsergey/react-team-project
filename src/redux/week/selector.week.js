@@ -23,7 +23,6 @@ const getWeekDates = state => {
 };
 
 const getCurrentWeekRange = locale => state => {
-    console.log(locale);
     const startDate = new Date(state.week.startWeekDate);
     let startMonth = startDate.toLocaleDateString(locale, { month: 'long' });
     startMonth = startMonth.charAt(0).toUpperCase() + startMonth.slice(1);
