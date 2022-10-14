@@ -12,9 +12,9 @@ const ContactsPage = () => {
 
     return (
         <div className={s.contacts}>
-            <p className={s.contacts__title}>{t(`SHCHEKAVYTSIA TEAM`)}</p>
+            <p className={s.contacts__title}>{t('SHCHEKAVYTSIA TEAM')}</p>
             <p className={s.contacts__secondtitle}>
-                {t(`Always ready for new challenges`)}
+                {t('Always ready for new challenges')}
             </p>
             <ul className={s.contacts__cardlist}>
                 {TeamInfoArray.map(el => (
