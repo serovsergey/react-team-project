@@ -5,6 +5,7 @@
 // CUSTOM TASK BOX
 .box {
     position: fixed;
+    z-index: 1;
     max-width: 500px;
     bottom: 17px;
     right: 20px;
@@ -101,15 +102,21 @@
     &:focus .imageIcon {
         transform: scale(1.1);
     }
+    & .imageWrapper{
+        background-color: var(--secondary-bcg-color);
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 85%;
+        height: 40%;
+    }
     & .check{
         position: absolute;
         width: auto;
         height: 110px;
-        // right: 60px;
-        // top: -78px;
         right: 50%;
-        top: 20%;
-        transform: translate(51%, -45%);
+        top: 50%;
+        transform: translate(50%, -50%);
         border: 2px solid var(--orange-color);
         border-radius: 5px;
     }

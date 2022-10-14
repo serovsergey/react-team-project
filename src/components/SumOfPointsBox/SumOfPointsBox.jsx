@@ -7,9 +7,9 @@ const SumOfPointsBox = ({userRewards}) => {
 
     return(
         <div className={s.pointsBox}>
-            <p className={s.pointsTextFirst}>{t(`Определены задачи на`)}</p>
+            <p className={s.pointsTextFirst}>{t("Defined tasks for")}</p>
             &nbsp;
-            <p className={s.pointsText}><span className={s.circle}>{userRewards}</span> &nbsp;{t(`балов`)}</p>
+            <p className={s.pointsText}><span className={s.circle}>{userRewards}</span> &nbsp;{t("points")}</p>
         </div>
     )
 }
