@@ -7,7 +7,7 @@
   flex-grow: 1;
 
   @include breakpointFrom(desktop) {
-    overflow-y: scroll;
+    overflow-y: auto;
   }
 }
 
