@@ -6,7 +6,7 @@ const setActiveTask = async body => {
 };
 
 const setActiveSingleTask = async (id, body) => {
-    console.log(id, body);
+    // console.log(id, body);
     const { data } = await privateAPI.patch(`/task/single-active/${id}`, body);
     return data;
 };
@@ -17,8 +17,10 @@ const toggleCompletedTask = async (id, body) => {
 };
 
 const addTask = async taskData => {
-    console.log(taskData)
-    const { data } = await privateAPI.post(`/task`, taskData, {headers: { 'Content-Type': 'multipart/form-data' }});
+    // console.log(taskData)
+    const { data } = await privateAPI.post(`/task`, taskData, {
+        headers: { 'Content-Type': 'multipart/form-data' },
+    });
     return data;
 };
 

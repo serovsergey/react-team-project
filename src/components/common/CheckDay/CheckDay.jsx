@@ -1,38 +1,25 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import { useTranslation } from 'react-i18next';
+import PropTypes from 'prop-types';
 
 import { useSelector } from 'react-redux';
 import weekSelectors from 'redux/week/selector.week';
 import CheckBox from '../CheckBox';
 import s from './CheckDay.module.scss';
 
-const CheckDay = () => {
+const CheckDay = ({ daysState, handleChange }) => {
     const [isOpen, setIsOpen] = useState(true);
     const ref = useRef(null);
-    const weekDates = useSelector(weekSelectors.getWeekDates);
-
     const { i18n } = useTranslation();
+    const currentWeekdayIndex = new Date().getDay();
 
-    const weekDays = useMemo(
-        () =>
-            weekDates.map(dt => {
-                const dayStr = dt.toLocaleDateString(i18n.language, {
-                    weekday: 'long',
-                });
-                return {
-                    name: dayStr,
-                    title: dayStr.slice(0, 2),
-                };
-            }),
-        [i18n.language, weekDates]
+    const weekDays = useSelector(state =>
+        weekSelectors.selectWeekDays(state, i18n.language)
     );
 
     useEffect(() => {
         const handleClick = event => {
-            // console.log(ref);
-            // console.log(event.target);
-            // console.log(ref.current?.contains(event.target));
             if (!ref.current?.contains(event.target)) {
                 setIsOpen(false);
             }
@@ -50,21 +37,19 @@ const CheckDay = () => {
         <>
             {isOpen && (
                 <div className={s.weekBox} ref={ref}>
-                    <form action="">
-                        <ul>
-                            {weekDays?.map(({ name, title }) => (
-                                <li key={name}>
-                                    <label className={s.label}>
-                                        <CheckBox
-                                            className={s.checkBox}
-                                            id={name}
-                                        />
-                                        <span className={s.day}>{title}</span>
-                                    </label>
-                                </li>
-                            ))}
-                        </ul>
-                    </form>
+                    <ul>
+                        {weekDays?.map(({ name, titleShort }, idx) => (
+                            <li key={name}>
+                                <CheckBox
+                                    title={titleShort}
+                                    handleChange={() => handleChange(idx)}
+                                    checked={daysState[idx]}
+                                    idx={idx}
+                                    disabled={idx < currentWeekdayIndex - 1}
+                                />
+                            </li>
+                        ))}
+                    </ul>
                 </div>
             )}
         </>
@@ -72,3 +57,8 @@ const CheckDay = () => {
 };
 
 export default CheckDay;
+
+CheckDay.propTypes = {
+    daysState: PropTypes.arrayOf(PropTypes.bool).isRequired,
+    handleChange: PropTypes.func.isRequired,
+};

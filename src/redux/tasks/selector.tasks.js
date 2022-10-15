@@ -10,6 +10,12 @@ const getTasks = state => {
         imageUrl,
     }));
 };
+const selectTaskStatesById = taskId => state => {
+    // console.log(taskId);
+    return state.tasks.items
+        ?.find(({ _id }) => _id === taskId)
+        .days.map(({ isActive }) => isActive);
+};
 
 const selectDayTasks = createSelector(
     [selectAllTasks, (_, currentDate) => currentDate],
@@ -44,6 +50,7 @@ const getError = state => state.tasks.error;
 const tasksSelectors = {
     selectAllTasks,
     getTasks,
+    selectTaskStatesById,
     selectDayTasks,
     getIsPatching,
     getIsLoading,

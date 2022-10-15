@@ -1,23 +1,36 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { BsPlusLg } from 'react-icons/bs';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import s from './taskScheduleBtn.module.scss';
 import CheckDay from '../CheckDay';
-import { inetialStateCheckDays } from '../CheckBox/CheckBox';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import tasksOperations from 'redux/tasks/operations.tasks';
+import tasksSelectors from 'redux/tasks/selector.tasks';
+import { toast } from 'react-toastify';
+import { useTranslation } from 'react-i18next';
+import LoaderSmall from 'components/LoaderSmall';
 
-const TaskScheduleBtn = ({ buttonId }) => {
+const TaskScheduleBtn = ({ taskId }) => {
     const btnRef = useRef();
     const ref = useRef(null);
+    const loaderRef = useRef(null);
+    const { t } = useTranslation();
     const [isModalOpen, setIsModalOpen] = useState(false);
     const dispatch = useDispatch();
+    const isPatching = useSelector(tasksSelectors.getIsPatching);
+    const taskStates = useSelector(tasksSelectors.selectTaskStatesById(taskId));
+    const [daysState, setDaysState] = useState(taskStates);
+    const currentWeekdayIndex = new Date().getDay();
 
+    const handleChange = idx => {
+        if (idx >= currentWeekdayIndex - 1) {
+            setDaysState(prev =>
+                prev.map((el, index) => (index === idx ? !el : el))
+            );
+        }
+    };
     useEffect(() => {
         const handleClick = event => {
-            // console.log(ref);
-            // console.log(event.target);
-            // console.log(ref.current?.contains(event.target));
             if (!ref.current?.contains(event.target)) {
                 setIsModalOpen(false);
             }
@@ -31,49 +44,59 @@ const TaskScheduleBtn = ({ buttonId }) => {
         return () => window.removeEventListener('click', handleClick);
     }, [isModalOpen]);
 
-    const handleclick = () => {
+    const handleClick = () => {
         setIsModalOpen(prev => !prev);
-
-        if (isModalOpen) {
-            const id = btnRef.current.name;
-            console.log(id);
-            const taskData = inetialStateCheckDays;
-            console.log(taskData);
-            dispatch(tasksOperations.setActiveSingle({id, taskData}));
+        if (isModalOpen && taskStates.join('') !== daysState.join('')) {
+            loaderRef.current = taskId;
+            dispatch(
+                tasksOperations.setActiveSingle({
+                    taskId,
+                    taskData: { days: daysState },
+                })
+            )
+                .unwrap()
+                .then(() => {
+                    setDaysState(taskStates);
+                    loaderRef.current = null;
+                    toast.info(t('Task state changed!'));
+                });
+        } else {
+            setDaysState(taskStates);
         }
     };
 
-        return (
+    return (
         <div ref={ref}>
-            {isModalOpen ? (
+            {isPatching && loaderRef.current === taskId ? (
+                <LoaderSmall />
+            ) : isModalOpen ? (
                 <button
                     ref={btnRef}
-                    name={buttonId}
                     type="button"
                     className={s.btn}
-                    onClick={handleclick}
+                    onClick={handleClick}
                 >
-                    ok
+                    OK
                 </button>
             ) : (
                 <button
                     ref={btnRef}
-                    name={buttonId}
                     type="button"
                     className={s.btn}
-                    onClick={handleclick}
+                    onClick={handleClick}
                 >
                     <BsPlusLg color="#8EC63F" />
                 </button>
             )}
-            {isModalOpen && <CheckDay />}
+            {isModalOpen && (
+                <CheckDay handleChange={handleChange} daysState={daysState} />
+            )}
         </div>
     );
 };
 
 export default TaskScheduleBtn;
 
-// TaskScheduleBtn.propTypes = {
-//     isModalOpen: PropTypes.bool,
-//     toggleModal: PropTypes.func.isRequired,
-// };
+TaskScheduleBtn.propTypes = {
+    taskId: PropTypes.string.isRequired,
+};

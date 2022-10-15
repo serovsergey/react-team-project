@@ -7,12 +7,14 @@ import commonSelectors from 'redux/common/selector.common';
 import PropTypes, { shape } from 'prop-types';
 
 import s from './weekTabs.module.scss';
+import { useMediaQuery } from 'react-responsive';
 const DAY_PARAM = 'day';
 const WeekTabs = ({ weekDays, currentWeekRangeStr = null }) => {
     const storedDay = useSelector(commonSelectors.getCurrentDay);
     const dispatch = useDispatch();
     const [searchParams, setSearchParams] = useSearchParams(); //{ day: storedDay }
     const currentDay = searchParams.get(DAY_PARAM);
+    const isDesktop = useMediaQuery({ minWidth: 1280 });
 
     useEffect(() => {
         if (!weekDays.some(({ name }) => name === currentDay)) {
@@ -41,7 +43,7 @@ const WeekTabs = ({ weekDays, currentWeekRangeStr = null }) => {
                 <CurrentWeekRange currentWeekRangeStr={currentWeekRangeStr} />
             )}
             <menu className={s.tabs}>
-                {weekDays.map(({ date, name, title }) => (
+                {weekDays.map(({ date, name, title, titleShort }) => (
                     <li
                         key={date}
                         className={
@@ -49,7 +51,7 @@ const WeekTabs = ({ weekDays, currentWeekRangeStr = null }) => {
                         }
                     >
                         <Link to={'?day=' + name} className={s.link}>
-                            {title}
+                            {isDesktop ? title : titleShort}
                         </Link>
                     </li>
                 ))}

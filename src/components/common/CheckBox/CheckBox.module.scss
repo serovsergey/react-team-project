@@ -1,11 +1,20 @@
-// .box{
-//     position: absolute;
-//     left: 100px;
-//     top: 100px;
-// // }
-// }
+.check {
+  position: absolute;
+  opacity: 0;
+}
 
-.check{
-   position: absolute;
-   opacity: 0;
+.day {
+  display: inline-block;
+  font-family: 'Montserrat';
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.21;
+  letter-spacing: 0.02em;
+  color: var(--primary-bcg-color);
+  margin-bottom: 10px;
+  margin-left: 10px;
+}
+
+.disabled {
+  opacity: 0.6;
 }

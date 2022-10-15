@@ -1,8 +1,10 @@
 @import '../../sass/colors';
 @import '../../sass/vars';
+@import '../../sass/mixins';
 
 .pointsBox{
     position: fixed;
+    z-index: 1;
     bottom: 0;
     left: 0;
     right: 0;
@@ -16,10 +18,11 @@
     margin-left: auto;
     margin-right: auto;
     margin-top: 27px;
-    @media screen and (min-width: 768px) {
+    @include breakpointFrom(tablet) {
         position: static;
+        z-index: 0;
     }
-    @media screen and (min-width: 1280px) {
+    @include breakpointFrom(desktop) {
         width: auto;
     }
 }
@@ -43,7 +46,7 @@
     font-weight: 500;
     font-size: 12px;
     color: #a6abb9;
-    @media screen and (min-width: 768px) {
+    @include breakpointFrom(tablet) {
         display: block;
     }
 }

@@ -32,11 +32,12 @@
     }
 
     &:disabled {
+        background-color: var(--weekday-color);
         box-shadow: none;
 
         &:hover,
         &:focus {
-            background-color: var(--orange-color);
+            background-color: var(--weekday-color);
         }
 
         cursor: not-allowed;

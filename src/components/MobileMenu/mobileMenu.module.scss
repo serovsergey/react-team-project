@@ -1,5 +1,6 @@
 @import "../../sass/colors";
 @import "../../sass/vars";
+@import "../../sass/mixins";
 
 
 .overlay{
@@ -10,7 +11,7 @@
     height: 100vh;
     z-index: 3;
     background: transparent;
-    @media screen and (min-width: 768px){
+    @include breakpointFrom(tablet){
         background: rgba(0, 0, 0, 0.2);
      }
 
@@ -25,7 +26,7 @@
     background-color: var(--orange-color);
     box-shadow: -15px 0px 20px rgba(0, 0, 0, 0.25);
 
-    @media screen and (min-width: 320px){
+    @include breakpointFrom(mobile){
        width: 280px;
     }
 }
@@ -35,7 +36,7 @@
     display: flex;
     justify-content: space-between;
     padding: 15px 20px 20px 20px;
-    @media screen and (min-width: 768px) {
+    @include breakpointFrom(tablet){
         padding: 15px 20px 0px 20px;
     }
 }
@@ -48,7 +49,7 @@
 }
 .crossIcon{
     color: var(--secondary-bcg-color);
-    transition: transform $transition-style;
+    transition: makeTransition(transform);
     &:hover,
     &:focus{
         transform: scale(1.15);

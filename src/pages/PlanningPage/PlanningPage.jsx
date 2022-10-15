@@ -4,8 +4,11 @@ import Container from 'components/Container';
 import CustomTaskBox from 'components/CustomTaskBox';
 import SumOfPointsBox from 'components/SumOfPointsBox';
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
+
 import tasksSelectors from 'redux/tasks/selector.tasks';
+
 import weekSelectors from 'redux/week/selector.week';
 
 // import PropTypes from 'prop-types';
@@ -13,59 +16,34 @@ import weekSelectors from 'redux/week/selector.week';
 import s from './planningPage.module.scss';
 
 const PlanningPage = () => {
+    const { t } = useTranslation();
     const tasks = useSelector(tasksSelectors.getTasks);
-    const correntWeek = useSelector(weekSelectors.getCurrentWeekRange);
-    const year = new Date().getFullYear();
-    // const [open, setOpen] = useState(false);
-
-    // useEffect(() => {
-    //    setOpen(false)
-    //     },[open]);
-
+    const currentWeek = useSelector(weekSelectors.getCurrentWeekRangeEx);
+    const rewardsPlanned = useSelector(weekSelectors.getRewardsPlanned);
     return (
         <>
             <Container>
                 <div>
                     <div className={s.wrapper}>
                         <div className={s.date}>
-                            <h1 className={s.title}>Plan for the week:</h1>
-                            <p className={s.week}>
-                                {correntWeek} {year}
-                            </p>
+                            <h1 className={s.title}>
+                                {t('Plan for the week:')}
+                            </h1>
+                            <p className={s.week}>{currentWeek}</p>
                         </div>
-                        <SumOfPointsBox />
+                        <SumOfPointsBox userRewards={rewardsPlanned} />
                         <CustomTaskBox />
                     </div>
 
                     <ul className={s.list}>
                         {tasks?.map(({ _id, title, reward, imageUrl }) => (
-                            <li
-                                key={_id}
-                                className={s.item}
-                                // onBlur={e => {
-                                //     console.log(e.relatedTarget);
-                                //     if (
-                                //         !e.currentTarget.contains(
-                                //             e.relatedTarget
-                                //         )
-                                //     ) {
-                                //         setOpen(true);
-                                //     }
-                                //     else {
-                                //         setOpen(false);
-                                //     }
-
-                                // }}
-                            >
+                            <li key={_id} className={s.item}>
                                 <Card
                                     title={title}
                                     reward={reward}
                                     imageUrl={imageUrl}
                                 >
-                                    <TaskScheduleBtn
-                                        buttonId={_id}
-                                        // open={open}
-                                    />
+                                    <TaskScheduleBtn taskId={_id} />
                                 </Card>
                             </li>
                         ))}

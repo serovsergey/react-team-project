@@ -79,7 +79,7 @@ const AwardsPage = () => {
                 <div className={s.info}>
                     <div className={s.prize__label}>
                         <PrizesIcon />
-                        <h2 className={s.title}>{t(`my prizes`)}</h2>
+                        <h2 className={s.title}>{t('my prizes')}</h2>
                     </div>
                     <div className={s.progressBar}>
                         <MediaQuery.Desktop>
@@ -119,8 +119,8 @@ const AwardsPage = () => {
                         isLoading={isLoading}
                     >
                         {!isPurchaseAvailable
-                            ? `${t(`unavailable`)}`
-                            : `${t(`confirm`)}`}
+                            ? `${t('unavailable')}`
+                            : `${t('confirm')}`}
                     </Button>
                 </div>
                 <MediaQuery.Desktop>
@@ -134,9 +134,7 @@ const AwardsPage = () => {
                         <Cat />
                         <div className={s.box}>
                             <AwardsModalTitle>
-                                {t(`
-                                Congratulations! You get:
-                            `)}
+                                {`${t('Congratulations!')} ${t('You get:')}`}
                             </AwardsModalTitle>
                             <ul className={s.modal__list}>
                                 {purchasedGifts.length > 0 &&

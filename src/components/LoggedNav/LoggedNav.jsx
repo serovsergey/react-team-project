@@ -1,12 +1,12 @@
-import { useDispatch, useSelector } from 'react-redux';
 import s from '../LoggedNav/loggedNav.module.scss';
-import { ReactComponent as LogoutIcon } from '../../assets/svg/logOut.svg';
-import userSelectors from 'redux/user/selector.user';
-import { useState } from 'react';
 import authOperations from 'redux/auth/operations.auth';
+import userSelectors from 'redux/user/selector.user';
 import Modal from 'components/common/Modal';
 import Button from 'components/common/Button';
-import {useTranslation} from 'react-i18next'
+import { useDispatch, useSelector } from 'react-redux';
+import { ReactComponent as LogoutIcon } from '../../assets/svg/logOut.svg';
+import { useState } from 'react';
+import { useTranslation } from 'react-i18next'
 
 const LoggedNav = () => {
     const [logOutModal, setlogOutModal] = useState(false);

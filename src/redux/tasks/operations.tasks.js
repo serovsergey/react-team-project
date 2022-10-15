@@ -39,11 +39,11 @@ const setActive = createAsyncThunk(
 
 const setActiveSingle = createAsyncThunk(
     'tasks/setActiveSingle',
-    async ({ id, taskData }, { rejectWithValue, getState }) => {
+    async ({ taskId, taskData }, { rejectWithValue, getState }) => {
         try {
-            const data = await tasksAPI.setActiveSingleTask(id, taskData);
+            const data = await tasksAPI.setActiveSingleTask(taskId, taskData);
             const { items } = getState().tasks;
-            if (!items.some(({ id }) => id === data.updatedTask.id)) {
+            if (!items.some(({ _id }) => _id === data.updatedTask.id)) {
                 throw Error(
                     `setActiveSingle: unknown task id ${data.updatedTask.id}`
                 );
@@ -59,7 +59,7 @@ const setActiveSingle = createAsyncThunk(
 );
 
 const toggleCompleted = createAsyncThunk(
-    'tasks/setActiveSingle',
+    'tasks/toggleCompleted',
     async ({ taskId, taskData }, { rejectWithValue, getState }) => {
         try {
             const data = await tasksAPI.toggleCompletedTask(taskId, taskData);
