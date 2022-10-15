@@ -56,5 +56,11 @@
     "Pavlo Voloshyn": "PAVLO VOLOSHYN",
     "Daryna Shvydiuk": "DARYNA SHVYDIUK",
     "Roman Serediuk": "ROMAN SEREDIUK",
-    "Oleksandr Moshynskiy": "OLEKSANDR MOSHYNSKIY"
+    "Oleksandr Moshynskiy": "OLEKSANDR MOSHYNSKIY",
+    "Login is failed with message": "Logowanie jest nieudane z komunikatem",
+    "Register is failed with message:": "Rejestracja jest nieudana z komunikatem:",
+    "Task state changed!": "Stan zadania zmienił się!",
+    "fields 'Add Task' and 'Add Points' are required": "Pola 'Dodaj zadanie' i 'Dodaj punkty' są wymagane",
+    "Task added successfully": "Zadanie dodane pomyślnie",
+    "The file must be no more than 10 mb": "Plik musi być nie więcej niż 10 mb"
 }
