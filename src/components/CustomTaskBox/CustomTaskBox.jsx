@@ -9,14 +9,21 @@ import { ReactComponent as PencilIcon } from '../../assets/svg/Pencil.svg';
 import { toast } from 'react-toastify';
 import { useTranslation } from 'react-i18next';
 
-const CustomTaskBox = () => {
+
+const CustomTaskBox = ({atMain = false}) => {
     const [modalOpen, setModalOpen] = useState(false);
     const [task, setTask] = useState('');
     const [points, setPoints] = useState('');
     const [file, setFile] = useState(null);
     const dispatch = useDispatch();
-    const { t } = useTranslation();
-
+    const { t } = useTranslation();  
+    const currentWeekdayIndex = new Date().getDay();
+    const allDays = [false, false, false, false, false, false, false]
+    
+    const daysArr = (arr ,idx) => {
+        return arr.map((elem, index) => (index === idx-1 ? !elem : elem))
+    };
+    
     const src = file && window.URL.createObjectURL(file);
     const addTask = `${t(`Add task...`)}`;
     const addPoints = `${t(`Add points...`)}`;
@@ -35,7 +42,12 @@ const CustomTaskBox = () => {
             formData.append('file', file);
         }
         try {
-            dispatch(tasksOperations.createTask(formData)).unwrap();
+            dispatch(tasksOperations.createTask(formData)).unwrap()
+            .then(res => {return atMain &&
+                dispatch(tasksOperations.setActiveSingle({
+                    taskId: res.id,
+                    taskData: {days: daysArr(allDays, currentWeekdayIndex)}}))
+            });
         } catch (error) {
             return toast.warning(error.message);
         }

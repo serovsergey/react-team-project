@@ -13,6 +13,7 @@ import commonSelectors from 'redux/common/selector.common';
 import tasksSelectors from 'redux/tasks/selector.tasks';
 
 import s from './weekTabContent.module.scss';
+import CustomTaskBox from 'components/CustomTaskBox';
 
 const WeekTabContent = ({ currentWeekRangeStr }) => {
     const currentDate = useSelector(commonSelectors.getCurrentDate);
@@ -39,7 +40,7 @@ const WeekTabContent = ({ currentWeekRangeStr }) => {
                             <CurrentDay currentDate={currentDate} />
                         </div>
                         <div className={s.progress}>
-                            {isMobile ? <ProgressBarMobile /> : <ProgressBar />}
+                            {isMobile ? <><ProgressBarMobile /><CustomTaskBox atMain={true}/></> : <ProgressBar />}
                         </div>
                     </div>
                     {!noTasks && (

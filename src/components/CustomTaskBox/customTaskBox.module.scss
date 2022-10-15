@@ -17,14 +17,14 @@
     justify-content: flex-end;
     align-items: center;
    
-    @include breakpointTo(tablet) {
+    @include breakpointFrom(tablet) {
         position: static;
         z-index: 0;
         margin-left: auto;
         margin-right: auto;
         margin-top: 20px;
     }
-    @include breakpointFrom(tablet) {
+    @include breakpointFrom(desktop) {
         // width: 425px;
         margin-left: auto;
         margin-right: 0;
@@ -100,10 +100,10 @@
     & .imageWrapper{
         background-color: var(--secondary-bcg-color);
         position: absolute;
-        top: 0;
-        left: 0;
-        width: 85%;
-        height: 40%;
+        top: -78px;
+        left: -246px;
+        width: 240px;
+        height: 100px;
     }
     & .check{
         position: absolute;

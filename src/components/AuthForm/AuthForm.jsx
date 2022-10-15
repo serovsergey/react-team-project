@@ -39,7 +39,9 @@ const AuthForm = () => {
             dispatch(authOperations.login(values))
                 .unwrap()
                 .catch(error =>
-                    toast.error(`Login is failed with message${error.message}`)
+                    toast.error(
+                        t(`Login is failed with message`)`${error.message}`
+                    )
                 );
         },
     });
@@ -50,7 +52,7 @@ const AuthForm = () => {
             .unwrap()
             .catch(error =>
                 toast.error(
-                    `Register is failed with message: ${error.message}.`
+                    t(`Register is failed with message:`)`${error.message}`
                 )
             );
     };
