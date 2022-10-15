@@ -8,14 +8,12 @@
   gap: 28px;
 
   @include breakpointFrom(tablet) {
-    // @media screen and (min-width: 768px) {
     padding-top: 0;
     margin: 0;
     background-color: var(--orange-color);
   }
 
   @include breakpointFrom(desktop) {
-    // @media screen and (min-width: 1280px) {
     width: 229px;
     position: relative;
   }

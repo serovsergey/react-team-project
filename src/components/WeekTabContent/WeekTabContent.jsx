@@ -27,7 +27,7 @@ const WeekTabContent = ({ currentWeekRangeStr }) => {
     const notAvailable = new Date(currentDate).setHours(0, 0, 0, 0) > today;
     const noTasks = !dayTasks || !dayTasks.length;
     return (
-        <>
+        <div className={s.container}>
             <div className={s.wrapper}>
                 <div className={s.main} style={{ flexGrow: noTasks ? 0 : 1 }}>
                     <div className={s.contentHeader}>
@@ -40,7 +40,14 @@ const WeekTabContent = ({ currentWeekRangeStr }) => {
                             <CurrentDay currentDate={currentDate} />
                         </div>
                         <div className={s.progress}>
-                            {isMobile ? <><ProgressBarMobile /><CustomTaskBox atMain={true}/></> : <ProgressBar />}
+                            {isMobile ? (
+                                <>
+                                    <ProgressBarMobile />
+                                    <CustomTaskBox atMain={true} />
+                                </>
+                            ) : (
+                                <ProgressBar />
+                            )}
                         </div>
                     </div>
                     {!noTasks && (
@@ -52,10 +59,10 @@ const WeekTabContent = ({ currentWeekRangeStr }) => {
                         />
                     )}
                 </div>
-                {noTasks && <NoTasks />}
-                {!isMobile && <Footer />}
             </div>
-        </>
+            {noTasks && <NoTasks />}
+            <Footer />
+        </div>
     );
 };
 

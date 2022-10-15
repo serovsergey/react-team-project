@@ -25,19 +25,23 @@ const HomePage = () => {
     );
 
     return (
-        <div className={s.wrapper}>
-            <WeekTabs
-                weekDays={weekDays}
-                currentWeekRangeStr={
-                    !isMobile && !isDesktop ? currentWeekRange : null
-                }
-            />
+        <div className={s.mainContainer}>
+            <div className={s.wrapper}>
+                <WeekTabs
+                    weekDays={weekDays}
+                    currentWeekRangeStr={
+                        !isMobile && !isDesktop ? currentWeekRange : null
+                    }
+                />
 
-            <WeekTabContent
-                currentWeekRangeStr={
-                    isMobile || isDesktop ? currentWeekRange : null
-                }
-            />
+                {/* <div className={s.tabletContainer}> */}
+                <WeekTabContent
+                    currentWeekRangeStr={
+                        isMobile || isDesktop ? currentWeekRange : null
+                    }
+                />
+                {/* </div> */}
+            </div>
         </div>
     );
 };
