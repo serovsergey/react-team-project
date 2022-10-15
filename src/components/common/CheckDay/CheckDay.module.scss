@@ -1,36 +1,24 @@
 .weekBox {
-    position: absolute;
-    bottom: 69px;
-    right: 0;
-    width: 114px;
-    height: 208px;
-    border-radius: 6px;
-    background-color: #3e7adc;
-    padding-top: 13px;
-    padding-left: 33px;
-}
-
-.day {
-    display: inline-block;
-    font-family: 'Montserrat';
-    font-weight: 700;
-    font-size: 14px;
-    line-height: 1.21;
-    letter-spacing: 0.02em;
-    color: #ffffff;
-    margin-bottom: 10px;
-    margin-left: 10px;
+  position: absolute;
+  bottom: 69px;
+  right: 0;
+  width: 114px;
+  height: 208px;
+  border-radius: 6px;
+  background-color: #3e7adc;
+  padding-top: 13px;
+  padding-left: 33px;
 }
 
 
-.label{
-    position: relative
+.label {
+  position: relative
 }
 
 
-.checkBox{
-    position: absolute;
-    left: 10px;
-    top: 10px;
-    
+.checkBox {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+
 }
