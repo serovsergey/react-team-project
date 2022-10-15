@@ -2,10 +2,20 @@
 .footer {
     margin-top: 60px;
 
+    @include breakpointFrom(mobile) {
+        // display: flex;
+        // justify-content: flex-end;
+        margin-top: 45px;
+        // margin-right: 16px;
+        margin-bottom: 95px;
+    }
+
     @include breakpointFrom(tablet) {
         margin-top: 40px;
         display: flex;
         justify-content: center;
+        margin-bottom: 40px;
+
     }
 
     @include breakpointFrom(desktop) {
@@ -15,6 +25,7 @@
         margin-right: 16px;
         margin-bottom: 40px;
     }
+   
 
     &_list {
         display: block;
