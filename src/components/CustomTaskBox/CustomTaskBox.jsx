@@ -18,10 +18,6 @@ const CustomTaskBox = () => {
     const { t } = useTranslation();
 
     const src = file && window.URL.createObjectURL(file);
-<<<<<<< HEAD
-    console.log(src);
-=======
->>>>>>> dev
     const addTask = `${t(`Add task...`)}`;
     const addPoints = `${t(`Add points...`)}`;
 
@@ -29,11 +25,7 @@ const CustomTaskBox = () => {
         event.preventDefault();
         if (!task || !points) {
             return toast.warning(
-<<<<<<< HEAD
-                `fields "Add Task" and "Add Points" are required`
-=======
                 `${t(`fields "Add Task" and "Add Points" are required`)}`
->>>>>>> dev
             );
         }
         const formData = new FormData();
@@ -50,11 +42,7 @@ const CustomTaskBox = () => {
 
         formReset();
         setFile(null);
-<<<<<<< HEAD
-        toast.success(`Task added successfully`);
-=======
         toast.success(`${t('Task added successfully')}`);
->>>>>>> dev
         setModalOpen(false);
     };
 
@@ -73,11 +61,7 @@ const CustomTaskBox = () => {
         console.log(sizeOfMegabites);
         if (sizeOfMegabites > 10) {
             setFile(null);
-<<<<<<< HEAD
-            return toast.warning('The file must be no more than 10 mb');
-=======
             return toast.warning(`${t('The file must be no more than 10 mb')}`);
->>>>>>> dev
         }
         setFile(event.target?.files[0]);
     };
@@ -104,13 +88,9 @@ const CustomTaskBox = () => {
                     <div className={s.topWrapper}>
                         <label className={s.imageLabel}>
                             {file && (
-<<<<<<< HEAD
-                                <img src={src} alt="" className={s.check} />
-=======
                                 <div className={s.imageWrapper}>
                                     <img src={src} alt="" className={s.check} />
                                 </div>
->>>>>>> dev
                             )}
                             <ImageIcon className={s.imageIcon} />
                             <input
