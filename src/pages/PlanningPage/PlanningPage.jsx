@@ -2,6 +2,7 @@ import Card from 'components/common/Card';
 import TaskScheduleBtn from 'components/common/TaskScheduleBtn';
 import Container from 'components/Container';
 import CustomTaskBox from 'components/CustomTaskBox';
+import Footer from 'components/Footer';
 import SumOfPointsBox from 'components/SumOfPointsBox';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
@@ -49,6 +50,7 @@ const PlanningPage = () => {
                         ))}
                     </ul>
                 </div>
+                <Footer />
             </Container>
         </>
     );

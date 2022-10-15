@@ -1,7 +1,9 @@
+@import '../../sass/mixins';
+
 .wrapper {
   margin: 40 auto;
 
-  @media screen and (min-width: 768px) and (max-width: 1279px) {
+  @include breakpointFrom(tablet) {
     display: flex;
     flex-direction: column;
     margin-top: 40px;
@@ -9,7 +11,7 @@
 
   }
 
-  @media screen and (min-width: 1280px) {
+  @include breakpointFrom(desktop) {
     margin-top: 40px;
     margin-bottom: 40px;
     display: flex;
@@ -24,13 +26,13 @@
   display: flex;
   flex-direction: column;
 
-  @media screen and (min-width: 768px) and (max-width: 1279px) {
+  @include breakpointFrom(tablet) {
     flex-direction: row;
     align-items: baseline;
     justify-content: center;
   }
 
-  @media screen and (min-width: 1280px) {
+  @include breakpointFrom(desktop) {
     flex-direction: row;
     align-items: baseline;
   }
@@ -43,15 +45,15 @@
   font-size: 18px;
   line-height: 1/22;
   letter-spacing: 0.04em;
-  color: #000000;
+  color: var(--color-black);
   margin-top: 20px;
   text-align: center;
 
-  @media screen and (min-width: 768px) and (max-width: 1279px) {
+  @include breakpointFrom(tablet) {
     margin-top: 0;
   }
 
-  @media screen and (min-width: 1280px) {
+  @include breakpointFrom(desktop) {
     margin-top: 0;
   }
 }
@@ -64,7 +66,7 @@
   margin-top: 8px;
   margin-bottom: 32px;
   padding: 7px 15px;
-  border: 1px solid #ffbc33;
+  border: 1px solid var(--orange-color);
   border-radius: 6px;
 
   font-family: 'Montserrat';
@@ -74,14 +76,16 @@
   text-align: center;
   letter-spacing: 0.2em;
 
-  color: #000000;
+  color: var(--color-black);
 
-  @media screen and (min-width: 768px) and (max-width: 1279px) {
+  @include breakpointFrom(tablet) {
     margin: 0 0 0 10px;
   }
 
-  @media screen and (min-width: 1280px) {
+  @include breakpointFrom(desktop) {
     margin: 0 0 0 10px;
+    border: none;
+    padding: 0;
   }
 }
 
@@ -89,15 +93,15 @@
   display: grid;
   grid-template-columns: 1fr;
   row-gap: 20px;
-  padding-bottom: 64px;
+  // padding-bottom: 64px;
 
-  @media screen and (min-width: 768px) {
-    padding-bottom: 32px;
+  @include breakpointFrom(tablet) {
+    // padding-bottom: 32px;
     grid-template-columns: 1fr 1fr;
     column-gap: 32px;
   }
 
-  @media screen and (min-width: 1280px) {
+  @include breakpointFrom(desktop) {
     grid-template-columns: 1fr 1fr 1fr 1fr;
   }
 }
