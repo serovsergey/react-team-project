@@ -12,6 +12,7 @@ const CheckDay = ({ daysState, handleChange }) => {
     const [isOpen, setIsOpen] = useState(true);
     const ref = useRef(null);
     const { i18n } = useTranslation();
+    const currentWeekdayIndex = new Date().getDay();
 
     const weekDays = useSelector(state =>
         weekSelectors.selectWeekDays(state, i18n.language)
@@ -41,9 +42,10 @@ const CheckDay = ({ daysState, handleChange }) => {
                             <li key={name}>
                                 <CheckBox
                                     title={titleShort}
-                                    handleChange={handleChange}
+                                    handleChange={() => handleChange(idx)}
                                     checked={daysState[idx]}
                                     idx={idx}
+                                    disabled={idx < currentWeekdayIndex - 1}
                                 />
                             </li>
                         ))}

@@ -18,15 +18,17 @@ const TaskScheduleBtn = ({ taskId }) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const dispatch = useDispatch();
     const isPatching = useSelector(tasksSelectors.getIsPatching);
-
     const taskStates = useSelector(tasksSelectors.selectTaskStatesById(taskId));
     const [daysState, setDaysState] = useState(taskStates);
+    const currentWeekdayIndex = new Date().getDay();
 
-    const handleChange = idx =>
-        setDaysState(prev =>
-            prev.map((el, index) => (index === idx ? !el : el))
-        );
-
+    const handleChange = idx => {
+        if (idx >= currentWeekdayIndex - 1) {
+            setDaysState(prev =>
+                prev.map((el, index) => (index === idx ? !el : el))
+            );
+        }
+    };
     useEffect(() => {
         const handleClick = event => {
             if (!ref.current?.contains(event.target)) {
