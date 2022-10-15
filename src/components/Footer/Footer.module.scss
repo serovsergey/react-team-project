@@ -1,70 +1,71 @@
 @import '../../sass/mixins';
-.footer {
-    margin-top: 60px;
 
-    @include breakpointFrom(mobile) {
-        // display: flex;
-        // justify-content: flex-end;
-        margin-top: 45px;
-        // margin-right: 16px;
-        margin-bottom: 95px;
-    }
+.footer {
+  // margin-top: 60px;
+
+  @include breakpointFrom(mobile) {
+    // display: flex;
+    // justify-content: flex-end;
+    padding-top: 45px;
+    // margin-right: 16px;
+    padding-bottom: 95px;
+  }
+
+  @include breakpointFrom(tablet) {
+    padding-top: 40px;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 40px;
+
+  }
+
+  @include breakpointFrom(desktop) {
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 40px;
+    margin-right: 16px;
+    padding-bottom: 32px;
+  }
+
+
+  &_list {
+    display: block;
+    margin: 0 auto;
+    align-items: center;
+    text-align: center;
 
     @include breakpointFrom(tablet) {
-        margin-top: 40px;
-        display: flex;
-        justify-content: center;
-        margin-bottom: 40px;
-
+      margin-bottom: 8px;
+      display: inline-flex;
     }
 
     @include breakpointFrom(desktop) {
-        display: flex;
-        justify-content: flex-end;
-        margin-top: 45px;
-        margin-right: 16px;
-        margin-bottom: 40px;
+      margin-right: 0;
     }
-   
+  }
 
-    &_list {
-        display: block;
-        margin: 0 auto;
-        align-items: center;
-        text-align: center;
+  &_item {
+    margin-bottom: 8px;
 
-        @include breakpointFrom(tablet) {
-            margin-bottom: 8px;
-            display: inline-flex;
-        }
-
-        @include breakpointFrom(desktop) {
-            margin-right: 0;
-        }
+    &:first-child {
+      display: inline-flex;
+      border-left: none;
     }
 
-    &_item {
-        margin-bottom: 8px;
-
-        &:first-child {
-            display: inline-flex;
-            border-left: none;
-        }
-
-        @include breakpointFrom(tablet) {
-            border-left: var(--border-color);
-            margin-bottom: 0;
-        }
+    @include breakpointFrom(tablet) {
+      border-left: var(--border-color);
+      margin-bottom: 0;
     }
+  }
 
-    &_text {
-        font-weight: 400;
-        font-size: 10px;
-        line-height: 1.2;
-        letter-spacing: 0.08em;
-        color: var(--color-link);
+  &_text {
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 1.2;
+    letter-spacing: 0.08em;
+    color: var(--color-link);
 
-        margin-right: 10px;
-        margin-left: 10px;
-    }
+    margin-right: 10px;
+    margin-left: 10px;
+  }
 }
