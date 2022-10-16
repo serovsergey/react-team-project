@@ -62,5 +62,11 @@
     "Task state changed!": "Task state changed!",
     "fields 'Add Task' and 'Add Points' are required": "fields 'Add Task' and 'Add Points' are required",
     "Task added successfully": "Task added successfully",
-    "The file must be no more than 10 mb": "The file must be no more than 10 mb"
+    "The file must be no more than 10 mb": "The file must be no more than 10 mb",
+    "points_zero": "points",
+    "points_one": "point",
+    "points_two": "points",
+    "points_few": "points",
+    "points_many": "points",
+    "points_other": "points"
 }
