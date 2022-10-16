@@ -1,7 +1,7 @@
 @import '../../sass/mixins';
 
 .wrap {
-    @include breakpointFrom(desktop) {
+    @include breakpointFrom(tablet) {
         height: calc(100vh - 65px);
         overflow-y: auto;
     }
