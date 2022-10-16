@@ -24,7 +24,7 @@ const PlanningPage = () => {
     return (
         <>
             <Container>
-                <div>
+                <div className={s.superWrapper}>
                     <div className={s.wrapper}>
                         <div className={s.date}>
                             <h1 className={s.title}>

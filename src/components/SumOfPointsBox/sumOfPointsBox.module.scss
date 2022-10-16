@@ -21,6 +21,7 @@
     @include breakpointFrom(tablet) {
         position: static;
         z-index: 0;
+        background-color: transparent;
     }
     @include breakpointFrom(desktop) {
         width: auto;

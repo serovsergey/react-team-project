@@ -8,6 +8,11 @@
     margin: 0 auto;
     padding-top: 40px;
 
+    @include breakpointFrom(tablet) {
+        height: calc(100vh - 65px);
+        overflow-y: auto;
+    }
+
     &__cardlist {
         display: flex;
         margin: 0 auto;
