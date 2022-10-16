@@ -19,6 +19,8 @@ const Header = () => {
     const [modalIsopen, setModalIsOpen] = useState(false);
     const token = useSelector(authSelectors.getToken);
     const isDesktopScreen = useMediaQuery({ query: '(min-width: 1280px)' });
+    const isTabletScreen = useMediaQuery({ query: '(min-width: 768px)' });
+
 
     const handleCloseModal = () => {
         if (isDesktopScreen) {
@@ -33,10 +35,7 @@ const Header = () => {
                 <div className={s.container}>
                     <Logo />
                     {token && <ScoreBox />}
-                    <MediaQuery.Desktop>
-                        <ChangeLanguage />
-                    </MediaQuery.Desktop>
-
+                    {!token && isTabletScreen && <div className={s.languageWrapper}><ChangeLanguage /></div>}
                     {token &&
                     <MediaQuery.Desktop>
                          <NavList />
