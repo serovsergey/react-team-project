@@ -21,7 +21,7 @@ const ProgressBar = ({ position = 'center' }) => {
     if (userPoints === 0) {
         percent = 0;
     }
-    const { t, i18n } = useTranslation();
+    const { t } = useTranslation();
 
     return (
         <div className={s.wrap}>
