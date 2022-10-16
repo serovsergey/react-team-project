@@ -91,6 +91,7 @@
     margin-left: auto;
     transform: scale(1.0);
     transition: makeTransition(transform);
+    cursor: pointer;
  
     &:hover .imageIcon,
     &:focus .imageIcon {
