@@ -23,8 +23,9 @@ const PlanningPage = () => {
     const rewardsPlanned = useSelector(weekSelectors.getRewardsPlanned);
     return (
         <>
-            <Container>
-                <div className={s.superWrapper}>
+            {/* <div className={s.container}> */}
+            <div className={s.superWrapper}>
+                <Container>
                     <div className={s.wrapper}>
                         <div className={s.date}>
                             <h1 className={s.title}>
@@ -49,21 +50,22 @@ const PlanningPage = () => {
                             </li>
                         ))}
                     </ul>
-                </div>
-                <Footer />
-            </Container>
+                    <Footer />
+                </Container>
+            </div>
+            {/* </div> */}
         </>
     );
 };
 
 PlanningPage.propTypes = {
     tasks: PropTypes.shape({
-        _id:PropTypes.string.isRequired,
+        _id: PropTypes.string.isRequired,
         title: PropTypes.string.isRequired,
         reward: PropTypes.string.isRequired,
         imageUrl: PropTypes.string.isRequired,
     }),
-    currentWeek:PropTypes.string,
+    currentWeek: PropTypes.string,
     rewardsPlanned: PropTypes.number,
 };
 
