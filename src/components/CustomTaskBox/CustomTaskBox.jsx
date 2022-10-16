@@ -9,21 +9,23 @@ import { ReactComponent as PencilIcon } from '../../assets/svg/Pencil.svg';
 import { toast } from 'react-toastify';
 import { useTranslation } from 'react-i18next';
 
-
-const CustomTaskBox = ({atMain = false}) => {
+const CustomTaskBox = ({ atMain = false }) => {
     const [modalOpen, setModalOpen] = useState(false);
     const [task, setTask] = useState('');
     const [points, setPoints] = useState('');
     const [file, setFile] = useState(null);
     const dispatch = useDispatch();
-    const { t } = useTranslation();  
-    const currentWeekdayIndex = new Date().getDay();
-    const allDays = [false, false, false, false, false, false, false]
-    
-    const daysArr = (arr ,idx) => {
-        return arr.map((elem, index) => (index === idx-1 ? !elem : elem))
+    const { t } = useTranslation();
+    let currentWeekdayIndex = new Date().getDay();
+    currentWeekdayIndex =
+        currentWeekdayIndex === 0 ? 6 : currentWeekdayIndex - 1;
+
+    const allDays = [false, false, false, false, false, false, false];
+
+    const daysArr = (arr, idx) => {
+        return arr.map((elem, index) => (index === idx ? !elem : elem));
     };
-    
+
     const src = file && window.URL.createObjectURL(file);
     const addTask = `${t(`Add task...`)}`;
     const addPoints = `${t(`Add points...`)}`;
@@ -42,12 +44,21 @@ const CustomTaskBox = ({atMain = false}) => {
             formData.append('file', file);
         }
         try {
-            dispatch(tasksOperations.createTask(formData)).unwrap()
-            .then(res => {return atMain &&
-                dispatch(tasksOperations.setActiveSingle({
-                    taskId: res.id,
-                    taskData: {days: daysArr(allDays, currentWeekdayIndex)}}))
-            });
+            dispatch(tasksOperations.createTask(formData))
+                .unwrap()
+                .then(res => {
+                    return (
+                        atMain &&
+                        dispatch(
+                            tasksOperations.setActiveSingle({
+                                taskId: res.id,
+                                taskData: {
+                                    days: daysArr(allDays, currentWeekdayIndex),
+                                },
+                            })
+                        )
+                    );
+                });
         } catch (error) {
             return toast.warning(error.message);
         }
@@ -69,11 +80,10 @@ const CustomTaskBox = ({atMain = false}) => {
         }
     };
     const handleImageChange = event => {
-        const sizeOfMegabites = event.target?.files[0]?.size / 102400;
-        console.log(sizeOfMegabites);
-        if (sizeOfMegabites > 10) {
+        const sizeOfMegabites = event.target?.files[0]?.size / 2 ** 20;
+        if (sizeOfMegabites > 1) {
             setFile(null);
-            return toast.warning(`${t('The file must be no more than 10 mb')}`);
+            return toast.warning(`${t('The file must be no more than 1 mb')}`);
         }
         setFile(event.target?.files[0]);
     };
