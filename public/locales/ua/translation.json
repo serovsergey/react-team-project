@@ -62,5 +62,11 @@
     "Task state changed!": "Стан завдання змінено!",
     "fields 'Add Task' and 'Add Points' are required": "поля 'Додати завдання' та 'Додати бали' обов'язкові для заповнення",
     "Task added successfully": "Завдання успішно додано",
-    "The file must be no more than 10 mb": "Файл має бути не більше 10 мб"
+    "The file must be no more than 10 mb": "Файл має бути не більше 10 мб",
+    "points_zero": "балів",
+    "points_one": "бал",
+    "points_two": "балів",
+    "points_few": "балів",
+    "points_many": "балів",
+    "points_other": "балів"
 }

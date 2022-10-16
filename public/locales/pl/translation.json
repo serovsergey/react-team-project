@@ -62,5 +62,11 @@
     "Task state changed!": "Stan zadania zmienił się!",
     "fields 'Add Task' and 'Add Points' are required": "Pola 'Dodaj zadanie' i 'Dodaj punkty' są wymagane",
     "Task added successfully": "Zadanie dodane pomyślnie",
-    "The file must be no more than 10 mb": "Plik musi być nie więcej niż 10 mb"
+    "The file must be no more than 10 mb": "Plik musi być nie więcej niż 10 mb",
+    "points_zero": "punkty",
+    "points_one": "punkt",
+    "points_two": "punkty",
+    "points_few": "punkty",
+    "points_many": "punkty",
+    "points_other": "punkty"
 }
