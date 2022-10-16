@@ -15,7 +15,6 @@ import ScoreBox from 'components/ScoreBox';
 import ChangeLanguage from 'components/ChangeLanguage';
 
 const Header = () => {
-
     const [modalIsopen, setModalIsOpen] = useState(false);
     const token = useSelector(authSelectors.getToken);
     const isDesktopScreen = useMediaQuery({ query: '(min-width: 1280px)' });
@@ -40,7 +39,6 @@ const Header = () => {
                     <MediaQuery.Desktop>
                          <NavList />
                     </MediaQuery.Desktop>}
-
                     {token ? (
                         <>
                             <button
@@ -48,10 +46,7 @@ const Header = () => {
                                 onClick={() => setModalIsOpen(true)}
                                 className={s.button}
                             >
-                                <IoIosMenu 
-                                    className={s.iconMenu}
-                                    size={22}
-                                />
+                                <IoIosMenu className={s.iconMenu} size={22} />
                             </button>{' '}
                             <div className={s.loggedWrapper}>
                                 <LoggedNav />
