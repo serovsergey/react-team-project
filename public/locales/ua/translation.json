@@ -57,7 +57,7 @@
     "Daryna Shvydiuk": "ДАРИНА ШВИДЮК",
     "Roman Serediuk": "РОМАН СЕРЕДЮК",
     "Oleksandr Moshynskiy": "ОЕКСАНД МОШИНСЬКИЙ",
-    "Login is failed with message": "Помилка входу з повідомленням",
+    "Login is failed with message:": "Помилка входу з повідомленням",
     "Register is failed with message:": "Помилка реєстрації з повідомленням:",
     "Task state changed!": "Стан завдання змінено!",
     "fields 'Add Task' and 'Add Points' are required": "поля 'Додати завдання' та 'Додати бали' обов'язкові для заповнення",
