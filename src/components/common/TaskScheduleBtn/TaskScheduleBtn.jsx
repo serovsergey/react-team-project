@@ -20,10 +20,12 @@ const TaskScheduleBtn = ({ taskId }) => {
     const isPatching = useSelector(tasksSelectors.getIsPatching);
     const taskStates = useSelector(tasksSelectors.selectTaskStatesById(taskId));
     const [daysState, setDaysState] = useState(taskStates);
-    const currentWeekdayIndex = new Date().getDay();
+    let currentWeekdayIndex = new Date().getDay();
+    currentWeekdayIndex =
+        currentWeekdayIndex === 0 ? 6 : currentWeekdayIndex - 1;
 
     const handleChange = idx => {
-        if (idx >= currentWeekdayIndex - 1) {
+        if (idx >= currentWeekdayIndex) {
             setDaysState(prev =>
                 prev.map((el, index) => (index === idx ? !el : el))
             );

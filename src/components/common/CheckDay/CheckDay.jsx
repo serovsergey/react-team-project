@@ -12,7 +12,9 @@ const CheckDay = ({ daysState, handleChange }) => {
     const [isOpen, setIsOpen] = useState(true);
     const ref = useRef(null);
     const { i18n } = useTranslation();
-    const currentWeekdayIndex = new Date().getDay();
+    let currentWeekdayIndex = new Date().getDay();
+    currentWeekdayIndex =
+        currentWeekdayIndex === 0 ? 6 : currentWeekdayIndex - 1;
 
     const weekDays = useSelector(state =>
         weekSelectors.selectWeekDays(state, i18n.language)
@@ -45,7 +47,7 @@ const CheckDay = ({ daysState, handleChange }) => {
                                     handleChange={() => handleChange(idx)}
                                     checked={daysState[idx]}
                                     idx={idx}
-                                    disabled={idx < currentWeekdayIndex - 1}
+                                    disabled={idx < currentWeekdayIndex}
                                 />
                             </li>
                         ))}

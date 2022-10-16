@@ -9,13 +9,22 @@ import { ReactComponent as PencilIcon } from '../../assets/svg/Pencil.svg';
 import { toast } from 'react-toastify';
 import { useTranslation } from 'react-i18next';
 
-const CustomTaskBox = () => {
+const CustomTaskBox = ({ atMain = false }) => {
     const [modalOpen, setModalOpen] = useState(false);
     const [task, setTask] = useState('');
     const [points, setPoints] = useState('');
     const [file, setFile] = useState(null);
     const dispatch = useDispatch();
     const { t } = useTranslation();
+    let currentWeekdayIndex = new Date().getDay();
+    currentWeekdayIndex =
+        currentWeekdayIndex === 0 ? 6 : currentWeekdayIndex - 1;
+
+    const allDays = [false, false, false, false, false, false, false];
+
+    const daysArr = (arr, idx) => {
+        return arr.map((elem, index) => (index === idx ? !elem : elem));
+    };
 
     const src = file && window.URL.createObjectURL(file);
     const addTask = `${t(`Add task...`)}`;
@@ -35,7 +44,21 @@ const CustomTaskBox = () => {
             formData.append('file', file);
         }
         try {
-            dispatch(tasksOperations.createTask(formData)).unwrap();
+            dispatch(tasksOperations.createTask(formData))
+                .unwrap()
+                .then(res => {
+                    return (
+                        atMain &&
+                        dispatch(
+                            tasksOperations.setActiveSingle({
+                                taskId: res.id,
+                                taskData: {
+                                    days: daysArr(allDays, currentWeekdayIndex),
+                                },
+                            })
+                        )
+                    );
+                });
         } catch (error) {
             return toast.warning(error.message);
         }
@@ -57,11 +80,10 @@ const CustomTaskBox = () => {
         }
     };
     const handleImageChange = event => {
-        const sizeOfMegabites = event.target?.files[0]?.size / 102400;
-        console.log(sizeOfMegabites);
-        if (sizeOfMegabites > 10) {
+        const sizeOfMegabites = event.target?.files[0]?.size / 2 ** 20;
+        if (sizeOfMegabites > 1) {
             setFile(null);
-            return toast.warning(`${t('The file must be no more than 10 mb')}`);
+            return toast.warning(`${t('The file must be no more than 1 mb')}`);
         }
         setFile(event.target?.files[0]);
     };

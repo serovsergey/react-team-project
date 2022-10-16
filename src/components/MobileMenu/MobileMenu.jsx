@@ -6,24 +6,27 @@ import ChangeLanguage from 'components/ChangeLanguage';
 import { useSelector } from 'react-redux';
 import { CgClose } from 'react-icons/cg';
 import { useMediaQuery } from 'react-responsive'
+import { createPortal } from 'react-dom';
 
+const menuPortal = document.getElementById("modal2")
 
 const MobileMenu = ({ closeModal }) => {
     
     const token = useSelector(authSelectors.getToken);
-    const isTabletScreen = useMediaQuery({ query: '(max-width: 767px)' })
+    const isToTabletScreen = useMediaQuery({ query: '(max-width: 767px)' })
+    const isFromTabletScreen = useMediaQuery({ query: '(min-width: 768px)' })
     const isDesktopScreen = useMediaQuery({ query: '(min-width: 1280px)' })
     
     if(isDesktopScreen){
         return
     }
-    return (
+    return createPortal(
         <>
         <div className={s.overlay} onClick={closeModal}>
         </div>
         <div className={s.menuContainer}>
             <div className={s.menuHeader}>
-               {token && isTabletScreen && <LoggedNav />}
+               {token && isToTabletScreen && <LoggedNav />}
                {!token &&  closeModal()}
                {isDesktopScreen && closeModal()}
                
@@ -35,10 +38,10 @@ const MobileMenu = ({ closeModal }) => {
                     <CgClose  size={18} className={s.crossIcon}/>
                 </button>
             </div>
-            {!isDesktopScreen && <ChangeLanguage />}
+            {!isFromTabletScreen && <ChangeLanguage />}
             <NavList onClose={closeModal} />
         </div>
-        </>
+        </>, menuPortal
         
     );
 };

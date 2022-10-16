@@ -2,6 +2,7 @@ import Card from 'components/common/Card';
 import TaskScheduleBtn from 'components/common/TaskScheduleBtn';
 import Container from 'components/Container';
 import CustomTaskBox from 'components/CustomTaskBox';
+import Footer from 'components/Footer';
 import SumOfPointsBox from 'components/SumOfPointsBox';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
@@ -11,7 +12,7 @@ import tasksSelectors from 'redux/tasks/selector.tasks';
 
 import weekSelectors from 'redux/week/selector.week';
 
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 import s from './planningPage.module.scss';
 
@@ -49,11 +50,21 @@ const PlanningPage = () => {
                         ))}
                     </ul>
                 </div>
+                <Footer />
             </Container>
         </>
     );
 };
 
-// PlanningPage.propTypes = {};
+PlanningPage.propTypes = {
+    tasks: PropTypes.shape({
+        _id:PropTypes.string.isRequired,
+        title: PropTypes.string.isRequired,
+        reward: PropTypes.string.isRequired,
+        imageUrl: PropTypes.string.isRequired,
+    }),
+    currentWeek:PropTypes.string,
+    rewardsPlanned: PropTypes.number,
+};
 
 export default PlanningPage;

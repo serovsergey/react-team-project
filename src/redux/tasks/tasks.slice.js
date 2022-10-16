@@ -20,8 +20,12 @@ const tasksSlice = createSlice({
     initialState,
     extraReducers: {
         [tasksOperations.createTask.pending]: setPending,
-        [tasksOperations.createTask.fulfilled]: (state, { payload }) => {
-            state.items.push(payload);
+        [tasksOperations.createTask.fulfilled]: (
+            state,
+            { payload: { id, title, reward, imageUrl, days } }
+        ) => {
+            console.log({ _id: id, title, reward, imageUrl, days });
+            state.items.push({ _id: id, title, reward, imageUrl, days });
             state.isLoading = false;
         },
         [tasksOperations.createTask.rejected]: setError,
