@@ -2,6 +2,7 @@ import s from './card.module.scss';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
+import i18n from 'i18n';
 
 const Card = ({ children, title = 'test', reward = 0, imageUrl, id }) => {
     const { t } = useTranslation();
@@ -13,9 +14,9 @@ const Card = ({ children, title = 'test', reward = 0, imageUrl, id }) => {
             <div className={s.footer}>
                 <div>
                     <p className={s.title}>{t(title)}</p>
-                    <span className={s.reward}>{`${reward} ${t(
-                        'points'
-                    )}`}</span>
+                    <span className={s.reward}>
+                        {`${reward} ${t('points', {count: reward})}`}
+                    </span>
                 </div>
                 <div className={s.btn}>{children}</div>
             </div>
