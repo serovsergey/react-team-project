@@ -4,8 +4,10 @@ import { Progress } from 'react-sweet-progress';
 import 'react-sweet-progress/lib/style.css';
 import s from './ProgressBarMobile.module.scss';
 import weekSelectors from '../../redux/week/selector.week';
+import { useTranslation } from 'react-i18next';
 
 const ProgressBarMobile = () => {
+    const { t } = useTranslation();
     const userPoints = useSelector(weekSelectors.getRewardsGained);
     const countPoints = useSelector(weekSelectors.getRewardsPlanned);
     let percent = 100;
@@ -18,7 +20,7 @@ const ProgressBarMobile = () => {
 
     return (
         <div className={s.wrap}>
-            <p className={s.statsmobile}>{'Points earned:'}</p>
+            <p className={s.statsmobile}>{t('Points earned:')}</p>
 
             <div className={s.statsmobile__wrapper}>
                 <span className={s.statsmobile__points}>
