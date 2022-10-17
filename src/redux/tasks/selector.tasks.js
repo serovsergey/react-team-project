@@ -11,10 +11,15 @@ const getTasks = state => {
     }));
 };
 const selectTaskStatesById = taskId => state => {
-    // console.log(taskId);
     return state.tasks.items
         ?.find(({ _id }) => _id === taskId)
         .days.map(({ isActive }) => isActive);
+};
+
+const selectTaskCompletedById = taskId => state => {
+    return state.tasks.items
+        ?.find(({ _id }) => _id === taskId)
+        .days.map(({ isCompleted }) => isCompleted);
 };
 
 const selectDayTasks = createSelector(
@@ -51,6 +56,7 @@ const tasksSelectors = {
     selectAllTasks,
     getTasks,
     selectTaskStatesById,
+    selectTaskCompletedById,
     selectDayTasks,
     getIsPatching,
     getIsLoading,

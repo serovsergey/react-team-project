@@ -19,6 +19,9 @@ const TaskScheduleBtn = ({ taskId }) => {
     const dispatch = useDispatch();
     const isPatching = useSelector(tasksSelectors.getIsPatching);
     const taskStates = useSelector(tasksSelectors.selectTaskStatesById(taskId));
+    const taskCompleted = useSelector(
+        tasksSelectors.selectTaskCompletedById(taskId)
+    );
     const [daysState, setDaysState] = useState(taskStates);
     let currentWeekdayIndex = new Date().getDay();
     currentWeekdayIndex =
@@ -91,7 +94,11 @@ const TaskScheduleBtn = ({ taskId }) => {
                 </button>
             )}
             {isModalOpen && (
-                <CheckDay handleChange={handleChange} daysState={daysState} />
+                <CheckDay
+                    handleChange={handleChange}
+                    daysState={daysState}
+                    taskCompleted={taskCompleted}
+                />
             )}
         </div>
     );
