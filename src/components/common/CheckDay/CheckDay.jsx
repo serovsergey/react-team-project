@@ -8,7 +8,7 @@ import weekSelectors from 'redux/week/selector.week';
 import CheckBox from '../CheckBox';
 import s from './CheckDay.module.scss';
 
-const CheckDay = ({ daysState, handleChange }) => {
+const CheckDay = ({ daysState, taskCompleted, handleChange }) => {
     const [isOpen, setIsOpen] = useState(true);
     const ref = useRef(null);
     const { i18n } = useTranslation();
@@ -47,7 +47,10 @@ const CheckDay = ({ daysState, handleChange }) => {
                                     handleChange={() => handleChange(idx)}
                                     checked={daysState[idx]}
                                     idx={idx}
-                                    disabled={idx < currentWeekdayIndex}
+                                    disabled={
+                                        idx < currentWeekdayIndex ||
+                                        taskCompleted[idx]
+                                    }
                                 />
                             </li>
                         ))}
@@ -62,5 +65,6 @@ export default CheckDay;
 
 CheckDay.propTypes = {
     daysState: PropTypes.arrayOf(PropTypes.bool).isRequired,
+    taskCompleted: PropTypes.arrayOf(PropTypes.bool).isRequired,
     handleChange: PropTypes.func.isRequired,
 };
